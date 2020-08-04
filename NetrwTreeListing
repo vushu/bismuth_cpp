@@ -1,0 +1,43 @@
+../
+somethingcpp/
+| compile_commands.json@	 --> compile_commands.json
+| NetrwTreeListing
+| CMakeLists.txt
+| test/
+| build/
+| bismuth/
+| | CMakeLists.txt
+| | SpriteRenderer.cpp
+| | src/
+| | | NetrwTreeListing
+| | | core/
+| | | | mama.txt
+| | | | NetrwTreeListing
+| | | | window.cpp
+| | | | shader.cpp
+| | | | renderer.cpp
+| | | | mouselistener.cpp
+| | | | logging.cpp
+| | | | keylistener.cpp
+| | | | glhelper.cpp
+| | | | application.cpp
+| | include/
+| | | systems/
+| | | | renderingsystem.cpp
+| | | bismuth/
+| | | | window.hpp
+| | | | spriterenderer.hpp
+| | | | shader.hpp
+| | | | renderer.hpp
+| | | | mouselistener.hpp
+| | | | logging.hpp
+| | | | keylistener.hpp
+| | | | glhelper.hpp
+| | | | gameobject.hpp
+| | | | component.hpp
+| | | | camera.hpp
+| | | | application.hpp
+| | | | spriterenderer.cpp
+| | | | gameobject.cpp
+| | externals/
+| .clangd/

@@ -1,0 +1,11 @@
+../
+bismuth/
+| include/
+| | bismuth/
+| | | window.hpp
+| src/
+| | core/
+| | logging.cpp
+| | main.cpp
+| | window.cpp
+| CMakeLists.txt

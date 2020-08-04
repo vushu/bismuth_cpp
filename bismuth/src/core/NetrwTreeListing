@@ -1,0 +1,20 @@
+../
+somethingcpp/
+| .clangd/
+| bismuth/
+| | include/
+| | | bismuth/
+| | | | logging.hpp
+| | | | window.hpp
+| | | application.hpp
+| | src/
+| | | NetrwTreeListing
+| | | core
+| | | logging.cpp
+| | | main.cpp
+| | CMakeLists.txt
+| build/
+| test/
+| CMakeLists.txt
+| NetrwTreeListing
+| compile_commands.json@	 --> compile_commands.json
