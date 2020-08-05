@@ -41,6 +41,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
 
     target_link_libraries(${PROJECT_NAME} "-s WASM=1") #web assembly FTW
     target_link_libraries(${PROJECT_NAME} "-s USE_WEBGL2=1")
+    target_link_libraries(${PROJECT_NAME} "-s FULL_ES3=1")
     target_link_libraries(${PROJECT_NAME} "--preload-file resources")
     target_link_libraries(${PROJECT_NAME} "-o ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/game.html")
     target_link_libraries(${PROJECT_NAME} "-s DEMANGLE_SUPPORT=1")

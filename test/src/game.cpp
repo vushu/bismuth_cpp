@@ -21,5 +21,7 @@ void MyGame::init() {
     bi::log("hej");
     bi::log("hej");
     bi::Texture texture;
+    bi::Shader shader{"resources/assets/shaders/default.glsl"};
+    shader.compile();
     texture.init("resources/mipmaps.png");
 }

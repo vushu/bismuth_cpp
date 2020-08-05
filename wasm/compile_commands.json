@@ -1,0 +1,77 @@
+[
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/application.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/application.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/application.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/camera.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/camera.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/camera.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/glhelper.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/glhelper.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/keylistener.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/keylistener.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/logging.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/logging.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/logging.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/mouselistener.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/mouselistener.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/renderbatch.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/renderbatch.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/renderer.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/renderer.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/renderer.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/renderingsystem.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/renderingsystem.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/renderingsystem.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/shader.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/shader.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/shader.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/texture.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/texture.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/texture.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/window.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/window.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/window.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/externals/glad",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/emcc  @CMakeFiles/glad.dir/includes_C.rsp -fPIC   -o CMakeFiles/glad.dir/src/glad.c.o   -c /home/vushu/coding/cpp/somethingcpp/bismuth/externals/glad/src/glad.c",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glad/src/glad.c"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/test",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/TestGame.dir/includes_CXX.rsp  -Wall -Wall   -O2 -std=gnu++17 -o CMakeFiles/TestGame.dir/src/game.cpp.o -c /home/vushu/coding/cpp/somethingcpp/test/src/game.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/test/src/game.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/test",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/TestGame.dir/includes_CXX.rsp  -Wall -Wall   -O2 -std=gnu++17 -o CMakeFiles/TestGame.dir/src/main.cpp.o -c /home/vushu/coding/cpp/somethingcpp/test/src/main.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/test/src/main.cpp"
+}
+]

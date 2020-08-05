@@ -27,6 +27,7 @@ void Application::construct(int width, int height, std::string title) {
 Application::~Application() {
     log("Application: " + this->title + " is now destroyed");
 }
+
 void Application::run() {
     log("Running Application: " + title);
     applicationInit();

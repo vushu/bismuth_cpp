@@ -36,8 +36,33 @@ void Shader::parseShader(std::string source) {
     eol = source.find("\n", index);
     std::string secondPattern = trim(source.substr(index, eol - index));
 
-    setSource(firstPattern, splitted[1]);
-    setSource(secondPattern, splitted[2]);
+
+    // test
+    //const char* vertexShaderSource = "#version 300 es\n"
+        //"precision mediump float;\n"
+        //"in vec4 mama;\n"
+        //"void main()\n"
+        //"{\n"
+        //"   gl_Position = vec4(1.0f,1.0f,1.0f,1.0f);\n"
+        //"}\0";
+    //const char* fragmentShaderSource = "#version 300 es\n"
+        //"precision mediump float;\n"
+        //"out vec4 FragColor;\n"
+        //"void main()\n"
+        //"{\n"
+        //"   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+        //"}\n\0";
+
+    //std::string vsource = vertexShaderSource;
+    //std::string fsource = fragmentShaderSource;
+    //setSource("vertex", vsource);
+    //setSource("fragment", fsource);
+    //log("split1: " + splitted[1].erase(0,1));
+    //log("split2: " + splitted[2].erase(0,1));
+    //log("test: " + vsource);
+    // removing \n hence erase(0,1)
+    setSource(firstPattern, splitted[1].erase(0,1));
+    setSource(secondPattern, splitted[2].erase(0,1));
 }
 
 std::vector<std::string> Shader::split(const std::string& str, const std::string& regex) {
@@ -50,8 +75,7 @@ std::vector<std::string> Shader::split(const std::string& str, const std::string
 
 std::string Shader::trim(const std::string& str) {
     size_t first = str.find_first_not_of(' ');
-    if (std::string::npos == first)
-    {
+    if (std::string::npos == first) {
         return str;
     }
     size_t last = str.find_last_not_of(' ');

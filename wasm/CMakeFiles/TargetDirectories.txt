@@ -1,0 +1,11 @@
+/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles/rebuild_cache.dir
+/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles/edit_cache.dir
+/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/CMakeFiles/rebuild_cache.dir
+/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/CMakeFiles/edit_cache.dir
+/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/CMakeFiles/bismuth.dir
+/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/externals/glad/CMakeFiles/rebuild_cache.dir
+/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/externals/glad/CMakeFiles/edit_cache.dir
+/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/externals/glad/CMakeFiles/glad.dir
+/home/vushu/coding/cpp/somethingcpp/wasm/test/CMakeFiles/rebuild_cache.dir
+/home/vushu/coding/cpp/somethingcpp/wasm/test/CMakeFiles/edit_cache.dir
+/home/vushu/coding/cpp/somethingcpp/wasm/test/CMakeFiles/TestGame.dir

@@ -19,7 +19,7 @@ unsigned int bi::glhelper::compileVertexShader(std::string& shaderSrc) {
     glGetShaderiv(vertexId, GL_COMPILE_STATUS, &success);
     if (!success) {
         glGetShaderInfoLog(vertexId, 512, NULL, infoLog);
-        bi::log("glHelper", infoLog);
+        bi::log("glHelper vertexShader ", infoLog);
         throw std::runtime_error("Failed to compile vertexShader");
     }
     return vertexId;
@@ -36,7 +36,7 @@ unsigned int bi::glhelper::compileFragmentShader(std::string& shaderSrc) {
     glGetShaderiv(fragmentId, GL_COMPILE_STATUS, &success);
     if (!success) {
         glGetShaderInfoLog(fragmentId, 512, NULL, infoLog);
-        bi::log("glHelper", infoLog);
+        bi::log("glHelper fragmentShader ", infoLog);
         throw std::runtime_error("Failed to compile fragmentShader");
     }
     return fragmentId;

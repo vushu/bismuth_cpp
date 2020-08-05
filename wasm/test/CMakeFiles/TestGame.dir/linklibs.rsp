@@ -1,0 +1,1 @@
+  -L/home/vushu/coding/cpp/somethingcpp/test/include  -L/home/vushu/coding/cpp/somethingcpp/test/src  -s WASM=1 -s USE_WEBGL2=1 -s FULL_ES3=1 --preload-file resources -o /home/vushu/coding/cpp/somethingcpp/wasm/bin/game.html -s DEMANGLE_SUPPORT=1 -O2 ../bismuth/libbismuth.a -s USE_GLFW=3 ../bismuth/externals/glad/libglad.a 
