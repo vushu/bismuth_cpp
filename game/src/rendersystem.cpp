@@ -13,7 +13,7 @@ void RenderSystem::update(bi::Renderer& renderer, float dt, entt::registry& regi
 
         auto& spr = renderer.getSprite(player.batchId, player.spriteId);
         //if (spr.position.x != movement.x) {
-        spr.setPosition(spr.position + glm::vec2(movement.x * dt * 100, movement.y * dt * 100 )); {}
+        spr.setPosition(spr.position + glm::vec2(movement.x * dt * 10, movement.y * dt * 10 )); {}
 
     }
 }

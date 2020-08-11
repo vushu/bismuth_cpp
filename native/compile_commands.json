@@ -86,6 +86,11 @@
 },
 {
   "directory": "/home/vushu/coding/cpp/somethingcpp/native/game",
+  "command": "/usr/bin/c++   -I/home/vushu/coding/cpp/somethingcpp/game/CMAKE_SOURCE_DIR/bismuth/externals/entt -I/home/vushu/coding/cpp/somethingcpp/game/CMAKE_SOURCE_DIR/bismuth/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glm -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/stb -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/entt -I/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/include   -Wall -Wall   -std=gnu++17 -o CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o -c /home/vushu/coding/cpp/somethingcpp/game/src/entitybuilder.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/game/src/entitybuilder.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/native/game",
   "command": "/usr/bin/c++   -I/home/vushu/coding/cpp/somethingcpp/game/CMAKE_SOURCE_DIR/bismuth/externals/entt -I/home/vushu/coding/cpp/somethingcpp/game/CMAKE_SOURCE_DIR/bismuth/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glm -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/stb -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/entt -I/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/include   -Wall -Wall   -std=gnu++17 -o CMakeFiles/TestGame.dir/src/game.cpp.o -c /home/vushu/coding/cpp/somethingcpp/game/src/game.cpp",
   "file": "/home/vushu/coding/cpp/somethingcpp/game/src/game.cpp"
 },

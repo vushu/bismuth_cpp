@@ -39,11 +39,14 @@ void Renderer::init() {
         log("Renderer: Failed to initialize GLAD");
         throw std::runtime_error("Renderer: Failed to initialize GLAD");
     }
+    // alpha blending
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
     this->shader->compile();
-    this->batches.push_back(std::make_unique<RenderBatch>(this->camera,this->MAX_BATCH_SIZE, this->shader));
+    std::unique_ptr<RenderBatch> firstBatch = std::make_unique<RenderBatch>(this->camera,this->MAX_BATCH_SIZE, this->shader);
+    firstBatch->init();
+    this->batches.push_back(std::move(firstBatch));
     //for (auto& batch : batches) {
     //batch->init();
     //}
@@ -61,9 +64,27 @@ void Renderer::clear(float r, float g, float b, float a) {
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
+//make unique_ptr for spriterenderer
 RenId Renderer::addSprite(std::shared_ptr<SpriteRenderer> sprite) {
-    batches.at(0)->init();
-    int spriteId = batches.at(0)->addSprite(sprite);
+
+    //temp
+    int spriteId = -1;
+    //taking current batch
+    auto& batch = batches.at(batches.size() - 1);
+
+    if (batch->hasRoom) {
+        //if has room, then add sprite
+        //batch->init();
+        spriteId = batch->addSprite(sprite);
+    }
+    else {
+        // if current batch has no more room create a new one
+        std::unique_ptr<RenderBatch> nextBatch = std::make_unique<RenderBatch>(this->camera,this->MAX_BATCH_SIZE, this->shader);
+        nextBatch->init();
+        this->batches.push_back(std::move(nextBatch));
+    }
+    spriteId = batches.at(batches.size() - 1)->addSprite(sprite);
+
     return RenId {static_cast<int>(batches.size() - 1), spriteId};
 }
 
@@ -71,6 +92,7 @@ void Renderer::render(float dt) {
     //renderTestTriangle();
     //renderTestTexture();
     for (auto& batch : batches) {
+        //Rendering every batch
         batch->render();
     }
     //

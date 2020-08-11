@@ -5,6 +5,7 @@
 #include "bismuth/texture.hpp"
 #include "components.hpp"
 #include <entt/entt.hpp>
+#include "entitybuilder.hpp"
 
 
 MyGame::~MyGame() {}
@@ -19,22 +20,11 @@ void MyGame::update(float dt) {
 }
 
 void MyGame::init() {
-
-    auto entity = registry.create();
-    registry.emplace<Movement>(entity, 10,10);
-    std::shared_ptr<bi::Texture> texture = std::make_shared<bi::Texture>("resources/assets/images/awesomeface.png");
-    texture->init();
-
-    std::unique_ptr<bi::Sprite> sprite = std::make_unique<bi::Sprite>(texture);
-    std::shared_ptr<bi::SpriteRenderer> spriterenderer = std::make_shared<bi::SpriteRenderer>(std::move(sprite));
-
-    spriterenderer->setPosition(glm::vec2(100,0));
-    spriterenderer->setScale(glm::vec2(100,100));
-    bi::RenId rid = renderer->addSprite(std::move(spriterenderer));
-    bi::log("batch id " + std::to_string(rid.batchId));
-    bi::log("sprite id " + std::to_string(rid.spriteId));
-    registry.emplace<Player>(entity, rid.batchId, rid.spriteId);
-
-
+    std::unique_ptr<EntityBuilder> entitybuilder = std::make_unique<EntityBuilder>();
+    entitybuilder->at(100.0f, 100.0f )
+        .size(400, 400)
+        .vel(3, 2)
+        .sprite("resources/assets/images/awesomeface.png")
+        .buildPlayer(this->getRenderer(),this->registry);
 
 }

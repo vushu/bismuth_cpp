@@ -141,9 +141,12 @@ void RenderBatch::init() {
 
 int RenderBatch::addSprite(std::shared_ptr<SpriteRenderer> sprite) {
     this->textures.push_back(sprite->getTexture());
-    this->sprites.push_back(std::move(sprite));
+    this->sprites.push_back(sprite);
     loadVertexProperties(0);
     numberOfSprite++;
+    if (numberOfSprite == 1000) {
+        this->hasRoom = false;
+    }
     return sprites.size() - 1;
 }
 

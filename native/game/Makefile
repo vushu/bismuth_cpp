@@ -136,6 +136,33 @@ TestGame/fast:
 	cd /home/vushu/coding/cpp/somethingcpp/native && $(MAKE) -f game/CMakeFiles/TestGame.dir/build.make game/CMakeFiles/TestGame.dir/build
 .PHONY : TestGame/fast
 
+src/entitybuilder.o: src/entitybuilder.cpp.o
+
+.PHONY : src/entitybuilder.o
+
+# target to build an object file
+src/entitybuilder.cpp.o:
+	cd /home/vushu/coding/cpp/somethingcpp/native && $(MAKE) -f game/CMakeFiles/TestGame.dir/build.make game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o
+.PHONY : src/entitybuilder.cpp.o
+
+src/entitybuilder.i: src/entitybuilder.cpp.i
+
+.PHONY : src/entitybuilder.i
+
+# target to preprocess a source file
+src/entitybuilder.cpp.i:
+	cd /home/vushu/coding/cpp/somethingcpp/native && $(MAKE) -f game/CMakeFiles/TestGame.dir/build.make game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.i
+.PHONY : src/entitybuilder.cpp.i
+
+src/entitybuilder.s: src/entitybuilder.cpp.s
+
+.PHONY : src/entitybuilder.s
+
+# target to generate assembly for a file
+src/entitybuilder.cpp.s:
+	cd /home/vushu/coding/cpp/somethingcpp/native && $(MAKE) -f game/CMakeFiles/TestGame.dir/build.make game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.s
+.PHONY : src/entitybuilder.cpp.s
+
 src/game.o: src/game.cpp.o
 
 .PHONY : src/game.o
@@ -227,6 +254,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... test"
 	@echo "... TestGame"
+	@echo "... src/entitybuilder.o"
+	@echo "... src/entitybuilder.i"
+	@echo "... src/entitybuilder.s"
 	@echo "... src/game.o"
 	@echo "... src/game.i"
 	@echo "... src/game.s"

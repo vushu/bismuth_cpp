@@ -17,6 +17,7 @@ namespace bi  {
             std::shared_ptr<Texture> getTexture();
             std::vector<glm::vec2> getTexCoords();
             void setClean();
+            void initTexture();
             glm::vec2 position;
             glm::vec2 scale;
         private:

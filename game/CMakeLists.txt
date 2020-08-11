@@ -23,7 +23,7 @@ file(GLOB_RECURSE source_list
     "${CMAKE_CURRENT_LIST_DIR}/src/*.cpp")
 
 file(GLOB_RECURSE header_list
-    "${CMAKE_CURRENT_LIST_DIR}/include/*.h")
+    "${CMAKE_CURRENT_LIST_DIR}/src/*.h")
 
 add_executable(${PROJECT_NAME} ${source_list} ${header_list} )
 

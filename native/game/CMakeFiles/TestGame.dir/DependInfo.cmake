@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/vushu/coding/cpp/somethingcpp/game/src/entitybuilder.cpp" "/home/vushu/coding/cpp/somethingcpp/native/game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/game/src/game.cpp" "/home/vushu/coding/cpp/somethingcpp/native/game/CMakeFiles/TestGame.dir/src/game.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/game/src/main.cpp" "/home/vushu/coding/cpp/somethingcpp/native/game/CMakeFiles/TestGame.dir/src/main.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.cpp" "/home/vushu/coding/cpp/somethingcpp/native/game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o"

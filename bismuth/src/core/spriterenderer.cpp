@@ -40,4 +40,8 @@ void SpriteRenderer::setScale(glm::vec2 scale) {
     }
 }
 
+void SpriteRenderer::initTexture() {
+    this->mSprite->getTexture()->init();
+}
+
 

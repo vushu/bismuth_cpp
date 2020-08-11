@@ -17,9 +17,6 @@ namespace bi {
         public:
             Renderer(std::unique_ptr<Window>& win, std::unique_ptr<Camera>& cam) : camera(cam), window(win) {
                 this->shader = std::make_shared<Shader>("resources/assets/shaders/default.glsl");
-                //testTriangle
-                //this->shader = std::make_shared<Shader>("resources/assets/shaders/texture.glsl");
-                //this->textureTest = std::make_shared<Texture>("resources/assets/images/awesomeface.png");
             }
             ~Renderer();
             void init();
