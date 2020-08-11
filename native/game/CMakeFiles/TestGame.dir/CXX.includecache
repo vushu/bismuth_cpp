@@ -1450,8 +1450,28 @@ detail/setup.hpp
 detail/func_vector_relational.inl
 ../bismuth/externals/glm/glm/detail/func_vector_relational.inl
 
+../bismuth/include/bismuth/application.hpp
+bismuth/camera.hpp
+-
+bismuth/renderer.hpp
+-
+bismuth/window.hpp
+-
+memory
+-
+
 ../bismuth/include/bismuth/camera.hpp
 glm/glm.hpp
+-
+
+../bismuth/include/bismuth/keylistener.hpp
+GLFW/glfw3.h
+-
+memory
+-
+
+../bismuth/include/bismuth/logging.hpp
+string
 -
 
 ../bismuth/include/bismuth/renderbatch.hpp
@@ -1522,11 +1542,29 @@ memory
 bismuth/spriterenderer.hpp
 -
 
-/home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.cpp
-rendersystem.hpp
-/home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.hpp
+/home/vushu/coding/cpp/somethingcpp/game/src/game.cpp
+game.hpp
+/home/vushu/coding/cpp/somethingcpp/game/src/game.hpp
+bismuth/application.hpp
+/home/vushu/coding/cpp/somethingcpp/game/src/bismuth/application.hpp
+bismuth/keylistener.hpp
+/home/vushu/coding/cpp/somethingcpp/game/src/bismuth/keylistener.hpp
+bismuth/logging.hpp
+/home/vushu/coding/cpp/somethingcpp/game/src/bismuth/logging.hpp
+bismuth/texture.hpp
+/home/vushu/coding/cpp/somethingcpp/game/src/bismuth/texture.hpp
 components.hpp
 /home/vushu/coding/cpp/somethingcpp/game/src/components.hpp
+entt/entt.hpp
+-
+
+/home/vushu/coding/cpp/somethingcpp/game/src/game.hpp
+bismuth/application.hpp
+-
+entt/entt.hpp
+-
+rendersystem.hpp
+/home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.hpp
 
 /home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.hpp
 bismuth/renderer.hpp

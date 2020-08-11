@@ -1022,20 +1022,8 @@ detail/func_vector_relational.inl
 glm/glm.hpp
 -
 
-../bismuth/include/bismuth/keylistener.hpp
-GLFW/glfw3.h
--
-memory
--
-
 ../bismuth/include/bismuth/logging.hpp
 string
--
-
-../bismuth/include/bismuth/mouselistener.hpp
-GLFW/glfw3.h
--
-memory
 -
 
 ../bismuth/include/bismuth/renderbatch.hpp
@@ -1110,24 +1098,6 @@ GLFW/glfw3.h
 bismuth/renderer.hpp
 -
 glm/vec4.hpp
--
-stdexcept
--
-
-/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/window.cpp
-bismuth/keylistener.hpp
--
-bismuth/mouselistener.hpp
--
-bismuth/window.hpp
--
-bismuth/logging.hpp
--
-glad/glad.h
--
-GLFW/glfw3.h
--
-iostream
 -
 stdexcept
 -
