@@ -7,3 +7,6 @@ RenderingSystem::~RenderingSystem() {}
 void RenderingSystem::update(float dt, entt::registry &registry) {
 
 }
+
+void RenderingSystem::addSprite(Sprite sprite) {
+}

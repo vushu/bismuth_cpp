@@ -11,7 +11,7 @@ namespace bi {
             glm::mat4 getViewMatrix();
             glm::mat4 projectionMatrix;
             glm::vec2 position;
-            glm::mat4 viewMatrix;
+            glm::mat4 viewMatrix = glm::mat4(1.0f);
     };
 
 }

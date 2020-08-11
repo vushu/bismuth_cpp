@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/vushu/coding/cpp/somethingcpp/native/test/cmake_install.cmake")
+  include("/home/vushu/coding/cpp/somethingcpp/native/game/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

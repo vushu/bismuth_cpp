@@ -3,6 +3,7 @@
 #include <bismuth/window.hpp>
 #include <bismuth/logging.hpp>
 #include <glad/glad.h>
+#define GLFW_INCLUDE_ES3
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <stdexcept>
@@ -39,10 +40,11 @@ bi::Window::~Window() {
 
 void bi::Window::configureOpenGL() {
 //#ifdef __EMSCRIPTEN__
-    glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
-    glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_EGL_CONTEXT_API);
+    glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
+    //glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_EGL_CONTEXT_API);
+    //glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_OPENGL_ES_API);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 //#else
 

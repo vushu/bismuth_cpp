@@ -14,6 +14,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/renderer.cpp" "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/renderingsystem.cpp" "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/CMakeFiles/bismuth.dir/src/core/renderingsystem.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/shader.cpp" "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/CMakeFiles/bismuth.dir/src/core/shader.cpp.o"
+  "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/sprite.cpp" "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/CMakeFiles/bismuth.dir/src/core/sprite.cpp.o"
+  "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/spriterenderer.cpp" "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/texture.cpp" "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/window.cpp" "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/CMakeFiles/bismuth.dir/src/core/window.cpp.o"
   )
@@ -23,7 +25,6 @@ set(CMAKE_CXX_COMPILER_ID "Clang")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../bismuth/externals/glm"
   "../bismuth/externals/stb"
-  "/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include"
   "../bismuth/include"
   "../bismuth/externals/entt"
   "../bismuth/src"

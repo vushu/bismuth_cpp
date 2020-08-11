@@ -17,7 +17,7 @@ namespace bi {
         protected:
             std::unique_ptr<Renderer> renderer;
             std::unique_ptr<Window> window;
-            Camera camera;
+            std::unique_ptr<Camera> camera;
             virtual void update(float dt);
             virtual void init();
         private:

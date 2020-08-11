@@ -10,10 +10,11 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../CMakeLists.txt"
   "../bismuth/CMakeLists.txt"
   "../bismuth/externals/glad/CMakeLists.txt"
+  "../bismuth/tests/CMakeLists.txt"
+  "../game/CMakeLists.txt"
   "CMakeFiles/3.16.3/CMakeCCompiler.cmake"
   "CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.16.3/CMakeSystem.cmake"
-  "../test/CMakeLists.txt"
   "/usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Config.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3ConfigVersion.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Targets-none.cmake"
@@ -51,12 +52,14 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "bismuth/CMakeFiles/CMakeDirectoryInformation.cmake"
   "bismuth/externals/glad/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "test/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "bismuth/tests/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "game/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "bismuth/CMakeFiles/bismuth.dir/DependInfo.cmake"
   "bismuth/externals/glad/CMakeFiles/glad.dir/DependInfo.cmake"
-  "test/CMakeFiles/TestGame.dir/DependInfo.cmake"
+  "bismuth/tests/CMakeFiles/bismuth_test.dir/DependInfo.cmake"
+  "game/CMakeFiles/TestGame.dir/DependInfo.cmake"
   )

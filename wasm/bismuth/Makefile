@@ -78,6 +78,17 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # The main all target
 all: cmake_check_build_system
 	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(CMAKE_COMMAND) -E cmake_progress_start /home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles /home/vushu/coding/cpp/somethingcpp/wasm/bismuth/CMakeFiles/progress.marks
@@ -395,6 +406,60 @@ src/core/shader.cpp.s:
 	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/shader.cpp.s
 .PHONY : src/core/shader.cpp.s
 
+src/core/sprite.o: src/core/sprite.cpp.o
+
+.PHONY : src/core/sprite.o
+
+# target to build an object file
+src/core/sprite.cpp.o:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/sprite.cpp.o
+.PHONY : src/core/sprite.cpp.o
+
+src/core/sprite.i: src/core/sprite.cpp.i
+
+.PHONY : src/core/sprite.i
+
+# target to preprocess a source file
+src/core/sprite.cpp.i:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/sprite.cpp.i
+.PHONY : src/core/sprite.cpp.i
+
+src/core/sprite.s: src/core/sprite.cpp.s
+
+.PHONY : src/core/sprite.s
+
+# target to generate assembly for a file
+src/core/sprite.cpp.s:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/sprite.cpp.s
+.PHONY : src/core/sprite.cpp.s
+
+src/core/spriterenderer.o: src/core/spriterenderer.cpp.o
+
+.PHONY : src/core/spriterenderer.o
+
+# target to build an object file
+src/core/spriterenderer.cpp.o:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o
+.PHONY : src/core/spriterenderer.cpp.o
+
+src/core/spriterenderer.i: src/core/spriterenderer.cpp.i
+
+.PHONY : src/core/spriterenderer.i
+
+# target to preprocess a source file
+src/core/spriterenderer.cpp.i:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.i
+.PHONY : src/core/spriterenderer.cpp.i
+
+src/core/spriterenderer.s: src/core/spriterenderer.cpp.s
+
+.PHONY : src/core/spriterenderer.s
+
+# target to generate assembly for a file
+src/core/spriterenderer.cpp.s:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.s
+.PHONY : src/core/spriterenderer.cpp.s
+
 src/core/texture.o: src/core/texture.cpp.o
 
 .PHONY : src/core/texture.o
@@ -457,6 +522,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... test"
 	@echo "... bismuth"
 	@echo "... src/core/application.o"
 	@echo "... src/core/application.i"
@@ -488,6 +554,12 @@ help:
 	@echo "... src/core/shader.o"
 	@echo "... src/core/shader.i"
 	@echo "... src/core/shader.s"
+	@echo "... src/core/sprite.o"
+	@echo "... src/core/sprite.i"
+	@echo "... src/core/sprite.s"
+	@echo "... src/core/spriterenderer.o"
+	@echo "... src/core/spriterenderer.i"
+	@echo "... src/core/spriterenderer.s"
 	@echo "... src/core/texture.o"
 	@echo "... src/core/texture.i"
 	@echo "... src/core/texture.s"

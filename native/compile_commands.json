@@ -51,6 +51,16 @@
 },
 {
   "directory": "/home/vushu/coding/cpp/somethingcpp/native/bismuth",
+  "command": "/usr/bin/c++  -Dbismuth_EXPORTS -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glm -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/stb -I/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/entt -I/home/vushu/coding/cpp/somethingcpp/bismuth/src -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glad/include   -Wall -Wall -fPIC   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/sprite.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/sprite.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/sprite.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/native/bismuth",
+  "command": "/usr/bin/c++  -Dbismuth_EXPORTS -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glm -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/stb -I/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/entt -I/home/vushu/coding/cpp/somethingcpp/bismuth/src -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glad/include   -Wall -Wall -fPIC   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/spriterenderer.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/spriterenderer.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/native/bismuth",
   "command": "/usr/bin/c++  -Dbismuth_EXPORTS -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glm -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/stb -I/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/entt -I/home/vushu/coding/cpp/somethingcpp/bismuth/src -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glad/include   -Wall -Wall -fPIC   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/texture.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/texture.cpp",
   "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/texture.cpp"
 },
@@ -65,13 +75,28 @@
   "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glad/src/glad.c"
 },
 {
-  "directory": "/home/vushu/coding/cpp/somethingcpp/native/test",
-  "command": "/usr/bin/c++   -I/home/vushu/coding/cpp/somethingcpp/test/CMAKE_SOURCE_DIR/bismuth/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glm -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/stb -I/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/include   -Wall -Wall   -std=gnu++17 -o CMakeFiles/TestGame.dir/src/game.cpp.o -c /home/vushu/coding/cpp/somethingcpp/test/src/game.cpp",
-  "file": "/home/vushu/coding/cpp/somethingcpp/test/src/game.cpp"
+  "directory": "/home/vushu/coding/cpp/somethingcpp/native/bismuth/tests",
+  "command": "/usr/bin/c++   -I/home/vushu/coding/cpp/somethingcpp/bismuth/tests/../externals/catch2 -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glm -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/stb -I/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/include   -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth_test.dir/main.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/tests/main.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/tests/main.cpp"
 },
 {
-  "directory": "/home/vushu/coding/cpp/somethingcpp/native/test",
-  "command": "/usr/bin/c++   -I/home/vushu/coding/cpp/somethingcpp/test/CMAKE_SOURCE_DIR/bismuth/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glm -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/stb -I/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/include   -Wall -Wall   -std=gnu++17 -o CMakeFiles/TestGame.dir/src/main.cpp.o -c /home/vushu/coding/cpp/somethingcpp/test/src/main.cpp",
-  "file": "/home/vushu/coding/cpp/somethingcpp/test/src/main.cpp"
+  "directory": "/home/vushu/coding/cpp/somethingcpp/native/bismuth/tests",
+  "command": "/usr/bin/c++   -I/home/vushu/coding/cpp/somethingcpp/bismuth/tests/../externals/catch2 -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glm -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/stb -I/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/include   -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth_test.dir/shader_test.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/tests/shader_test.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/tests/shader_test.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/native/bismuth/tests",
+  "command": "/usr/bin/c++   -I/home/vushu/coding/cpp/somethingcpp/bismuth/tests/../externals/catch2 -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glm -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/stb -I/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/include   -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth_test.dir/testapp.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/tests/testapp.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/tests/testapp.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/native/game",
+  "command": "/usr/bin/c++   -I/home/vushu/coding/cpp/somethingcpp/game/CMAKE_SOURCE_DIR/bismuth/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glm -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/stb -I/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/include   -Wall -Wall   -std=gnu++17 -o CMakeFiles/TestGame.dir/src/game.cpp.o -c /home/vushu/coding/cpp/somethingcpp/game/src/game.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/game/src/game.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/native/game",
+  "command": "/usr/bin/c++   -I/home/vushu/coding/cpp/somethingcpp/game/CMAKE_SOURCE_DIR/bismuth/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glm -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/stb -I/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/include   -Wall -Wall   -std=gnu++17 -o CMakeFiles/TestGame.dir/src/main.cpp.o -c /home/vushu/coding/cpp/somethingcpp/game/src/main.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/game/src/main.cpp"
 }
 ]

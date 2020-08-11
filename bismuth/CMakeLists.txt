@@ -7,6 +7,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(ENTT_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals/entt")
 set(STB_IMAGE_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals/stb")
 set(GLM_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/externals/glm")
+#set(CATCH2_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/externals/catch2")
 set(EMSCRIPTEN_INCLUDE_DIRS "/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include")
 
 include(GNUInstallDirs)
@@ -30,22 +31,39 @@ set_target_properties(${PROJECT_NAME}
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/glad)
 
 #message(STATUS "GLM included at ${GLM_INCLUDE_DIRS}")
-target_include_directories(${PROJECT_NAME}
-    PUBLIC
-    ${GLM_INCLUDE_DIRS}
-    ${STB_IMAGE_INCLUDE_DIR}
-    ${EMSCRIPTEN_INCLUDE_DIRS}
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>
-    PRIVATE
-    ${ENTT_INCLUDE_DIR}
-    src)
+if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
+    target_include_directories(${PROJECT_NAME}
+        PUBLIC
+        ${GLM_INCLUDE_DIRS}
+        ${STB_IMAGE_INCLUDE_DIR}
+        #${CATCH2_INCLUDE_DIRS}
+        #${EMSCRIPTEN_INCLUDE_DIRS}
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+        PRIVATE
+        ${ENTT_INCLUDE_DIR}
+        src)
+else()
+    target_include_directories(${PROJECT_NAME}
+        PUBLIC
+        ${GLM_INCLUDE_DIRS}
+        ${STB_IMAGE_INCLUDE_DIR}
+        #${CATCH2_INCLUDE_DIRS}
+        ${EMSCRIPTEN_INCLUDE_DIRS}
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+        PRIVATE
+        ${ENTT_INCLUDE_DIR}
+        src)
+endif()
+
 #window compatibility
 set(CMAKE_WINDOW_EXPORT_ALL_SYMBOLS ON)
 
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
     message("Compiling to WASM")
     target_link_libraries(${PROJECT_NAME} "-s USE_GLFW=3")
+    #target_link_libraries(${PROJECT_NAME} "-s STB_IMAGE=1")
     target_link_libraries(${PROJECT_NAME} glad)
 
 else()
@@ -53,5 +71,10 @@ else()
     #find_package(glm REQUIRED)
     target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad)
 endif()
+
+add_subdirectory(tests)
+add_test(NAME tests COMMAND bismuth_test)
+
+
 
 #export(TARGETS ${PROJECT_NAME} FILE bismuthConfig.cmake)

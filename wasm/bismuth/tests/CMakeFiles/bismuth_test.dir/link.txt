@@ -1,0 +1,1 @@
+/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   -Wall -Wall   @CMakeFiles/bismuth_test.dir/objects1.rsp  -o ../../bin/bismuth_test.js @CMakeFiles/bismuth_test.dir/linklibs.rsp

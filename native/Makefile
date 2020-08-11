@@ -78,6 +78,17 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/vushu/coding/cpp/somethingcpp/native/CMakeFiles /home/vushu/coding/cpp/somethingcpp/native/CMakeFiles/progress.marks
@@ -137,6 +148,19 @@ glad/fast:
 .PHONY : glad/fast
 
 #=============================================================================
+# Target rules for targets named bismuth_test
+
+# Build rule for target.
+bismuth_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 bismuth_test
+.PHONY : bismuth_test
+
+# fast build rule for target.
+bismuth_test/fast:
+	$(MAKE) -f bismuth/tests/CMakeFiles/bismuth_test.dir/build.make bismuth/tests/CMakeFiles/bismuth_test.dir/build
+.PHONY : bismuth_test/fast
+
+#=============================================================================
 # Target rules for targets named TestGame
 
 # Build rule for target.
@@ -146,7 +170,7 @@ TestGame: cmake_check_build_system
 
 # fast build rule for target.
 TestGame/fast:
-	$(MAKE) -f test/CMakeFiles/TestGame.dir/build.make test/CMakeFiles/TestGame.dir/build
+	$(MAKE) -f game/CMakeFiles/TestGame.dir/build.make game/CMakeFiles/TestGame.dir/build
 .PHONY : TestGame/fast
 
 # Help Target
@@ -157,8 +181,10 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... test"
 	@echo "... bismuth"
 	@echo "... glad"
+	@echo "... bismuth_test"
 	@echo "... TestGame"
 .PHONY : help
 

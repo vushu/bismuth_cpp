@@ -1,9 +1,15 @@
+
+//#ifndef __EMSCRIPTEN__
+//#define STB_IMAGE_IMPLEMENTATION
+//#include <stb_image.h>
+//#else
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb/stb_image.h>
+//#endif
 #include <bismuth/logging.hpp>
 #include <bismuth/glhelper.hpp>
 #include <glad/glad.h>
-#include <glm/fwd.hpp>
+#include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
 
@@ -54,7 +60,7 @@ unsigned int bi::glhelper::linkShaders(unsigned int vertexId, unsigned int fragm
 
     if (!success) {
         glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-        bi::log("glHelper", infoLog);
+        bi::log("glHelper ", infoLog);
     }
     return shaderProgram;
 }
@@ -64,7 +70,7 @@ void bi::glhelper::uploadUniformMat3(int shaderProgramId, std::string varName, g
     glUniformMatrix3fv(varLocationId, 1, GL_FALSE, glm::value_ptr(mat3));
 }
 
-void bi::glhelper::uploadUniformMat4(int shaderProgramId, std::string varName, glm::mat4& mat4) {
+void bi::glhelper::uploadUniformMat4(int shaderProgramId, std::string varName, glm::mat4 mat4) {
     unsigned int varLocationId = glGetUniformLocation(shaderProgramId, varName.c_str());
     glUniformMatrix4fv(varLocationId, 1, GL_FALSE, glm::value_ptr(mat4));
 }
@@ -85,8 +91,12 @@ void bi::glhelper::uploadUniformInt(int shaderProgramId, std::string varName, in
     glUniform1i(glGetUniformLocation(shaderProgramId, varName.c_str()), value);
 }
 
-void bi::glhelper::uploadUniformIntArray(int shaderProgramId, std::string varName, int arr[]) {
-    glUniform1iv(glGetUniformLocation(shaderProgramId, varName.c_str()),1, &arr[0]);
+void bi::glhelper::uploadUniformIntArray(int shaderProgramId, std::string varName, int size, int* location) {
+    glUniform1iv(glGetUniformLocation(shaderProgramId, varName.c_str()), size, location);
+}
+
+void bi::glhelper::uploadUniformIntArray2(int shaderProgramId, std::string varName, int size, int location[]) {
+    glUniform1iv(glGetUniformLocation(shaderProgramId, varName.c_str()), size, location);
 }
 
 bi::glhelper::TextureInfo bi::glhelper::generateTexture(std::string filepath) {
@@ -101,6 +111,7 @@ bi::glhelper::TextureInfo bi::glhelper::generateTexture(std::string filepath) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
     int width, height, nrChannels;
+    //stbi_set_flip_vertically_on_load(true);
     unsigned char *data = stbi_load(filepath.c_str(), &width, &height, &nrChannels, 0);
     if (!data) {
         throw std::runtime_error("No image data");
@@ -108,9 +119,11 @@ bi::glhelper::TextureInfo bi::glhelper::generateTexture(std::string filepath) {
 
     if (nrChannels == 3) {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
     }
     else if (nrChannels == 4) {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
     }
     else {
         throw std::runtime_error("Error unknown number of channels");

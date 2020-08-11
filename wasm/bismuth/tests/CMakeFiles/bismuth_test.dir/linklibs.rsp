@@ -1,0 +1,1 @@
+ ../libbismuth.a -s USE_GLFW=3 ../externals/glad/libglad.a 

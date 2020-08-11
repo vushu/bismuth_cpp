@@ -4,9 +4,9 @@ namespace bi {
     class Texture {
         public:
             // constructors, asssignment, destructor
-            Texture ();
+            Texture (std::string filepath);
             ~Texture ();
-            void init(std::string filepath);
+            void init();
             int width, height;
 
             void bind();

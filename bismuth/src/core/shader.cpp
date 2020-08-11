@@ -1,7 +1,7 @@
 #include <bismuth/logging.hpp>
 #include <bismuth/shader.hpp>
 #include <fstream>
-#include <glm/fwd.hpp>
+#include <glm/glm.hpp>
 #include <regex>
 #include <stdexcept>
 #include <vector>
@@ -15,7 +15,6 @@ Shader::Shader(std::string filepath) {
     if (ifs) {
         std::string content( (std::istreambuf_iterator<char>(ifs) ),
                 (std::istreambuf_iterator<char>()    ) );
-        //Bi::log("Source: " + content);
         parseShader(content);
     }
 }
@@ -39,19 +38,19 @@ void Shader::parseShader(std::string source) {
 
     // test
     //const char* vertexShaderSource = "#version 300 es\n"
-        //"precision mediump float;\n"
-        //"in vec4 mama;\n"
-        //"void main()\n"
-        //"{\n"
-        //"   gl_Position = vec4(1.0f,1.0f,1.0f,1.0f);\n"
-        //"}\0";
+    //"precision mediump float;\n"
+    //"in vec4 mama;\n"
+    //"void main()\n"
+    //"{\n"
+    //"   gl_Position = vec4(1.0f,1.0f,1.0f,1.0f);\n"
+    //"}\0";
     //const char* fragmentShaderSource = "#version 300 es\n"
-        //"precision mediump float;\n"
-        //"out vec4 FragColor;\n"
-        //"void main()\n"
-        //"{\n"
-        //"   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-        //"}\n\0";
+    //"precision mediump float;\n"
+    //"out vec4 FragColor;\n"
+    //"void main()\n"
+    //"{\n"
+    //"   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+    //"}\n\0";
 
     //std::string vsource = vertexShaderSource;
     //std::string fsource = fragmentShaderSource;
@@ -94,11 +93,20 @@ void Shader::setSource(const std::string& pattern, const std::string& source) {
     }
 }
 
-void Shader::compile() {
+bool Shader::compile() {
     vertexId = glhelper::compileVertexShader(vertexSource);
     fragmentId = glhelper::compileFragmentShader(fragmentSource);
     shaderProgramId = glhelper::linkShaders(vertexId, fragmentId);
-    bi::log("shaders compiled successfully");
+    log("Done linking");
+    free();
+    bi::log("ProgramId: " +  std::to_string(shaderProgramId));
+    bool success = vertexId > 0 && fragmentId > 0 && shaderProgramId > 0;
+    bi::log("shaders compiled: " + std::to_string(success));
+    this->compiled = success;
+    if (!success) {
+        throw std::runtime_error("Failed to compile shader");
+    }
+    return success;
 }
 
 void Shader::use() {
@@ -125,7 +133,7 @@ void Shader::uploadUniformVec3(std::string varName, glm::vec3& vec3) {
     glhelper::uploadUniformVec3(shaderProgramId, varName, vec3);
 }
 
-void Shader::uploadUniformMat4(std::string varName, glm::mat4& mat4) {
+void Shader::uploadUniformMat4(std::string varName, glm::mat4 mat4) {
     glhelper::uploadUniformMat4(shaderProgramId, varName, mat4);
 }
 
@@ -137,8 +145,20 @@ void Shader::uploadUniformInt(std::string varName, int value) {
     glhelper::uploadUniformInt(shaderProgramId, varName.c_str(), value);
 }
 
-Shader::~Shader() {
-    bi::log("shader destroyed");
+void Shader::uploadIntArray(std::string varName,int size, int* location) {
+    glhelper::uploadUniformIntArray(shaderProgramId, varName, size, location);
+}
+
+void Shader::uploadIntArray2(std::string varName,int size, int location[]) {
+    glhelper::uploadUniformIntArray2(shaderProgramId, varName, size, location);
+}
+void Shader::free() {
     glDeleteShader(vertexId);
     glDeleteShader(fragmentId);
+    bi::log("Destroying VERTEX AND FRAGMENT DONE");
+
+}
+
+Shader::~Shader() {
+    bi::log("shader destroyed");
 }

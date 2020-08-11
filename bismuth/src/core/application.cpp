@@ -1,3 +1,4 @@
+#include "glm/fwd.hpp"
 #define GLFW_INCLUDE_NONE
 #include <bismuth/logging.hpp>
 #include <GLFW/glfw3.h>
@@ -21,6 +22,7 @@ Application::Application(int width, int height, std::string title) {
 void Application::construct(int width, int height, std::string title) {
     this->title = title;
     this->window = std::make_unique<Window>(width, height, title);
+    this->camera = std::make_unique<Camera>();
     this->renderer = std::make_unique<Renderer>(this->window, this->camera);
 }
 
@@ -50,6 +52,7 @@ void Application::emLoop() {
     if (dt >= 0) {
         update(dt);
         renderer->clear(glm::vec4(0.7f, 0.0f, 0.5f, 1.0f));
+        renderer->render(dt);
     }
     window->swapBuffers();
     endTime = glfwGetTime();
@@ -66,11 +69,12 @@ void Application::loop() {
         window->pollEvents();
 
         if (dt >= 0) {
-            update(dt);
             renderer->clear(glm::vec4(0.7f, 0.0f, 0.5f, 1.0f));
+            update(dt);
+            renderer->render(dt);
         }
-
         window->swapBuffers();
+
         endTime = glfwGetTime();
         dt = endTime - beginTime;
         beginTime = endTime;
