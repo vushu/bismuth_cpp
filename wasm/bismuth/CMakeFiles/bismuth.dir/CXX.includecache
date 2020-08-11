@@ -6,6 +6,18 @@
 
 #IncludeRegexTransform: 
 
+../bismuth/externals/glad/include/KHR/khrplatform.h
+stdint.h
+-
+inttypes.h
+-
+stdint.h
+-
+
+../bismuth/externals/glad/include/glad/glad.h
+KHR/khrplatform.h
+-
+
 ../bismuth/externals/glm/glm/common.hpp
 detail/qualifier.hpp
 ../bismuth/externals/glm/glm/detail/qualifier.hpp
@@ -1108,5 +1120,35 @@ memory
 glm/glm.hpp
 -
 emscripten/emscripten.h
+-
+
+/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/renderbatch.cpp
+bismuth/logging.hpp
+-
+glad/glad.h
+-
+bismuth/renderbatch.hpp
+-
+algorithm
+-
+memory
+-
+stdexcept
+-
+string
+-
+
+/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/renderer.cpp
+bismuth/logging.hpp
+-
+glad/glad.h
+-
+GLFW/glfw3.h
+-
+bismuth/renderer.hpp
+-
+glm/vec4.hpp
+-
+stdexcept
 -
 

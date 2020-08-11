@@ -88,3 +88,20 @@ void Application::applicationInit() {
     this->renderer->init();
 }
 
+
+Renderer& Application::getRenderer() {
+    return *this->renderer;
+}
+
+Window& Application::getWindow() {
+    return *this->window;
+}
+
+Camera& Application::getCamera() {
+    return *this->camera;
+}
+
+
+
+
+

@@ -15,6 +15,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../bismuth/tests/../externals/catch2"
   "../bismuth/externals/glm"
   "../bismuth/externals/stb"
+  "../bismuth/externals/entt"
   "/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include"
   "../bismuth/include"
   )

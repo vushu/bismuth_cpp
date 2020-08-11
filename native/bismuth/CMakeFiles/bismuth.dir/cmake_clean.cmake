@@ -7,7 +7,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/renderer.cpp.o"
-  "CMakeFiles/bismuth.dir/src/core/renderingsystem.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/shader.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/sprite.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o"

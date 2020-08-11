@@ -13,6 +13,10 @@ namespace bi {
             ~Application();
             void emLoop();
             void run();
+
+            Renderer& getRenderer();
+            Window& getWindow();
+            Camera& getCamera();
             //static void emscriptenloop(void* arg);
         protected:
             std::unique_ptr<Renderer> renderer;
@@ -21,6 +25,7 @@ namespace bi {
             virtual void update(float dt);
             virtual void init();
         private:
+
             void construct(int width, int height, std::string title);
             void applicationInit();
             void loop();

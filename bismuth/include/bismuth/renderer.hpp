@@ -8,6 +8,11 @@
 //#include <entt/entt.hpp>
 #include <vector>
 namespace bi {
+    struct RenId
+    {
+        int batchId;
+        int spriteId;
+    };
     class Renderer {
         public:
             Renderer(std::unique_ptr<Window>& win, std::unique_ptr<Camera>& cam) : camera(cam), window(win) {
@@ -20,7 +25,8 @@ namespace bi {
             void init();
             void clear(float r, float g, float b, float a);
             void clear(glm::vec4 color);
-            void addSprite(std::unique_ptr<SpriteRenderer> sprite);
+            RenId addSprite(std::shared_ptr<SpriteRenderer> sprite);
+            SpriteRenderer& getSprite(int batchId, int spriteId);
             void render(float dt);
         private:
             std::unique_ptr<Camera>& camera;

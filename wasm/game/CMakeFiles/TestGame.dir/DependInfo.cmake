@@ -6,13 +6,17 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/vushu/coding/cpp/somethingcpp/game/src/game.cpp" "/home/vushu/coding/cpp/somethingcpp/wasm/game/CMakeFiles/TestGame.dir/src/game.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/game/src/main.cpp" "/home/vushu/coding/cpp/somethingcpp/wasm/game/CMakeFiles/TestGame.dir/src/main.cpp.o"
+  "/home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.cpp" "/home/vushu/coding/cpp/somethingcpp/wasm/game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../game/CMAKE_SOURCE_DIR/bismuth/externals/entt"
+  "../game/CMAKE_SOURCE_DIR/bismuth/include"
   "../bismuth/externals/glm"
   "../bismuth/externals/stb"
+  "../bismuth/externals/entt"
   "../bismuth/include"
   "../bismuth/externals/glad/include"
   )

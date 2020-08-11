@@ -6,6 +6,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(BISMUTH_INCLUDE_DIR "CMAKE_SOURCE_DIR/bismuth/include")
+set(ENTT_INCLUDE_DIR "CMAKE_SOURCE_DIR/bismuth/externals/entt")
 
 
 
@@ -33,7 +34,6 @@ add_custom_command(
     DEPENDS ${destination}
     COMMENT "symbolic link resources folder from ${source} => ${destination}")
 
-
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
     message("Compiling to WASM")
 
@@ -55,6 +55,11 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
         $<INSTALL_INTERFACE:include>
         PRIVATE src)
 
+    target_include_directories(${PROJECT_NAME}
+        PUBLIC
+        ${ENTT_INCLUDE_DIR}
+        ${BISMUTH_INCLUDE_DIR})
+
     target_link_libraries(${PROJECT_NAME} bismuth)
 
 else()
@@ -64,7 +69,9 @@ else()
         $<INSTALL_INTERFACE:include>
         PRIVATE src)
 
-    target_include_directories(${PROJECT_NAME} PUBLIC ${BISMUTH_INCLUDE_DIR})
+    target_include_directories(${PROJECT_NAME} PUBLIC
+        ${ENTT_INCLUDE_DIR}
+        ${BISMUTH_INCLUDE_DIR})
     target_link_libraries(${PROJECT_NAME} bismuth)
 endif()
 

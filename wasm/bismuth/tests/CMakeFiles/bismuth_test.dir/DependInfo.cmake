@@ -15,6 +15,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../bismuth/tests/../externals/catch2"
   "../bismuth/externals/glm"
   "../bismuth/externals/stb"
+  "../bismuth/externals/entt"
   "../bismuth/include"
   "../bismuth/externals/glad/include"
   )

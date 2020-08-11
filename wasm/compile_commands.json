@@ -41,11 +41,6 @@
 },
 {
   "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
-  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/renderingsystem.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/renderingsystem.cpp",
-  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/renderingsystem.cpp"
-},
-{
-  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
   "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/shader.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/shader.cpp",
   "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/shader.cpp"
 },
@@ -98,5 +93,10 @@
   "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/game",
   "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/TestGame.dir/includes_CXX.rsp  -Wall -Wall   -O2 -std=gnu++17 -o CMakeFiles/TestGame.dir/src/main.cpp.o -c /home/vushu/coding/cpp/somethingcpp/game/src/main.cpp",
   "file": "/home/vushu/coding/cpp/somethingcpp/game/src/main.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/game",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/TestGame.dir/includes_CXX.rsp  -Wall -Wall   -O2 -std=gnu++17 -o CMakeFiles/TestGame.dir/src/rendersystem.cpp.o -c /home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.cpp"
 }
 ]

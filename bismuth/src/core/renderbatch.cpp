@@ -51,7 +51,7 @@ void RenderBatch::loadVertexProperties(int index) {
         for (long i = 0; i < textures.size(); i++) {
             if (textures.at(i) == sprite->getTexture()) {
                 texId = i + 1;
-                log("Found: texId " + std::to_string(texId));
+                //log("Found: texId " + std::to_string(texId));
                 break;
             }
         }
@@ -139,16 +139,12 @@ void RenderBatch::init() {
     bi::log("RenderBatch initialized");
 }
 
-void RenderBatch::addSprite(std::unique_ptr<SpriteRenderer> sprite) {
+int RenderBatch::addSprite(std::shared_ptr<SpriteRenderer> sprite) {
     this->textures.push_back(sprite->getTexture());
     this->sprites.push_back(std::move(sprite));
     loadVertexProperties(0);
     numberOfSprite++;
-    //if (sprite.getTexture() != nullptr) {
-    //if (std::none_of(textures.begin(), textures.end(), compare(*sprite.getTexture()))) {
-
-    //}
-    //}
+    return sprites.size() - 1;
 }
 
 
@@ -162,13 +158,12 @@ void RenderBatch::render() {
         auto& spr = this->sprites.at(i);
         if (spr == nullptr) {
             throw std::runtime_error("NO SPRITE");
-
         }
         if (spr->isDirty) {
             loadVertexProperties(i);
             spr->setClean();
             rebufferData = true;
-            //log("Done cleaning");
+            log("Rebuffer");
         }
     }
 
@@ -184,9 +179,6 @@ void RenderBatch::render() {
             glDeleteBuffers(1, &vboId);
             throw std::runtime_error("Failed to glbuffersubdata "+  std::to_string(datasize) + " != " + std::to_string(size));
         }
-        else{
-            log("BUFFER IS OK!");
-        }
 
     }
 
@@ -195,10 +187,6 @@ void RenderBatch::render() {
 
     shader->uploadUniformMat4("uProjection", camera->projectionMatrix);
     shader->uploadUniformMat4("uView", camera->viewMatrix);
-    //bi::log("CAMERA");
-    //bi::log(glm::to_string(camera->projectionMatrix));
-    //bi::log(glm::to_string(camera->viewMatrix));
-    //bi::log("CAMERA END");
 
     // activate texture slots
     for (long i = 0; i < textures.size(); i++) {
@@ -206,18 +194,7 @@ void RenderBatch::render() {
         textures.at(i)->bind();
     }
 
-    //glActiveTexture(GL_TEXTURE0);
-    //textures.at(0)->bind();
-
-    //bi::log("SHADER ID: " + std::to_string(shader->shaderProgramId));
-    //
-    //shader->uploadUniformInt("uTex", 0);
-    /// setting sample to correct id which is GL_TEXTURE0
-    //glUniform1i(glGetUniformLocation(shader->shaderProgramId, "uTex"), 0);
-    //shader->uploadUniformInt("uTex", 0); // Texture0 which is why 0
     shader->uploadIntArray("uTextures", 8, &this->texSlots[0]);
-    //shader->uploadIntArray2("uTextures", 8, &this->texSlots[0]);
-    //glUniform1iv(glGetUniformLocation(shader->shaderProgramId, "uTextures"), 8, this->texSlots);
 
     glBindVertexArray(vaoId);
 

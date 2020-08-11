@@ -352,33 +352,6 @@ src/core/renderer.cpp.s:
 	cd /home/vushu/coding/cpp/somethingcpp/native && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.s
 .PHONY : src/core/renderer.cpp.s
 
-src/core/renderingsystem.o: src/core/renderingsystem.cpp.o
-
-.PHONY : src/core/renderingsystem.o
-
-# target to build an object file
-src/core/renderingsystem.cpp.o:
-	cd /home/vushu/coding/cpp/somethingcpp/native && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/renderingsystem.cpp.o
-.PHONY : src/core/renderingsystem.cpp.o
-
-src/core/renderingsystem.i: src/core/renderingsystem.cpp.i
-
-.PHONY : src/core/renderingsystem.i
-
-# target to preprocess a source file
-src/core/renderingsystem.cpp.i:
-	cd /home/vushu/coding/cpp/somethingcpp/native && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/renderingsystem.cpp.i
-.PHONY : src/core/renderingsystem.cpp.i
-
-src/core/renderingsystem.s: src/core/renderingsystem.cpp.s
-
-.PHONY : src/core/renderingsystem.s
-
-# target to generate assembly for a file
-src/core/renderingsystem.cpp.s:
-	cd /home/vushu/coding/cpp/somethingcpp/native && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/renderingsystem.cpp.s
-.PHONY : src/core/renderingsystem.cpp.s
-
 src/core/shader.o: src/core/shader.cpp.o
 
 .PHONY : src/core/shader.o
@@ -548,9 +521,6 @@ help:
 	@echo "... src/core/renderer.o"
 	@echo "... src/core/renderer.i"
 	@echo "... src/core/renderer.s"
-	@echo "... src/core/renderingsystem.o"
-	@echo "... src/core/renderingsystem.i"
-	@echo "... src/core/renderingsystem.s"
 	@echo "... src/core/shader.o"
 	@echo "... src/core/shader.i"
 	@echo "... src/core/shader.s"

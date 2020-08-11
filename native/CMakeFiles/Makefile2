@@ -154,12 +154,12 @@ game/clean: game/CMakeFiles/TestGame.dir/clean
 bismuth/CMakeFiles/bismuth.dir/all: bismuth/externals/glad/CMakeFiles/glad.dir/all
 	$(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/depend
 	$(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vushu/coding/cpp/somethingcpp/native/CMakeFiles --progress-num=4,5,6,7,8,9,10,11,12,13,14,15,16,17,18 "Built target bismuth"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vushu/coding/cpp/somethingcpp/native/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14,15,16,17,18 "Built target bismuth"
 .PHONY : bismuth/CMakeFiles/bismuth.dir/all
 
 # Build rule for subdir invocation for target.
 bismuth/CMakeFiles/bismuth.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vushu/coding/cpp/somethingcpp/native/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vushu/coding/cpp/somethingcpp/native/CMakeFiles 16
 	$(MAKE) -f CMakeFiles/Makefile2 bismuth/CMakeFiles/bismuth.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/vushu/coding/cpp/somethingcpp/native/CMakeFiles 0
 .PHONY : bismuth/CMakeFiles/bismuth.dir/rule
@@ -213,7 +213,7 @@ bismuth/tests/CMakeFiles/bismuth_test.dir/all: bismuth/CMakeFiles/bismuth.dir/al
 
 # Build rule for subdir invocation for target.
 bismuth/tests/CMakeFiles/bismuth_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vushu/coding/cpp/somethingcpp/native/CMakeFiles 21
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vushu/coding/cpp/somethingcpp/native/CMakeFiles 20
 	$(MAKE) -f CMakeFiles/Makefile2 bismuth/tests/CMakeFiles/bismuth_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/vushu/coding/cpp/somethingcpp/native/CMakeFiles 0
 .PHONY : bismuth/tests/CMakeFiles/bismuth_test.dir/rule
@@ -235,7 +235,7 @@ bismuth/tests/CMakeFiles/bismuth_test.dir/clean:
 game/CMakeFiles/TestGame.dir/all: bismuth/CMakeFiles/bismuth.dir/all
 	$(MAKE) -f game/CMakeFiles/TestGame.dir/build.make game/CMakeFiles/TestGame.dir/depend
 	$(MAKE) -f game/CMakeFiles/TestGame.dir/build.make game/CMakeFiles/TestGame.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vushu/coding/cpp/somethingcpp/native/CMakeFiles --progress-num=1,2,3 "Built target TestGame"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vushu/coding/cpp/somethingcpp/native/CMakeFiles --progress-num=1,2,3,4 "Built target TestGame"
 .PHONY : game/CMakeFiles/TestGame.dir/all
 
 # Build rule for subdir invocation for target.

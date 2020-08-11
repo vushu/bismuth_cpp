@@ -1,5 +1,7 @@
 #pragma once
 #include <bismuth/application.hpp>
+#include <entt/entt.hpp>
+#include "rendersystem.hpp"
 
 class MyGame : public bi::Application {
     public:
@@ -10,6 +12,8 @@ class MyGame : public bi::Application {
     protected:
         void update(float dt) override;
         void init() override;
+        entt::registry registry;
+        RenderSystem renderSystem;
 
     private:
 

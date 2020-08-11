@@ -31,11 +31,11 @@ namespace bi {
             //maxBatchSize * 4 * 9
             std::array<float, 36000> vertices;
 
-            std::vector<std::unique_ptr<SpriteRenderer>> sprites;
+            std::vector<std::shared_ptr<SpriteRenderer>> sprites;
             std::vector<std::shared_ptr<Texture>> textures;
 
             void init();
-            void addSprite(std::unique_ptr<SpriteRenderer> spriteRenderer);
+            int addSprite(std::shared_ptr<SpriteRenderer> spriteRenderer);
             void render();
             //Vertex definition
             //========

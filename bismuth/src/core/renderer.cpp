@@ -39,6 +39,9 @@ void Renderer::init() {
         log("Renderer: Failed to initialize GLAD");
         throw std::runtime_error("Renderer: Failed to initialize GLAD");
     }
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
     this->shader->compile();
     this->batches.push_back(std::make_unique<RenderBatch>(this->camera,this->MAX_BATCH_SIZE, this->shader));
     //for (auto& batch : batches) {
@@ -58,12 +61,10 @@ void Renderer::clear(float r, float g, float b, float a) {
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void Renderer::addSprite(std::unique_ptr<SpriteRenderer> sprite) {
-    //for(auto& batch : batches) {
+RenId Renderer::addSprite(std::shared_ptr<SpriteRenderer> sprite) {
     batches.at(0)->init();
-    batches.at(0)->addSprite(std::move(sprite));
-    //}
-    //
+    int spriteId = batches.at(0)->addSprite(sprite);
+    return RenId {static_cast<int>(batches.size() - 1), spriteId};
 }
 
 void Renderer::render(float dt) {
@@ -158,6 +159,9 @@ void Renderer::renderTestTexture() {
 
 }
 
+SpriteRenderer& Renderer::getSprite(int batchId, int spriteId) {
+    return *this->batches.at(batchId)->sprites.at(spriteId);
+}
 
 
 

@@ -36,24 +36,24 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
         PUBLIC
         ${GLM_INCLUDE_DIRS}
         ${STB_IMAGE_INCLUDE_DIR}
+        ${ENTT_INCLUDE_DIR}
         #${CATCH2_INCLUDE_DIRS}
         #${EMSCRIPTEN_INCLUDE_DIRS}
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>
         PRIVATE
-        ${ENTT_INCLUDE_DIR}
         src)
 else()
     target_include_directories(${PROJECT_NAME}
         PUBLIC
         ${GLM_INCLUDE_DIRS}
         ${STB_IMAGE_INCLUDE_DIR}
+        ${ENTT_INCLUDE_DIR}
         #${CATCH2_INCLUDE_DIRS}
         ${EMSCRIPTEN_INCLUDE_DIRS}
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>
         PRIVATE
-        ${ENTT_INCLUDE_DIR}
         src)
 endif()
 

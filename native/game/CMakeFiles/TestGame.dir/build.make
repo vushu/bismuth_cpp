@@ -83,20 +83,35 @@ game/CMakeFiles/TestGame.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestGame.dir/src/main.cpp.s"
 	cd /home/vushu/coding/cpp/somethingcpp/native/game && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vushu/coding/cpp/somethingcpp/game/src/main.cpp -o CMakeFiles/TestGame.dir/src/main.cpp.s
 
+game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: game/CMakeFiles/TestGame.dir/flags.make
+game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: ../game/src/rendersystem.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vushu/coding/cpp/somethingcpp/native/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o"
+	cd /home/vushu/coding/cpp/somethingcpp/native/game && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TestGame.dir/src/rendersystem.cpp.o -c /home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.cpp
+
+game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TestGame.dir/src/rendersystem.cpp.i"
+	cd /home/vushu/coding/cpp/somethingcpp/native/game && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.cpp > CMakeFiles/TestGame.dir/src/rendersystem.cpp.i
+
+game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestGame.dir/src/rendersystem.cpp.s"
+	cd /home/vushu/coding/cpp/somethingcpp/native/game && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.cpp -o CMakeFiles/TestGame.dir/src/rendersystem.cpp.s
+
 # Object files for target TestGame
 TestGame_OBJECTS = \
 "CMakeFiles/TestGame.dir/src/game.cpp.o" \
-"CMakeFiles/TestGame.dir/src/main.cpp.o"
+"CMakeFiles/TestGame.dir/src/main.cpp.o" \
+"CMakeFiles/TestGame.dir/src/rendersystem.cpp.o"
 
 # External object files for target TestGame
 TestGame_EXTERNAL_OBJECTS =
 
 bin/TestGame: game/CMakeFiles/TestGame.dir/src/game.cpp.o
 bin/TestGame: game/CMakeFiles/TestGame.dir/src/main.cpp.o
+bin/TestGame: game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o
 bin/TestGame: game/CMakeFiles/TestGame.dir/build.make
 bin/TestGame: bismuth/libbismuth.so.1.0.0
 bin/TestGame: game/CMakeFiles/TestGame.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vushu/coding/cpp/somethingcpp/native/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable ../bin/TestGame"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vushu/coding/cpp/somethingcpp/native/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable ../bin/TestGame"
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "symbolic link resources folder from /home/vushu/coding/cpp/somethingcpp/game/resources => /home/vushu/coding/cpp/somethingcpp/native/bin/resources"
 	cd /home/vushu/coding/cpp/somethingcpp/native/game && /usr/bin/cmake -E create_symlink /home/vushu/coding/cpp/somethingcpp/game/resources /home/vushu/coding/cpp/somethingcpp/native/bin/resources
 	cd /home/vushu/coding/cpp/somethingcpp/native/game && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/TestGame.dir/link.txt --verbose=$(VERBOSE)

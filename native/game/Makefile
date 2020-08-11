@@ -190,6 +190,33 @@ src/main.cpp.s:
 	cd /home/vushu/coding/cpp/somethingcpp/native && $(MAKE) -f game/CMakeFiles/TestGame.dir/build.make game/CMakeFiles/TestGame.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/rendersystem.o: src/rendersystem.cpp.o
+
+.PHONY : src/rendersystem.o
+
+# target to build an object file
+src/rendersystem.cpp.o:
+	cd /home/vushu/coding/cpp/somethingcpp/native && $(MAKE) -f game/CMakeFiles/TestGame.dir/build.make game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o
+.PHONY : src/rendersystem.cpp.o
+
+src/rendersystem.i: src/rendersystem.cpp.i
+
+.PHONY : src/rendersystem.i
+
+# target to preprocess a source file
+src/rendersystem.cpp.i:
+	cd /home/vushu/coding/cpp/somethingcpp/native && $(MAKE) -f game/CMakeFiles/TestGame.dir/build.make game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.i
+.PHONY : src/rendersystem.cpp.i
+
+src/rendersystem.s: src/rendersystem.cpp.s
+
+.PHONY : src/rendersystem.s
+
+# target to generate assembly for a file
+src/rendersystem.cpp.s:
+	cd /home/vushu/coding/cpp/somethingcpp/native && $(MAKE) -f game/CMakeFiles/TestGame.dir/build.make game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.s
+.PHONY : src/rendersystem.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -206,6 +233,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/rendersystem.o"
+	@echo "... src/rendersystem.i"
+	@echo "... src/rendersystem.s"
 .PHONY : help
 
 
