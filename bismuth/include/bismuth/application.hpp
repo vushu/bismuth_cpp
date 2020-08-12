@@ -2,6 +2,7 @@
 #include <bismuth/camera.hpp>
 #include <bismuth/renderer.hpp>
 #include <bismuth/window.hpp>
+#include <bismuth/sound.hpp>
 #include <memory>
 
 namespace bi {
@@ -22,6 +23,8 @@ namespace bi {
             std::unique_ptr<Renderer> renderer;
             std::unique_ptr<Window> window;
             std::unique_ptr<Camera> camera;
+            std::unique_ptr<Sound> sound;
+
             virtual void update(float dt);
             virtual void init();
         private:

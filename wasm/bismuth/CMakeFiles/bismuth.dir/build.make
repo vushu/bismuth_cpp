@@ -183,10 +183,24 @@ bismuth/CMakeFiles/bismuth.dir/src/core/shader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bismuth.dir/src/core/shader.cpp.s"
 	cd /home/vushu/coding/cpp/somethingcpp/wasm/bismuth && /home/vushu/coding/repos/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/shader.cpp -o CMakeFiles/bismuth.dir/src/core/shader.cpp.s
 
+bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: bismuth/CMakeFiles/bismuth.dir/flags.make
+bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: bismuth/CMakeFiles/bismuth.dir/includes_CXX.rsp
+bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: ../bismuth/src/core/sound.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o"
+	cd /home/vushu/coding/cpp/somethingcpp/wasm/bismuth && /home/vushu/coding/repos/emsdk/upstream/emscripten/em++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bismuth.dir/src/core/sound.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/sound.cpp
+
+bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bismuth.dir/src/core/sound.cpp.i"
+	cd /home/vushu/coding/cpp/somethingcpp/wasm/bismuth && /home/vushu/coding/repos/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/sound.cpp > CMakeFiles/bismuth.dir/src/core/sound.cpp.i
+
+bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bismuth.dir/src/core/sound.cpp.s"
+	cd /home/vushu/coding/cpp/somethingcpp/wasm/bismuth && /home/vushu/coding/repos/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/sound.cpp -o CMakeFiles/bismuth.dir/src/core/sound.cpp.s
+
 bismuth/CMakeFiles/bismuth.dir/src/core/sprite.cpp.o: bismuth/CMakeFiles/bismuth.dir/flags.make
 bismuth/CMakeFiles/bismuth.dir/src/core/sprite.cpp.o: bismuth/CMakeFiles/bismuth.dir/includes_CXX.rsp
 bismuth/CMakeFiles/bismuth.dir/src/core/sprite.cpp.o: ../bismuth/src/core/sprite.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object bismuth/CMakeFiles/bismuth.dir/src/core/sprite.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object bismuth/CMakeFiles/bismuth.dir/src/core/sprite.cpp.o"
 	cd /home/vushu/coding/cpp/somethingcpp/wasm/bismuth && /home/vushu/coding/repos/emsdk/upstream/emscripten/em++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bismuth.dir/src/core/sprite.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/sprite.cpp
 
 bismuth/CMakeFiles/bismuth.dir/src/core/sprite.cpp.i: cmake_force
@@ -200,7 +214,7 @@ bismuth/CMakeFiles/bismuth.dir/src/core/sprite.cpp.s: cmake_force
 bismuth/CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o: bismuth/CMakeFiles/bismuth.dir/flags.make
 bismuth/CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o: bismuth/CMakeFiles/bismuth.dir/includes_CXX.rsp
 bismuth/CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o: ../bismuth/src/core/spriterenderer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object bismuth/CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object bismuth/CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o"
 	cd /home/vushu/coding/cpp/somethingcpp/wasm/bismuth && /home/vushu/coding/repos/emsdk/upstream/emscripten/em++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/spriterenderer.cpp
 
 bismuth/CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.i: cmake_force
@@ -214,7 +228,7 @@ bismuth/CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.s: cmake_force
 bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o: bismuth/CMakeFiles/bismuth.dir/flags.make
 bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o: bismuth/CMakeFiles/bismuth.dir/includes_CXX.rsp
 bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o: ../bismuth/src/core/texture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o"
 	cd /home/vushu/coding/cpp/somethingcpp/wasm/bismuth && /home/vushu/coding/repos/emsdk/upstream/emscripten/em++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bismuth.dir/src/core/texture.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/texture.cpp
 
 bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.i: cmake_force
@@ -228,7 +242,7 @@ bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.s: cmake_force
 bismuth/CMakeFiles/bismuth.dir/src/core/window.cpp.o: bismuth/CMakeFiles/bismuth.dir/flags.make
 bismuth/CMakeFiles/bismuth.dir/src/core/window.cpp.o: bismuth/CMakeFiles/bismuth.dir/includes_CXX.rsp
 bismuth/CMakeFiles/bismuth.dir/src/core/window.cpp.o: ../bismuth/src/core/window.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object bismuth/CMakeFiles/bismuth.dir/src/core/window.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object bismuth/CMakeFiles/bismuth.dir/src/core/window.cpp.o"
 	cd /home/vushu/coding/cpp/somethingcpp/wasm/bismuth && /home/vushu/coding/repos/emsdk/upstream/emscripten/em++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bismuth.dir/src/core/window.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/window.cpp
 
 bismuth/CMakeFiles/bismuth.dir/src/core/window.cpp.i: cmake_force
@@ -250,6 +264,7 @@ bismuth_OBJECTS = \
 "CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o" \
 "CMakeFiles/bismuth.dir/src/core/renderer.cpp.o" \
 "CMakeFiles/bismuth.dir/src/core/shader.cpp.o" \
+"CMakeFiles/bismuth.dir/src/core/sound.cpp.o" \
 "CMakeFiles/bismuth.dir/src/core/sprite.cpp.o" \
 "CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o" \
 "CMakeFiles/bismuth.dir/src/core/texture.cpp.o" \
@@ -267,13 +282,14 @@ bismuth/libbismuth.a: bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.
 bismuth/libbismuth.a: bismuth/CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o
 bismuth/libbismuth.a: bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o
 bismuth/libbismuth.a: bismuth/CMakeFiles/bismuth.dir/src/core/shader.cpp.o
+bismuth/libbismuth.a: bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o
 bismuth/libbismuth.a: bismuth/CMakeFiles/bismuth.dir/src/core/sprite.cpp.o
 bismuth/libbismuth.a: bismuth/CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o
 bismuth/libbismuth.a: bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o
 bismuth/libbismuth.a: bismuth/CMakeFiles/bismuth.dir/src/core/window.cpp.o
 bismuth/libbismuth.a: bismuth/CMakeFiles/bismuth.dir/build.make
 bismuth/libbismuth.a: bismuth/CMakeFiles/bismuth.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX static library libbismuth.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX static library libbismuth.a"
 	cd /home/vushu/coding/cpp/somethingcpp/wasm/bismuth && $(CMAKE_COMMAND) -P CMakeFiles/bismuth.dir/cmake_clean_target.cmake
 	cd /home/vushu/coding/cpp/somethingcpp/wasm/bismuth && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/bismuth.dir/link.txt --verbose=$(VERBOSE)
 

@@ -57,10 +57,24 @@ include game/CMakeFiles/TestGame.dir/progress.make
 # Include the compile flags for this target's objects.
 include game/CMakeFiles/TestGame.dir/flags.make
 
+game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: game/CMakeFiles/TestGame.dir/flags.make
+game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: game/CMakeFiles/TestGame.dir/includes_CXX.rsp
+game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: ../game/src/entitybuilder.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o"
+	cd /home/vushu/coding/cpp/somethingcpp/wasm/game && /home/vushu/coding/repos/emsdk/upstream/emscripten/em++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o -c /home/vushu/coding/cpp/somethingcpp/game/src/entitybuilder.cpp
+
+game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TestGame.dir/src/entitybuilder.cpp.i"
+	cd /home/vushu/coding/cpp/somethingcpp/wasm/game && /home/vushu/coding/repos/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vushu/coding/cpp/somethingcpp/game/src/entitybuilder.cpp > CMakeFiles/TestGame.dir/src/entitybuilder.cpp.i
+
+game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestGame.dir/src/entitybuilder.cpp.s"
+	cd /home/vushu/coding/cpp/somethingcpp/wasm/game && /home/vushu/coding/repos/emsdk/upstream/emscripten/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vushu/coding/cpp/somethingcpp/game/src/entitybuilder.cpp -o CMakeFiles/TestGame.dir/src/entitybuilder.cpp.s
+
 game/CMakeFiles/TestGame.dir/src/game.cpp.o: game/CMakeFiles/TestGame.dir/flags.make
 game/CMakeFiles/TestGame.dir/src/game.cpp.o: game/CMakeFiles/TestGame.dir/includes_CXX.rsp
 game/CMakeFiles/TestGame.dir/src/game.cpp.o: ../game/src/game.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object game/CMakeFiles/TestGame.dir/src/game.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object game/CMakeFiles/TestGame.dir/src/game.cpp.o"
 	cd /home/vushu/coding/cpp/somethingcpp/wasm/game && /home/vushu/coding/repos/emsdk/upstream/emscripten/em++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TestGame.dir/src/game.cpp.o -c /home/vushu/coding/cpp/somethingcpp/game/src/game.cpp
 
 game/CMakeFiles/TestGame.dir/src/game.cpp.i: cmake_force
@@ -74,7 +88,7 @@ game/CMakeFiles/TestGame.dir/src/game.cpp.s: cmake_force
 game/CMakeFiles/TestGame.dir/src/main.cpp.o: game/CMakeFiles/TestGame.dir/flags.make
 game/CMakeFiles/TestGame.dir/src/main.cpp.o: game/CMakeFiles/TestGame.dir/includes_CXX.rsp
 game/CMakeFiles/TestGame.dir/src/main.cpp.o: ../game/src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object game/CMakeFiles/TestGame.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object game/CMakeFiles/TestGame.dir/src/main.cpp.o"
 	cd /home/vushu/coding/cpp/somethingcpp/wasm/game && /home/vushu/coding/repos/emsdk/upstream/emscripten/em++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TestGame.dir/src/main.cpp.o -c /home/vushu/coding/cpp/somethingcpp/game/src/main.cpp
 
 game/CMakeFiles/TestGame.dir/src/main.cpp.i: cmake_force
@@ -88,7 +102,7 @@ game/CMakeFiles/TestGame.dir/src/main.cpp.s: cmake_force
 game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: game/CMakeFiles/TestGame.dir/flags.make
 game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: game/CMakeFiles/TestGame.dir/includes_CXX.rsp
 game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: ../game/src/rendersystem.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o"
 	cd /home/vushu/coding/cpp/somethingcpp/wasm/game && /home/vushu/coding/repos/emsdk/upstream/emscripten/em++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TestGame.dir/src/rendersystem.cpp.o -c /home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.cpp
 
 game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.i: cmake_force
@@ -101,6 +115,7 @@ game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.s: cmake_force
 
 # Object files for target TestGame
 TestGame_OBJECTS = \
+"CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o" \
 "CMakeFiles/TestGame.dir/src/game.cpp.o" \
 "CMakeFiles/TestGame.dir/src/main.cpp.o" \
 "CMakeFiles/TestGame.dir/src/rendersystem.cpp.o"
@@ -108,16 +123,18 @@ TestGame_OBJECTS = \
 # External object files for target TestGame
 TestGame_EXTERNAL_OBJECTS =
 
+bin/TestGame.html: game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o
 bin/TestGame.html: game/CMakeFiles/TestGame.dir/src/game.cpp.o
 bin/TestGame.html: game/CMakeFiles/TestGame.dir/src/main.cpp.o
 bin/TestGame.html: game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o
 bin/TestGame.html: game/CMakeFiles/TestGame.dir/build.make
 bin/TestGame.html: bismuth/libbismuth.a
 bin/TestGame.html: bismuth/externals/glad/libglad.a
+bin/TestGame.html: bismuth/externals/miniaudio/libminiaudio.a
 bin/TestGame.html: game/CMakeFiles/TestGame.dir/linklibs.rsp
 bin/TestGame.html: game/CMakeFiles/TestGame.dir/objects1.rsp
 bin/TestGame.html: game/CMakeFiles/TestGame.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable ../bin/TestGame.html"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vushu/coding/cpp/somethingcpp/wasm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable ../bin/TestGame.html"
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "symbolic link resources folder from /home/vushu/coding/cpp/somethingcpp/game/resources => /home/vushu/coding/cpp/somethingcpp/wasm/game/resources"
 	cd /home/vushu/coding/cpp/somethingcpp/wasm/game && /usr/bin/cmake -E create_symlink /home/vushu/coding/cpp/somethingcpp/game/resources /home/vushu/coding/cpp/somethingcpp/wasm/game/resources
 	cd /home/vushu/coding/cpp/somethingcpp/wasm/game && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/TestGame.dir/link.txt --verbose=$(VERBOSE)

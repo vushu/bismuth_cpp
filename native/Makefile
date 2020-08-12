@@ -148,6 +148,19 @@ glad/fast:
 .PHONY : glad/fast
 
 #=============================================================================
+# Target rules for targets named miniaudio
+
+# Build rule for target.
+miniaudio: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 miniaudio
+.PHONY : miniaudio
+
+# fast build rule for target.
+miniaudio/fast:
+	$(MAKE) -f bismuth/externals/miniaudio/CMakeFiles/miniaudio.dir/build.make bismuth/externals/miniaudio/CMakeFiles/miniaudio.dir/build
+.PHONY : miniaudio/fast
+
+#=============================================================================
 # Target rules for targets named bismuth_test
 
 # Build rule for target.
@@ -184,6 +197,7 @@ help:
 	@echo "... test"
 	@echo "... bismuth"
 	@echo "... glad"
+	@echo "... miniaudio"
 	@echo "... bismuth_test"
 	@echo "... TestGame"
 .PHONY : help

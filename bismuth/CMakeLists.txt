@@ -7,6 +7,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(ENTT_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals/entt")
 set(STB_IMAGE_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals/stb")
 set(GLM_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/externals/glm")
+set(MINIAUDIO_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals/miniaudio/include")
 #set(CATCH2_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/externals/catch2")
 set(EMSCRIPTEN_INCLUDE_DIRS "/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include")
 
@@ -29,6 +30,8 @@ set_target_properties(${PROJECT_NAME}
 
 #GLAD
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/glad)
+#Miniaudio
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/miniaudio)
 
 #message(STATUS "GLM included at ${GLM_INCLUDE_DIRS}")
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
@@ -37,6 +40,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
         ${GLM_INCLUDE_DIRS}
         ${STB_IMAGE_INCLUDE_DIR}
         ${ENTT_INCLUDE_DIR}
+        ${MINIAUDIO_INCLUDE_DIR}
         #${CATCH2_INCLUDE_DIRS}
         #${EMSCRIPTEN_INCLUDE_DIRS}
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -49,6 +53,7 @@ else()
         ${GLM_INCLUDE_DIRS}
         ${STB_IMAGE_INCLUDE_DIR}
         ${ENTT_INCLUDE_DIR}
+        ${MINIAUDIO_INCLUDE_DIR}
         #${CATCH2_INCLUDE_DIRS}
         ${EMSCRIPTEN_INCLUDE_DIRS}
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -64,12 +69,17 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
     message("Compiling to WASM")
     target_link_libraries(${PROJECT_NAME} "-s USE_GLFW=3")
     #target_link_libraries(${PROJECT_NAME} "-s STB_IMAGE=1")
+    #target_link_libraries(${PROJECT_NAME} "-lopenal")
     target_link_libraries(${PROJECT_NAME} glad)
+    target_link_libraries(${PROJECT_NAME} miniaudio)
 
 else()
+    #sudo apt-get install libopenal-dev
+    #find_package(OpenAL REQUIRED)
     find_package(glfw3 3.3 REQUIRED)
     #find_package(glm REQUIRED)
-    target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad)
+    #target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad openal miniaudio)
+    target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad miniaudio)
 endif()
 
 add_subdirectory(tests)

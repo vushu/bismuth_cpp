@@ -13,7 +13,7 @@ void loop() {
     game.emLoop();
 }
 int main() {
-    bi::isLogging = false;
+    //bi::isLogging = false;
     game.run();
 #ifdef __EMSCRIPTEN__
     emscripten_set_main_loop(loop, 0 ,-1);

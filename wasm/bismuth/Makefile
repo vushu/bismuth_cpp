@@ -379,6 +379,33 @@ src/core/shader.cpp.s:
 	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/shader.cpp.s
 .PHONY : src/core/shader.cpp.s
 
+src/core/sound.o: src/core/sound.cpp.o
+
+.PHONY : src/core/sound.o
+
+# target to build an object file
+src/core/sound.cpp.o:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o
+.PHONY : src/core/sound.cpp.o
+
+src/core/sound.i: src/core/sound.cpp.i
+
+.PHONY : src/core/sound.i
+
+# target to preprocess a source file
+src/core/sound.cpp.i:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.i
+.PHONY : src/core/sound.cpp.i
+
+src/core/sound.s: src/core/sound.cpp.s
+
+.PHONY : src/core/sound.s
+
+# target to generate assembly for a file
+src/core/sound.cpp.s:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.s
+.PHONY : src/core/sound.cpp.s
+
 src/core/sprite.o: src/core/sprite.cpp.o
 
 .PHONY : src/core/sprite.o
@@ -524,6 +551,9 @@ help:
 	@echo "... src/core/shader.o"
 	@echo "... src/core/shader.i"
 	@echo "... src/core/shader.s"
+	@echo "... src/core/sound.o"
+	@echo "... src/core/sound.i"
+	@echo "... src/core/sound.s"
 	@echo "... src/core/sprite.o"
 	@echo "... src/core/sprite.i"
 	@echo "... src/core/sprite.s"

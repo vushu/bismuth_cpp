@@ -18,6 +18,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../bismuth/externals/glm"
   "../bismuth/externals/stb"
   "../bismuth/externals/entt"
+  "../bismuth/externals/miniaudio/include"
   "/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include"
   "../bismuth/include"
   )

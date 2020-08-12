@@ -9,6 +9,10 @@
 /home/vushu/coding/cpp/somethingcpp/native/bismuth/externals/glad/CMakeFiles/edit_cache.dir
 /home/vushu/coding/cpp/somethingcpp/native/bismuth/externals/glad/CMakeFiles/test.dir
 /home/vushu/coding/cpp/somethingcpp/native/bismuth/externals/glad/CMakeFiles/glad.dir
+/home/vushu/coding/cpp/somethingcpp/native/bismuth/externals/miniaudio/CMakeFiles/rebuild_cache.dir
+/home/vushu/coding/cpp/somethingcpp/native/bismuth/externals/miniaudio/CMakeFiles/edit_cache.dir
+/home/vushu/coding/cpp/somethingcpp/native/bismuth/externals/miniaudio/CMakeFiles/test.dir
+/home/vushu/coding/cpp/somethingcpp/native/bismuth/externals/miniaudio/CMakeFiles/miniaudio.dir
 /home/vushu/coding/cpp/somethingcpp/native/bismuth/tests/CMakeFiles/rebuild_cache.dir
 /home/vushu/coding/cpp/somethingcpp/native/bismuth/tests/CMakeFiles/edit_cache.dir
 /home/vushu/coding/cpp/somethingcpp/native/bismuth/tests/CMakeFiles/test.dir

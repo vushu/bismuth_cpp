@@ -46,6 +46,11 @@
 },
 {
   "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/sound.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/sound.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/sound.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
   "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/sprite.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/sprite.cpp",
   "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/sprite.cpp"
 },
@@ -70,6 +75,11 @@
   "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glad/src/glad.c"
 },
 {
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/externals/miniaudio",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/emcc  @CMakeFiles/miniaudio.dir/includes_C.rsp -fPIC   -o CMakeFiles/miniaudio.dir/src/miniaudio.c.o   -c /home/vushu/coding/cpp/somethingcpp/bismuth/externals/miniaudio/src/miniaudio.c",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/externals/miniaudio/src/miniaudio.c"
+},
+{
   "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/tests",
   "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth_test.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth_test.dir/main.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/tests/main.cpp",
   "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/tests/main.cpp"
@@ -83,6 +93,11 @@
   "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/tests",
   "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth_test.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth_test.dir/testapp.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/tests/testapp.cpp",
   "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/tests/testapp.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/game",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/TestGame.dir/includes_CXX.rsp  -Wall -Wall   -O2 -std=gnu++17 -o CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o -c /home/vushu/coding/cpp/somethingcpp/game/src/entitybuilder.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/game/src/entitybuilder.cpp"
 },
 {
   "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/game",

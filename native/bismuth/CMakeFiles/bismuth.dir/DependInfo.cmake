@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/renderbatch.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/renderer.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/shader.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/shader.cpp.o"
+  "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/sound.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/sprite.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/sprite.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/spriterenderer.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/texture.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o"
@@ -30,6 +31,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../bismuth/externals/glm"
   "../bismuth/externals/stb"
   "../bismuth/externals/entt"
+  "../bismuth/externals/miniaudio/include"
   "/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include"
   "../bismuth/include"
   "../bismuth/src"
@@ -45,6 +47,7 @@ set(CMAKE_MULTIPLE_OUTPUT_PAIRS
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/vushu/coding/cpp/somethingcpp/native/bismuth/externals/glad/CMakeFiles/glad.dir/DependInfo.cmake"
+  "/home/vushu/coding/cpp/somethingcpp/native/bismuth/externals/miniaudio/CMakeFiles/miniaudio.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.
