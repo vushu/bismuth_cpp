@@ -79,6 +79,7 @@ void MyGame::init() {
     //s1->loop = true;
     //s4->loop = true;
     //s2->loop = true;
+    // must be initialized since not all games want to have sound
     getAudioManager().init();
     getAudioManager().addSound(s1);
     getAudioManager().addSound(s2);
