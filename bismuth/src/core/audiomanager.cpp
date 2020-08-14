@@ -110,9 +110,9 @@ void AudioManager::dataCallback(ma_device* pDevice, void* pOutput, const void* p
 
     for (auto& sound : sounds) {
 
-        if (sound->replay) {
+        if (sound->rewind) {
             ma_decoder_seek_to_pcm_frame(&sound->decoder, 0);
-            sound->replay = false;
+            sound->rewind = false;
         }
         else if (!sound->isPause && !sound->isDone) {
             //ma_decoder_seek_to_pcm_frame(&sound->decoder, 0);

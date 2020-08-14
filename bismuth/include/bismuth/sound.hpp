@@ -14,15 +14,23 @@ namespace bi {
             Sound(std::string filepath);
             ~Sound();
             void init();
-            void play();
-            void stop();
+            void playSound();
+            void stopSound();
+            void pauseSound();
+            void rewindSound();
+            void setVolume(float volume);
+            void incrementVolume(float volume);
+            void decrementVolume(float volume);
+            void setLoop(bool enable);
             void setDevice(ma_device* device);
+
             bool isPause = true;
             bool isDone = false;
-            bool replay = false;
+            bool rewind = false;
             bool loop = false;
-            float volume = 0.7f;
 
+            // default volume
+            float volume = 1.0f;
             ma_decoder decoder;
 
         private:

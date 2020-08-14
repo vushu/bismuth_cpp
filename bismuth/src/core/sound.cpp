@@ -18,12 +18,45 @@ Sound::~Sound() {
     log("Sound destroyed");
 }
 
-void Sound::play() {
-    this->playing = true;
+//void Sound::reset() {
+    //this->isPause = false;
+    //this->isDone = false;
+//}
+
+void Sound::playSound() {
+    this->isPause = false;
 }
 
-void Sound::stop() {
-    this->playing = false;
+void Sound::pauseSound() {
+    this->isPause = true;
+}
+
+void Sound::stopSound() {
+    this->rewindSound();
+    this->isPause = true;
+}
+
+void Sound::rewindSound() {
+    //this->isPause = false;
+    this->isDone = false;
+    this->rewind = true;
+}
+
+void Sound::incrementVolume(float volume) {
+    this->volume += volume;
+}
+
+void Sound::decrementVolume(float volume) {
+    this->volume -= volume;
+}
+
+
+void Sound::setLoop(bool enable) {
+    this->loop = enable;
+}
+
+void Sound::setVolume(float volume) {
+    this->volume = volume;
 }
 
 void Sound::init() {

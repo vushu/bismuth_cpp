@@ -15,7 +15,6 @@ bool once = false;
 bool once2 = false;
 
 void MyGame::update(float dt) {
-    //bi::log(std::to_string(1/dt));
     if (bi::keyInput().isKeyPressed(GLFW_KEY_ESCAPE)) {
         bi::log("Escape Pushed");
         window->close();
@@ -29,24 +28,25 @@ void MyGame::update(float dt) {
     if (bi::keyInput().isKeyPressed(GLFW_KEY_UP)) {
         //bi::log("Enter Pushed");
         bi::log("Start sound");
-        s4->isPause = false;
+        s4->playSound();
     }
     if (bi::keyInput().isKeyPressed(GLFW_KEY_DOWN)) {
-        //bi::log("Enter Pushed");
-        bi::log("Start sound");
-        s4->isPause = true;
+        bi::log("Stopping sound");
+        s4->stopSound();
     }
     if (bi::keyInput().isKeyPressed(GLFW_KEY_SPACE)) {
         //bi::log("Enter Pushed");
-        bi::log("End sound");
-        this->s2->isPause = true;
+        //bi::log("End sound");
+        //this->s2->isPause = true;
+        this->s2->stopSound();
     }
 
     if (bi::keyInput().isKeyPressed(GLFW_KEY_R)) {
         //bi::log("Enter Pushed");
-        bi::log("replay sound");
-        this->s4->replay = true;
-        this->s4->isDone = false;
+        bi::log("rewind sound");
+        //this->s4->replay = true;
+        //this->s4->isDone = false;
+        s4->rewindSound();
     }
     if (bi::keyInput().isKeyPressed(GLFW_KEY_1)) {
         //bi::log("Enter Pushed");
@@ -54,7 +54,8 @@ void MyGame::update(float dt) {
     }
     if (bi::keyInput().isKeyPressed(GLFW_KEY_3)) {
         //bi::log("Enter Pushed");
-        this->s2->isPause = false;
+        this->s2->playSound();
+        //this->s2->isPause = false;
     }
     if (bi::keyInput().isKeyPressed(GLFW_KEY_D)) {
         //bi::log("Enter Pushed");
@@ -62,12 +63,14 @@ void MyGame::update(float dt) {
     }
     if (bi::keyInput().isKeyPressed(GLFW_KEY_RIGHT)) {
         //bi::log("Enter Pushed");
-        s2->volume += 0.1;
+        //s2->volume += 0.1;
+        s2->incrementVolume(0.1f);
+        //s2->setVolume()
         bi::log("volume is " + std::to_string(s2->volume));
     }
     if (bi::keyInput().isKeyPressed(GLFW_KEY_LEFT)) {
         //bi::log("Enter Pushed");
-        s2->volume -= 0.1f;
+        s2->decrementVolume(0.1f);
         bi::log("volume is " + std::to_string(s2->volume));
         //s2->volume = std::max(s2->volume, 0.0f);
 
@@ -91,9 +94,10 @@ void MyGame::init() {
     s2->init();
     s3->init();
     s4->init();
-    s1->loop = true;
-    s4->loop = true;
-    s2->loop = true;
+    s4->setLoop(true);
+    //s1->loop = true;
+    //s4->loop = true;
+    //s2->loop = true;
     audioManager->init();
     audioManager->addSound(s1);
     audioManager->addSound(s2);
