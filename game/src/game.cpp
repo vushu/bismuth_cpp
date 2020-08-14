@@ -12,6 +12,7 @@
 
 MyGame::~MyGame() {}
 
+
 void MyGame::update(float dt) {
     if (bi::keyInput().isKeyPressed(GLFW_KEY_ESCAPE)) {
         bi::log("Escape Pushed");
@@ -61,7 +62,9 @@ void MyGame::update(float dt) {
         s1->isPause = false;
     }
 
-    renderSystem.update(this->getRenderer(), dt , this->registry);
+    renderSystem.update(this->getRenderer(), dt, boxBody , this->registry);
+    //update world
+    world.Step(1.0/30.0, 8,3);
 
 }
 
@@ -69,11 +72,30 @@ void MyGame::init() {
 
 
     //box2d
-    groundBodyDef.position.Set(0.0f, -10.0f);
+    groundBodyDef.position.Set(0.0f * P2M, 590.0f * P2M);
     b2Body* groundBody = world.CreateBody(&groundBodyDef);
-    b2PolygonShape groundBox;
-    groundBox.SetAsBox(50.0f, 10.0f);
-    groundBody->CreateFixture(&groundBox, 0.0f);
+    groundBodyDef.type = b2_staticBody;
+    b2FixtureDef fixtureDef2;
+    b2PolygonShape shape2;
+    shape2.SetAsBox(500*P2M,10*P2M);
+    fixtureDef2.shape = &shape2;
+    fixtureDef2.density = 1.0;
+    groundBody->CreateFixture(&fixtureDef2);
+
+    //groundBody->CreateFixture(&groundBox, 0.0f);
+
+    boxBodyDef.position.Set(100 * P2M, 100 * P2M);
+    boxBodyDef.type = b2_dynamicBody;
+    boxBody = world.CreateBody(&boxBodyDef);
+    b2FixtureDef fixtureDef;
+    b2PolygonShape shape;
+    shape.SetAsBox(100*P2M,100*P2M);
+    fixtureDef.shape = &shape;
+    fixtureDef.density = 1.0;
+    boxBody->CreateFixture(&fixtureDef);
+
+
+
 
 
     s1 = std::make_shared<bi::Sound>("resources/assets/audio/test.wav");
@@ -97,10 +119,19 @@ void MyGame::init() {
     //sound2.playLoop("resources/assets/audio/test.wav");
     std::unique_ptr<EntityBuilder> entitybuilder = std::make_unique<EntityBuilder>();
     entitybuilder->at(100.0f, 100.0f )
-        .size(400, 400)
+        .size(200, 200)
         .vel(3, 2)
-        .color(glm::vec4(1,0,0,1))
-        //.sprite("resources/assets/images/awesomeface.png")
+        .setColor(glm::vec4(1,1,1,1))
+        .sprite("resources/assets/images/awesomeface.png")
         .buildPlayer(this->getRenderer(),this->registry);
+
+
+    // box
+    entitybuilder->at(0.0f, 590.0f )
+        .size(1000, 10.0f)
+        .vel(0, 0)
+        .setColor(glm::vec4(1,0,1,1))
+        .buildPlayer(this->getRenderer(),this->registry);
+
 
 }

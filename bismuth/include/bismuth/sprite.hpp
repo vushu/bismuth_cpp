@@ -12,7 +12,7 @@ namespace bi {
             ~Sprite();
 
             int getTextureId();
-            void setTexture(Texture& texture);
+            void setTexture(std::shared_ptr<Texture> texture);
             void setTexCoords(std::vector<glm::vec2>& texCoords);
             std::vector<glm::vec2> getTexCoords();
             std::shared_ptr<Texture> getTexture();

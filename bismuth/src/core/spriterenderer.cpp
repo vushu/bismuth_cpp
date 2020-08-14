@@ -32,10 +32,8 @@ std::shared_ptr<Texture> SpriteRenderer::getTexture() {
 }
 
 void SpriteRenderer::setPosition(glm::vec2 position) {
-    //if (this->position != position) {
     this->position = position;
     this->isDirty = true;
-    //}
 }
 
 void SpriteRenderer::setScale(glm::vec2 scale) {

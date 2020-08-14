@@ -8,7 +8,7 @@ class EntityBuilder{
         ~EntityBuilder();
 
         EntityBuilder& sprite(std::string filepath);
-        EntityBuilder& color(glm::vec4 color);
+        EntityBuilder& setColor(glm::vec4 color);
         EntityBuilder& at(float x, float y);
         EntityBuilder& size(float x, float y);
         EntityBuilder& vel(float x, float y);
@@ -19,5 +19,9 @@ class EntityBuilder{
         bi::RenId rid;
         glm::vec2 position{0,0};
         glm::vec2 scale{32,32};
+        glm::vec4 color{1,1,1,1};
         glm::vec2 velocity{1,1};
+        std::unique_ptr<bi::Sprite> msprite;
+        void reset();
+
 };
