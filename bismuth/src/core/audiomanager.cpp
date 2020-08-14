@@ -16,6 +16,8 @@ AudioManager::~AudioManager() {
     log("AudioManager Destroyed");
 }
 
+//Safe volumeLimit
+float AudioManager::volumeLimit = 1.5f;
 std::vector<std::shared_ptr<Sound>> AudioManager::sounds;
 
 void AudioManager::init() {
@@ -114,6 +116,9 @@ void AudioManager::dataCallback(ma_device* pDevice, void* pOutput, const void* p
         }
         else if (!sound->isPause && !sound->isDone) {
             //ma_decoder_seek_to_pcm_frame(&sound->decoder, 0);
+            // clamping volume
+            sound->volume = std::max(std::min(sound->volume, volumeLimit), 0.0f);
+
             ma_uint32 frameRead = readMixPcmFrames(&sound->decoder, pOutputF32, frameCount, sound->volume);
             if (frameRead < frameCount) {
                 if (sound->loop) {

@@ -21,6 +21,7 @@ namespace bi  {
 
         private:
             bool deviceStopped = true;
+            static float volumeLimit;
             ma_event stopEvent;
             ma_device_config deviceConfig;
             ma_device device;

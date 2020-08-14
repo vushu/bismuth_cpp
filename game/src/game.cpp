@@ -6,6 +6,7 @@
 #include "components.hpp"
 #include <algorithm>
 #include <entt/entt.hpp>
+#include <string>
 #include "entitybuilder.hpp"
 
 
@@ -62,28 +63,35 @@ void MyGame::update(float dt) {
     if (bi::keyInput().isKeyPressed(GLFW_KEY_RIGHT)) {
         //bi::log("Enter Pushed");
         s2->volume += 0.1;
-        s2->volume = std::min(s2->volume, 1.0f);
+        bi::log("volume is " + std::to_string(s2->volume));
     }
     if (bi::keyInput().isKeyPressed(GLFW_KEY_LEFT)) {
         //bi::log("Enter Pushed");
         s2->volume -= 0.1f;
-        s2->volume = std::max(s2->volume, 0.0f);
+        bi::log("volume is " + std::to_string(s2->volume));
+        //s2->volume = std::max(s2->volume, 0.0f);
 
     }
+
+    if (bi::keyInput().isKeyPressed(GLFW_KEY_P) && s1->isPause) {
+        s1->isPause = false;
+    }
+
     renderSystem.update(this->getRenderer(), dt , this->registry);
 
 }
 
 void MyGame::init() {
-    std::shared_ptr<bi::Sound> s1 = std::make_shared<bi::Sound>("resources/assets/audio/music.mp3");
+    s1 = std::make_shared<bi::Sound>("resources/assets/audio/test.wav");
     s2 = std::make_shared<bi::Sound>("resources/assets/audio/music2.mp3");
-
     s3 = std::make_shared<bi::Sound>("resources/assets/audio/music3.mp3");
     s4 = std::make_shared<bi::Sound>("resources/assets/audio/music4.mp3");
+
     s1->init();
     s2->init();
     s3->init();
     s4->init();
+    s1->loop = true;
     s4->loop = true;
     s2->loop = true;
     audioManager->init();

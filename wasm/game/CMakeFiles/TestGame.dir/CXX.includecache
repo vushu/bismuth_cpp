@@ -1781,6 +1781,8 @@ bismuth/texture.hpp
 /home/vushu/coding/cpp/somethingcpp/game/src/bismuth/texture.hpp
 components.hpp
 /home/vushu/coding/cpp/somethingcpp/game/src/components.hpp
+algorithm
+-
 entt/entt.hpp
 -
 entitybuilder.hpp
