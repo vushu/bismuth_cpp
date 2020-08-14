@@ -1992,16 +1992,6 @@ memory
 bismuth/spriterenderer.hpp
 -
 
-/home/vushu/coding/cpp/somethingcpp/game/src/entitybuilder.cpp
-entitybuilder.hpp
-/home/vushu/coding/cpp/somethingcpp/game/src/entitybuilder.hpp
-components.hpp
-/home/vushu/coding/cpp/somethingcpp/game/src/components.hpp
-entt/entt.hpp
--
-glm/glm.hpp
--
-
 /home/vushu/coding/cpp/somethingcpp/game/src/entitybuilder.hpp
 bismuth/renderer.hpp
 -
@@ -2041,26 +2031,6 @@ rendersystem.hpp
 /home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.hpp
 box2d/box2d.h
 -
-
-/home/vushu/coding/cpp/somethingcpp/game/src/main.cpp
-bismuth/keylistener.hpp
--
-game.hpp
-/home/vushu/coding/cpp/somethingcpp/game/src/game.hpp
-iostream
--
-bismuth/window.hpp
--
-bismuth/logging.hpp
--
-emscripten/emscripten.h
--
-
-/home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.cpp
-rendersystem.hpp
-/home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.hpp
-components.hpp
-/home/vushu/coding/cpp/somethingcpp/game/src/components.hpp
 
 /home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.hpp
 bismuth/renderer.hpp

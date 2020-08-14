@@ -550,6 +550,44 @@ bismuth/CMakeFiles/bismuth.dir/src/core/logging.cpp.o
 bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o
  ../bismuth/include/bismuth/mouselistener.hpp
  /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/mouselistener.cpp
+bismuth/CMakeFiles/bismuth.dir/src/core/physicsmanager.cpp.o
+ ../bismuth/externals/box2d/include/box2d/b2_block_allocator.h
+ ../bismuth/externals/box2d/include/box2d/b2_body.h
+ ../bismuth/externals/box2d/include/box2d/b2_broad_phase.h
+ ../bismuth/externals/box2d/include/box2d/b2_chain_shape.h
+ ../bismuth/externals/box2d/include/box2d/b2_circle_shape.h
+ ../bismuth/externals/box2d/include/box2d/b2_collision.h
+ ../bismuth/externals/box2d/include/box2d/b2_contact.h
+ ../bismuth/externals/box2d/include/box2d/b2_contact_manager.h
+ ../bismuth/externals/box2d/include/box2d/b2_distance_joint.h
+ ../bismuth/externals/box2d/include/box2d/b2_draw.h
+ ../bismuth/externals/box2d/include/box2d/b2_dynamic_tree.h
+ ../bismuth/externals/box2d/include/box2d/b2_edge_shape.h
+ ../bismuth/externals/box2d/include/box2d/b2_fixture.h
+ ../bismuth/externals/box2d/include/box2d/b2_friction_joint.h
+ ../bismuth/externals/box2d/include/box2d/b2_gear_joint.h
+ ../bismuth/externals/box2d/include/box2d/b2_growable_stack.h
+ ../bismuth/externals/box2d/include/box2d/b2_joint.h
+ ../bismuth/externals/box2d/include/box2d/b2_math.h
+ ../bismuth/externals/box2d/include/box2d/b2_motor_joint.h
+ ../bismuth/externals/box2d/include/box2d/b2_mouse_joint.h
+ ../bismuth/externals/box2d/include/box2d/b2_polygon_shape.h
+ ../bismuth/externals/box2d/include/box2d/b2_prismatic_joint.h
+ ../bismuth/externals/box2d/include/box2d/b2_pulley_joint.h
+ ../bismuth/externals/box2d/include/box2d/b2_revolute_joint.h
+ ../bismuth/externals/box2d/include/box2d/b2_rope_joint.h
+ ../bismuth/externals/box2d/include/box2d/b2_settings.h
+ ../bismuth/externals/box2d/include/box2d/b2_shape.h
+ ../bismuth/externals/box2d/include/box2d/b2_stack_allocator.h
+ ../bismuth/externals/box2d/include/box2d/b2_time_step.h
+ ../bismuth/externals/box2d/include/box2d/b2_timer.h
+ ../bismuth/externals/box2d/include/box2d/b2_weld_joint.h
+ ../bismuth/externals/box2d/include/box2d/b2_wheel_joint.h
+ ../bismuth/externals/box2d/include/box2d/b2_world.h
+ ../bismuth/externals/box2d/include/box2d/b2_world_callbacks.h
+ ../bismuth/externals/box2d/include/box2d/box2d.h
+ ../bismuth/include/bismuth/physicsmanager.hpp
+ /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/physicsmanager.cpp
 bismuth/CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o
  ../bismuth/externals/glad/include/KHR/khrplatform.h
  ../bismuth/externals/glad/include/glad/glad.h
@@ -1346,6 +1384,7 @@ bismuth/CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o
  ../bismuth/externals/glm/glm/vec3.hpp
  ../bismuth/externals/glm/glm/vec4.hpp
  ../bismuth/externals/glm/glm/vector_relational.hpp
+ ../bismuth/include/bismuth/logging.hpp
  ../bismuth/include/bismuth/sprite.hpp
  ../bismuth/include/bismuth/spriterenderer.hpp
  ../bismuth/include/bismuth/texture.hpp

@@ -17,8 +17,10 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../bismuth/externals/stb"
   "../bismuth/externals/entt"
   "../bismuth/externals/miniaudio/include"
+  "../bismuth/{CMAKE_CURRENT_SOURCE_DIR}/externals/box2d/include"
   "../bismuth/include"
   "../bismuth/externals/glad/include"
+  "../bismuth/externals/box2d/src/../include"
   )
 
 # Targets to which this target links.
@@ -26,6 +28,7 @@ set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/CMakeFiles/bismuth.dir/DependInfo.cmake"
   "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/externals/glad/CMakeFiles/glad.dir/DependInfo.cmake"
   "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/externals/miniaudio/CMakeFiles/miniaudio.dir/DependInfo.cmake"
+  "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/externals/box2d/src/CMakeFiles/box2d.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

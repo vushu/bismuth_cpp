@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/logging.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/physicsmanager.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/renderer.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/shader.cpp.o"

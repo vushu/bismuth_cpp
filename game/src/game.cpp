@@ -79,6 +79,7 @@ void MyGame::init() {
     s1 = std::make_shared<bi::Sound>("resources/assets/audio/test.wav");
     s2 = std::make_shared<bi::Sound>("resources/assets/audio/music2.mp3");
     s3 = std::make_shared<bi::Sound>("resources/assets/audio/music3.mp3");
+    //s4 = std::make_shared<bi::Sound>("resources/assets/audio/tower.mp3");
     s4 = std::make_shared<bi::Sound>("resources/assets/audio/music4.mp3");
 
     s1->init();

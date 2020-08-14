@@ -131,6 +131,7 @@ bin/TestGame.html: game/CMakeFiles/TestGame.dir/build.make
 bin/TestGame.html: bismuth/libbismuth.a
 bin/TestGame.html: bismuth/externals/glad/libglad.a
 bin/TestGame.html: bismuth/externals/miniaudio/libminiaudio.a
+bin/TestGame.html: bismuth/externals/box2d/src/libbox2d.a
 bin/TestGame.html: game/CMakeFiles/TestGame.dir/linklibs.rsp
 bin/TestGame.html: game/CMakeFiles/TestGame.dir/objects1.rsp
 bin/TestGame.html: game/CMakeFiles/TestGame.dir/link.txt

@@ -325,6 +325,33 @@ src/core/mouselistener.cpp.s:
 	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.s
 .PHONY : src/core/mouselistener.cpp.s
 
+src/core/physicsmanager.o: src/core/physicsmanager.cpp.o
+
+.PHONY : src/core/physicsmanager.o
+
+# target to build an object file
+src/core/physicsmanager.cpp.o:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/physicsmanager.cpp.o
+.PHONY : src/core/physicsmanager.cpp.o
+
+src/core/physicsmanager.i: src/core/physicsmanager.cpp.i
+
+.PHONY : src/core/physicsmanager.i
+
+# target to preprocess a source file
+src/core/physicsmanager.cpp.i:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/physicsmanager.cpp.i
+.PHONY : src/core/physicsmanager.cpp.i
+
+src/core/physicsmanager.s: src/core/physicsmanager.cpp.s
+
+.PHONY : src/core/physicsmanager.s
+
+# target to generate assembly for a file
+src/core/physicsmanager.cpp.s:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/physicsmanager.cpp.s
+.PHONY : src/core/physicsmanager.cpp.s
+
 src/core/renderbatch.o: src/core/renderbatch.cpp.o
 
 .PHONY : src/core/renderbatch.o
@@ -572,6 +599,9 @@ help:
 	@echo "... src/core/mouselistener.o"
 	@echo "... src/core/mouselistener.i"
 	@echo "... src/core/mouselistener.s"
+	@echo "... src/core/physicsmanager.o"
+	@echo "... src/core/physicsmanager.i"
+	@echo "... src/core/physicsmanager.s"
 	@echo "... src/core/renderbatch.o"
 	@echo "... src/core/renderbatch.i"
 	@echo "... src/core/renderbatch.s"

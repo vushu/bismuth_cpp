@@ -291,6 +291,12 @@ bismuth_BINARY_DIR:STATIC=/home/vushu/coding/cpp/somethingcpp/wasm/bismuth
 bismuth_SOURCE_DIR:STATIC=/home/vushu/coding/cpp/somethingcpp/bismuth
 
 //Value Computed by CMake
+box2d_BINARY_DIR:STATIC=/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/externals/box2d
+
+//Value Computed by CMake
+box2d_SOURCE_DIR:STATIC=/home/vushu/coding/cpp/somethingcpp/bismuth/externals/box2d
+
+//Value Computed by CMake
 glad_BINARY_DIR:STATIC=/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/externals/glad
 
 //Value Computed by CMake
@@ -431,7 +437,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=6
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=8
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
