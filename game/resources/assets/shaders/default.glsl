@@ -37,7 +37,7 @@ void main () {
     //color = vec4( 0.6, 1.0, 1.0, 1.0 );
     //color = texture(uTex, fTexCoords);
     if (fTexId == 0.0f) {
-        color = fColor * texture(uTextures[0], fTexCoords);
+        color = fColor;
     }
     else if (fTexId == 1.0f) {
         color = fColor * texture(uTextures[1], fTexCoords);
@@ -61,8 +61,5 @@ void main () {
     }
     else if (fTexId == 7.0f) {
         color = fColor * texture(uTextures[7], fTexCoords);
-    }
-    else {
-        color = fColor;
     }
 }

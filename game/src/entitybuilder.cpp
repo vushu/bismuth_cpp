@@ -1,6 +1,7 @@
 #include "entitybuilder.hpp"
 #include "components.hpp"
 #include <entt/entt.hpp>
+#include <glm/glm.hpp>
 
 EntityBuilder:: EntityBuilder() {}
 EntityBuilder::~EntityBuilder() {}
@@ -21,6 +22,13 @@ EntityBuilder& EntityBuilder::size(float x, float y) {
     return *this;
 }
 
+EntityBuilder& EntityBuilder::color(glm::vec4 color) {
+    std::unique_ptr<bi::Sprite> sprite = std::make_unique<bi::Sprite>();
+    spr = std::make_shared<bi::SpriteRenderer>(std::move(sprite));
+    spr->setColor(color);
+
+    return *this;
+}
 
 EntityBuilder& EntityBuilder::sprite(std::string filepath) {
     std::shared_ptr<bi::Texture> texture = std::make_shared<bi::Texture>(filepath);

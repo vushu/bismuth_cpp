@@ -110,6 +110,7 @@ bin/bismuth_test: bismuth/tests/CMakeFiles/bismuth_test.dir/shader_test.cpp.o
 bin/bismuth_test: bismuth/tests/CMakeFiles/bismuth_test.dir/testapp.cpp.o
 bin/bismuth_test: bismuth/tests/CMakeFiles/bismuth_test.dir/build.make
 bin/bismuth_test: bismuth/libbismuth.so.1.0.0
+bin/bismuth_test: bismuth/externals/box2d/src/libbox2d.a
 bin/bismuth_test: bismuth/tests/CMakeFiles/bismuth_test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vushu/coding/cpp/somethingcpp/native/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable ../../bin/bismuth_test"
 	cd /home/vushu/coding/cpp/somethingcpp/native/bismuth/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/bismuth_test.dir/link.txt --verbose=$(VERBOSE)

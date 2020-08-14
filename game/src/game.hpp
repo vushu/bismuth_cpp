@@ -2,6 +2,7 @@
 #include <bismuth/application.hpp>
 #include <entt/entt.hpp>
 #include "rendersystem.hpp"
+#include <box2d/box2d.h>
 
 class MyGame : public bi::Application {
     public:
@@ -19,5 +20,9 @@ class MyGame : public bi::Application {
         std::shared_ptr<bi::Sound> s3;
         std::shared_ptr<bi::Sound> s4;
     private:
+        b2BodyDef groundBodyDef;
+        b2Vec2 gravity{0.0f, -10.0f};
+        b2World world{gravity};
+
 
 };

@@ -33,7 +33,6 @@ set_target_properties(${PROJECT_NAME}
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/glad)
 #Miniaudio
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/miniaudio)
-
 #box2d
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/box2d)
 
@@ -84,7 +83,7 @@ else()
     find_package(glfw3 3.3 REQUIRED)
     #find_package(glm REQUIRED)
     #target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad openal miniaudio)
-    target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad miniaudio box2d)
+    target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad miniaudio PUBLIC box2d)
 endif()
 
 add_subdirectory(tests)

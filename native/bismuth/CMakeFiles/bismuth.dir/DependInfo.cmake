@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/keylistener.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/logging.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/logging.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/mouselistener.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o"
+  "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/physicsmanager.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/physicsmanager.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/renderbatch.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/renderer.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/shader.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/shader.cpp.o"

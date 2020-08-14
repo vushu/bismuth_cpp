@@ -8,6 +8,7 @@ namespace bi {
         public:
             // constructors, asssignment, destructor
             Sprite(std::shared_ptr<Texture> texture);
+            Sprite();
             ~Sprite();
 
             int getTextureId();
@@ -18,6 +19,7 @@ namespace bi {
 
         private:
             std::shared_ptr<Texture> texture;
+            void construct();
             float width, height;
             std::vector<glm::vec2> texCoords;
     };

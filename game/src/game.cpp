@@ -8,7 +8,7 @@
 #include <entt/entt.hpp>
 #include <string>
 #include "entitybuilder.hpp"
-
+#include <box2d/box2d.h>
 
 MyGame::~MyGame() {}
 
@@ -66,6 +66,16 @@ void MyGame::update(float dt) {
 }
 
 void MyGame::init() {
+
+
+    //box2d
+    groundBodyDef.position.Set(0.0f, -10.0f);
+    b2Body* groundBody = world.CreateBody(&groundBodyDef);
+    b2PolygonShape groundBox;
+    groundBox.SetAsBox(50.0f, 10.0f);
+    groundBody->CreateFixture(&groundBox, 0.0f);
+
+
     s1 = std::make_shared<bi::Sound>("resources/assets/audio/test.wav");
     s2 = std::make_shared<bi::Sound>("resources/assets/audio/music2.mp3");
     s3 = std::make_shared<bi::Sound>("resources/assets/audio/music3.mp3");
@@ -76,9 +86,6 @@ void MyGame::init() {
     s3->init();
     s4->init();
     s4->setLoop(true);
-    //s1->loop = true;
-    //s4->loop = true;
-    //s2->loop = true;
     // must be initialized since not all games want to have sound
     getAudioManager().init();
     getAudioManager().addSound(s1);
@@ -91,7 +98,8 @@ void MyGame::init() {
     entitybuilder->at(100.0f, 100.0f )
         .size(400, 400)
         .vel(3, 2)
-        .sprite("resources/assets/images/awesomeface.png")
+        .color(glm::vec4(1,0,0,1))
+        //.sprite("resources/assets/images/awesomeface.png")
         .buildPlayer(this->getRenderer(),this->registry);
 
 }

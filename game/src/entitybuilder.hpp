@@ -8,6 +8,7 @@ class EntityBuilder{
         ~EntityBuilder();
 
         EntityBuilder& sprite(std::string filepath);
+        EntityBuilder& color(glm::vec4 color);
         EntityBuilder& at(float x, float y);
         EntityBuilder& size(float x, float y);
         EntityBuilder& vel(float x, float y);

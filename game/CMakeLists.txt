@@ -5,8 +5,11 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set(BISMUTH_INCLUDE_DIR "CMAKE_SOURCE_DIR/bismuth/include")
-set(ENTT_INCLUDE_DIR "CMAKE_SOURCE_DIR/bismuth/externals/entt")
+set(BISMUTH_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/include")
+set(ENTT_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/entt")
+set(BOX2D_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/box2d")
+set(GLM_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/glm")
+
 
 
 
@@ -58,7 +61,10 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
     target_include_directories(${PROJECT_NAME}
         PUBLIC
         ${ENTT_INCLUDE_DIR}
-        ${BISMUTH_INCLUDE_DIR})
+        ${BISMUTH_INCLUDE_DIR}
+        ${BOX2D_INCLUDE_DIR}
+        ${GLM_INCLUDE_DIR}
+        )
 
     target_link_libraries(${PROJECT_NAME} bismuth)
 
@@ -71,7 +77,10 @@ else()
 
     target_include_directories(${PROJECT_NAME} PUBLIC
         ${ENTT_INCLUDE_DIR}
-        ${BISMUTH_INCLUDE_DIR})
+        ${BISMUTH_INCLUDE_DIR}
+        ${BOX2D_INCLUDE_DIR}
+        ${GLM_INCLUDE_DIR}
+        )
     target_link_libraries(${PROJECT_NAME} bismuth)
 endif()
 

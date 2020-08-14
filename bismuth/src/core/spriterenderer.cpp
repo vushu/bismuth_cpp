@@ -1,3 +1,4 @@
+#include <bismuth/logging.hpp>
 #include <bismuth/spriterenderer.hpp>
 
 using namespace bi;
@@ -12,7 +13,11 @@ SpriteRenderer::SpriteRenderer(std::unique_ptr<Sprite> sprite) {
 SpriteRenderer::~SpriteRenderer() {}
 
 
-void SpriteRenderer::setColor(glm::vec4 color) { }
+void SpriteRenderer::setColor(glm::vec4 color) {
+    bi::log("setting color");
+    this->color = color;
+    this->isDirty = true;
+}
 
 std::vector<glm::vec2> SpriteRenderer::getTexCoords() {
     return this->mSprite->getTexCoords();
@@ -41,7 +46,8 @@ void SpriteRenderer::setScale(glm::vec2 scale) {
 }
 
 void SpriteRenderer::initTexture() {
-    this->mSprite->getTexture()->init();
+    if (this->mSprite->getTexture() != nullptr)
+        this->mSprite->getTexture()->init();
 }
 
 

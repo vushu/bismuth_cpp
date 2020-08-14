@@ -125,6 +125,7 @@ bin/TestGame: game/CMakeFiles/TestGame.dir/src/main.cpp.o
 bin/TestGame: game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o
 bin/TestGame: game/CMakeFiles/TestGame.dir/build.make
 bin/TestGame: bismuth/libbismuth.so.1.0.0
+bin/TestGame: bismuth/externals/box2d/src/libbox2d.a
 bin/TestGame: game/CMakeFiles/TestGame.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vushu/coding/cpp/somethingcpp/native/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable ../bin/TestGame"
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "symbolic link resources folder from /home/vushu/coding/cpp/somethingcpp/game/resources => /home/vushu/coding/cpp/somethingcpp/native/bin/resources"

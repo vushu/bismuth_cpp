@@ -48,7 +48,7 @@ void RenderBatch::loadVertexProperties(int index) {
     glm::vec4 color = sprite->color;
     int texId = 0;
     if (sprite->getTexture() != nullptr) {
-        for (long i = 0; i < textures.size(); i++) {
+        for (unsigned int i = 0; i < textures.size(); i++) {
             if (textures.at(i) == sprite->getTexture()) {
                 texId = i + 1;
                 //log("Found: texId " + std::to_string(texId));
@@ -56,6 +56,9 @@ void RenderBatch::loadVertexProperties(int index) {
             }
         }
     }
+    //else {
+        //log("no texture");
+    //}
 
     float xAdd = 1.0f;
     float yAdd = 1.0f;
@@ -140,7 +143,10 @@ void RenderBatch::init() {
 }
 
 int RenderBatch::addSprite(std::shared_ptr<SpriteRenderer> sprite) {
-    this->textures.push_back(sprite->getTexture());
+    if (sprite->getTexture() != nullptr) {
+        this->textures.push_back(sprite->getTexture());
+    }
+
     this->sprites.push_back(sprite);
     loadVertexProperties(0);
     numberOfSprite++;
@@ -157,11 +163,12 @@ void RenderBatch::render() {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    for (int i = 0; i < sprites.size(); i++) {
+    for (unsigned int i = 0; i < sprites.size(); i++) {
         auto& spr = this->sprites.at(i);
         if (spr == nullptr) {
             throw std::runtime_error("NO SPRITE");
         }
+
         if (spr->isDirty) {
             loadVertexProperties(i);
             spr->setClean();
@@ -192,7 +199,7 @@ void RenderBatch::render() {
     shader->uploadUniformMat4("uView", camera->viewMatrix);
 
     // activate texture slots
-    for (long i = 0; i < textures.size(); i++) {
+    for (unsigned int i = 0; i < textures.size(); i++) {
         glActiveTexture(GL_TEXTURE0 + i + 1);
         textures.at(i)->bind();
     }

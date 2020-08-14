@@ -13,20 +13,21 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../game/CMAKE_SOURCE_DIR/bismuth/externals/entt"
-  "../game/CMAKE_SOURCE_DIR/bismuth/include"
+  "../bismuth/externals/entt"
+  "../bismuth/include"
+  "../bismuth/externals/box2d"
   "../bismuth/externals/glm"
   "../bismuth/externals/stb"
-  "../bismuth/externals/entt"
   "../bismuth/externals/miniaudio/include"
   "../bismuth/{CMAKE_CURRENT_SOURCE_DIR}/externals/box2d/include"
   "/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include"
-  "../bismuth/include"
+  "../bismuth/externals/box2d/src/../include"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/DependInfo.cmake"
+  "/home/vushu/coding/cpp/somethingcpp/native/bismuth/externals/box2d/src/CMakeFiles/box2d.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.
