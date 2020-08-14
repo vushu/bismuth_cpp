@@ -1798,20 +1798,6 @@ entt/entt.hpp
 rendersystem.hpp
 /home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.hpp
 
-/home/vushu/coding/cpp/somethingcpp/game/src/main.cpp
-bismuth/keylistener.hpp
--
-game.hpp
-/home/vushu/coding/cpp/somethingcpp/game/src/game.hpp
-iostream
--
-bismuth/window.hpp
--
-bismuth/logging.hpp
--
-emscripten/emscripten.h
--
-
 /home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.hpp
 bismuth/renderer.hpp
 -

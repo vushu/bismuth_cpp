@@ -1330,26 +1330,6 @@ glm/glm.hpp
 emscripten/emscripten.h
 -
 
-/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/audiomanager.cpp
-bismuth/logging.hpp
--
-bismuth/audiomanager.hpp
--
-algorithm
--
-miniaudio/miniaudio.h
--
-
-/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/sound.cpp
-bismuth/logging.hpp
--
-bismuth/sound.hpp
--
-miniaudio/miniaudio.h
--
-stdexcept
--
-
 /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/gl.h
 gl_mangle.h
 /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/gl_mangle.h

@@ -18,16 +18,18 @@ namespace bi {
             Renderer& getRenderer();
             Window& getWindow();
             Camera& getCamera();
+            AudioManager& getAudioManager();
             //static void emscriptenloop(void* arg);
         protected:
+
+            virtual void update(float dt);
+            virtual void init();
+        private:
             std::unique_ptr<Renderer> renderer;
             std::unique_ptr<Window> window;
             std::unique_ptr<Camera> camera;
             std::unique_ptr<AudioManager> audioManager;
 
-            virtual void update(float dt);
-            virtual void init();
-        private:
 
             void construct(int width, int height, std::string title);
             void applicationInit();

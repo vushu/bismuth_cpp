@@ -103,6 +103,9 @@ Camera& Application::getCamera() {
     return *this->camera;
 }
 
+AudioManager& Application::getAudioManager() {
+    return *this->audioManager;
+}
 
 
 
