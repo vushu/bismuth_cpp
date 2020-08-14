@@ -1467,8 +1467,6 @@ pthread.h
 -
 stddef.h
 -
-stdint.h
--
 assert.h
 -
 limits.h
@@ -1589,15 +1587,9 @@ emscripten/emscripten.h
 -
 stddef.h
 -
-stdint.h
--
 stddef.h
 -
-stdint.h
--
 stddef.h
--
-stdint.h
 -
 stdlib.h
 -
@@ -1667,9 +1659,17 @@ bismuth/renderer.hpp
 -
 bismuth/window.hpp
 -
-bismuth/sound.hpp
+bismuth/audiomanager.hpp
 -
 memory
+-
+
+../bismuth/include/bismuth/audiomanager.hpp
+memory
+-
+miniaudio/miniaudio.h
+-
+bismuth/sound.hpp
 -
 
 ../bismuth/include/bismuth/camera.hpp

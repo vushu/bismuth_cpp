@@ -163,6 +163,33 @@ src/core/application.cpp.s:
 	cd /home/vushu/coding/cpp/somethingcpp/native && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.s
 .PHONY : src/core/application.cpp.s
 
+src/core/audiomanager.o: src/core/audiomanager.cpp.o
+
+.PHONY : src/core/audiomanager.o
+
+# target to build an object file
+src/core/audiomanager.cpp.o:
+	cd /home/vushu/coding/cpp/somethingcpp/native && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o
+.PHONY : src/core/audiomanager.cpp.o
+
+src/core/audiomanager.i: src/core/audiomanager.cpp.i
+
+.PHONY : src/core/audiomanager.i
+
+# target to preprocess a source file
+src/core/audiomanager.cpp.i:
+	cd /home/vushu/coding/cpp/somethingcpp/native && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.i
+.PHONY : src/core/audiomanager.cpp.i
+
+src/core/audiomanager.s: src/core/audiomanager.cpp.s
+
+.PHONY : src/core/audiomanager.s
+
+# target to generate assembly for a file
+src/core/audiomanager.cpp.s:
+	cd /home/vushu/coding/cpp/somethingcpp/native && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.s
+.PHONY : src/core/audiomanager.cpp.s
+
 src/core/camera.o: src/core/camera.cpp.o
 
 .PHONY : src/core/camera.o
@@ -527,6 +554,9 @@ help:
 	@echo "... src/core/application.o"
 	@echo "... src/core/application.i"
 	@echo "... src/core/application.s"
+	@echo "... src/core/audiomanager.o"
+	@echo "... src/core/audiomanager.i"
+	@echo "... src/core/audiomanager.s"
 	@echo "... src/core/camera.o"
 	@echo "... src/core/camera.i"
 	@echo "... src/core/camera.s"

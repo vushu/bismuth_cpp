@@ -154,6 +154,7 @@ bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/externals/
 bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/externals/glm/glm/vector_relational.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/externals/miniaudio/include/miniaudio/miniaudio.h
 bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/include/bismuth/application.hpp
+bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/include/bismuth/audiomanager.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/include/bismuth/camera.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/include/bismuth/logging.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/include/bismuth/renderbatch.hpp
@@ -165,6 +166,12 @@ bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/include/bi
 bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/include/bismuth/texture.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/include/bismuth/window.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/src/core/application.cpp
+
+bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: ../bismuth/externals/miniaudio/include/miniaudio/miniaudio.h
+bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: ../bismuth/include/bismuth/audiomanager.hpp
+bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: ../bismuth/include/bismuth/logging.hpp
+bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: ../bismuth/include/bismuth/sound.hpp
+bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: ../bismuth/src/core/audiomanager.cpp
 
 bismuth/CMakeFiles/bismuth.dir/src/core/camera.cpp.o: ../bismuth/externals/glm/glm/common.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/camera.cpp.o: ../bismuth/externals/glm/glm/detail/_fixes.hpp

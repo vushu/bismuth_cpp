@@ -320,6 +320,7 @@ game/CMakeFiles/TestGame.dir/src/game.cpp.o
  ../bismuth/externals/glm/glm/vector_relational.hpp
  ../bismuth/externals/miniaudio/include/miniaudio/miniaudio.h
  ../bismuth/include/bismuth/application.hpp
+ ../bismuth/include/bismuth/audiomanager.hpp
  ../bismuth/include/bismuth/camera.hpp
  ../bismuth/include/bismuth/keylistener.hpp
  ../bismuth/include/bismuth/logging.hpp
@@ -491,6 +492,7 @@ game/CMakeFiles/TestGame.dir/src/main.cpp.o
  ../bismuth/externals/glm/glm/vector_relational.hpp
  ../bismuth/externals/miniaudio/include/miniaudio/miniaudio.h
  ../bismuth/include/bismuth/application.hpp
+ ../bismuth/include/bismuth/audiomanager.hpp
  ../bismuth/include/bismuth/camera.hpp
  ../bismuth/include/bismuth/keylistener.hpp
  ../bismuth/include/bismuth/logging.hpp

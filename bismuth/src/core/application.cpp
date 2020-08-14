@@ -24,7 +24,7 @@ void Application::construct(int width, int height, std::string title) {
     this->window = std::make_unique<Window>(width, height, title);
     this->camera = std::make_unique<Camera>();
     this->renderer = std::make_unique<Renderer>(this->window, this->camera);
-    this->sound = std::make_unique<Sound>();
+    this->audioManager = std::make_unique<AudioManager>();
 }
 
 Application::~Application() {
@@ -87,7 +87,7 @@ void Application::applicationInit() {
     log("Application: init");
     this->window->init();
     this->renderer->init();
-    this->sound->init();
+    //this->audioManager->init();
 }
 
 

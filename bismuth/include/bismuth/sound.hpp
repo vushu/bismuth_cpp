@@ -4,23 +4,32 @@
 #include <miniaudio/miniaudio.h>
 #include <string>
 #include <vector>
+#define SAMPLE_FORMAT   ma_format_f32
+#define CHANNEL_COUNT   2
+#define SAMPLE_RATE     48000
 namespace bi {
     class Sound {
         public:
             // constructors, asssignment, destructor
-            Sound();
+            Sound(std::string filepath);
             ~Sound();
             void init();
-            unsigned int loadSound(std::string filepath);
-            static void dataCallback(ma_device* device, void* output, const void* input, ma_uint32 frameCount);
-            void playSound(std::string filepath);
+            void play();
+            void stop();
+            void setDevice(ma_device* device);
+            bool isPause = true;
+            bool isDone = false;
+            bool replay = false;
+            bool loop = false;
+            float volume = 0.7f;
 
-
+            ma_decoder decoder;
 
         private:
-            ma_device device;
-            ma_device_config config;
-            ma_decoder decoder;
+            bool playing = false;
+            std::string filepath;
+            //static ma_uint64 playHead;
+            ma_decoder_config decoderConfig;
             //std::vector<unsigned int> buffers;
             //ALCdevice* device;
 

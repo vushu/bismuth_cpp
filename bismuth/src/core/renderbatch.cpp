@@ -166,7 +166,7 @@ void RenderBatch::render() {
             loadVertexProperties(i);
             spr->setClean();
             rebufferData = true;
-            log("Rebuffer");
+            //log("Rebuffer");
         }
     }
 

@@ -6,6 +6,11 @@
 },
 {
   "directory": "/home/vushu/coding/cpp/somethingcpp/native/bismuth",
+  "command": "/usr/bin/c++  -Dbismuth_EXPORTS -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glm -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/stb -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/entt -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/miniaudio/include -I/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/src -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glad/include   -Wall -Wall -fPIC   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/audiomanager.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/audiomanager.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/native/bismuth",
   "command": "/usr/bin/c++  -Dbismuth_EXPORTS -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glm -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/stb -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/entt -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/miniaudio/include -I/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/src -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glad/include   -Wall -Wall -fPIC   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/camera.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/camera.cpp",
   "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/camera.cpp"
 },

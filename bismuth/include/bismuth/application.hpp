@@ -2,7 +2,7 @@
 #include <bismuth/camera.hpp>
 #include <bismuth/renderer.hpp>
 #include <bismuth/window.hpp>
-#include <bismuth/sound.hpp>
+#include <bismuth/audiomanager.hpp>
 #include <memory>
 
 namespace bi {
@@ -23,7 +23,7 @@ namespace bi {
             std::unique_ptr<Renderer> renderer;
             std::unique_ptr<Window> window;
             std::unique_ptr<Camera> camera;
-            std::unique_ptr<Sound> sound;
+            std::unique_ptr<AudioManager> audioManager;
 
             virtual void update(float dt);
             virtual void init();

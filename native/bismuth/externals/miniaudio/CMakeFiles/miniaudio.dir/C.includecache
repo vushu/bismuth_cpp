@@ -107,8 +107,6 @@ pthread.h
 -
 stddef.h
 -
-stdint.h
--
 assert.h
 -
 limits.h
@@ -229,15 +227,9 @@ emscripten/emscripten.h
 -
 stddef.h
 -
-stdint.h
--
 stddef.h
 -
-stdint.h
--
 stddef.h
--
-stdint.h
 -
 stdlib.h
 -
