@@ -85,6 +85,7 @@ void MyGame::init() {
     getAudioManager().addSound(s2);
     getAudioManager().addSound(s4);
     getAudioManager().addSound(s3);
+    getAudioManager().setMaxVolume(3.0f);
     //sound2.playLoop("resources/assets/audio/test.wav");
     std::unique_ptr<EntityBuilder> entitybuilder = std::make_unique<EntityBuilder>();
     entitybuilder->at(100.0f, 100.0f )

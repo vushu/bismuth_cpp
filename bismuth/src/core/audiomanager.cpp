@@ -59,6 +59,10 @@ void AudioManager::stop() {
     }
 }
 
+void AudioManager::setMaxVolume(float volume) {
+    volumeLimit = volume;
+}
+
 unsigned int AudioManager::addSound(std::shared_ptr<Sound> sound) {
     this->sounds.push_back(std::move(sound));
     return sounds.size() - 1;

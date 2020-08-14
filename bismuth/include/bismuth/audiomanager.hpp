@@ -18,6 +18,7 @@ namespace bi  {
 
             void start();
             void stop();
+            void setMaxVolume(float volume);
 
         private:
             bool deviceStopped = true;
