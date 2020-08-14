@@ -8,30 +8,26 @@ somethingcpp/
 | | | entt/
 | | | glad/
 | | | glm/
+| | | miniaudio/
 | | | stb/
 | | include/
-| | | bismuth/
-| | | | NetrwTreeListing
-| | | | application.hpp
-| | | | camera.hpp
-| | | | component.hpp
-| | | | components.hpp
-| | | | gameobject.hpp
-| | | | glhelper.hpp
-| | | | keylistener.hpp
-| | | | logging.hpp
-| | | | mouselistener.hpp
-| | | | renderbatch.hpp
-| | | | renderer.hpp
-| | | | renderingsystem.hpp
-| | | | resourcehelper.hpp
-| | | | shader.hpp
-| | | | texture.hpp
-| | | | window.hpp
 | | src/
+| | tests/
+| | CMakeLists.txt
+| game/
+| | components/
+| | resources/
+| | src/
+| | | entitybuilder.cpp
+| | | game.cpp
+| | | main.cpp
+| | | rendersystem.cpp
+| | | components.hpp
+| | | entitybuilder.hpp
+| | | game.hpp
+| | | rendersystem.hpp
 | | CMakeLists.txt
 | native/
-| test/
 | wasm/
 | rundev.sh*
 | CMakeLists.txt
