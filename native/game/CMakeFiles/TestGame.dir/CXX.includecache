@@ -1762,14 +1762,6 @@ memory
 bismuth/spriterenderer.hpp
 -
 
-/home/vushu/coding/cpp/somethingcpp/game/src/entitybuilder.cpp
-entitybuilder.hpp
-/home/vushu/coding/cpp/somethingcpp/game/src/entitybuilder.hpp
-components.hpp
-/home/vushu/coding/cpp/somethingcpp/game/src/components.hpp
-entt/entt.hpp
--
-
 /home/vushu/coding/cpp/somethingcpp/game/src/entitybuilder.hpp
 bismuth/renderer.hpp
 -

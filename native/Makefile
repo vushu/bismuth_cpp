@@ -161,6 +161,19 @@ miniaudio/fast:
 .PHONY : miniaudio/fast
 
 #=============================================================================
+# Target rules for targets named box2d
+
+# Build rule for target.
+box2d: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 box2d
+.PHONY : box2d
+
+# fast build rule for target.
+box2d/fast:
+	$(MAKE) -f bismuth/externals/box2d/src/CMakeFiles/box2d.dir/build.make bismuth/externals/box2d/src/CMakeFiles/box2d.dir/build
+.PHONY : box2d/fast
+
+#=============================================================================
 # Target rules for targets named bismuth_test
 
 # Build rule for target.
@@ -198,6 +211,7 @@ help:
 	@echo "... bismuth"
 	@echo "... glad"
 	@echo "... miniaudio"
+	@echo "... box2d"
 	@echo "... bismuth_test"
 	@echo "... TestGame"
 .PHONY : help

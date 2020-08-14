@@ -6,5 +6,5 @@ CXX_FLAGS =  -Wall -Wall   -std=gnu++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/vushu/coding/cpp/somethingcpp/bismuth/tests/../externals/catch2 -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glm -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/stb -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/entt -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/miniaudio/include -I/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/include 
+CXX_INCLUDES = -I/home/vushu/coding/cpp/somethingcpp/bismuth/tests/../externals/catch2 -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/glm -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/stb -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/entt -I/home/vushu/coding/cpp/somethingcpp/bismuth/externals/miniaudio/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/{CMAKE_CURRENT_SOURCE_DIR}/externals/box2d/include -I/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include -I/home/vushu/coding/cpp/somethingcpp/bismuth/include 
 

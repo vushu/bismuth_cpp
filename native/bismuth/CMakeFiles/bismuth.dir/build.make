@@ -292,6 +292,7 @@ bismuth/libbismuth.so.1.0.0: bismuth/CMakeFiles/bismuth.dir/build.make
 bismuth/libbismuth.so.1.0.0: /usr/lib/x86_64-linux-gnu/libglfw.so.3.3
 bismuth/libbismuth.so.1.0.0: bismuth/externals/glad/libglad.a
 bismuth/libbismuth.so.1.0.0: bismuth/externals/miniaudio/libminiaudio.a
+bismuth/libbismuth.so.1.0.0: bismuth/externals/box2d/src/libbox2d.a
 bismuth/libbismuth.so.1.0.0: bismuth/CMakeFiles/bismuth.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vushu/coding/cpp/somethingcpp/native/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX shared library libbismuth.so"
 	cd /home/vushu/coding/cpp/somethingcpp/native/bismuth && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/bismuth.dir/link.txt --verbose=$(VERBOSE)
