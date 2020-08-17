@@ -10,7 +10,7 @@ in float aModelId;
 
 uniform mat4 uProjection;
 uniform mat4 uView;
-uniform mat4 uModels[32];
+uniform mat4 uModels[254];
 
 out vec4 fColor;
 out vec2 fTexCoords;
@@ -41,6 +41,7 @@ out vec4 color;
 void main () {
     //color = vec4( 0.6, 1.0, 1.0, 1.0 );
     //color = texture(uTex, fTexCoords);
+    //color = fColor * texture(uTextures[1], fTexCoords);
     if (fTexId == 0.0f) {
         color = fColor;
     }

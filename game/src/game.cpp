@@ -67,7 +67,12 @@ void MyGame::update(float dt) {
     renderSystem.update(this->getRenderer(), dt, world, this->registry);
     //update world
     //world.Step(1.0f/60.0f, 6, 2);
-    world.Step(dt, 9, 4);
+    //world.Step(1.0f/60.0f, 6, 2);
+    float timeStep = 1.0f/60.0f;      //the length of time passed to simulate (seconds)
+    int velocityIterations = 6;   //how strongly to correct velocity
+    int positionIterations = 2;   //how strongly to correct position
+    bi::log("FPS: " + std::to_string(1.0f/dt));
+    world.Step(timeStep, velocityIterations, positionIterations);
 
 }
 
@@ -92,8 +97,8 @@ void MyGame::init() {
     getAudioManager().addSound(s3);
     getAudioManager().setMaxVolume(3.0f);
     //sound2.playLoop("resources/assets/audio/test.wav");
-    std::unique_ptr<EntityBuilder> entitybuilder = std::make_unique<EntityBuilder>();
-    std::unique_ptr<EntityBuilder> entitybuilder2 = std::make_unique<EntityBuilder>();
+    //std::unique_ptr<EntityBuilder> entitybuilder = std::make_unique<EntityBuilder>();
+    //std::unique_ptr<EntityBuilder> entitybuilder2 = std::make_unique<EntityBuilder>();
 
     //entitybuilder->at(100, 100)
     //.size(100, 100)
@@ -101,6 +106,30 @@ void MyGame::init() {
     //.setColor(glm::vec4(1,1,1,1))
     //.sprite("resources/assets/images/tennis.png")
     //.buildEnemy(this->getRenderer(), this->world, this->registry, true);
+    EntityBuilder en;
+    EntityBuilder en2;
+    EntityBuilder en3;
+
+    en.at(0, 590)
+        .size(1000, 10)
+        .vel(3, 2)
+        .setColor(glm::vec4(1,0,0,1))
+        //.sprite("resources/assets/images/tennis.png")
+        .buildEnemy(this->getRenderer(), this->world, this->registry, true, true);
+
+    en2.at(0, 0)
+        .size(10, 600)
+        .vel(3, 2)
+        .setColor(glm::vec4(1,0,0,1))
+        //.sprite("resources/assets/images/tennis.png")
+        .buildEnemy(this->getRenderer(), this->world, this->registry, true, true);
+
+    en3.at(590, 0)
+        .size(10, 600)
+        .vel(3, 2)
+        .setColor(glm::vec4(1,0,0,1))
+        //.sprite("resources/assets/images/tennis.png")
+        .buildEnemy(this->getRenderer(), this->world, this->registry, true, true);
 
 
     //entitybuilder2->at(95, 300)
@@ -109,13 +138,17 @@ void MyGame::init() {
     //.setColor(glm::vec4(1,0,0,1))
     //.sprite("resources/assets/images/tennis.png")
     //.buildEnemy(this->getRenderer(), this->world, this->registry, true);
+    for (int i = 0; i < 5; i++) {
+        EntityBuilder entitybuilder;
+        entitybuilder.at(60 + (i), 10 + i)
+            .size(60,60)
+            .vel(3, 2)
+            //.setColor(glm::vec4(i/10.0f,i/100.0f,sin(i*20),1))
+            .sprite("resources/assets/images/tennis.png")
+            .buildEnemy(this->getRenderer(), this->world, this->registry, false, false);
+    }
 
-    entitybuilder->at(100, 100)
-        .size(25,25)
-        .vel(3, 2)
-        .setColor(glm::vec4(1,1,0,1))
-        .sprite("resources/assets/images/tennis.png")
-        .buildEnemy(this->getRenderer(), this->world, this->registry, false, false);
+
 
 
     //entitybuilder->at(120, 200)
@@ -124,16 +157,6 @@ void MyGame::init() {
     //.setColor(glm::vec4(1,0,1,1))
     //.sprite("resources/assets/images/ball2.png")
     //.buildEnemy(this->getRenderer(), this->world, this->registry, false);
-
-    entitybuilder2->at(0, 310)
-        .size(1000, 10)
-        .vel(3, 2)
-        .setColor(glm::vec4(1,0,0,1))
-        //.sprite("resources/assets/images/tennis.png")
-        .buildEnemy(this->getRenderer(), this->world, this->registry, true, true);
-
-
-
 
     //boxBody = entitybuilder->at(100, 100)
     //.size(100, 100)

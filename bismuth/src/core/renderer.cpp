@@ -91,6 +91,7 @@ RenId Renderer::addSprite(std::shared_ptr<SpriteRenderer> sprite) {
 void Renderer::render(float dt) {
     //renderTestTriangle();
     //renderTestTexture();
+    //bi::log("FPS: " + std::to_string(1.0f/dt));
     for (auto& batch : batches) {
         //Rendering every batch
         batch->render();

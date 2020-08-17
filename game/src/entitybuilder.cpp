@@ -1,5 +1,6 @@
 #include "entitybuilder.hpp"
 #include <box2d/box2d.h>
+#include "box2d/b2_shape.h"
 #include "components.hpp"
 #include <entt/entt.hpp>
 #include <glm/glm.hpp>
@@ -52,6 +53,7 @@ void EntityBuilder::buildEnemy(bi::Renderer& renderer, b2World& world, entt::reg
 
     auto entity = registry.create();
 
+
     //registry.emplace<Player>(entity, rid.batchId, rid.spriteId);
     registry.emplace<Movement>(entity, velocity.x, velocity.y);
     //reset();
@@ -64,6 +66,7 @@ void EntityBuilder::buildBox(b2World& world, bi::Renderer& renderer, bool isStat
     bodyDef.userData = &renderer.getSprite(this->rid.batchId, this->rid.spriteId);
     //coordinate system i at the center
     //bodyDef.position.Set(this->position.x * bi::P2M, this->position.y * bi::P2M);
+    //origin is centered in box2d
     float x = (this->position.x + this->scale.x * 0.5f) * bi::P2M;
     float y = (this->position.y + this->scale.y * 0.5f) * bi::P2M;
     //float x = this->position.x  * bi::P2M;
@@ -71,6 +74,10 @@ void EntityBuilder::buildBox(b2World& world, bi::Renderer& renderer, bool isStat
     bi::log("x: " + std::to_string(x));
     bi::log("y: " + std::to_string(y));
     bodyDef.position.Set(x, y);
+    b2MassData massData;
+    massData.mass = 10;
+    massData.I = 4;
+    massData.center = b2Vec2_zero;
 
     if (isStatic) {
         bodyDef.type = b2_staticBody;
@@ -80,19 +87,20 @@ void EntityBuilder::buildBox(b2World& world, bi::Renderer& renderer, bool isStat
     }
 
     b2Body* body = world.CreateBody(&bodyDef);
+    body->SetMassData(&massData);
 
     b2FixtureDef fixtureDef2;
     if (isBox) {
         b2PolygonShape dynamicBox;
         //shape2.SetAsBox(10,10);
         //dynamicBox.SetAsBox(bi::P2M * this->scale.x/2.0f, bi::P2M * this->scale.y/2.0f);
-        dynamicBox.SetAsBox(bi::P2M * this->scale.x/2.0f, bi::P2M * this->scale.y/2.0f);
+        dynamicBox.SetAsBox(bi::P2M * this->scale.x * 0.5f, bi::P2M * this->scale.y * 0.5f);
         //this->scale.y * 0.5f * bi::P2M);
 
         fixtureDef2.shape = &dynamicBox;
         fixtureDef2.density = 1.0f;
         fixtureDef2.friction = 0.3f;
-        fixtureDef2.restitution = 0.4f;
+        fixtureDef2.restitution = 0.9f;
 
         body->CreateFixture(&fixtureDef2);
 
@@ -100,6 +108,7 @@ void EntityBuilder::buildBox(b2World& world, bi::Renderer& renderer, bool isStat
     else {
         b2CircleShape dynamicBox;
         dynamicBox.m_radius = bi::P2M * this->scale.x/2.0f;
+        dynamicBox.m_p.Set(0,0);
 
         //b2PolygonShape dynamicBox;
         //shape2.SetAsBox(10,10);
@@ -107,9 +116,9 @@ void EntityBuilder::buildBox(b2World& world, bi::Renderer& renderer, bool isStat
         //this->scale.y * 0.5f * bi::P2M);
 
         fixtureDef2.shape = &dynamicBox;
-        fixtureDef2.density = 100.0f;
-        fixtureDef2.friction = 0.3f;
-        fixtureDef2.restitution = 0.4f;
+        fixtureDef2.density = 1.0f;
+        fixtureDef2.friction = 1.0f;
+        fixtureDef2.restitution = 0.0f;
 
         body->CreateFixture(&fixtureDef2);
     }
@@ -134,7 +143,7 @@ void EntityBuilder::buildPlayer(bi::Renderer& renderer, entt::registry& registry
 
     registry.emplace<Player>(entity, rid.batchId, rid.spriteId);
     registry.emplace<Movement>(entity, velocity.x, velocity.y);
-    reset();
+    //reset();
 
 }
 

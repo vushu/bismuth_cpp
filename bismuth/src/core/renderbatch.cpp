@@ -232,12 +232,15 @@ void RenderBatch::render() {
         models.push_back(model);
     }
 
-    //log("model: " + std::to_string(models.size()));
+    log("model: " + std::to_string(models.size()));
 
     //for (glm::mat4 m : models) {
-        //log("Models: " + glm::to_string(m));
+    //log("Models: " + glm::to_string(m));
     //}
-    //log("Models: " + std::to_string(models.size()));
+    GLint maxUniformVectors;
+    glGetIntegeri_v(GL_MAX_VERTEX_UNIFORM_VECTORS,1, &maxUniformVectors);
+    log("maxUniforms: " + std::to_string(maxUniformVectors));
+    log("sprites: " + std::to_string(sprites.size()));
     //upload models
     glUniformMatrix4fv(glGetUniformLocation(shader->shaderProgramId, "uModels"), models.size(), GL_FALSE, glm::value_ptr(models[0]));
 

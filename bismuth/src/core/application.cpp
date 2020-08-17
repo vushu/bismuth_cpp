@@ -62,20 +62,28 @@ void Application::emLoop() {
 }
 
 void Application::loop() {
+
+    //const float FRAME_DURATION = 1.0f/60.0f;
+
     float beginTime = glfwGetTime();
     float endTime = glfwGetTime();
     float dt = -1.0f;
 
+    //float lastFrameTime = 0.0f;
+    //float lastUpdateTime = 0.0f;
+
     while (!window->windowShouldClose()) {
+
         window->pollEvents();
+
 
         if (dt >= 0) {
             renderer->clear(glm::vec4(0.7f, 0.0f, 0.5f, 1.0f));
             update(dt);
             renderer->render(dt);
         }
-        window->swapBuffers();
 
+        window->swapBuffers();
         endTime = glfwGetTime();
         dt = endTime - beginTime;
         beginTime = endTime;
