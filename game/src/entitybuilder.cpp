@@ -1,9 +1,11 @@
 #include "entitybuilder.hpp"
+#include <box2d/box2d.h>
 #include "components.hpp"
 #include <entt/entt.hpp>
 #include <glm/glm.hpp>
 #include <bismuth/logging.hpp>
 #include <memory>
+#include <bismuth/physicsmanager.hpp>
 
 EntityBuilder:: EntityBuilder() {}
 EntityBuilder::~EntityBuilder() {}
@@ -17,7 +19,6 @@ EntityBuilder& EntityBuilder::vel(float x, float y) {
     this->velocity = glm::vec2(x, y);
     return *this;
 }
-
 
 EntityBuilder& EntityBuilder::size(float x, float y) {
     this->scale = glm::vec2(x, y);
@@ -35,9 +36,70 @@ EntityBuilder& EntityBuilder::sprite(std::string filepath) {
     spr = std::make_shared<bi::SpriteRenderer>(std::move(msprite));
     return *this;
 }
+void EntityBuilder::buildEnemy(bi::Renderer& renderer, b2World& world, entt::registry& registry, bool isStatic) {
+
+    bi::log("create entity");
+    if (spr == nullptr) {
+        bi::log("null spr");
+        spr = std::make_shared<bi::SpriteRenderer>(std::make_unique<bi::Sprite>());
+    }
+    spr->color = color;
+    spr->initTexture();
+    spr->setScale(this->scale);
+    spr->setPosition(this->position);
+
+    this->rid = renderer.addSprite(std::move(spr));
+
+    auto entity = registry.create();
+
+    //registry.emplace<Player>(entity, rid.batchId, rid.spriteId);
+    registry.emplace<Movement>(entity, velocity.x, velocity.y);
+    //reset();
+    buildBox(world, renderer, isStatic);
+
+}
+
+void EntityBuilder::buildBox(b2World& world, bi::Renderer& renderer, bool isStatic) {
+    b2BodyDef bodyDef;
+    bodyDef.userData = &renderer.getSprite(this->rid.batchId, this->rid.spriteId);
+    //coordinate system i at the center
+    //bodyDef.position.Set(this->position.x * bi::P2M, this->position.y * bi::P2M);
+    float x = (this->position.x - this->scale.x * 0.5f) * bi::P2M;
+    float y = (this->position.y - this->scale.y * 0.5f) * bi::P2M;
+    bi::log("x: " + std::to_string(x));
+    bi::log("y: " + std::to_string(y));
+    bodyDef.position.Set(x, y);
+
+    if (isStatic) {
+        bodyDef.type = b2_staticBody;
+    }
+    else {
+        bodyDef.type = b2_dynamicBody;
+    }
+
+    b2Body* body = world.CreateBody(&bodyDef);
+
+    b2FixtureDef fixtureDef2;
+    b2CircleShape dynamicBox;
+    dynamicBox.m_radius = this->scale.x * 0.5f;
+
+    //b2PolygonShape dynamicBox;
+    //shape2.SetAsBox(10,10);
+    //dynamicBox.SetAsBox(this->scale.x * 0.5f * bi::P2M,
+    //this->scale.y * 0.5f * bi::P2M);
+
+    fixtureDef2.shape = &dynamicBox;
+    fixtureDef2.density = 1.0f;
+    fixtureDef2.friction = 0.3f;
+    fixtureDef2.restitution = 0.9f;
+
+    body->CreateFixture(&fixtureDef2);
+    reset();
+}
 
 void EntityBuilder::buildPlayer(bi::Renderer& renderer, entt::registry& registry) {
 
+    bi::log("create entity");
     if (spr == nullptr) {
         bi::log("null spr");
         spr = std::make_shared<bi::SpriteRenderer>(std::make_unique<bi::Sprite>());

@@ -9,6 +9,8 @@
 #include <string>
 #include "entitybuilder.hpp"
 #include <box2d/box2d.h>
+#include <bismuth/physicsmanager.hpp>
+using namespace bi;
 
 MyGame::~MyGame() {}
 
@@ -62,41 +64,13 @@ void MyGame::update(float dt) {
         s1->isPause = false;
     }
 
-    renderSystem.update(this->getRenderer(), dt, boxBody , this->registry);
+    renderSystem.update(this->getRenderer(), dt, world, this->registry);
     //update world
-    world.Step(1.0/30.0, 8,3);
+    world.Step(1.0f/60.0f, 6, 2);
 
 }
 
 void MyGame::init() {
-
-
-    //box2d
-    groundBodyDef.position.Set(0.0f * P2M, 590.0f * P2M);
-    b2Body* groundBody = world.CreateBody(&groundBodyDef);
-    groundBodyDef.type = b2_staticBody;
-    b2FixtureDef fixtureDef2;
-    b2PolygonShape shape2;
-    shape2.SetAsBox(500*P2M,10*P2M);
-    fixtureDef2.shape = &shape2;
-    fixtureDef2.density = 1.0;
-    groundBody->CreateFixture(&fixtureDef2);
-
-    //groundBody->CreateFixture(&groundBox, 0.0f);
-
-    boxBodyDef.position.Set(100 * P2M, 100 * P2M);
-    boxBodyDef.type = b2_dynamicBody;
-    boxBody = world.CreateBody(&boxBodyDef);
-    b2FixtureDef fixtureDef;
-    b2PolygonShape shape;
-    shape.SetAsBox(100*P2M,100*P2M);
-    fixtureDef.shape = &shape;
-    fixtureDef.density = 1.0;
-    boxBody->CreateFixture(&fixtureDef);
-
-
-
-
 
     s1 = std::make_shared<bi::Sound>("resources/assets/audio/test.wav");
     s2 = std::make_shared<bi::Sound>("resources/assets/audio/music2.mp3");
@@ -118,20 +92,46 @@ void MyGame::init() {
     getAudioManager().setMaxVolume(3.0f);
     //sound2.playLoop("resources/assets/audio/test.wav");
     std::unique_ptr<EntityBuilder> entitybuilder = std::make_unique<EntityBuilder>();
-    entitybuilder->at(100.0f, 100.0f )
-        .size(200, 200)
+    std::unique_ptr<EntityBuilder> entitybuilder2 = std::make_unique<EntityBuilder>();
+
+    //entitybuilder->at(100, 100)
+        //.size(100, 100)
+        //.vel(3, 2)
+        //.setColor(glm::vec4(1,1,1,1))
+        //.sprite("resources/assets/images/tennis.png")
+        //.buildEnemy(this->getRenderer(), this->world, this->registry, true);
+
+
+    //entitybuilder->at(95, 500)
+        //.size(100, 100)
+        //.vel(3, 2)
+        //.setColor(glm::vec4(1,0,0,1))
+        //.sprite("resources/assets/images/tennis.png")
+        //.buildEnemy(this->getRenderer(), this->world, this->registry, true);
+
+    entitybuilder->at(200, 100)
+        .size(100, 100)
         .vel(3, 2)
-        .setColor(glm::vec4(1,1,1,1))
-        .sprite("resources/assets/images/awesomeface.png")
-        .buildPlayer(this->getRenderer(),this->registry);
+        .setColor(glm::vec4(1,0,0,1))
+        .sprite("resources/assets/images/tennis.png")
+        .buildEnemy(this->getRenderer(), this->world, this->registry, false);
 
 
-    // box
-    entitybuilder->at(0.0f, 590.0f )
-        .size(1000, 10.0f)
-        .vel(0, 0)
+    entitybuilder2->at(120, 200)
+        .size(50, 50)
+        //.vel(3, 2)
         .setColor(glm::vec4(1,0,1,1))
-        .buildPlayer(this->getRenderer(),this->registry);
+        .sprite("resources/assets/images/ball2.png")
+        .buildEnemy(this->getRenderer(), this->world, this->registry, false);
+
+
+
+    //boxBody = entitybuilder->at(100, 100)
+    //.size(100, 100)
+    //.vel(3, 2)
+    ////.setColor(glm::vec4(1,1,1,1))
+    //.sprite("resources/assets/images/tennis.png")
+    //.buildEnemy(this->getRenderer(), this->world, this->registry, true);
 
 
 }

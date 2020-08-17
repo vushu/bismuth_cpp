@@ -1,13 +1,16 @@
 #type vertex
 #version 300 es
 precision highp float;
+precision highp int;
 in vec3 aPos;
 in vec4 aColor;
 in vec2 aTexCoords;
 in float aTexId;
+in float aModelId;
 
 uniform mat4 uProjection;
 uniform mat4 uView;
+uniform mat4 uModels[32];
 
 out vec4 fColor;
 out vec2 fTexCoords;
@@ -17,13 +20,15 @@ void main() {
     fColor = aColor;
     fTexCoords = aTexCoords;
     fTexId = aTexId;
-    gl_Position = uProjection * uView * vec4(aPos, 1.0);
+    highp int index = int(aModelId);
+    gl_Position = uProjection * uView * uModels[index] * vec4(aPos, 1.0);
+    //gl_Position = uProjection * uView * vec4(aPos, 1.0);
 }
 
 #type fragment
 #version 300 es
 precision highp float;
-precision mediump int;
+precision highp int;
 in vec4 fColor;
 in vec2 fTexCoords;
 in float fTexId;

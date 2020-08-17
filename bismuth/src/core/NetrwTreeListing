@@ -1,20 +1,51 @@
 ../
 somethingcpp/
 | .clangd/
+| .git/
 | bismuth/
+| | externals/
 | | include/
-| | | bismuth/
-| | | | logging.hpp
-| | | | window.hpp
-| | | application.hpp
 | | src/
+| | | core/
+| | | | application.cpp
+| | | | audiomanager.cpp
+| | | | camera.cpp
+| | | | glhelper.cpp
+| | | | keylistener.cpp
+| | | | logging.cpp
+| | | | mouselistener.cpp
+| | | | physicsmanager.cpp
+| | | | renderbatch.cpp
+| | | | renderer.cpp
+| | | | shader.cpp
+| | | | sound.cpp
+| | | | sprite.cpp
+| | | | spriterenderer.cpp
+| | | | texture.cpp
+| | | | window.cpp
+| | | | NetrwTreeListing
+| | | | audio.hpp
 | | | NetrwTreeListing
-| | | core
-| | | logging.cpp
-| | | main.cpp
+| | tests/
 | | CMakeLists.txt
-| build/
-| test/
+| game/
+| | components/
+| | | player.hpp
+| | resources/
+| | src/
+| | | entitybuilder.cpp
+| | | game.cpp
+| | | main.cpp
+| | | rendersystem.cpp
+| | | components.hpp
+| | | entitybuilder.hpp
+| | | game.hpp
+| | | rendersystem.hpp
+| | CMakeLists.txt
+| native/
+| wasm/
+| rundev.sh*
+| .gitignore
 | CMakeLists.txt
 | NetrwTreeListing
 | compile_commands.json@	 --> compile_commands.json

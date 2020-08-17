@@ -11,3 +11,8 @@ struct Player {
     int spriteId;
 };
 
+struct Block {
+    int batchId;
+    int spriteId;
+};
+

@@ -16,6 +16,7 @@ int main() {
     //bi::isLogging = false;
     game.run();
 #ifdef __EMSCRIPTEN__
+    bi::isLogging = false;
     emscripten_set_main_loop(loop, 0 ,-1);
 #endif
 

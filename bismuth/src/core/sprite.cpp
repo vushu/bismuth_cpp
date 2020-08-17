@@ -32,8 +32,8 @@ void Sprite::setTexture(std::shared_ptr<Texture> texture) {
     this->texture = std::move(texture);
 }
 
-void Sprite::setTexCoords(std::vector<glm::vec2>& texCoords) {
-    this->texCoords = std::move(texCoords);
+void Sprite::setTexCoords(std::vector<glm::vec2> texCoords) {
+    this->texCoords = texCoords;
 }
 
 std::vector<glm::vec2> Sprite::getTexCoords() {

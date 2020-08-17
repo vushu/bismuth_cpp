@@ -13,7 +13,7 @@ namespace bi {
 
             int getTextureId();
             void setTexture(std::shared_ptr<Texture> texture);
-            void setTexCoords(std::vector<glm::vec2>& texCoords);
+            void setTexCoords(std::vector<glm::vec2> texCoords);
             std::vector<glm::vec2> getTexCoords();
             std::shared_ptr<Texture> getTexture();
 

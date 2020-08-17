@@ -1,3 +1,6 @@
+#include <glm/ext/scalar_constants.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/ext/matrix_transform.hpp>
 #include <bismuth/logging.hpp>
 #include <glad/glad.h>
 #include <bismuth/renderbatch.hpp>
@@ -6,7 +9,7 @@
 #include <stdexcept>
 #include <string>
 // glm to string
-//#include <glm/gtx/string_cast.hpp>
+#include <glm/gtx/string_cast.hpp>
 
 using namespace bi;
 
@@ -57,7 +60,7 @@ void RenderBatch::loadVertexProperties(int index) {
         }
     }
     //else {
-        //log("no texture");
+    //log("no texture");
     //}
 
     float xAdd = 1.0f;
@@ -95,6 +98,9 @@ void RenderBatch::loadVertexProperties(int index) {
         vertices[offset + 7] = texCoords[i].y;
         // Load Texture ID
         vertices[offset + 8] = texId;
+        //log("INDEX: "  + std::to_string(texId));
+        //log("INDEX: "  + std::to_string(index));
+        vertices[offset + 9] = index; // id of the model
 
         //log("TEX_ID " + std::to_string(texId));
 
@@ -139,6 +145,9 @@ void RenderBatch::init() {
 
     glVertexAttribPointer(3, TEX_ID_SIZE, GL_FLOAT, GL_FALSE, VERTEX_SIZE_BYTES, (const GLvoid *) (8 * sizeof(float)));
     glEnableVertexAttribArray(3);
+
+    glVertexAttribPointer(4, MODEL_ID_SIZE, GL_FLOAT, GL_FALSE, VERTEX_SIZE_BYTES, (const GLvoid *) (9 * sizeof(float)));
+    glEnableVertexAttribArray(4);
     bi::log("RenderBatch initialized");
 }
 
@@ -146,9 +155,9 @@ int RenderBatch::addSprite(std::shared_ptr<SpriteRenderer> sprite) {
     if (sprite->getTexture() != nullptr) {
         this->textures.push_back(sprite->getTexture());
     }
-
     this->sprites.push_back(sprite);
-    loadVertexProperties(0);
+    log("Added sprite");
+    loadVertexProperties(this->sprites.size() - 1);
     numberOfSprite++;
     if (numberOfSprite == 1000) {
         this->hasRoom = false;
@@ -182,10 +191,10 @@ void RenderBatch::render() {
         //log("Vertices size: " + std::to_string(vertices.size()));
         float datasize = (vertices.size() * sizeof(float));
         glBufferSubData(GL_ARRAY_BUFFER, 0, datasize, &vertices.front());
+        // check if success
         GLint size = 0;
         glGetBufferParameteriv(GL_ARRAY_BUFFER, GL_BUFFER_SIZE, &size);
-        if(datasize != size)
-        {
+        if(datasize != size) {
             glDeleteBuffers(1, &vboId);
             throw std::runtime_error("Failed to glbuffersubdata "+  std::to_string(datasize) + " != " + std::to_string(size));
         }
@@ -194,9 +203,44 @@ void RenderBatch::render() {
 
     shader->use();
 
-
     shader->uploadUniformMat4("uProjection", camera->projectionMatrix);
     shader->uploadUniformMat4("uView", camera->viewMatrix);
+
+    std::vector<glm::mat4> models;
+    //rotation
+    //set set i needed to update
+    //float new_value = 5.f;
+    //GLint foo5_loc = glGetUniformLocation(progId, "foo[5]");
+    //glUniform1fv(foo5_loc, 1, &new_value);
+    //log("Sprites: " + std::to_string(sprites.size()));
+    for (auto& spr : sprites) {
+        //log(glm::to_string(spr->scale));
+        glm::mat4 model = glm::mat4(1.0f);
+        if (spr->angleDegrees != 0) {
+            // the vector between 0,0 and position
+            glm::vec2 dis = glm::vec2(0,0) - spr->position;
+            // moving it to position
+            model = glm::translate(model, glm::vec3(spr->position, 0.0f));
+            // moving it the half the size back
+            model = glm::translate(model, glm::vec3(spr->scale * 0.5f,0));
+            model = glm::rotate(model, glm::radians(spr->angleDegrees), glm::vec3(0.0f, 0.0f, 1.0f)); // then rotate
+            // Then rotate
+            model = glm::translate(model, glm::vec3(dis - spr->scale * 0.5f,0));
+            //when doing glm read from below and up
+            //shader->uploadUniformMat4("uModel", model);
+        }
+        models.push_back(model);
+    }
+
+    //log("model: " + std::to_string(models.size()));
+
+    //for (glm::mat4 m : models) {
+        //log("Models: " + glm::to_string(m));
+    //}
+    //log("Models: " + std::to_string(models.size()));
+    //upload models
+    glUniformMatrix4fv(glGetUniformLocation(shader->shaderProgramId, "uModels"), models.size(), GL_FALSE, glm::value_ptr(models[0]));
+
 
     // activate texture slots
     for (unsigned int i = 0; i < textures.size(); i++) {

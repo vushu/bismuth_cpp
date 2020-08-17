@@ -82,8 +82,8 @@ RenId Renderer::addSprite(std::shared_ptr<SpriteRenderer> sprite) {
         std::unique_ptr<RenderBatch> nextBatch = std::make_unique<RenderBatch>(this->camera,this->MAX_BATCH_SIZE, this->shader);
         nextBatch->init();
         this->batches.push_back(std::move(nextBatch));
+        spriteId = batches.at(batches.size() - 1)->addSprite(sprite);
     }
-    spriteId = batches.at(batches.size() - 1)->addSprite(sprite);
 
     return RenId {static_cast<int>(batches.size() - 1), spriteId};
 }
@@ -169,8 +169,9 @@ void Renderer::testTexture() {
 
     this->textureTest->init();
     shader->use();
-    //shader->uploadUniformInt("texture1", 0);
-    glUniform1i(glGetUniformLocation(shader->shaderProgramId, "texture1"), 0);
+    shader->uploadUniformInt("texture1", 0);
+    //glUniform1i(glGetUniformLocation(shader->shaderProgramId, "texture1"), 0);
+    //shader->uploadUniformMat4(, glm::mat4 mat4)
 }
 
 void Renderer::renderTestTexture() {

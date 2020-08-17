@@ -48,6 +48,7 @@ namespace bi {
             const float COLOR_SIZE = 4;
             const float TEX_COORDS_SIZE = 2;
             const float TEX_ID_SIZE = 1;
+            const float MODEL_ID_SIZE = 1;
             int texSlots[8] = { 0, 1, 2, 3, 4, 5, 6, 7 };
 
             // OFFSETS
@@ -55,13 +56,14 @@ namespace bi {
             const unsigned int COLOR_OFFSET = POS_OFFSET + POS_SIZE * sizeof(float);
             const unsigned int TEX_COORDS_OFFSET = COLOR_OFFSET + COLOR_SIZE * sizeof(float);
             const unsigned int TEX_ID_OFFSET = TEX_COORDS_OFFSET + TEX_COORDS_SIZE * sizeof(float);
+            const unsigned int MODEL_ID_OFFSET = TEX_ID_OFFSET + MODEL_ID_SIZE * sizeof(float);
 
             //VERTEX IDS
             unsigned int vaoId, vboId;
             int zIndex;
 
             // VERTEX SIZE
-            const int VERTEX_SIZE = 9;
+            const int VERTEX_SIZE = 10;
             const int VERTEX_SIZE_BYTES = VERTEX_SIZE * sizeof(float);
 
             std::shared_ptr<Shader> shader;

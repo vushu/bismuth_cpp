@@ -8,7 +8,7 @@ class RenderSystem {
         RenderSystem ();
         ~RenderSystem ();
 
-        void update(bi::Renderer& renderer,float dt, b2Body* body, entt::registry& registry);
+        void update(bi::Renderer& renderer,float dt, b2World& world, entt::registry& registry);
 
     private:
 

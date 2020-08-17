@@ -1,24 +1,47 @@
 #include "rendersystem.hpp"
+#include <bismuth/logging.hpp>
+#include <bismuth/physicsmanager.hpp>
 #include "components.hpp"
+#include <glm/gtx/string_cast.hpp>
+#include <glm/ext/scalar_constants.hpp>
+#include <glm/glm.hpp>
 
 RenderSystem::RenderSystem() { }
 RenderSystem::~RenderSystem() { }
 
-void RenderSystem::update(bi::Renderer& renderer, float dt, b2Body* body, entt::registry& registry) {
-    const float M2P=60;
-    const float P2M=1/M2P;
+void RenderSystem::update(bi::Renderer& renderer, float dt, b2World& world, entt::registry& registry) {
+    //const float M2P=32;
+    //const float P2M=1/M2P;
+    //float maxTime = 0.0f;
 
-    auto view = registry.view<Player, Movement>();
+    //auto view = registry.view<Block, Movement>();
 
-    for (auto entity : view ) {
-        auto& player = view.get<Player>(entity);
-        auto& movement = view.get<Movement>(entity);
+    //for (auto entity : view ) {
+    //auto& player = view.get<Player>(entity);
+    //auto& movement = view.get<Movement>(entity);
 
-        auto& spr = renderer.getSprite(player.batchId, player.spriteId);
-        spr.setPosition(glm::vec2(body->GetPosition().x * M2P, body->GetPosition().y * M2P));
-        //if (spr.position.x != movement.x) {
-        //spr.setPosition(spr.position + glm::vec2(movement.x * dt * 10, movement.y * dt * -10 ));
+    //auto& spr = renderer.getSprite(player.batchId, player.spriteId);
 
 
+    for (b2Body* b = world.GetBodyList(); b; b=b->GetNext()){
+        if (b->GetUserData() != NULL) {
+            bi::SpriteRenderer* spr = (bi::SpriteRenderer*) b->GetUserData();
+            //bi::log("has userDAT yeah");
+            //bi::log(glm::to_string(spr->position));
+
+            bi::log("Box2d");
+            bi::log(std::to_string(b->GetPosition().x));
+            bi::log(std::to_string(b->GetPosition().y));
+
+            spr->setPosition(glm::vec2((b->GetPosition().x  + spr->scale.x * bi::P2M) * bi::M2P,  (b->GetPosition().y + spr->scale.y * bi::P2M) * bi::M2P));
+            spr->setRotation(b->GetAngle() * 180.0f/glm::pi<float>());
+
+        }
     }
-    }
+    //spr.setRotation(spr.angleDegrees + dt * 10.0f);
+    //if (spr.position.x != movement.x) {
+    //spr.setPosition(spr.position + glm::vec2(movement.x * dt * 10, movement.y * dt * -10 ));
+
+
+    //}
+}

@@ -1,5 +1,7 @@
+#include <glm/ext/matrix_transform.hpp>
 #include <bismuth/logging.hpp>
 #include <bismuth/spriterenderer.hpp>
+#include <glm/glm.hpp>
 
 using namespace bi;
 
@@ -7,6 +9,7 @@ SpriteRenderer::SpriteRenderer(std::unique_ptr<Sprite> sprite) {
     this->mSprite = std::move(sprite);
     this->color = glm::vec4(1,1,1,1);
     this->position = glm::vec2(0,0);
+    this->angleDegrees = 0.0f;
     this->scale = glm::vec2(225,225);
 }
 
@@ -41,6 +44,13 @@ void SpriteRenderer::setScale(glm::vec2 scale) {
         this->scale = scale;
         isDirty = true;
     }
+}
+void SpriteRenderer::setTextureCoords(std::vector<glm::vec2> coords) {
+    isDirty = true;
+}
+
+void SpriteRenderer::setRotation(float angleDegrees) {
+    this->angleDegrees = angleDegrees;
 }
 
 void SpriteRenderer::initTexture() {

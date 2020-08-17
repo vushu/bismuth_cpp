@@ -20,12 +20,10 @@ class MyGame : public bi::Application {
         std::shared_ptr<bi::Sound> s3;
         std::shared_ptr<bi::Sound> s4;
     private:
-        const float M2P=60;
-        const float P2M=1/M2P;
         b2BodyDef groundBodyDef;
         b2Vec2 gravity{0.0f, 10.0f};
         b2World world{gravity};
-        b2BodyDef boxBodyDef;
+        //b2BodyDef boxBodyDef;
         b2Body* boxBody;
 
 
