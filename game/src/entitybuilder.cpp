@@ -36,7 +36,7 @@ EntityBuilder& EntityBuilder::sprite(std::string filepath) {
     spr = std::make_shared<bi::SpriteRenderer>(std::move(msprite));
     return *this;
 }
-void EntityBuilder::buildEnemy(bi::Renderer& renderer, b2World& world, entt::registry& registry, bool isStatic) {
+void EntityBuilder::buildEnemy(bi::Renderer& renderer, b2World& world, entt::registry& registry, bool isStatic, bool isBox) {
 
     bi::log("create entity");
     if (spr == nullptr) {
@@ -55,17 +55,19 @@ void EntityBuilder::buildEnemy(bi::Renderer& renderer, b2World& world, entt::reg
     //registry.emplace<Player>(entity, rid.batchId, rid.spriteId);
     registry.emplace<Movement>(entity, velocity.x, velocity.y);
     //reset();
-    buildBox(world, renderer, isStatic);
+    buildBox(world, renderer, isStatic, isBox);
 
 }
 
-void EntityBuilder::buildBox(b2World& world, bi::Renderer& renderer, bool isStatic) {
+void EntityBuilder::buildBox(b2World& world, bi::Renderer& renderer, bool isStatic, bool isBox) {
     b2BodyDef bodyDef;
     bodyDef.userData = &renderer.getSprite(this->rid.batchId, this->rid.spriteId);
     //coordinate system i at the center
     //bodyDef.position.Set(this->position.x * bi::P2M, this->position.y * bi::P2M);
-    float x = (this->position.x - this->scale.x * 0.5f) * bi::P2M;
-    float y = (this->position.y - this->scale.y * 0.5f) * bi::P2M;
+    float x = (this->position.x + this->scale.x * 0.5f) * bi::P2M;
+    float y = (this->position.y + this->scale.y * 0.5f) * bi::P2M;
+    //float x = this->position.x  * bi::P2M;
+    //float y = this->position.y  * bi::P2M;
     bi::log("x: " + std::to_string(x));
     bi::log("y: " + std::to_string(y));
     bodyDef.position.Set(x, y);
@@ -80,21 +82,38 @@ void EntityBuilder::buildBox(b2World& world, bi::Renderer& renderer, bool isStat
     b2Body* body = world.CreateBody(&bodyDef);
 
     b2FixtureDef fixtureDef2;
-    b2CircleShape dynamicBox;
-    dynamicBox.m_radius = this->scale.x * 0.5f;
+    if (isBox) {
+        b2PolygonShape dynamicBox;
+        //shape2.SetAsBox(10,10);
+        //dynamicBox.SetAsBox(bi::P2M * this->scale.x/2.0f, bi::P2M * this->scale.y/2.0f);
+        dynamicBox.SetAsBox(bi::P2M * this->scale.x/2.0f, bi::P2M * this->scale.y/2.0f);
+        //this->scale.y * 0.5f * bi::P2M);
 
-    //b2PolygonShape dynamicBox;
-    //shape2.SetAsBox(10,10);
-    //dynamicBox.SetAsBox(this->scale.x * 0.5f * bi::P2M,
-    //this->scale.y * 0.5f * bi::P2M);
+        fixtureDef2.shape = &dynamicBox;
+        fixtureDef2.density = 1.0f;
+        fixtureDef2.friction = 0.3f;
+        fixtureDef2.restitution = 0.4f;
 
-    fixtureDef2.shape = &dynamicBox;
-    fixtureDef2.density = 1.0f;
-    fixtureDef2.friction = 0.3f;
-    fixtureDef2.restitution = 0.9f;
+        body->CreateFixture(&fixtureDef2);
 
-    body->CreateFixture(&fixtureDef2);
-    reset();
+    }
+    else {
+        b2CircleShape dynamicBox;
+        dynamicBox.m_radius = bi::P2M * this->scale.x/2.0f;
+
+        //b2PolygonShape dynamicBox;
+        //shape2.SetAsBox(10,10);
+        //dynamicBox.SetAsBox(this->scale.x * 0.5f * bi::P2M,
+        //this->scale.y * 0.5f * bi::P2M);
+
+        fixtureDef2.shape = &dynamicBox;
+        fixtureDef2.density = 100.0f;
+        fixtureDef2.friction = 0.3f;
+        fixtureDef2.restitution = 0.4f;
+
+        body->CreateFixture(&fixtureDef2);
+    }
+    //reset();
 }
 
 void EntityBuilder::buildPlayer(bi::Renderer& renderer, entt::registry& registry) {

@@ -66,7 +66,8 @@ void MyGame::update(float dt) {
 
     renderSystem.update(this->getRenderer(), dt, world, this->registry);
     //update world
-    world.Step(1.0f/60.0f, 6, 2);
+    //world.Step(1.0f/60.0f, 6, 2);
+    world.Step(dt, 9, 4);
 
 }
 
@@ -95,34 +96,42 @@ void MyGame::init() {
     std::unique_ptr<EntityBuilder> entitybuilder2 = std::make_unique<EntityBuilder>();
 
     //entitybuilder->at(100, 100)
-        //.size(100, 100)
-        //.vel(3, 2)
-        //.setColor(glm::vec4(1,1,1,1))
-        //.sprite("resources/assets/images/tennis.png")
-        //.buildEnemy(this->getRenderer(), this->world, this->registry, true);
+    //.size(100, 100)
+    //.vel(3, 2)
+    //.setColor(glm::vec4(1,1,1,1))
+    //.sprite("resources/assets/images/tennis.png")
+    //.buildEnemy(this->getRenderer(), this->world, this->registry, true);
 
 
-    //entitybuilder->at(95, 500)
-        //.size(100, 100)
-        //.vel(3, 2)
-        //.setColor(glm::vec4(1,0,0,1))
-        //.sprite("resources/assets/images/tennis.png")
-        //.buildEnemy(this->getRenderer(), this->world, this->registry, true);
+    //entitybuilder2->at(95, 300)
+    //.size(100, 100)
+    //.vel(3, 2)
+    //.setColor(glm::vec4(1,0,0,1))
+    //.sprite("resources/assets/images/tennis.png")
+    //.buildEnemy(this->getRenderer(), this->world, this->registry, true);
 
-    entitybuilder->at(200, 100)
-        .size(100, 100)
+    entitybuilder->at(100, 100)
+        .size(25,25)
+        .vel(3, 2)
+        .setColor(glm::vec4(1,1,0,1))
+        .sprite("resources/assets/images/tennis.png")
+        .buildEnemy(this->getRenderer(), this->world, this->registry, false, false);
+
+
+    //entitybuilder->at(120, 200)
+    //.size(50, 50)
+    ////.vel(3, 2)
+    //.setColor(glm::vec4(1,0,1,1))
+    //.sprite("resources/assets/images/ball2.png")
+    //.buildEnemy(this->getRenderer(), this->world, this->registry, false);
+
+    entitybuilder2->at(0, 310)
+        .size(1000, 10)
         .vel(3, 2)
         .setColor(glm::vec4(1,0,0,1))
-        .sprite("resources/assets/images/tennis.png")
-        .buildEnemy(this->getRenderer(), this->world, this->registry, false);
+        //.sprite("resources/assets/images/tennis.png")
+        .buildEnemy(this->getRenderer(), this->world, this->registry, true, true);
 
-
-    entitybuilder2->at(120, 200)
-        .size(50, 50)
-        //.vel(3, 2)
-        .setColor(glm::vec4(1,0,1,1))
-        .sprite("resources/assets/images/ball2.png")
-        .buildEnemy(this->getRenderer(), this->world, this->registry, false);
 
 
 

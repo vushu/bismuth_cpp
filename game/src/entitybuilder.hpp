@@ -14,8 +14,8 @@ class EntityBuilder{
         EntityBuilder& size(float x, float y);
         EntityBuilder& vel(float x, float y);
         void buildPlayer(bi::Renderer& renderer, entt::registry& registry);
-        void buildEnemy(bi::Renderer& renderer, b2World& world, entt::registry& registry, bool isStatic);
-        void buildBox(b2World& world, bi::Renderer& renderer, bool isStatic);
+        void buildEnemy(bi::Renderer& renderer, b2World& world, entt::registry& registry, bool isStatic, bool isBox = true);
+        void buildBox(b2World& world, bi::Renderer& renderer, bool isStatic, bool isBox);
 
     private:
         std::shared_ptr<bi::SpriteRenderer> spr;

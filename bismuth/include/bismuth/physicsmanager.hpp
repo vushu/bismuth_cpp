@@ -11,6 +11,6 @@ namespace bi {
 
     };
 
-    const float M2P=32;
-    const float P2M=1/M2P;
+    const float M2P=32.0f;
+    const float P2M=1.0f/M2P;
 }
