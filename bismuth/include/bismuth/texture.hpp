@@ -12,10 +12,9 @@ namespace bi {
             void bind();
             void unbind();
             unsigned int textureId;
-
+            std::string filepath;
 
         private:
-            std::string filepath;
 
 
 

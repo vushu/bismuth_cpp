@@ -10,6 +10,7 @@
 #include "entitybuilder.hpp"
 #include <box2d/box2d.h>
 #include <bismuth/physicsmanager.hpp>
+#include <bismuth/assetmanager.hpp>
 using namespace bi;
 
 MyGame::~MyGame() {}
@@ -68,11 +69,12 @@ void MyGame::update(float dt) {
     //update world
     //world.Step(1.0f/60.0f, 6, 2);
     //world.Step(1.0f/60.0f, 6, 2);
-    float timeStep = 1.0f/60.0f;      //the length of time passed to simulate (seconds)
+    //float timeStep = 1.0f/60.0f;      //the length of time passed to simulate (seconds)
     int velocityIterations = 6;   //how strongly to correct velocity
     int positionIterations = 2;   //how strongly to correct position
     bi::log("FPS: " + std::to_string(1.0f/dt));
-    world.Step(timeStep, velocityIterations, positionIterations);
+    // since we are using variable time put dt
+    world.Step(dt, velocityIterations, positionIterations);
 
 }
 
@@ -138,13 +140,13 @@ void MyGame::init() {
     //.setColor(glm::vec4(1,0,0,1))
     //.sprite("resources/assets/images/tennis.png")
     //.buildEnemy(this->getRenderer(), this->world, this->registry, true);
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 220; i++) {
         EntityBuilder entitybuilder;
         entitybuilder.at(60 + (i), 10 + i)
-            .size(60,60)
+            .size(30,30)
             .vel(3, 2)
             //.setColor(glm::vec4(i/10.0f,i/100.0f,sin(i*20),1))
-            .sprite("resources/assets/images/tennis.png")
+            .sprite("resources/assets/images/tennis.png", this->getAssetManager())
             .buildEnemy(this->getRenderer(), this->world, this->registry, false, false);
     }
 

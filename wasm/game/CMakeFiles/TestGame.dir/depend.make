@@ -188,6 +188,7 @@ game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: ../bismuth/externals/glm/g
 game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: ../bismuth/externals/glm/glm/vec3.hpp
 game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: ../bismuth/externals/glm/glm/vec4.hpp
 game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: ../bismuth/externals/glm/glm/vector_relational.hpp
+game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: ../bismuth/include/bismuth/assetmanager.hpp
 game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: ../bismuth/include/bismuth/camera.hpp
 game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: ../bismuth/include/bismuth/logging.hpp
 game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: ../bismuth/include/bismuth/physicsmanager.hpp
@@ -391,6 +392,7 @@ game/CMakeFiles/TestGame.dir/src/game.cpp.o: ../bismuth/externals/glm/glm/vec4.h
 game/CMakeFiles/TestGame.dir/src/game.cpp.o: ../bismuth/externals/glm/glm/vector_relational.hpp
 game/CMakeFiles/TestGame.dir/src/game.cpp.o: ../bismuth/externals/miniaudio/include/miniaudio/miniaudio.h
 game/CMakeFiles/TestGame.dir/src/game.cpp.o: ../bismuth/include/bismuth/application.hpp
+game/CMakeFiles/TestGame.dir/src/game.cpp.o: ../bismuth/include/bismuth/assetmanager.hpp
 game/CMakeFiles/TestGame.dir/src/game.cpp.o: ../bismuth/include/bismuth/audiomanager.hpp
 game/CMakeFiles/TestGame.dir/src/game.cpp.o: ../bismuth/include/bismuth/camera.hpp
 game/CMakeFiles/TestGame.dir/src/game.cpp.o: ../bismuth/include/bismuth/keylistener.hpp
@@ -599,6 +601,7 @@ game/CMakeFiles/TestGame.dir/src/main.cpp.o: ../bismuth/externals/glm/glm/vec4.h
 game/CMakeFiles/TestGame.dir/src/main.cpp.o: ../bismuth/externals/glm/glm/vector_relational.hpp
 game/CMakeFiles/TestGame.dir/src/main.cpp.o: ../bismuth/externals/miniaudio/include/miniaudio/miniaudio.h
 game/CMakeFiles/TestGame.dir/src/main.cpp.o: ../bismuth/include/bismuth/application.hpp
+game/CMakeFiles/TestGame.dir/src/main.cpp.o: ../bismuth/include/bismuth/assetmanager.hpp
 game/CMakeFiles/TestGame.dir/src/main.cpp.o: ../bismuth/include/bismuth/audiomanager.hpp
 game/CMakeFiles/TestGame.dir/src/main.cpp.o: ../bismuth/include/bismuth/camera.hpp
 game/CMakeFiles/TestGame.dir/src/main.cpp.o: ../bismuth/include/bismuth/keylistener.hpp
@@ -856,6 +859,7 @@ game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: ../bismuth/externals/glm/gl
 game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: ../bismuth/externals/glm/glm/vec3.hpp
 game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: ../bismuth/externals/glm/glm/vec4.hpp
 game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: ../bismuth/externals/glm/glm/vector_relational.hpp
+game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: ../bismuth/include/bismuth/assetmanager.hpp
 game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: ../bismuth/include/bismuth/camera.hpp
 game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: ../bismuth/include/bismuth/logging.hpp
 game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: ../bismuth/include/bismuth/physicsmanager.hpp

@@ -23,7 +23,8 @@ void Application::construct(int width, int height, std::string title) {
     this->title = title;
     this->window = std::make_unique<Window>(width, height, title);
     this->camera = std::make_unique<Camera>();
-    this->renderer = std::make_unique<Renderer>(this->window, this->camera);
+    this->assetmanager = std::make_unique<AssetManager>();
+    this->renderer = std::make_unique<Renderer>(this->window, this->camera, *this->assetmanager);
     this->audioManager = std::make_unique<AudioManager>();
 }
 
@@ -68,6 +69,7 @@ void Application::loop() {
     float beginTime = glfwGetTime();
     float endTime = glfwGetTime();
     float dt = -1.0f;
+    //float accumulator = 0;
 
     //float lastFrameTime = 0.0f;
     //float lastUpdateTime = 0.0f;
@@ -77,7 +79,7 @@ void Application::loop() {
         window->pollEvents();
 
 
-        if (dt >= 0) {
+        if (dt >= 0 && dt) {
             renderer->clear(glm::vec4(0.7f, 0.0f, 0.5f, 1.0f));
             update(dt);
             renderer->render(dt);
@@ -113,6 +115,10 @@ Camera& Application::getCamera() {
 
 AudioManager& Application::getAudioManager() {
     return *this->audioManager;
+}
+
+AssetManager& Application::getAssetManager() {
+    return *this->assetmanager;
 }
 
 

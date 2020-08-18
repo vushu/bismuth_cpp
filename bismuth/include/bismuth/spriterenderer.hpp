@@ -15,6 +15,7 @@ namespace bi  {
             void setPosition(glm::vec2 position);
             void setScale(glm::vec2 scale);
             void setTextureCoords(std::vector<glm::vec2> coords);
+            std::string getTextureFilePath();
 
             std::shared_ptr<Texture> getTexture();
             std::vector<glm::vec2> getTexCoords();

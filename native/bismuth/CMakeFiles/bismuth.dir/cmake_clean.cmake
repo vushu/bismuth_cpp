@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/bismuth.dir/src/core/application.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/assetmanager.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/camera.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o"

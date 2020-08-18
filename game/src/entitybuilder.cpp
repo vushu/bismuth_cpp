@@ -31,9 +31,9 @@ EntityBuilder& EntityBuilder::setColor(glm::vec4 color) {
     return *this;
 }
 
-EntityBuilder& EntityBuilder::sprite(std::string filepath) {
-    std::shared_ptr<bi::Texture> texture = std::make_shared<bi::Texture>(filepath);
-    this->msprite = std::make_unique<bi::Sprite>(std::move(texture));
+EntityBuilder& EntityBuilder::sprite(std::string filepath, bi::AssetManager& assetmanager) {
+    //std::shared_ptr<bi::Texture> texture = std::make_shared<bi::Texture>(filepath);
+    this->msprite = std::make_unique<bi::Sprite>(assetmanager.loadTexture(filepath));
     spr = std::make_shared<bi::SpriteRenderer>(std::move(msprite));
     return *this;
 }
@@ -100,7 +100,7 @@ void EntityBuilder::buildBox(b2World& world, bi::Renderer& renderer, bool isStat
         fixtureDef2.shape = &dynamicBox;
         fixtureDef2.density = 1.0f;
         fixtureDef2.friction = 0.3f;
-        fixtureDef2.restitution = 0.9f;
+        fixtureDef2.restitution = 0.5f;
 
         body->CreateFixture(&fixtureDef2);
 

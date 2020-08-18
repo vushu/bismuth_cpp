@@ -58,4 +58,8 @@ void SpriteRenderer::initTexture() {
         this->mSprite->getTexture()->init();
 }
 
+std::string SpriteRenderer::getTextureFilePath() {
+    return this->mSprite->getTextureFilePath();
+}
+
 

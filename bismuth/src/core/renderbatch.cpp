@@ -50,9 +50,9 @@ void RenderBatch::loadVertexProperties(int index) {
     std::vector<glm::vec2> texCoords = sprite->getTexCoords();
     glm::vec4 color = sprite->color;
     int texId = 0;
-    if (sprite->getTexture() != nullptr) {
+    if (sprite->getTextureFilePath() != "") {
         for (unsigned int i = 0; i < textures.size(); i++) {
-            if (textures.at(i) == sprite->getTexture()) {
+            if (textures.at(i)->filepath == sprite->getTextureFilePath()) {
                 texId = i + 1;
                 //log("Found: texId " + std::to_string(texId));
                 break;
@@ -152,8 +152,12 @@ void RenderBatch::init() {
 }
 
 int RenderBatch::addSprite(std::shared_ptr<SpriteRenderer> sprite) {
-    if (sprite->getTexture() != nullptr) {
-        this->textures.push_back(sprite->getTexture());
+    if (sprite->getTextureFilePath() != "") {
+        if (this->checkList.count(sprite->getTextureFilePath()) == 0) {
+            this->checkList.emplace(sprite->getTextureFilePath(), "");
+            log("Adding sprite: " + sprite->getTextureFilePath());
+            this->textures.push_back(&assetmanager.getTexture(sprite->getTextureFilePath()));
+        }
     }
     this->sprites.push_back(sprite);
     log("Added sprite");
@@ -225,6 +229,7 @@ void RenderBatch::render() {
             model = glm::translate(model, glm::vec3(spr->scale * 0.5f,0));
             model = glm::rotate(model, glm::radians(spr->angleDegrees), glm::vec3(0.0f, 0.0f, 1.0f)); // then rotate
             // Then rotate
+            //translating midle to 0.0
             model = glm::translate(model, glm::vec3(dis - spr->scale * 0.5f,0));
             //when doing glm read from below and up
             //shader->uploadUniformMat4("uModel", model);

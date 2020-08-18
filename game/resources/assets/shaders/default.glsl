@@ -10,7 +10,9 @@ in float aModelId;
 
 uniform mat4 uProjection;
 uniform mat4 uView;
-uniform mat4 uModels[254];
+//uniform mat4 uModels[254];
+uniform mat4 uModels[253];
+uniform sampler2D uTexture;
 
 out vec4 fColor;
 out vec2 fTexCoords;
@@ -21,6 +23,7 @@ void main() {
     fTexCoords = aTexCoords;
     fTexId = aTexId;
     highp int index = int(aModelId);
+
     gl_Position = uProjection * uView * uModels[index] * vec4(aPos, 1.0);
     //gl_Position = uProjection * uView * vec4(aPos, 1.0);
 }
@@ -34,7 +37,6 @@ in vec2 fTexCoords;
 in float fTexId;
 
 uniform sampler2D uTextures[8];
-//uniform sampler2D uTex;
 
 out vec4 color;
 

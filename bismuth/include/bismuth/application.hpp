@@ -3,6 +3,8 @@
 #include <bismuth/renderer.hpp>
 #include <bismuth/window.hpp>
 #include <bismuth/audiomanager.hpp>
+#include <bismuth/assetmanager.hpp>
+
 #include <memory>
 
 namespace bi {
@@ -19,6 +21,7 @@ namespace bi {
             Window& getWindow();
             Camera& getCamera();
             AudioManager& getAudioManager();
+            AssetManager& getAssetManager();
             //static void emscriptenloop(void* arg);
         protected:
 
@@ -29,6 +32,7 @@ namespace bi {
             std::unique_ptr<Window> window;
             std::unique_ptr<Camera> camera;
             std::unique_ptr<AudioManager> audioManager;
+            std::unique_ptr<AssetManager> assetmanager;
 
 
             void construct(int width, int height, std::string title);

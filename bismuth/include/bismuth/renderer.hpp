@@ -3,6 +3,7 @@
 #include <bismuth/window.hpp>
 #include <bismuth/camera.hpp>
 #include <bismuth/renderbatch.hpp>
+#include <bismuth/assetmanager.hpp>
 #include <GLFW/glfw3.h>
 #include <glm/vec4.hpp>
 //#include <entt/entt.hpp>
@@ -15,7 +16,7 @@ namespace bi {
     };
     class Renderer {
         public:
-            Renderer(std::unique_ptr<Window>& win, std::unique_ptr<Camera>& cam) : camera(cam), window(win) {
+            Renderer(std::unique_ptr<Window>& win, std::unique_ptr<Camera>& cam, AssetManager& assetman) : camera(cam), window(win), assetmanager(assetman) {
                 this->shader = std::make_shared<Shader>("resources/assets/shaders/default.glsl");
             }
             ~Renderer();
@@ -32,6 +33,7 @@ namespace bi {
             std::shared_ptr<Shader> shader;
             std::vector<std::unique_ptr<RenderBatch>> batches;
             std::shared_ptr<Texture> textureTest;
+            AssetManager& assetmanager;
 
             void testTriangle();
             void renderTestTriangle();

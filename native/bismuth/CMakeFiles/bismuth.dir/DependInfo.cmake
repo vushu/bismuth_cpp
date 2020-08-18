@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/application.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o"
+  "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/assetmanager.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/assetmanager.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/audiomanager.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/camera.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/camera.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/glhelper.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o"

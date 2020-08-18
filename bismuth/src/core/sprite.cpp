@@ -12,6 +12,11 @@ Sprite::Sprite() {
     this->construct();
 }
 
+Sprite::Sprite(std::string filepath) {
+    this->filepath = filepath;
+    construct();
+}
+
 
 Sprite::~Sprite() {}
 
@@ -42,5 +47,9 @@ std::vector<glm::vec2> Sprite::getTexCoords() {
 
 std::shared_ptr<Texture> Sprite::getTexture() {
     return this->texture;
+}
+
+std::string Sprite::getTextureFilePath() {
+    return this->filepath;
 }
 

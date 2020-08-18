@@ -1891,7 +1891,17 @@ bismuth/window.hpp
 -
 bismuth/audiomanager.hpp
 -
+bismuth/assetmanager.hpp
+-
 memory
+-
+
+../bismuth/include/bismuth/assetmanager.hpp
+bismuth/texture.hpp
+-
+string
+-
+map
 -
 
 ../bismuth/include/bismuth/audiomanager.hpp
@@ -1925,6 +1935,8 @@ bismuth/shader.hpp
 -
 bismuth/camera.hpp
 -
+bismuth/assetmanager.hpp
+-
 memory
 -
 array
@@ -1938,6 +1950,8 @@ bismuth/window.hpp
 bismuth/camera.hpp
 -
 bismuth/renderbatch.hpp
+-
+bismuth/assetmanager.hpp
 -
 GLFW/glfw3.h
 -
@@ -2027,6 +2041,8 @@ box2d/box2d.h
 -
 bismuth/physicsmanager.hpp
 -
+bismuth/assetmanager.hpp
+-
 
 /home/vushu/coding/cpp/somethingcpp/game/src/game.hpp
 bismuth/application.hpp
@@ -2036,20 +2052,6 @@ entt/entt.hpp
 rendersystem.hpp
 /home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.hpp
 box2d/box2d.h
--
-
-/home/vushu/coding/cpp/somethingcpp/game/src/main.cpp
-bismuth/keylistener.hpp
--
-game.hpp
-/home/vushu/coding/cpp/somethingcpp/game/src/game.hpp
-iostream
--
-bismuth/window.hpp
--
-bismuth/logging.hpp
--
-emscripten/emscripten.h
 -
 
 /home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.hpp

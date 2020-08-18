@@ -163,6 +163,33 @@ src/core/application.cpp.s:
 	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.s
 .PHONY : src/core/application.cpp.s
 
+src/core/assetmanager.o: src/core/assetmanager.cpp.o
+
+.PHONY : src/core/assetmanager.o
+
+# target to build an object file
+src/core/assetmanager.cpp.o:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/assetmanager.cpp.o
+.PHONY : src/core/assetmanager.cpp.o
+
+src/core/assetmanager.i: src/core/assetmanager.cpp.i
+
+.PHONY : src/core/assetmanager.i
+
+# target to preprocess a source file
+src/core/assetmanager.cpp.i:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/assetmanager.cpp.i
+.PHONY : src/core/assetmanager.cpp.i
+
+src/core/assetmanager.s: src/core/assetmanager.cpp.s
+
+.PHONY : src/core/assetmanager.s
+
+# target to generate assembly for a file
+src/core/assetmanager.cpp.s:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/assetmanager.cpp.s
+.PHONY : src/core/assetmanager.cpp.s
+
 src/core/audiomanager.o: src/core/audiomanager.cpp.o
 
 .PHONY : src/core/audiomanager.o
@@ -581,6 +608,9 @@ help:
 	@echo "... src/core/application.o"
 	@echo "... src/core/application.i"
 	@echo "... src/core/application.s"
+	@echo "... src/core/assetmanager.o"
+	@echo "... src/core/assetmanager.i"
+	@echo "... src/core/assetmanager.s"
 	@echo "... src/core/audiomanager.o"
 	@echo "... src/core/audiomanager.i"
 	@echo "... src/core/audiomanager.s"

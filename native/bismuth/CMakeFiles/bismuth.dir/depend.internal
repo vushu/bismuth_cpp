@@ -155,6 +155,7 @@ bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o
  ../bismuth/externals/glm/glm/vector_relational.hpp
  ../bismuth/externals/miniaudio/include/miniaudio/miniaudio.h
  ../bismuth/include/bismuth/application.hpp
+ ../bismuth/include/bismuth/assetmanager.hpp
  ../bismuth/include/bismuth/audiomanager.hpp
  ../bismuth/include/bismuth/camera.hpp
  ../bismuth/include/bismuth/logging.hpp
@@ -230,6 +231,10 @@ bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o
  /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_js.h
  /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_macros.h
  /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/emscripten.h
+bismuth/CMakeFiles/bismuth.dir/src/core/assetmanager.cpp.o
+ ../bismuth/include/bismuth/assetmanager.hpp
+ ../bismuth/include/bismuth/texture.hpp
+ /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/assetmanager.cpp
 bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o
  ../bismuth/externals/miniaudio/include/miniaudio/miniaudio.h
  ../bismuth/include/bismuth/audiomanager.hpp
@@ -937,6 +942,7 @@ bismuth/CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o
  ../bismuth/externals/glm/glm/vec3.hpp
  ../bismuth/externals/glm/glm/vec4.hpp
  ../bismuth/externals/glm/glm/vector_relational.hpp
+ ../bismuth/include/bismuth/assetmanager.hpp
  ../bismuth/include/bismuth/camera.hpp
  ../bismuth/include/bismuth/logging.hpp
  ../bismuth/include/bismuth/renderbatch.hpp
@@ -1099,6 +1105,7 @@ bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o
  ../bismuth/externals/glm/glm/vec3.hpp
  ../bismuth/externals/glm/glm/vec4.hpp
  ../bismuth/externals/glm/glm/vector_relational.hpp
+ ../bismuth/include/bismuth/assetmanager.hpp
  ../bismuth/include/bismuth/camera.hpp
  ../bismuth/include/bismuth/logging.hpp
  ../bismuth/include/bismuth/renderbatch.hpp

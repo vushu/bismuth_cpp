@@ -2,6 +2,7 @@
 #include <bismuth/spriterenderer.hpp>
 #include <bismuth/shader.hpp>
 #include <bismuth/camera.hpp>
+#include <bismuth/assetmanager.hpp>
 #include <memory>
 #include <array>
 namespace bi {
@@ -19,7 +20,7 @@ namespace bi {
             };
 
             // constructors, asssignment, destructor
-            RenderBatch (std::unique_ptr<Camera>& cam, int maxBatchSize, std::shared_ptr<Shader> shader) : camera(cam) {
+            RenderBatch (std::unique_ptr<Camera>& cam, int maxBatchSize, std::shared_ptr<Shader> shader, AssetManager& assetman) : camera(cam), assetmanager(assetman) {
                 //this->shader = std::make_unique<Shader>("resources/assets/shaders/default.glsl");
                 //this->shader->compile();
                 this->shader = shader;
@@ -32,7 +33,8 @@ namespace bi {
             std::array<float, 36000> vertices;
 
             std::vector<std::shared_ptr<SpriteRenderer>> sprites;
-            std::vector<std::shared_ptr<Texture>> textures;
+            std::vector<Texture*> textures;
+            std::map<std::string, std::string> checkList;
 
             void init();
             int addSprite(std::shared_ptr<SpriteRenderer> spriteRenderer);
@@ -43,6 +45,7 @@ namespace bi {
             // float, float,   float, float , float , float   float, float   float
         private:
             std::unique_ptr<Camera>& camera;
+            AssetManager& assetmanager;
             int maxBatchSize = 1000;
             const float POS_SIZE = 2;
             const float COLOR_SIZE = 4;

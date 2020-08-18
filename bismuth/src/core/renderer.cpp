@@ -44,7 +44,7 @@ void Renderer::init() {
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
     this->shader->compile();
-    std::unique_ptr<RenderBatch> firstBatch = std::make_unique<RenderBatch>(this->camera,this->MAX_BATCH_SIZE, this->shader);
+    std::unique_ptr<RenderBatch> firstBatch = std::make_unique<RenderBatch>(this->camera,this->MAX_BATCH_SIZE, this->shader, assetmanager);
     firstBatch->init();
     this->batches.push_back(std::move(firstBatch));
     //for (auto& batch : batches) {
@@ -79,7 +79,7 @@ RenId Renderer::addSprite(std::shared_ptr<SpriteRenderer> sprite) {
     }
     else {
         // if current batch has no more room create a new one
-        std::unique_ptr<RenderBatch> nextBatch = std::make_unique<RenderBatch>(this->camera,this->MAX_BATCH_SIZE, this->shader);
+        std::unique_ptr<RenderBatch> nextBatch = std::make_unique<RenderBatch>(this->camera,this->MAX_BATCH_SIZE, this->shader, this->assetmanager);
         nextBatch->init();
         this->batches.push_back(std::move(nextBatch));
         spriteId = batches.at(batches.size() - 1)->addSprite(sprite);
