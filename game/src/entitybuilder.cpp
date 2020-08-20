@@ -117,8 +117,8 @@ void EntityBuilder::buildBox(b2World& world, bi::Renderer& renderer, bool isStat
 
         fixtureDef2.shape = &dynamicBox;
         fixtureDef2.density = 1.0f;
-        fixtureDef2.friction = 1.0f;
-        fixtureDef2.restitution = 0.0f;
+        fixtureDef2.friction = 0.3f;
+        fixtureDef2.restitution = 0.7f;
 
         body->CreateFixture(&fixtureDef2);
     }

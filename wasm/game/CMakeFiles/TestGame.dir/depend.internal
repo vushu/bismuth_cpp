@@ -396,6 +396,7 @@ game/CMakeFiles/TestGame.dir/src/game.cpp.o
  ../bismuth/include/bismuth/assetmanager.hpp
  ../bismuth/include/bismuth/audiomanager.hpp
  ../bismuth/include/bismuth/camera.hpp
+ ../bismuth/include/bismuth/guimanager.hpp
  ../bismuth/include/bismuth/keylistener.hpp
  ../bismuth/include/bismuth/logging.hpp
  ../bismuth/include/bismuth/physicsmanager.hpp
@@ -605,6 +606,7 @@ game/CMakeFiles/TestGame.dir/src/main.cpp.o
  ../bismuth/include/bismuth/assetmanager.hpp
  ../bismuth/include/bismuth/audiomanager.hpp
  ../bismuth/include/bismuth/camera.hpp
+ ../bismuth/include/bismuth/guimanager.hpp
  ../bismuth/include/bismuth/keylistener.hpp
  ../bismuth/include/bismuth/logging.hpp
  ../bismuth/include/bismuth/renderbatch.hpp

@@ -4,6 +4,7 @@
 #include <bismuth/window.hpp>
 #include <bismuth/audiomanager.hpp>
 #include <bismuth/assetmanager.hpp>
+#include <bismuth/guimanager.hpp>
 
 #include <memory>
 
@@ -33,7 +34,7 @@ namespace bi {
             std::unique_ptr<Camera> camera;
             std::unique_ptr<AudioManager> audioManager;
             std::unique_ptr<AssetManager> assetmanager;
-
+            std::unique_ptr<GuiManager> guimanager;
 
             void construct(int width, int height, std::string title);
             void applicationInit();

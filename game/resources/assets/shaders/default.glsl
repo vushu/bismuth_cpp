@@ -6,12 +6,12 @@ in vec3 aPos;
 in vec4 aColor;
 in vec2 aTexCoords;
 in float aTexId;
-in float aModelId;
+//in float aModelId;
 
 uniform mat4 uProjection;
 uniform mat4 uView;
 //uniform mat4 uModels[254];
-uniform mat4 uModels[253];
+//uniform mat4 uModels[253];
 uniform sampler2D uTexture;
 
 out vec4 fColor;
@@ -22,10 +22,10 @@ void main() {
     fColor = aColor;
     fTexCoords = aTexCoords;
     fTexId = aTexId;
-    highp int index = int(aModelId);
+    //highp int index = int(aModelId);
 
-    gl_Position = uProjection * uView * uModels[index] * vec4(aPos, 1.0);
-    //gl_Position = uProjection * uView * vec4(aPos, 1.0);
+    //gl_Position = uProjection * uView * uModels[index] * vec4(aPos, 1.0);
+    gl_Position = uProjection * uView * vec4(aPos, 1.0);
 }
 
 #type fragment

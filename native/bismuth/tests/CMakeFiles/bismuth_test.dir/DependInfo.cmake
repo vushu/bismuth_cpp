@@ -18,7 +18,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../bismuth/externals/entt"
   "../bismuth/externals/miniaudio/include"
   "../bismuth/{CMAKE_CURRENT_SOURCE_DIR}/externals/box2d/include"
-  "/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include"
+  "../bismuth/{CMAKE_CURRENT_SOURCE_DIR}/externals/imgui/include"
   "../bismuth/include"
   "../bismuth/externals/box2d/src/../include"
   )

@@ -395,6 +395,7 @@ game/CMakeFiles/TestGame.dir/src/game.cpp.o: ../bismuth/include/bismuth/applicat
 game/CMakeFiles/TestGame.dir/src/game.cpp.o: ../bismuth/include/bismuth/assetmanager.hpp
 game/CMakeFiles/TestGame.dir/src/game.cpp.o: ../bismuth/include/bismuth/audiomanager.hpp
 game/CMakeFiles/TestGame.dir/src/game.cpp.o: ../bismuth/include/bismuth/camera.hpp
+game/CMakeFiles/TestGame.dir/src/game.cpp.o: ../bismuth/include/bismuth/guimanager.hpp
 game/CMakeFiles/TestGame.dir/src/game.cpp.o: ../bismuth/include/bismuth/keylistener.hpp
 game/CMakeFiles/TestGame.dir/src/game.cpp.o: ../bismuth/include/bismuth/logging.hpp
 game/CMakeFiles/TestGame.dir/src/game.cpp.o: ../bismuth/include/bismuth/physicsmanager.hpp
@@ -604,6 +605,7 @@ game/CMakeFiles/TestGame.dir/src/main.cpp.o: ../bismuth/include/bismuth/applicat
 game/CMakeFiles/TestGame.dir/src/main.cpp.o: ../bismuth/include/bismuth/assetmanager.hpp
 game/CMakeFiles/TestGame.dir/src/main.cpp.o: ../bismuth/include/bismuth/audiomanager.hpp
 game/CMakeFiles/TestGame.dir/src/main.cpp.o: ../bismuth/include/bismuth/camera.hpp
+game/CMakeFiles/TestGame.dir/src/main.cpp.o: ../bismuth/include/bismuth/guimanager.hpp
 game/CMakeFiles/TestGame.dir/src/main.cpp.o: ../bismuth/include/bismuth/keylistener.hpp
 game/CMakeFiles/TestGame.dir/src/main.cpp.o: ../bismuth/include/bismuth/logging.hpp
 game/CMakeFiles/TestGame.dir/src/main.cpp.o: ../bismuth/include/bismuth/renderbatch.hpp

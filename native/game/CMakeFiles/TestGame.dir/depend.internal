@@ -410,6 +410,7 @@ game/CMakeFiles/TestGame.dir/src/game.cpp.o
  ../bismuth/include/bismuth/assetmanager.hpp
  ../bismuth/include/bismuth/audiomanager.hpp
  ../bismuth/include/bismuth/camera.hpp
+ ../bismuth/include/bismuth/guimanager.hpp
  ../bismuth/include/bismuth/keylistener.hpp
  ../bismuth/include/bismuth/logging.hpp
  ../bismuth/include/bismuth/physicsmanager.hpp
@@ -426,69 +427,6 @@ game/CMakeFiles/TestGame.dir/src/game.cpp.o
  /home/vushu/coding/cpp/somethingcpp/game/src/game.cpp
  /home/vushu/coding/cpp/somethingcpp/game/src/game.hpp
  /home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.hpp
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/gl.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glu.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/gl.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glplatform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2ext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2platform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl31.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3platform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLFW/glfw3.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_assert.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_atomic.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_audio.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_blendmode.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_clipboard.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_compat.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_android.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_iphoneos.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_macosx.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_minimal.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_nintendods.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_windows.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_cpuinfo.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_endian.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_error.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_events.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_gesture.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_hints.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_joystick.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_keyboard.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_keycode.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_loadso.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_log.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_main.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_mouse.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_mutex.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_pixels.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_platform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_power.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_quit.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_rect.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_render.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_rwops.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_scancode.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_stdinc.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_surface.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_thread.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_timer.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_touch.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_version.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_video.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/begin_code.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/close_code.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_asm.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_js.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_macros.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/emscripten.h
 game/CMakeFiles/TestGame.dir/src/main.cpp.o
  ../bismuth/externals/box2d/include/box2d/b2_block_allocator.h
  ../bismuth/externals/box2d/include/box2d/b2_body.h
@@ -682,6 +620,7 @@ game/CMakeFiles/TestGame.dir/src/main.cpp.o
  ../bismuth/include/bismuth/assetmanager.hpp
  ../bismuth/include/bismuth/audiomanager.hpp
  ../bismuth/include/bismuth/camera.hpp
+ ../bismuth/include/bismuth/guimanager.hpp
  ../bismuth/include/bismuth/keylistener.hpp
  ../bismuth/include/bismuth/logging.hpp
  ../bismuth/include/bismuth/renderbatch.hpp
@@ -695,69 +634,6 @@ game/CMakeFiles/TestGame.dir/src/main.cpp.o
  /home/vushu/coding/cpp/somethingcpp/game/src/game.hpp
  /home/vushu/coding/cpp/somethingcpp/game/src/main.cpp
  /home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.hpp
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/gl.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glu.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/gl.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glplatform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2ext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2platform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl31.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3platform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLFW/glfw3.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_assert.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_atomic.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_audio.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_blendmode.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_clipboard.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_compat.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_android.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_iphoneos.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_macosx.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_minimal.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_nintendods.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_windows.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_cpuinfo.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_endian.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_error.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_events.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_gesture.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_hints.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_joystick.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_keyboard.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_keycode.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_loadso.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_log.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_main.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_mouse.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_mutex.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_pixels.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_platform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_power.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_quit.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_rect.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_render.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_rwops.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_scancode.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_stdinc.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_surface.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_thread.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_timer.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_touch.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_version.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_video.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/begin_code.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/close_code.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_asm.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_js.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_macros.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/emscripten.h
 game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o
  ../bismuth/externals/box2d/include/box2d/b2_block_allocator.h
  ../bismuth/externals/box2d/include/box2d/b2_body.h

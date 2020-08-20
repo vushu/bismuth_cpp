@@ -12,6 +12,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../bismuth/externals/box2d/CMakeLists.txt"
   "../bismuth/externals/box2d/src/CMakeLists.txt"
   "../bismuth/externals/glad/CMakeLists.txt"
+  "../bismuth/externals/imgui/CMakeLists.txt"
   "../bismuth/externals/miniaudio/CMakeLists.txt"
   "../bismuth/tests/CMakeLists.txt"
   "../game/CMakeLists.txt"
@@ -51,6 +52,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "bismuth/externals/miniaudio/CMakeFiles/CMakeDirectoryInformation.cmake"
   "bismuth/externals/box2d/CMakeFiles/CMakeDirectoryInformation.cmake"
   "bismuth/externals/box2d/src/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "bismuth/externals/imgui/CMakeFiles/CMakeDirectoryInformation.cmake"
   "bismuth/tests/CMakeFiles/CMakeDirectoryInformation.cmake"
   "game/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
@@ -61,6 +63,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "bismuth/externals/glad/CMakeFiles/glad.dir/DependInfo.cmake"
   "bismuth/externals/miniaudio/CMakeFiles/miniaudio.dir/DependInfo.cmake"
   "bismuth/externals/box2d/src/CMakeFiles/box2d.dir/DependInfo.cmake"
+  "bismuth/externals/imgui/CMakeFiles/imgui.dir/DependInfo.cmake"
   "bismuth/tests/CMakeFiles/bismuth_test.dir/DependInfo.cmake"
   "game/CMakeFiles/TestGame.dir/DependInfo.cmake"
   )

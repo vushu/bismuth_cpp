@@ -174,6 +174,19 @@ box2d/fast:
 .PHONY : box2d/fast
 
 #=============================================================================
+# Target rules for targets named imgui
+
+# Build rule for target.
+imgui: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 imgui
+.PHONY : imgui
+
+# fast build rule for target.
+imgui/fast:
+	$(MAKE) -f bismuth/externals/imgui/CMakeFiles/imgui.dir/build.make bismuth/externals/imgui/CMakeFiles/imgui.dir/build
+.PHONY : imgui/fast
+
+#=============================================================================
 # Target rules for targets named bismuth_test
 
 # Build rule for target.
@@ -212,6 +225,7 @@ help:
 	@echo "... glad"
 	@echo "... miniaudio"
 	@echo "... box2d"
+	@echo "... imgui"
 	@echo "... bismuth_test"
 	@echo "... TestGame"
 .PHONY : help

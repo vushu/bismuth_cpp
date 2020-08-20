@@ -75,6 +75,7 @@ namespace bi {
 
             void loadElementIndices(std::array<unsigned int, 6000>& elements, int index);
             void loadVertexProperties(int index);
+            glm::vec2 rotatePoint(const glm::vec2& pos, float angle);
 
     };
 }

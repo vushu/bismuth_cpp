@@ -116,6 +116,7 @@ bin/bismuth_test.js: bismuth/libbismuth.a
 bin/bismuth_test.js: bismuth/externals/glad/libglad.a
 bin/bismuth_test.js: bismuth/externals/miniaudio/libminiaudio.a
 bin/bismuth_test.js: bismuth/externals/box2d/src/libbox2d.a
+bin/bismuth_test.js: bismuth/externals/imgui/libimgui.a
 bin/bismuth_test.js: bismuth/tests/CMakeFiles/bismuth_test.dir/linklibs.rsp
 bin/bismuth_test.js: bismuth/tests/CMakeFiles/bismuth_test.dir/objects1.rsp
 bin/bismuth_test.js: bismuth/tests/CMakeFiles/bismuth_test.dir/link.txt

@@ -122,14 +122,14 @@ void MyGame::init() {
     en2.at(0, 0)
         .size(10, 600)
         .vel(3, 2)
-        .setColor(glm::vec4(1,0,0,1))
+        .setColor(glm::vec4(0,1,0,1))
         //.sprite("resources/assets/images/tennis.png")
         .buildEnemy(this->getRenderer(), this->world, this->registry, true, true);
 
     en3.at(590, 0)
         .size(10, 600)
         .vel(3, 2)
-        .setColor(glm::vec4(1,0,0,1))
+        .setColor(glm::vec4(0,0,1,1))
         //.sprite("resources/assets/images/tennis.png")
         .buildEnemy(this->getRenderer(), this->world, this->registry, true, true);
 
@@ -143,14 +143,13 @@ void MyGame::init() {
     for (int i = 0; i < 220; i++) {
         EntityBuilder entitybuilder;
         entitybuilder.at(60 + (i), 10 + i)
-            .size(30,30)
+            .size(25,25)
             .vel(3, 2)
+            //.setColor(glm::vec4(i/10.0f,i/100.0f,sin(i*20),1))
             //.setColor(glm::vec4(i/10.0f,i/100.0f,sin(i*20),1))
             .sprite("resources/assets/images/tennis.png", this->getAssetManager())
             .buildEnemy(this->getRenderer(), this->world, this->registry, false, false);
     }
-
-
 
 
     //entitybuilder->at(120, 200)

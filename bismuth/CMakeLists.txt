@@ -11,6 +11,7 @@ set(MINIAUDIO_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals/miniaudio/inclu
 #set(CATCH2_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/externals/catch2")
 set(EMSCRIPTEN_INCLUDE_DIRS "/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include")
 set(BOX2D_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/box2d/include")
+set(IMGUI_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/imgui/include")
 
 include(GNUInstallDirs)
 
@@ -35,6 +36,8 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/glad)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/miniaudio)
 #box2d
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/box2d)
+#imgui
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/imgui)
 
 #message(STATUS "GLM included at ${GLM_INCLUDE_DIRS}")
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
@@ -45,6 +48,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
         ${ENTT_INCLUDE_DIR}
         ${MINIAUDIO_INCLUDE_DIR}
         ${BOX2D_INCLUDE_DIRS}
+        ${IMGUI_INCLUDE_DIRS}
         #${CATCH2_INCLUDE_DIRS}
         #${EMSCRIPTEN_INCLUDE_DIRS}
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -59,8 +63,9 @@ else()
         ${ENTT_INCLUDE_DIR}
         ${MINIAUDIO_INCLUDE_DIR}
         ${BOX2D_INCLUDE_DIRS}
+        ${IMGUI_INCLUDE_DIRS}
         #${CATCH2_INCLUDE_DIRS}
-        ${EMSCRIPTEN_INCLUDE_DIRS}
+        #${EMSCRIPTEN_INCLUDE_DIRS}
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>
         PRIVATE
@@ -75,7 +80,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
     target_link_libraries(${PROJECT_NAME} "-s USE_GLFW=3")
     #target_link_libraries(${PROJECT_NAME} "-s STB_IMAGE=1")
     #target_link_libraries(${PROJECT_NAME} "-lopenal")
-    target_link_libraries(${PROJECT_NAME} glad miniaudio box2d)
+    target_link_libraries(${PROJECT_NAME} glad miniaudio box2d imgui)
 
 else()
     #sudo apt-get install libopenal-dev
@@ -83,7 +88,7 @@ else()
     find_package(glfw3 3.3 REQUIRED)
     #find_package(glm REQUIRED)
     #target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad openal miniaudio)
-    target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad miniaudio PUBLIC box2d)
+    target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad imgui miniaudio PUBLIC box2d)
 endif()
 
 add_subdirectory(tests)

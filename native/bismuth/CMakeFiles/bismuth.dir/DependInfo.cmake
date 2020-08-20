@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/audiomanager.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/camera.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/camera.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/glhelper.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o"
+  "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/guimanager.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/guimanager.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/keylistener.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/logging.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/logging.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/mouselistener.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o"
@@ -21,6 +22,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/spriterenderer.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/texture.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o"
   "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/window.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/core/window.cpp.o"
+  "/home/vushu/coding/cpp/somethingcpp/bismuth/src/imgui/imgui_impl_glfw.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_glfw.cpp.o"
+  "/home/vushu/coding/cpp/somethingcpp/bismuth/src/imgui/imgui_impl_opengl3.cpp" "/home/vushu/coding/cpp/somethingcpp/native/bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_opengl3.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -36,10 +39,11 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../bismuth/externals/entt"
   "../bismuth/externals/miniaudio/include"
   "../bismuth/{CMAKE_CURRENT_SOURCE_DIR}/externals/box2d/include"
-  "/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include"
+  "../bismuth/{CMAKE_CURRENT_SOURCE_DIR}/externals/imgui/include"
   "../bismuth/include"
   "../bismuth/src"
   "../bismuth/externals/glad/include"
+  "../bismuth/externals/imgui/include"
   "../bismuth/externals/box2d/src/../include"
   )
 
@@ -52,6 +56,7 @@ set(CMAKE_MULTIPLE_OUTPUT_PAIRS
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/vushu/coding/cpp/somethingcpp/native/bismuth/externals/glad/CMakeFiles/glad.dir/DependInfo.cmake"
+  "/home/vushu/coding/cpp/somethingcpp/native/bismuth/externals/imgui/CMakeFiles/imgui.dir/DependInfo.cmake"
   "/home/vushu/coding/cpp/somethingcpp/native/bismuth/externals/miniaudio/CMakeFiles/miniaudio.dir/DependInfo.cmake"
   "/home/vushu/coding/cpp/somethingcpp/native/bismuth/externals/box2d/src/CMakeFiles/box2d.dir/DependInfo.cmake"
   )

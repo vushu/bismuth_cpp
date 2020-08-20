@@ -8,6 +8,7 @@ somethingcpp/
 | | src/
 | | | core/
 | | | | application.cpp
+| | | | assetmanager.cpp
 | | | | audiomanager.cpp
 | | | | camera.cpp
 | | | | glhelper.cpp
@@ -30,17 +31,10 @@ somethingcpp/
 | | CMakeLists.txt
 | game/
 | | components/
-| | | player.hpp
 | | resources/
+| | | assets/
+| | | mipmaps.png
 | | src/
-| | | entitybuilder.cpp
-| | | game.cpp
-| | | main.cpp
-| | | rendersystem.cpp
-| | | components.hpp
-| | | entitybuilder.hpp
-| | | game.hpp
-| | | rendersystem.hpp
 | | CMakeLists.txt
 | native/
 | wasm/

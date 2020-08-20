@@ -26,6 +26,11 @@
 },
 {
   "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/guimanager.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/guimanager.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/guimanager.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
   "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/keylistener.cpp",
   "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/keylistener.cpp"
 },
@@ -83,6 +88,16 @@
   "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
   "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/core/window.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/window.cpp",
   "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/window.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/imgui/imgui_impl_glfw.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/imgui/imgui_impl_glfw.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/imgui/imgui_impl_glfw.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/bismuth.dir/includes_CXX.rsp  -Wall -Wall   -std=gnu++17 -o CMakeFiles/bismuth.dir/src/imgui/imgui_impl_opengl3.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/src/imgui/imgui_impl_opengl3.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/src/imgui/imgui_impl_opengl3.cpp"
 },
 {
   "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/externals/glad",
@@ -323,6 +338,26 @@
   "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/externals/box2d/src",
   "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/box2d.dir/includes_CXX.rsp  -Wall -Wall   -std=c++11 -o CMakeFiles/box2d.dir/rope/b2_rope.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/externals/box2d/src/rope/b2_rope.cpp",
   "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/externals/box2d/src/rope/b2_rope.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/externals/imgui",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/imgui.dir/includes_CXX.rsp  -Wall -Wall -fPIC   -std=gnu++17 -o CMakeFiles/imgui.dir/src/imgui.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/externals/imgui/src/imgui.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/externals/imgui/src/imgui.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/externals/imgui",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/imgui.dir/includes_CXX.rsp  -Wall -Wall -fPIC   -std=gnu++17 -o CMakeFiles/imgui.dir/src/imgui_demo.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/externals/imgui/src/imgui_demo.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/externals/imgui/src/imgui_demo.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/externals/imgui",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/imgui.dir/includes_CXX.rsp  -Wall -Wall -fPIC   -std=gnu++17 -o CMakeFiles/imgui.dir/src/imgui_draw.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/externals/imgui/src/imgui_draw.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/externals/imgui/src/imgui_draw.cpp"
+},
+{
+  "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/externals/imgui",
+  "command": "/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   @CMakeFiles/imgui.dir/includes_CXX.rsp  -Wall -Wall -fPIC   -std=gnu++17 -o CMakeFiles/imgui.dir/src/imgui_widgets.cpp.o -c /home/vushu/coding/cpp/somethingcpp/bismuth/externals/imgui/src/imgui_widgets.cpp",
+  "file": "/home/vushu/coding/cpp/somethingcpp/bismuth/externals/imgui/src/imgui_widgets.cpp"
 },
 {
   "directory": "/home/vushu/coding/cpp/somethingcpp/wasm/bismuth/tests",

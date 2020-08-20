@@ -158,6 +158,7 @@ bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o
  ../bismuth/include/bismuth/assetmanager.hpp
  ../bismuth/include/bismuth/audiomanager.hpp
  ../bismuth/include/bismuth/camera.hpp
+ ../bismuth/include/bismuth/guimanager.hpp
  ../bismuth/include/bismuth/logging.hpp
  ../bismuth/include/bismuth/renderbatch.hpp
  ../bismuth/include/bismuth/renderer.hpp
@@ -545,6 +546,14 @@ bismuth/CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o
  ../bismuth/include/bismuth/glhelper.hpp
  ../bismuth/include/bismuth/logging.hpp
  /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/glhelper.cpp
+bismuth/CMakeFiles/bismuth.dir/src/core/guimanager.cpp.o
+ ../bismuth/externals/imgui/include/imgui/imconfig.h
+ ../bismuth/externals/imgui/include/imgui/imgui.h
+ ../bismuth/externals/imgui/include/imgui/imgui_impl_glfw.h
+ ../bismuth/externals/imgui/include/imgui/imgui_impl_opengl3.h
+ ../bismuth/include/bismuth/guimanager.hpp
+ ../bismuth/include/bismuth/window.hpp
+ /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/guimanager.cpp
 bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o
  ../bismuth/include/bismuth/keylistener.hpp
  ../bismuth/include/bismuth/logging.hpp
@@ -1478,3 +1487,15 @@ bismuth/CMakeFiles/bismuth.dir/src/core/window.cpp.o
  ../bismuth/include/bismuth/mouselistener.hpp
  ../bismuth/include/bismuth/window.hpp
  /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/window.cpp
+bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_glfw.cpp.o
+ ../bismuth/externals/imgui/include/imgui/imconfig.h
+ ../bismuth/externals/imgui/include/imgui/imgui.h
+ ../bismuth/externals/imgui/include/imgui/imgui_impl_glfw.h
+ /home/vushu/coding/cpp/somethingcpp/bismuth/src/imgui/imgui_impl_glfw.cpp
+bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_opengl3.cpp.o
+ ../bismuth/externals/glad/include/KHR/khrplatform.h
+ ../bismuth/externals/glad/include/glad/glad.h
+ ../bismuth/externals/imgui/include/imgui/imconfig.h
+ ../bismuth/externals/imgui/include/imgui/imgui.h
+ ../bismuth/externals/imgui/include/imgui/imgui_impl_opengl3.h
+ /home/vushu/coding/cpp/somethingcpp/bismuth/src/imgui/imgui_impl_opengl3.cpp

@@ -157,6 +157,7 @@ bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/include/bi
 bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/include/bismuth/assetmanager.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/include/bismuth/audiomanager.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/include/bismuth/camera.hpp
+bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/include/bismuth/guimanager.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/include/bismuth/logging.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/include/bismuth/renderbatch.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/application.cpp.o: ../bismuth/include/bismuth/renderer.hpp
@@ -544,6 +545,14 @@ bismuth/CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o: ../bismuth/externals/stb
 bismuth/CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o: ../bismuth/include/bismuth/glhelper.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o: ../bismuth/include/bismuth/logging.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o: ../bismuth/src/core/glhelper.cpp
+
+bismuth/CMakeFiles/bismuth.dir/src/core/guimanager.cpp.o: ../bismuth/externals/imgui/include/imgui/imconfig.h
+bismuth/CMakeFiles/bismuth.dir/src/core/guimanager.cpp.o: ../bismuth/externals/imgui/include/imgui/imgui.h
+bismuth/CMakeFiles/bismuth.dir/src/core/guimanager.cpp.o: ../bismuth/externals/imgui/include/imgui/imgui_impl_glfw.h
+bismuth/CMakeFiles/bismuth.dir/src/core/guimanager.cpp.o: ../bismuth/externals/imgui/include/imgui/imgui_impl_opengl3.h
+bismuth/CMakeFiles/bismuth.dir/src/core/guimanager.cpp.o: ../bismuth/include/bismuth/guimanager.hpp
+bismuth/CMakeFiles/bismuth.dir/src/core/guimanager.cpp.o: ../bismuth/include/bismuth/window.hpp
+bismuth/CMakeFiles/bismuth.dir/src/core/guimanager.cpp.o: ../bismuth/src/core/guimanager.cpp
 
 bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o: ../bismuth/include/bismuth/keylistener.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o: ../bismuth/include/bismuth/logging.hpp
@@ -1477,4 +1486,16 @@ bismuth/CMakeFiles/bismuth.dir/src/core/window.cpp.o: ../bismuth/include/bismuth
 bismuth/CMakeFiles/bismuth.dir/src/core/window.cpp.o: ../bismuth/include/bismuth/mouselistener.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/window.cpp.o: ../bismuth/include/bismuth/window.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/window.cpp.o: ../bismuth/src/core/window.cpp
+
+bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_glfw.cpp.o: ../bismuth/externals/imgui/include/imgui/imconfig.h
+bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_glfw.cpp.o: ../bismuth/externals/imgui/include/imgui/imgui.h
+bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_glfw.cpp.o: ../bismuth/externals/imgui/include/imgui/imgui_impl_glfw.h
+bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_glfw.cpp.o: ../bismuth/src/imgui/imgui_impl_glfw.cpp
+
+bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_opengl3.cpp.o: ../bismuth/externals/glad/include/KHR/khrplatform.h
+bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_opengl3.cpp.o: ../bismuth/externals/glad/include/glad/glad.h
+bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_opengl3.cpp.o: ../bismuth/externals/imgui/include/imgui/imconfig.h
+bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_opengl3.cpp.o: ../bismuth/externals/imgui/include/imgui/imgui.h
+bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_opengl3.cpp.o: ../bismuth/externals/imgui/include/imgui/imgui_impl_opengl3.h
+bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_opengl3.cpp.o: ../bismuth/src/imgui/imgui_impl_opengl3.cpp
 

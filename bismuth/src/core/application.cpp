@@ -1,13 +1,19 @@
 #include "glm/fwd.hpp"
+#include <exception>
+//#include <imgui_impl_opengl3.h>
+//#include <imgui.h>
+//#include <imgui_impl_glfw.h>
 #define GLFW_INCLUDE_NONE
 #include <bismuth/logging.hpp>
 #include <GLFW/glfw3.h>
 #include <bismuth/application.hpp>
+#include <bismuth/guimanager.hpp>
 #include <memory>
 #include <glm/glm.hpp>
 #ifdef __EMSCRIPTEN__
 #include <emscripten/emscripten.h>
 #endif
+
 
 using namespace bi;
 
@@ -26,6 +32,7 @@ void Application::construct(int width, int height, std::string title) {
     this->assetmanager = std::make_unique<AssetManager>();
     this->renderer = std::make_unique<Renderer>(this->window, this->camera, *this->assetmanager);
     this->audioManager = std::make_unique<AudioManager>();
+    this->guimanager = std::make_unique<GuiManager>(this->getWindow());
 }
 
 Application::~Application() {
@@ -55,6 +62,8 @@ void Application::emLoop() {
         update(dt);
         renderer->clear(glm::vec4(0.7f, 0.0f, 0.5f, 1.0f));
         renderer->render(dt);
+        guimanager->newFrame();
+        guimanager->render();
     }
     window->swapBuffers();
     endTime = glfwGetTime();
@@ -73,7 +82,6 @@ void Application::loop() {
 
     //float lastFrameTime = 0.0f;
     //float lastUpdateTime = 0.0f;
-
     while (!window->windowShouldClose()) {
 
         window->pollEvents();
@@ -83,6 +91,9 @@ void Application::loop() {
             renderer->clear(glm::vec4(0.7f, 0.0f, 0.5f, 1.0f));
             update(dt);
             renderer->render(dt);
+
+            guimanager->newFrame();
+            guimanager->render();
         }
 
         window->swapBuffers();
@@ -97,8 +108,10 @@ void Application::applicationInit() {
     log("Application: init");
     this->window->init();
     this->renderer->init();
+    this->guimanager->init();
     //this->audioManager->init();
 }
+
 
 
 Renderer& Application::getRenderer() {
@@ -120,6 +133,7 @@ AudioManager& Application::getAudioManager() {
 AssetManager& Application::getAssetManager() {
     return *this->assetmanager;
 }
+
 
 
 

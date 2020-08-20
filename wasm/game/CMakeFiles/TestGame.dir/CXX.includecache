@@ -1893,6 +1893,8 @@ bismuth/audiomanager.hpp
 -
 bismuth/assetmanager.hpp
 -
+bismuth/guimanager.hpp
+-
 memory
 -
 
@@ -1914,6 +1916,10 @@ bismuth/sound.hpp
 
 ../bismuth/include/bismuth/camera.hpp
 glm/glm.hpp
+-
+
+../bismuth/include/bismuth/guimanager.hpp
+bismuth/window.hpp
 -
 
 ../bismuth/include/bismuth/keylistener.hpp

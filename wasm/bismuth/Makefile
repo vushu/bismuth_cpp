@@ -271,6 +271,33 @@ src/core/glhelper.cpp.s:
 	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/glhelper.cpp.s
 .PHONY : src/core/glhelper.cpp.s
 
+src/core/guimanager.o: src/core/guimanager.cpp.o
+
+.PHONY : src/core/guimanager.o
+
+# target to build an object file
+src/core/guimanager.cpp.o:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/guimanager.cpp.o
+.PHONY : src/core/guimanager.cpp.o
+
+src/core/guimanager.i: src/core/guimanager.cpp.i
+
+.PHONY : src/core/guimanager.i
+
+# target to preprocess a source file
+src/core/guimanager.cpp.i:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/guimanager.cpp.i
+.PHONY : src/core/guimanager.cpp.i
+
+src/core/guimanager.s: src/core/guimanager.cpp.s
+
+.PHONY : src/core/guimanager.s
+
+# target to generate assembly for a file
+src/core/guimanager.cpp.s:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/guimanager.cpp.s
+.PHONY : src/core/guimanager.cpp.s
+
 src/core/keylistener.o: src/core/keylistener.cpp.o
 
 .PHONY : src/core/keylistener.o
@@ -595,6 +622,60 @@ src/core/window.cpp.s:
 	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/core/window.cpp.s
 .PHONY : src/core/window.cpp.s
 
+src/imgui/imgui_impl_glfw.o: src/imgui/imgui_impl_glfw.cpp.o
+
+.PHONY : src/imgui/imgui_impl_glfw.o
+
+# target to build an object file
+src/imgui/imgui_impl_glfw.cpp.o:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_glfw.cpp.o
+.PHONY : src/imgui/imgui_impl_glfw.cpp.o
+
+src/imgui/imgui_impl_glfw.i: src/imgui/imgui_impl_glfw.cpp.i
+
+.PHONY : src/imgui/imgui_impl_glfw.i
+
+# target to preprocess a source file
+src/imgui/imgui_impl_glfw.cpp.i:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_glfw.cpp.i
+.PHONY : src/imgui/imgui_impl_glfw.cpp.i
+
+src/imgui/imgui_impl_glfw.s: src/imgui/imgui_impl_glfw.cpp.s
+
+.PHONY : src/imgui/imgui_impl_glfw.s
+
+# target to generate assembly for a file
+src/imgui/imgui_impl_glfw.cpp.s:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_glfw.cpp.s
+.PHONY : src/imgui/imgui_impl_glfw.cpp.s
+
+src/imgui/imgui_impl_opengl3.o: src/imgui/imgui_impl_opengl3.cpp.o
+
+.PHONY : src/imgui/imgui_impl_opengl3.o
+
+# target to build an object file
+src/imgui/imgui_impl_opengl3.cpp.o:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_opengl3.cpp.o
+.PHONY : src/imgui/imgui_impl_opengl3.cpp.o
+
+src/imgui/imgui_impl_opengl3.i: src/imgui/imgui_impl_opengl3.cpp.i
+
+.PHONY : src/imgui/imgui_impl_opengl3.i
+
+# target to preprocess a source file
+src/imgui/imgui_impl_opengl3.cpp.i:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_opengl3.cpp.i
+.PHONY : src/imgui/imgui_impl_opengl3.cpp.i
+
+src/imgui/imgui_impl_opengl3.s: src/imgui/imgui_impl_opengl3.cpp.s
+
+.PHONY : src/imgui/imgui_impl_opengl3.s
+
+# target to generate assembly for a file
+src/imgui/imgui_impl_opengl3.cpp.s:
+	cd /home/vushu/coding/cpp/somethingcpp/wasm && $(MAKE) -f bismuth/CMakeFiles/bismuth.dir/build.make bismuth/CMakeFiles/bismuth.dir/src/imgui/imgui_impl_opengl3.cpp.s
+.PHONY : src/imgui/imgui_impl_opengl3.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -620,6 +701,9 @@ help:
 	@echo "... src/core/glhelper.o"
 	@echo "... src/core/glhelper.i"
 	@echo "... src/core/glhelper.s"
+	@echo "... src/core/guimanager.o"
+	@echo "... src/core/guimanager.i"
+	@echo "... src/core/guimanager.s"
 	@echo "... src/core/keylistener.o"
 	@echo "... src/core/keylistener.i"
 	@echo "... src/core/keylistener.s"
@@ -656,6 +740,12 @@ help:
 	@echo "... src/core/window.o"
 	@echo "... src/core/window.i"
 	@echo "... src/core/window.s"
+	@echo "... src/imgui/imgui_impl_glfw.o"
+	@echo "... src/imgui/imgui_impl_glfw.i"
+	@echo "... src/imgui/imgui_impl_glfw.s"
+	@echo "... src/imgui/imgui_impl_opengl3.o"
+	@echo "... src/imgui/imgui_impl_opengl3.i"
+	@echo "... src/imgui/imgui_impl_opengl3.s"
 .PHONY : help
 
 

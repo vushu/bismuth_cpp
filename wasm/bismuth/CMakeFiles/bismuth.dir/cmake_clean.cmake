@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/camera.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/guimanager.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/logging.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o"
@@ -16,6 +17,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/texture.cpp.o"
   "CMakeFiles/bismuth.dir/src/core/window.cpp.o"
+  "CMakeFiles/bismuth.dir/src/imgui/imgui_impl_glfw.cpp.o"
+  "CMakeFiles/bismuth.dir/src/imgui/imgui_impl_opengl3.cpp.o"
   "libbismuth.a"
   "libbismuth.pdb"
 )
