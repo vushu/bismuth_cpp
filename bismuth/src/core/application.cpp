@@ -59,11 +59,9 @@ void Application::init() { }
 void Application::emLoop() {
     window->pollEvents();
     if (dt >= 0) {
-        update(dt);
         renderer->clear(glm::vec4(0.7f, 0.0f, 0.5f, 1.0f));
+        update(dt);
         renderer->render(dt);
-        guimanager->newFrame();
-        guimanager->render();
     }
     window->swapBuffers();
     endTime = glfwGetTime();
@@ -77,7 +75,8 @@ void Application::loop() {
 
     float beginTime = glfwGetTime();
     float endTime = glfwGetTime();
-    float dt = -1.0f;
+    //float dt = -1.0f;
+    float dt = 1.0f/60.0f;
     //float accumulator = 0;
 
     //float lastFrameTime = 0.0f;
@@ -86,15 +85,12 @@ void Application::loop() {
 
         window->pollEvents();
 
-
-        if (dt >= 0 && dt) {
-            renderer->clear(glm::vec4(0.7f, 0.0f, 0.5f, 1.0f));
-            update(dt);
-            renderer->render(dt);
-
-            guimanager->newFrame();
-            guimanager->render();
-        }
+        //remove if
+        //if (dt >= 0 && dt) {
+        renderer->clear(glm::vec4(0.78f, 0.78f, 0.78f, 1.0f));
+        renderer->render(dt);
+        update(dt);
+        //}
 
         window->swapBuffers();
         endTime = glfwGetTime();
@@ -108,7 +104,7 @@ void Application::applicationInit() {
     log("Application: init");
     this->window->init();
     this->renderer->init();
-    this->guimanager->init();
+    //this->guimanager->init();
     //this->audioManager->init();
 }
 
@@ -132,6 +128,10 @@ AudioManager& Application::getAudioManager() {
 
 AssetManager& Application::getAssetManager() {
     return *this->assetmanager;
+}
+
+GuiManager& Application::getGuiManager() {
+    return *this->guimanager;
 }
 
 

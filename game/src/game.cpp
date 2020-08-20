@@ -11,6 +11,7 @@
 #include <box2d/box2d.h>
 #include <bismuth/physicsmanager.hpp>
 #include <bismuth/assetmanager.hpp>
+#include <imgui/imgui.h>
 using namespace bi;
 
 MyGame::~MyGame() {}
@@ -65,6 +66,9 @@ void MyGame::update(float dt) {
         s1->isPause = false;
     }
 
+    getGuiManager().newFrame();
+    getGuiManager().render();
+
     renderSystem.update(this->getRenderer(), dt, world, this->registry);
     //update world
     //world.Step(1.0f/60.0f, 6, 2);
@@ -76,9 +80,20 @@ void MyGame::update(float dt) {
     // since we are using variable time put dt
     world.Step(dt, velocityIterations, positionIterations);
 
+    //ImGui::Begin("Hello");
+
+    //ImGui::Text("HEJ");
+    //ImGui::SliderFloat("Posision", float *v, float v_min, float v_max, const char *format, float power)
+    //ImGui::End();
+
+
 }
 
 void MyGame::init() {
+
+    getGuiManager().init();
+
+
 
     s1 = std::make_shared<bi::Sound>("resources/assets/audio/test.wav");
     s2 = std::make_shared<bi::Sound>("resources/assets/audio/music2.mp3");
@@ -109,8 +124,6 @@ void MyGame::init() {
     //.sprite("resources/assets/images/tennis.png")
     //.buildEnemy(this->getRenderer(), this->world, this->registry, true);
     EntityBuilder en;
-    EntityBuilder en2;
-    EntityBuilder en3;
 
     en.at(0, 590)
         .size(1000, 10)
@@ -119,14 +132,14 @@ void MyGame::init() {
         //.sprite("resources/assets/images/tennis.png")
         .buildEnemy(this->getRenderer(), this->world, this->registry, true, true);
 
-    en2.at(0, 0)
+    en.at(0, 0)
         .size(10, 600)
         .vel(3, 2)
         .setColor(glm::vec4(0,1,0,1))
         //.sprite("resources/assets/images/tennis.png")
         .buildEnemy(this->getRenderer(), this->world, this->registry, true, true);
 
-    en3.at(590, 0)
+    en.at(790, 0)
         .size(10, 600)
         .vel(3, 2)
         .setColor(glm::vec4(0,0,1,1))
@@ -134,12 +147,6 @@ void MyGame::init() {
         .buildEnemy(this->getRenderer(), this->world, this->registry, true, true);
 
 
-    //entitybuilder2->at(95, 300)
-    //.size(100, 100)
-    //.vel(3, 2)
-    //.setColor(glm::vec4(1,0,0,1))
-    //.sprite("resources/assets/images/tennis.png")
-    //.buildEnemy(this->getRenderer(), this->world, this->registry, true);
     for (int i = 0; i < 220; i++) {
         EntityBuilder entitybuilder;
         entitybuilder.at(60 + (i), 10 + i)
@@ -150,6 +157,7 @@ void MyGame::init() {
             .sprite("resources/assets/images/tennis.png", this->getAssetManager())
             .buildEnemy(this->getRenderer(), this->world, this->registry, false, false);
     }
+
 
 
     //entitybuilder->at(120, 200)

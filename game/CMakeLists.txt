@@ -11,8 +11,6 @@ set(BOX2D_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/box2d")
 set(GLM_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/glm")
 
 
-
-
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
     set (source "${CMAKE_CURRENT_LIST_DIR}/resources")
     set (destination "${CMAKE_CURRENT_BINARY_DIR}/resources")

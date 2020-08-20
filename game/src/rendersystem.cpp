@@ -26,15 +26,6 @@ void RenderSystem::update(bi::Renderer& renderer, float dt, b2World& world, entt
     for (b2Body* b = world.GetBodyList(); b; b=b->GetNext()){
         if (b->GetUserData() != NULL) {
             bi::SpriteRenderer* spr = (bi::SpriteRenderer*) b->GetUserData();
-            //bi::log("has userDAT yeah");
-            //bi::log(glm::to_string(spr->position));
-
-            //bi::log("Box2d");
-            //bi::log(std::to_string(b->GetPosition().x));
-            //bi::log(std::to_string(b->GetPosition().y));
-            // we move it back to left upper corner since box2d origin is at the center
-            //spr->setPosition(glm::vec2(b->GetPosition().x  * bi::M2P,  b->GetPosition().y * bi::M2P));
-            //spr->setRotation(b->GetAngle() / 180.0f * glm::pi<float>());
             spr->setPosition(glm::vec2((b->GetPosition().x  - spr->scale.x * 0.5f * bi::P2M) * bi::M2P,  (b->GetPosition().y - spr->scale.y * 0.5f * bi::P2M) * bi::M2P));
             spr->setRotation(b->GetAngle());
 

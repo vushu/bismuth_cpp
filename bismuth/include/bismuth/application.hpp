@@ -23,6 +23,7 @@ namespace bi {
             Camera& getCamera();
             AudioManager& getAudioManager();
             AssetManager& getAssetManager();
+            GuiManager& getGuiManager();
             //static void emscriptenloop(void* arg);
         protected:
 

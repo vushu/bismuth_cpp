@@ -88,7 +88,7 @@ else()
     find_package(glfw3 3.3 REQUIRED)
     #find_package(glm REQUIRED)
     #target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad openal miniaudio)
-    target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad imgui miniaudio PUBLIC box2d)
+    target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad miniaudio PUBLIC box2d imgui)
 endif()
 
 add_subdirectory(tests)

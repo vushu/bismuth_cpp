@@ -39,7 +39,7 @@ EntityBuilder& EntityBuilder::sprite(std::string filepath, bi::AssetManager& ass
 }
 void EntityBuilder::buildEnemy(bi::Renderer& renderer, b2World& world, entt::registry& registry, bool isStatic, bool isBox) {
 
-    bi::log("create entity");
+    //bi::log("create entity");
     if (spr == nullptr) {
         bi::log("null spr");
         spr = std::make_shared<bi::SpriteRenderer>(std::make_unique<bi::Sprite>());
@@ -71,8 +71,8 @@ void EntityBuilder::buildBox(b2World& world, bi::Renderer& renderer, bool isStat
     float y = (this->position.y + this->scale.y * 0.5f) * bi::P2M;
     //float x = this->position.x  * bi::P2M;
     //float y = this->position.y  * bi::P2M;
-    bi::log("x: " + std::to_string(x));
-    bi::log("y: " + std::to_string(y));
+    //bi::log("x: " + std::to_string(x));
+    //bi::log("y: " + std::to_string(y));
     bodyDef.position.Set(x, y);
     b2MassData massData;
     massData.mass = 10;
@@ -122,12 +122,12 @@ void EntityBuilder::buildBox(b2World& world, bi::Renderer& renderer, bool isStat
 
         body->CreateFixture(&fixtureDef2);
     }
-    //reset();
+    reset();
 }
 
 void EntityBuilder::buildPlayer(bi::Renderer& renderer, entt::registry& registry) {
 
-    bi::log("create entity");
+    //bi::log("create entity");
     if (spr == nullptr) {
         bi::log("null spr");
         spr = std::make_shared<bi::SpriteRenderer>(std::make_unique<bi::Sprite>());

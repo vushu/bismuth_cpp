@@ -177,7 +177,7 @@ int RenderBatch::addSprite(std::shared_ptr<SpriteRenderer> sprite) {
         }
     }
     this->sprites.push_back(sprite);
-    log("Added sprite");
+    //log("Added sprite");
     loadVertexProperties(this->sprites.size() - 1);
     numberOfSprite++;
     if (numberOfSprite == 1000) {
@@ -190,8 +190,8 @@ int RenderBatch::addSprite(std::shared_ptr<SpriteRenderer> sprite) {
 void RenderBatch::render() {
     bool rebufferData = false;
 
-    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
+    //glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    //glClear(GL_COLOR_BUFFER_BIT);
 
     for (unsigned int i = 0; i < sprites.size(); i++) {
         auto& spr = this->sprites.at(i);
