@@ -66,36 +66,36 @@ void RenderBatch::loadVertexProperties(int index) {
 
     int offsetVerts = index * 4 * VERTEX_SIZE;
     //rotation
-    glm::vec2 halfDims(sprite->scale / 2.0f);
+    glm::vec2 halfDims(sprite->scale * 0.5f);
     glm::vec2 tl(-halfDims.x, halfDims.y);
     glm::vec2 bl(-halfDims.x, -halfDims.y);
     glm::vec2 br(halfDims.x, -halfDims.y);
     glm::vec2 tr(halfDims.x, halfDims.y);
 
-    //if index 0 then offset is 0
-    // Load position of the GameObject
-    //vertices[offset] = sprite->position.x + (xAdd * sprite->scale.x);
-
-    //vertices[offset + 1] = sprite->position.y + (yAdd * sprite->scale.y);
     float angle = sprite->angleDegrees;
 
+    // we are now setting the points by angle
     glm::vec2 topLeft = rotatePoint(tl, angle) + halfDims + sprite->position;
     glm::vec2 botLeft = rotatePoint(bl, angle) + halfDims + sprite->position;
     glm::vec2 botRight = rotatePoint(br, angle) + halfDims + sprite->position;
     glm::vec2 topRight = rotatePoint(tr, angle) + halfDims + sprite->position;
 
+    //
+    //Vertex1
     vertices[offsetVerts] = botRight.x;
     vertices[offsetVerts + 1] = botRight.y;
 
+    //Vertex2
     vertices[offsetVerts + 1 * VERTEX_SIZE] = topRight.x;
     vertices[offsetVerts + 1 * VERTEX_SIZE + 1] = topRight.y;
 
+    //Vertex3
     vertices[offsetVerts + 2 * VERTEX_SIZE] = topLeft.x;
     vertices[offsetVerts + 2 * VERTEX_SIZE + 1] = topLeft.y;
-    //
+
+    //Vertex4
     vertices[offsetVerts + 3 * VERTEX_SIZE] = botLeft.x;
     vertices[offsetVerts + 3 * VERTEX_SIZE + 1] = botLeft.y;
-    //
 
     int offset = index * 4 * VERTEX_SIZE;
     for (int i = 0; i < 4; i++) {
@@ -223,9 +223,9 @@ void RenderBatch::render() {
     }
 
     shader->use();
+    shader->uploadUniformMat4("uMvp", camera->projectionMatrix * camera->viewMatrix);
 
     //shader->uploadUniformMat4("uMvp", camera->viewMatrix * camera->projectionMatrix);
-    shader->uploadUniformMat4("uMvp", camera->projectionMatrix * camera->viewMatrix);
     //shader->uploadUniformMat4("uProjection", camera->projectionMatrix);
     //shader->uploadUniformMat4("uView", camera->viewMatrix);
 
@@ -261,10 +261,10 @@ void RenderBatch::render() {
     //for (glm::mat4 m : models) {
     //log("Models: " + glm::to_string(m));
     //}
-    GLint maxUniformVectors;
-    glGetIntegeri_v(GL_MAX_VERTEX_UNIFORM_VECTORS,1, &maxUniformVectors);
-    log("maxUniforms: " + std::to_string(maxUniformVectors));
-    log("sprites: " + std::to_string(sprites.size()));
+    //GLint maxUniformVectors;
+    //glGetIntegeri_v(GL_MAX_VERTEX_UNIFORM_VECTORS,1, &maxUniformVectors);
+    //log("maxUniforms: " + std::to_string(maxUniformVectors));
+    //log("sprites: " + std::to_string(sprites.size()));
     //upload models
     //glUniformMatrix4fv(glGetUniformLocation(shader->shaderProgramId, "uModels"), models.size(), GL_FALSE, glm::value_ptr(models[0]));
 

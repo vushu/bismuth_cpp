@@ -1,2 +1,0 @@
-/home/vushu/coding/repos/emsdk/upstream/emscripten/emar qc libminiaudio.a  CMakeFiles/miniaudio.dir/src/miniaudio.c.o
-/home/vushu/coding/repos/emsdk/upstream/emscripten/emranlib libminiaudio.a

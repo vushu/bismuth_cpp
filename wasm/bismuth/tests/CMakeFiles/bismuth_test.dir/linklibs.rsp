@@ -1,1 +1,0 @@
- ../libbismuth.a -s USE_GLFW=3 ../externals/glad/libglad.a ../externals/miniaudio/libminiaudio.a ../externals/box2d/src/libbox2d.a ../externals/imgui/libimgui.a 

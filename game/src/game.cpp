@@ -72,7 +72,7 @@ void MyGame::update(float dt) {
     //float timeStep = 1.0f/60.0f;      //the length of time passed to simulate (seconds)
     int velocityIterations = 6;   //how strongly to correct velocity
     int positionIterations = 2;   //how strongly to correct position
-    bi::log("FPS: " + std::to_string(1.0f/dt));
+    //bi::log("FPS: " + std::to_string(1.0f/dt));
     // since we are using variable time put dt
     world.Step(dt, velocityIterations, positionIterations);
 

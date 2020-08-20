@@ -1,1 +1,0 @@
-/home/vushu/coding/repos/emsdk/upstream/emscripten/em++   -Wall -Wall   @CMakeFiles/TestGame.dir/objects1.rsp  -o ../bin/TestGame.html @CMakeFiles/TestGame.dir/linklibs.rsp

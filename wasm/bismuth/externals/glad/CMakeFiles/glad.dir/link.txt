@@ -1,2 +1,0 @@
-/home/vushu/coding/repos/emsdk/upstream/emscripten/emar qc libglad.a  CMakeFiles/glad.dir/src/glad.c.o
-/home/vushu/coding/repos/emsdk/upstream/emscripten/emranlib libglad.a
