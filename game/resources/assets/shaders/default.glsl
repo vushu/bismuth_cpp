@@ -8,8 +8,9 @@ in vec2 aTexCoords;
 in float aTexId;
 //in float aModelId;
 
-uniform mat4 uProjection;
-uniform mat4 uView;
+//uniform mat4 uProjection;
+//uniform mat4 uView;
+uniform mat4 uMvp;
 //uniform mat4 uModels[254];
 //uniform mat4 uModels[253];
 uniform sampler2D uTexture;
@@ -25,7 +26,7 @@ void main() {
     //highp int index = int(aModelId);
 
     //gl_Position = uProjection * uView * uModels[index] * vec4(aPos, 1.0);
-    gl_Position = uProjection * uView * vec4(aPos, 1.0);
+    gl_Position = uMvp * vec4(aPos, 1.0);
 }
 
 #type fragment

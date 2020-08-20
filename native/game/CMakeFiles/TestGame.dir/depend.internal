@@ -203,20 +203,6 @@ game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o
  /home/vushu/coding/cpp/somethingcpp/game/src/components.hpp
  /home/vushu/coding/cpp/somethingcpp/game/src/entitybuilder.cpp
  /home/vushu/coding/cpp/somethingcpp/game/src/entitybuilder.hpp
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/gl.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glu.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/gl.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glplatform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2ext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2platform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl31.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3platform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLFW/glfw3.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h
 game/CMakeFiles/TestGame.dir/src/game.cpp.o
  ../bismuth/externals/box2d/include/box2d/b2_block_allocator.h
  ../bismuth/externals/box2d/include/box2d/b2_body.h
@@ -890,17 +876,3 @@ game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o
  /home/vushu/coding/cpp/somethingcpp/game/src/components.hpp
  /home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.cpp
  /home/vushu/coding/cpp/somethingcpp/game/src/rendersystem.hpp
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/gl.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glu.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/gl.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glplatform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2ext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2platform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl31.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3platform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLFW/glfw3.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h

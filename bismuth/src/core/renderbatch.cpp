@@ -221,8 +221,10 @@ void RenderBatch::render() {
 
     shader->use();
 
-    shader->uploadUniformMat4("uProjection", camera->projectionMatrix);
-    shader->uploadUniformMat4("uView", camera->viewMatrix);
+    //shader->uploadUniformMat4("uMvp", camera->viewMatrix * camera->projectionMatrix);
+    shader->uploadUniformMat4("uMvp", camera->projectionMatrix * camera->viewMatrix);
+    //shader->uploadUniformMat4("uProjection", camera->projectionMatrix);
+    //shader->uploadUniformMat4("uView", camera->viewMatrix);
 
     //std::vector<glm::mat4> models;
     //rotation

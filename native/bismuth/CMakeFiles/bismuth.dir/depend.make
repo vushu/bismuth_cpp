@@ -178,55 +178,6 @@ bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: ../bismuth/include/b
 bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: ../bismuth/include/bismuth/logging.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: ../bismuth/include/bismuth/sound.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: ../bismuth/src/core/audiomanager.cpp
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_assert.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_atomic.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_audio.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_blendmode.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_clipboard.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_compat.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_android.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_iphoneos.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_macosx.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_minimal.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_nintendods.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_windows.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_cpuinfo.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_endian.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_error.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_events.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_gesture.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_hints.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_joystick.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_keyboard.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_keycode.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_loadso.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_log.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_main.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_mouse.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_mutex.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_pixels.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_platform.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_power.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_quit.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_rect.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_render.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_rwops.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_scancode.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_stdinc.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_surface.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_thread.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_timer.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_touch.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_version.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_video.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/begin_code.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/close_code.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_asm.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_js.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_macros.h
-bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/emscripten.h
 
 bismuth/CMakeFiles/bismuth.dir/src/core/camera.cpp.o: ../bismuth/externals/glm/glm/common.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/camera.cpp.o: ../bismuth/externals/glm/glm/detail/_fixes.hpp
@@ -387,6 +338,7 @@ bismuth/CMakeFiles/bismuth.dir/src/core/camera.cpp.o: ../bismuth/include/bismuth
 bismuth/CMakeFiles/bismuth.dir/src/core/camera.cpp.o: ../bismuth/include/bismuth/logging.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/camera.cpp.o: ../bismuth/src/core/camera.cpp
 
+bismuth/CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o: ../bismuth/externals/glad/include/KHR/khrplatform.h
 bismuth/CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o: ../bismuth/externals/glad/include/glad/glad.h
 bismuth/CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o: ../bismuth/externals/glm/glm/common.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o: ../bismuth/externals/glm/glm/detail/_fixes.hpp
@@ -593,7 +545,6 @@ bismuth/CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o: ../bismuth/externals/stb
 bismuth/CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o: ../bismuth/include/bismuth/glhelper.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o: ../bismuth/include/bismuth/logging.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o: ../bismuth/src/core/glhelper.cpp
-bismuth/CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h
 
 bismuth/CMakeFiles/bismuth.dir/src/core/guimanager.cpp.o: ../bismuth/externals/imgui/include/imgui/imconfig.h
 bismuth/CMakeFiles/bismuth.dir/src/core/guimanager.cpp.o: ../bismuth/externals/imgui/include/imgui/imgui.h
@@ -606,40 +557,12 @@ bismuth/CMakeFiles/bismuth.dir/src/core/guimanager.cpp.o: ../bismuth/src/core/gu
 bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o: ../bismuth/include/bismuth/keylistener.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o: ../bismuth/include/bismuth/logging.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o: ../bismuth/src/core/keylistener.cpp
-bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/gl.h
-bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glext.h
-bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glu.h
-bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/gl.h
-bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glext.h
-bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glplatform.h
-bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2.h
-bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2ext.h
-bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2platform.h
-bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3.h
-bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl31.h
-bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3platform.h
-bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLFW/glfw3.h
-bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h
 
 bismuth/CMakeFiles/bismuth.dir/src/core/logging.cpp.o: ../bismuth/include/bismuth/logging.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/logging.cpp.o: ../bismuth/src/core/logging.cpp
 
 bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o: ../bismuth/include/bismuth/mouselistener.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o: ../bismuth/src/core/mouselistener.cpp
-bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/gl.h
-bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glext.h
-bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glu.h
-bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/gl.h
-bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glext.h
-bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glplatform.h
-bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2.h
-bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2ext.h
-bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2platform.h
-bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3.h
-bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl31.h
-bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3platform.h
-bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLFW/glfw3.h
-bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h
 
 bismuth/CMakeFiles/bismuth.dir/src/core/physicsmanager.cpp.o: ../bismuth/externals/box2d/include/box2d/b2_block_allocator.h
 bismuth/CMakeFiles/bismuth.dir/src/core/physicsmanager.cpp.o: ../bismuth/externals/box2d/include/box2d/b2_body.h
@@ -679,6 +602,7 @@ bismuth/CMakeFiles/bismuth.dir/src/core/physicsmanager.cpp.o: ../bismuth/externa
 bismuth/CMakeFiles/bismuth.dir/src/core/physicsmanager.cpp.o: ../bismuth/include/bismuth/physicsmanager.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/physicsmanager.cpp.o: ../bismuth/src/core/physicsmanager.cpp
 
+bismuth/CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o: ../bismuth/externals/glad/include/KHR/khrplatform.h
 bismuth/CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o: ../bismuth/externals/glad/include/glad/glad.h
 bismuth/CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o: ../bismuth/externals/glm/glm/common.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o: ../bismuth/externals/glm/glm/detail/_fixes.hpp
@@ -896,8 +820,8 @@ bismuth/CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o: ../bismuth/include/bi
 bismuth/CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o: ../bismuth/include/bismuth/spriterenderer.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o: ../bismuth/include/bismuth/texture.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o: ../bismuth/src/core/renderbatch.cpp
-bismuth/CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h
 
+bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: ../bismuth/externals/glad/include/KHR/khrplatform.h
 bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: ../bismuth/externals/glad/include/glad/glad.h
 bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: ../bismuth/externals/glm/glm/common.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: ../bismuth/externals/glm/glm/detail/_fixes.hpp
@@ -1061,21 +985,8 @@ bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: ../bismuth/include/bismu
 bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: ../bismuth/include/bismuth/texture.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: ../bismuth/include/bismuth/window.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: ../bismuth/src/core/renderer.cpp
-bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/gl.h
-bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glext.h
-bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glu.h
-bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/gl.h
-bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glext.h
-bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glplatform.h
-bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2.h
-bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2ext.h
-bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2platform.h
-bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3.h
-bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl31.h
-bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3platform.h
-bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLFW/glfw3.h
-bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h
 
+bismuth/CMakeFiles/bismuth.dir/src/core/shader.cpp.o: ../bismuth/externals/glad/include/KHR/khrplatform.h
 bismuth/CMakeFiles/bismuth.dir/src/core/shader.cpp.o: ../bismuth/externals/glad/include/glad/glad.h
 bismuth/CMakeFiles/bismuth.dir/src/core/shader.cpp.o: ../bismuth/externals/glm/glm/common.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/shader.cpp.o: ../bismuth/externals/glm/glm/detail/_fixes.hpp
@@ -1232,61 +1143,11 @@ bismuth/CMakeFiles/bismuth.dir/src/core/shader.cpp.o: ../bismuth/include/bismuth
 bismuth/CMakeFiles/bismuth.dir/src/core/shader.cpp.o: ../bismuth/include/bismuth/logging.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/shader.cpp.o: ../bismuth/include/bismuth/shader.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/shader.cpp.o: ../bismuth/src/core/shader.cpp
-bismuth/CMakeFiles/bismuth.dir/src/core/shader.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h
 
 bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: ../bismuth/externals/miniaudio/include/miniaudio/miniaudio.h
 bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: ../bismuth/include/bismuth/logging.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: ../bismuth/include/bismuth/sound.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: ../bismuth/src/core/sound.cpp
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_assert.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_atomic.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_audio.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_blendmode.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_clipboard.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_compat.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_android.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_iphoneos.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_macosx.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_minimal.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_nintendods.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_windows.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_cpuinfo.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_endian.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_error.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_events.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_gesture.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_hints.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_joystick.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_keyboard.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_keycode.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_loadso.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_log.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_main.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_mouse.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_mutex.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_pixels.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_platform.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_power.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_quit.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_rect.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_render.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_rwops.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_scancode.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_stdinc.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_surface.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_thread.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_timer.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_touch.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_version.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_video.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/begin_code.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/close_code.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_asm.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_js.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_macros.h
-bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/emscripten.h
 
 bismuth/CMakeFiles/bismuth.dir/src/core/sprite.cpp.o: ../bismuth/externals/glm/glm/common.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/sprite.cpp.o: ../bismuth/externals/glm/glm/detail/_fixes.hpp
@@ -1606,6 +1467,7 @@ bismuth/CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o: ../bismuth/include
 bismuth/CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o: ../bismuth/include/bismuth/texture.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o: ../bismuth/src/core/spriterenderer.cpp
 
+bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o: ../bismuth/externals/glad/include/KHR/khrplatform.h
 bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o: ../bismuth/externals/glad/include/glad/glad.h
 bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o: ../bismuth/externals/glm/glm/detail/qualifier.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o: ../bismuth/externals/glm/glm/detail/setup.hpp
@@ -1616,7 +1478,6 @@ bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o: ../bismuth/include/bismut
 bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o: ../bismuth/include/bismuth/logging.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o: ../bismuth/include/bismuth/texture.hpp
 bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o: ../bismuth/src/core/texture.cpp
-bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h
 
 bismuth/CMakeFiles/bismuth.dir/src/core/window.cpp.o: ../bismuth/externals/glad/include/KHR/khrplatform.h
 bismuth/CMakeFiles/bismuth.dir/src/core/window.cpp.o: ../bismuth/externals/glad/include/glad/glad.h

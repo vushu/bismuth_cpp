@@ -179,55 +179,6 @@ bismuth/CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o
  ../bismuth/include/bismuth/logging.hpp
  ../bismuth/include/bismuth/sound.hpp
  /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/audiomanager.cpp
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_assert.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_atomic.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_audio.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_blendmode.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_clipboard.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_compat.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_android.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_iphoneos.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_macosx.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_minimal.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_nintendods.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_windows.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_cpuinfo.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_endian.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_error.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_events.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_gesture.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_hints.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_joystick.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_keyboard.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_keycode.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_loadso.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_log.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_main.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_mouse.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_mutex.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_pixels.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_platform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_power.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_quit.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_rect.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_render.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_rwops.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_scancode.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_stdinc.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_surface.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_thread.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_timer.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_touch.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_version.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_video.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/begin_code.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/close_code.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_asm.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_js.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_macros.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/emscripten.h
 bismuth/CMakeFiles/bismuth.dir/src/core/camera.cpp.o
  ../bismuth/externals/glm/glm/common.hpp
  ../bismuth/externals/glm/glm/detail/_fixes.hpp
@@ -388,6 +339,7 @@ bismuth/CMakeFiles/bismuth.dir/src/core/camera.cpp.o
  ../bismuth/include/bismuth/logging.hpp
  /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/camera.cpp
 bismuth/CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o
+ ../bismuth/externals/glad/include/KHR/khrplatform.h
  ../bismuth/externals/glad/include/glad/glad.h
  ../bismuth/externals/glm/glm/common.hpp
  ../bismuth/externals/glm/glm/detail/_fixes.hpp
@@ -594,7 +546,6 @@ bismuth/CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o
  ../bismuth/include/bismuth/glhelper.hpp
  ../bismuth/include/bismuth/logging.hpp
  /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/glhelper.cpp
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h
 bismuth/CMakeFiles/bismuth.dir/src/core/guimanager.cpp.o
  ../bismuth/externals/imgui/include/imgui/imconfig.h
  ../bismuth/externals/imgui/include/imgui/imgui.h
@@ -607,40 +558,12 @@ bismuth/CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o
  ../bismuth/include/bismuth/keylistener.hpp
  ../bismuth/include/bismuth/logging.hpp
  /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/keylistener.cpp
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/gl.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glu.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/gl.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glplatform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2ext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2platform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl31.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3platform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLFW/glfw3.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h
 bismuth/CMakeFiles/bismuth.dir/src/core/logging.cpp.o
  ../bismuth/include/bismuth/logging.hpp
  /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/logging.cpp
 bismuth/CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o
  ../bismuth/include/bismuth/mouselistener.hpp
  /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/mouselistener.cpp
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/gl.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glu.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/gl.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glplatform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2ext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2platform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl31.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3platform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLFW/glfw3.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h
 bismuth/CMakeFiles/bismuth.dir/src/core/physicsmanager.cpp.o
  ../bismuth/externals/box2d/include/box2d/b2_block_allocator.h
  ../bismuth/externals/box2d/include/box2d/b2_body.h
@@ -680,6 +603,7 @@ bismuth/CMakeFiles/bismuth.dir/src/core/physicsmanager.cpp.o
  ../bismuth/include/bismuth/physicsmanager.hpp
  /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/physicsmanager.cpp
 bismuth/CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o
+ ../bismuth/externals/glad/include/KHR/khrplatform.h
  ../bismuth/externals/glad/include/glad/glad.h
  ../bismuth/externals/glm/glm/common.hpp
  ../bismuth/externals/glm/glm/detail/_fixes.hpp
@@ -897,8 +821,8 @@ bismuth/CMakeFiles/bismuth.dir/src/core/renderbatch.cpp.o
  ../bismuth/include/bismuth/spriterenderer.hpp
  ../bismuth/include/bismuth/texture.hpp
  /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/renderbatch.cpp
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h
 bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o
+ ../bismuth/externals/glad/include/KHR/khrplatform.h
  ../bismuth/externals/glad/include/glad/glad.h
  ../bismuth/externals/glm/glm/common.hpp
  ../bismuth/externals/glm/glm/detail/_fixes.hpp
@@ -1062,21 +986,8 @@ bismuth/CMakeFiles/bismuth.dir/src/core/renderer.cpp.o
  ../bismuth/include/bismuth/texture.hpp
  ../bismuth/include/bismuth/window.hpp
  /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/renderer.cpp
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/gl.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glu.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/gl.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glplatform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2ext.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2platform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl31.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3platform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLFW/glfw3.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h
 bismuth/CMakeFiles/bismuth.dir/src/core/shader.cpp.o
+ ../bismuth/externals/glad/include/KHR/khrplatform.h
  ../bismuth/externals/glad/include/glad/glad.h
  ../bismuth/externals/glm/glm/common.hpp
  ../bismuth/externals/glm/glm/detail/_fixes.hpp
@@ -1233,61 +1144,11 @@ bismuth/CMakeFiles/bismuth.dir/src/core/shader.cpp.o
  ../bismuth/include/bismuth/logging.hpp
  ../bismuth/include/bismuth/shader.hpp
  /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/shader.cpp
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h
 bismuth/CMakeFiles/bismuth.dir/src/core/sound.cpp.o
  ../bismuth/externals/miniaudio/include/miniaudio/miniaudio.h
  ../bismuth/include/bismuth/logging.hpp
  ../bismuth/include/bismuth/sound.hpp
  /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/sound.cpp
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_assert.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_atomic.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_audio.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_blendmode.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_clipboard.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_compat.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_android.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_iphoneos.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_macosx.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_minimal.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_nintendods.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_config_windows.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_cpuinfo.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_endian.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_error.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_events.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_gesture.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_hints.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_joystick.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_keyboard.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_keycode.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_loadso.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_log.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_main.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_mouse.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_mutex.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_pixels.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_platform.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_power.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_quit.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_rect.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_render.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_rwops.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_scancode.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_stdinc.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_surface.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_thread.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_timer.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_touch.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_version.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/SDL_video.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/begin_code.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/SDL/close_code.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_asm.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_js.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/em_macros.h
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/emscripten/emscripten.h
 bismuth/CMakeFiles/bismuth.dir/src/core/sprite.cpp.o
  ../bismuth/externals/glm/glm/common.hpp
  ../bismuth/externals/glm/glm/detail/_fixes.hpp
@@ -1607,6 +1468,7 @@ bismuth/CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o
  ../bismuth/include/bismuth/texture.hpp
  /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/spriterenderer.cpp
 bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o
+ ../bismuth/externals/glad/include/KHR/khrplatform.h
  ../bismuth/externals/glad/include/glad/glad.h
  ../bismuth/externals/glm/glm/detail/qualifier.hpp
  ../bismuth/externals/glm/glm/detail/setup.hpp
@@ -1617,7 +1479,6 @@ bismuth/CMakeFiles/bismuth.dir/src/core/texture.cpp.o
  ../bismuth/include/bismuth/logging.hpp
  ../bismuth/include/bismuth/texture.hpp
  /home/vushu/coding/cpp/somethingcpp/bismuth/src/core/texture.cpp
- /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h
 bismuth/CMakeFiles/bismuth.dir/src/core/window.cpp.o
  ../bismuth/externals/glad/include/KHR/khrplatform.h
  ../bismuth/externals/glad/include/glad/glad.h

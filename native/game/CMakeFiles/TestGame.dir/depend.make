@@ -202,20 +202,6 @@ game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: ../bismuth/include/bismuth
 game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: ../game/src/components.hpp
 game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: ../game/src/entitybuilder.cpp
 game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: ../game/src/entitybuilder.hpp
-game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/gl.h
-game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glext.h
-game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glu.h
-game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/gl.h
-game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glext.h
-game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glplatform.h
-game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2.h
-game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2ext.h
-game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2platform.h
-game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3.h
-game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl31.h
-game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3platform.h
-game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLFW/glfw3.h
-game/CMakeFiles/TestGame.dir/src/entitybuilder.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h
 
 game/CMakeFiles/TestGame.dir/src/game.cpp.o: ../bismuth/externals/box2d/include/box2d/b2_block_allocator.h
 game/CMakeFiles/TestGame.dir/src/game.cpp.o: ../bismuth/externals/box2d/include/box2d/b2_body.h
@@ -889,18 +875,4 @@ game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: ../bismuth/include/bismuth/
 game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: ../game/src/components.hpp
 game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: ../game/src/rendersystem.cpp
 game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: ../game/src/rendersystem.hpp
-game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/gl.h
-game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glext.h
-game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GL/glu.h
-game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/gl.h
-game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glext.h
-game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES/glplatform.h
-game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2.h
-game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2ext.h
-game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES2/gl2platform.h
-game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3.h
-game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl31.h
-game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLES3/gl3platform.h
-game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/GLFW/glfw3.h
-game/CMakeFiles/TestGame.dir/src/rendersystem.cpp.o: /home/vushu/coding/repos/emsdk/upstream/emscripten/system/include/KHR/khrplatform.h
 
