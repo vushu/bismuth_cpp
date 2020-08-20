@@ -46,9 +46,10 @@ void Application::run() {
 #ifdef __EMSCRIPTEN__
     beginTime = glfwGetTime();
     endTime = glfwGetTime();
-    dt = -1.0f;
+    dt = 1.0f/60.0f;
+    //dt = -1.0f;
 #else
-    loop();
+    nativeLoop();
 #endif
 
 }
@@ -56,46 +57,47 @@ void Application::run() {
 void Application::update(float dt) { }
 void Application::init() { }
 
-void Application::emLoop() {
+void Application::loop() {
     window->pollEvents();
-    if (dt >= 0) {
-        renderer->clear(glm::vec4(0.7f, 0.0f, 0.5f, 1.0f));
-        update(dt);
-        renderer->render(dt);
-    }
+    //if (dt >= 0) {
+    renderer->clear(glm::vec4(0.30f, 0.30f, 0.30f, 1.0f));
+    renderer->render(dt);
+    update(dt);
+    //}
     window->swapBuffers();
     endTime = glfwGetTime();
     dt = endTime - beginTime;
     beginTime = endTime;
 }
 
-void Application::loop() {
+void Application::nativeLoop() {
 
     //const float FRAME_DURATION = 1.0f/60.0f;
 
-    float beginTime = glfwGetTime();
-    float endTime = glfwGetTime();
+    beginTime = glfwGetTime();
+    endTime = glfwGetTime();
     //float dt = -1.0f;
-    float dt = 1.0f/60.0f;
+    dt = 1.0f/60.0f;
     //float accumulator = 0;
 
     //float lastFrameTime = 0.0f;
     //float lastUpdateTime = 0.0f;
     while (!window->windowShouldClose()) {
 
-        window->pollEvents();
+        loop();
+        //window->pollEvents();
 
         //remove if
         //if (dt >= 0 && dt) {
-        renderer->clear(glm::vec4(0.78f, 0.78f, 0.78f, 1.0f));
-        renderer->render(dt);
-        update(dt);
+        //renderer->clear(glm::vec4(0.30f, 0.30f, 0.30f, 1.0f));
+        //renderer->render(dt);
+        //update(dt);
         //}
 
-        window->swapBuffers();
-        endTime = glfwGetTime();
-        dt = endTime - beginTime;
-        beginTime = endTime;
+        //window->swapBuffers();
+        //endTime = glfwGetTime();
+        //dt = endTime - beginTime;
+        //beginTime = endTime;
     }
 
 }

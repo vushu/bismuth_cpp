@@ -10,7 +10,7 @@
 MyGame game;
 
 void loop() {
-    game.emLoop();
+    game.loop();
 }
 int main() {
     //bi::isLogging = false;

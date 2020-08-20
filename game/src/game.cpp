@@ -66,8 +66,6 @@ void MyGame::update(float dt) {
         s1->isPause = false;
     }
 
-    getGuiManager().newFrame();
-    getGuiManager().render();
 
     renderSystem.update(this->getRenderer(), dt, world, this->registry);
     //update world
@@ -80,12 +78,13 @@ void MyGame::update(float dt) {
     // since we are using variable time put dt
     world.Step(dt, velocityIterations, positionIterations);
 
+    getGuiManager().beginDraw();
+    getGuiManager().showFPS();
     //ImGui::Begin("Hello");
-
     //ImGui::Text("HEJ");
-    //ImGui::SliderFloat("Posision", float *v, float v_min, float v_max, const char *format, float power)
     //ImGui::End();
 
+    getGuiManager().endDraw();
 
 }
 

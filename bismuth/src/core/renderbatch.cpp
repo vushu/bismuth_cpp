@@ -193,6 +193,9 @@ void RenderBatch::render() {
     //glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     //glClear(GL_COLOR_BUFFER_BIT);
 
+    if (sprites.empty())
+        return;
+
     for (unsigned int i = 0; i < sprites.size(); i++) {
         auto& spr = this->sprites.at(i);
         if (spr == nullptr) {

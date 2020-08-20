@@ -15,7 +15,7 @@ namespace bi {
             Application();
             Application(int width, int height, std::string title);
             ~Application();
-            void emLoop();
+            void loop();
             void run();
 
             Renderer& getRenderer();
@@ -39,7 +39,7 @@ namespace bi {
 
             void construct(int width, int height, std::string title);
             void applicationInit();
-            void loop();
+            void nativeLoop();
             std::string title;
             float beginTime;
             float endTime;

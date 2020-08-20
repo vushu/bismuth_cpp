@@ -7,8 +7,9 @@ namespace bi {
             GuiManager(Window& win): window(win){}
             ~GuiManager();
             void init();
-            void newFrame();
-            void render();
+            void beginDraw();
+            void endDraw();
+            void showFPS();
         private:
             Window& window;
 
