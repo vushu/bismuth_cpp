@@ -1298,20 +1298,8 @@ glm/glm.hpp
 bismuth/window.hpp
 -
 
-../bismuth/include/bismuth/keylistener.hpp
-GLFW/glfw3.h
--
-memory
--
-
 ../bismuth/include/bismuth/logging.hpp
 string
--
-
-../bismuth/include/bismuth/mouselistener.hpp
-GLFW/glfw3.h
--
-memory
 -
 
 ../bismuth/include/bismuth/renderbatch.hpp
@@ -1416,24 +1404,6 @@ imgui/imgui.h
 imgui/imgui_impl_glfw.h
 -
 imgui/imgui_impl_opengl3.h
--
-
-/home/vushu/coding/cpp/somethingcpp/bismuth/src/core/window.cpp
-bismuth/keylistener.hpp
--
-bismuth/mouselistener.hpp
--
-bismuth/window.hpp
--
-bismuth/logging.hpp
--
-glad/glad.h
--
-GLFW/glfw3.h
--
-iostream
--
-stdexcept
 -
 
 /home/vushu/coding/cpp/somethingcpp/bismuth/src/imgui/imgui_impl_glfw.cpp

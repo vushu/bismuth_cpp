@@ -130,6 +130,7 @@ void RenderBatch::init() {
 
     glGenBuffers(1, &vboId);
     glBindBuffer(GL_ARRAY_BUFFER, vboId);
+    //allocating buffer
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices),0, GL_DYNAMIC_DRAW);
     GLenum err = glGetError();
     if (err != GL_NO_ERROR) {
@@ -144,7 +145,9 @@ void RenderBatch::init() {
     std::array<GLuint, 6000> indices = generateIndices();
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, eboId);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), &indices[0], GL_STATIC_DRAW);
+    //glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), &indices[0], GL_STATIC_DRAW);
+    // Since we are changing this almost all the time we just make it dynamic
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), &indices[0], GL_DYNAMIC_DRAW);
 
 
     // Enabling attributes

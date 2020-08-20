@@ -51,6 +51,7 @@ void SpriteRenderer::setTextureCoords(std::vector<glm::vec2> coords) {
 
 void SpriteRenderer::setRotation(float angleDegrees) {
     this->angleDegrees = angleDegrees;
+    isDirty = true;
 }
 
 void SpriteRenderer::initTexture() {
