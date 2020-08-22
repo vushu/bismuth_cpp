@@ -19,8 +19,8 @@ void Texture::init() {
      this->width = textureInfo.width;
      this->height = textureInfo.height;
      bi::log("Texture initialized: " + filepath);
-     bi::log("Texture Width: " + std::to_string(this->width));
-     bi::log("Texture Height: " + std::to_string(this->height));
+     //bi::log("Texture Width: " + std::to_string(this->width));
+     //bi::log("Texture Height: " + std::to_string(this->height));
 }
 
 void Texture::bind() {

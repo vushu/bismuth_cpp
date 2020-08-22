@@ -1,9 +1,10 @@
-#include "glm/fwd.hpp"
+#include "bismuth/renderino.hpp"
 #include <exception>
 //#include <imgui_impl_opengl3.h>
 //#include <imgui.h>
 //#include <imgui_impl_glfw.h>
 #define GLFW_INCLUDE_NONE
+#include <bismuth/textrenderer.hpp>
 #include <bismuth/logging.hpp>
 #include <GLFW/glfw3.h>
 #include <bismuth/application.hpp>
@@ -30,9 +31,11 @@ void Application::construct(int width, int height, std::string title) {
     this->window = std::make_unique<Window>(width, height, title);
     this->camera = std::make_unique<Camera>();
     this->assetmanager = std::make_unique<AssetManager>();
-    this->renderer = std::make_unique<Renderer>(this->window, this->camera, *this->assetmanager);
+    //this->renderer = std::make_unique<Renderer>(this->window, this->camera, *this->assetmanager);
     this->audioManager = std::make_unique<AudioManager>();
     this->guimanager = std::make_unique<GuiManager>(this->getWindow());
+    //this->textrenderer = std::make_unique<TextRenderer>();
+    this->renderer = std::make_unique<Renderino>(*this->camera);
 }
 
 Application::~Application() {
@@ -60,8 +63,8 @@ void Application::init() { }
 void Application::loop() {
     window->pollEvents();
     //if (dt >= 0) {
-    renderer->clear(glm::vec4(0.30f, 0.30f, 0.30f, 1.0f));
-    renderer->render(dt);
+    //renderer->render(dt);
+    //renderer->clear(glm::vec4(0.30f, 0.30f, 0.30f, 1.0f));
     update(dt);
     //}
     window->swapBuffers();
@@ -79,25 +82,10 @@ void Application::nativeLoop() {
     //float dt = -1.0f;
     dt = 1.0f/60.0f;
     //float accumulator = 0;
-
     //float lastFrameTime = 0.0f;
     //float lastUpdateTime = 0.0f;
     while (!window->windowShouldClose()) {
-
         loop();
-        //window->pollEvents();
-
-        //remove if
-        //if (dt >= 0 && dt) {
-        //renderer->clear(glm::vec4(0.30f, 0.30f, 0.30f, 1.0f));
-        //renderer->render(dt);
-        //update(dt);
-        //}
-
-        //window->swapBuffers();
-        //endTime = glfwGetTime();
-        //dt = endTime - beginTime;
-        //beginTime = endTime;
     }
 
 }
@@ -106,13 +94,16 @@ void Application::applicationInit() {
     log("Application: init");
     this->window->init();
     this->renderer->init();
+
+    //self init
+    //this->textrenderer->init();
     //this->guimanager->init();
     //this->audioManager->init();
 }
 
 
 
-Renderer& Application::getRenderer() {
+Renderino& Application::getRenderer() {
     return *this->renderer;
 }
 

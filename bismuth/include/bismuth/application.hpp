@@ -1,6 +1,8 @@
 #pragma once
+#include "bismuth/textrenderer.hpp"
 #include <bismuth/camera.hpp>
-#include <bismuth/renderer.hpp>
+//#include <bismuth/renderer.hpp>
+#include <bismuth/renderino.hpp>
 #include <bismuth/window.hpp>
 #include <bismuth/audiomanager.hpp>
 #include <bismuth/assetmanager.hpp>
@@ -18,7 +20,7 @@ namespace bi {
             void loop();
             void run();
 
-            Renderer& getRenderer();
+            Renderino& getRenderer();
             Window& getWindow();
             Camera& getCamera();
             AudioManager& getAudioManager();
@@ -30,12 +32,14 @@ namespace bi {
             virtual void update(float dt);
             virtual void init();
         private:
-            std::unique_ptr<Renderer> renderer;
+            //std::unique_ptr<Renderer> renderer;
+            std::unique_ptr<Renderino> renderer;
             std::unique_ptr<Window> window;
             std::unique_ptr<Camera> camera;
             std::unique_ptr<AudioManager> audioManager;
             std::unique_ptr<AssetManager> assetmanager;
             std::unique_ptr<GuiManager> guimanager;
+            //std::unique_ptr<TextRenderer> textrenderer;
 
             void construct(int width, int height, std::string title);
             void applicationInit();

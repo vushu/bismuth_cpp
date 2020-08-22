@@ -1,5 +1,6 @@
 #pragma once
 #include <bismuth/sprite.hpp>
+#include <bismuth/primitives.hpp>
 #include <glm/glm.hpp>
 namespace bi  {
     class SpriteRenderer
@@ -24,10 +25,11 @@ namespace bi  {
             void setRotation(float radian);
             glm::vec2 position;
             glm::vec2 scale;
-            float angleDegrees;
-            float angleRadian;
+            float angle = 0;
+            void updateBuffer(QuadVertex* quadPtr);
 
         private:
             std::unique_ptr<Sprite> mSprite;
+            glm::vec2 rotatePoint(const glm::vec2& pos, float angle);
     };
 }

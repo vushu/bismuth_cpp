@@ -72,7 +72,7 @@ void RenderBatch::loadVertexProperties(int index) {
     glm::vec2 br(halfDims.x, -halfDims.y);
     glm::vec2 tr(halfDims.x, halfDims.y);
 
-    float angle = sprite->angleDegrees;
+    float angle = sprite->angle;
 
     // we are now setting the points by angle
     glm::vec2 topLeft = rotatePoint(tl, angle) + halfDims + sprite->position;
@@ -145,9 +145,9 @@ void RenderBatch::init() {
     std::array<GLuint, 6000> indices = generateIndices();
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, eboId);
-    //glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), &indices[0], GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), &indices[0], GL_STATIC_DRAW);
     // Since we are changing this almost all the time we just make it dynamic
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), &indices[0], GL_DYNAMIC_DRAW);
+    //glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), &indices[0], GL_DYNAMIC_DRAW);
 
 
     // Enabling attributes
@@ -227,6 +227,7 @@ void RenderBatch::render() {
 
     shader->use();
     shader->uploadUniformMat4("uMvp", camera->projectionMatrix * camera->viewMatrix);
+
 
     //shader->uploadUniformMat4("uMvp", camera->viewMatrix * camera->projectionMatrix);
     //shader->uploadUniformMat4("uProjection", camera->projectionMatrix);
