@@ -9,6 +9,7 @@ set(BISMUTH_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/include")
 set(ENTT_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/entt")
 set(BOX2D_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/box2d")
 set(GLM_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/glm")
+set(FREE_TYPE_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/freetype2/include")
 
 
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
@@ -43,7 +44,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
     target_link_libraries(${PROJECT_NAME} "-s WASM=1") #web assembly FTW
     target_link_libraries(${PROJECT_NAME} "-s USE_WEBGL2=1")
     target_link_libraries(${PROJECT_NAME} "-s FULL_ES3=1")
-    target_link_libraries(${PROJECT_NAME} "-s USE_FREETYPE=1")
+    #target_link_libraries(${PROJECT_NAME} "-s USE_FREETYPE=1")
     target_link_libraries(${PROJECT_NAME} "--preload-file resources")
     target_link_libraries(${PROJECT_NAME} "--use-preload-plugins")
     target_link_libraries(${PROJECT_NAME} "-o ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/game.html")
@@ -63,6 +64,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
         ${BISMUTH_INCLUDE_DIR}
         ${BOX2D_INCLUDE_DIR}
         ${GLM_INCLUDE_DIR}
+        #${FREE_TYPE_INCLUDE_DIR}
         )
 
     target_link_libraries(${PROJECT_NAME} bismuth)

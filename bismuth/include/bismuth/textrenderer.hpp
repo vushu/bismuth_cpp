@@ -4,13 +4,13 @@
 #include <bismuth/font.hpp>
 #include <vector>
 #include <bismuth/font.hpp>
-#ifndef __EMSCRIPTEN__
-#include <freetype2/ft2build.h>
+//#ifndef __EMSCRIPTEN__
+//#include <freetype2/ft2build.h>
+//#include FT_FREETYPE_H
+//#else
+#include <ft2build.h>
 #include FT_FREETYPE_H
-#else
-#include <freetype2/ft2build.h>
-#include FT_FREETYPE_H
-#endif
+//#endif
 
 
 namespace bi {
@@ -23,7 +23,7 @@ namespace bi {
 
             void init();
             //void displayText(std::string text);
-            Font& addFont(std::string fontFilePath, float fontSize);
+            void addFont(std::string fontFilePath, float fontSize);
             void render();
 
         private:

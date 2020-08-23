@@ -70,6 +70,6 @@ namespace bi {
             int textureSlots[8] = { 0, 1, 2, 3, 4, 5, 6, 7};
             std::array<uint32_t, 8> textureIds;
             Camera& camera;
-            void setQuadVertex(QuadVertex* quadVertex, glm::vec2 position, glm::vec2 size, glm::vec2 texCoords, glm::vec4 color, int texId, float angle);
+            void setQuadVertex(QuadVertex* quadVertex, glm::vec2 position, glm::vec2 size, glm::vec2 texCoords, glm::vec4 color, float texId, float angle);
     };
 }

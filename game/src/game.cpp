@@ -25,53 +25,56 @@ MyGame::~MyGame() {}
 
 
 void MyGame::update(float dt) {
+
     if (bi::keyInput().isKeyPressed(GLFW_KEY_ESCAPE)) {
         bi::log("Escape Pushed");
         getWindow().close();
     }
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_S)) {
-        bi::log("STOP audioManager");
-        this->getAudioManager().stop();
-    }
+    /*
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_S)) {
+       bi::log("STOP audioManager");
+       this->getAudioManager().stop();
+       }
 
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_UP)) {
-        bi::log("Start sound");
-        s4->playSound();
-    }
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_DOWN)) {
-        bi::log("Stopping sound");
-        s4->stopSound();
-    }
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_SPACE)) {
-        this->s2->stopSound();
-    }
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_UP)) {
+       bi::log("Start sound");
+       s4->playSound();
+       }
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_DOWN)) {
+       bi::log("Stopping sound");
+       s4->stopSound();
+       }
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_SPACE)) {
+       this->s2->stopSound();
+       }
 
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_R)) {
-        bi::log("rewind sound");
-        s4->rewindSound();
-    }
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_1)) {
-        this->getAudioManager().stop();
-    }
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_3)) {
-        this->s2->playSound();
-    }
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_D)) {
-        this->getAudioManager().start();
-    }
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_RIGHT)) {
-        s2->incrementVolume(0.1f);
-        bi::log("volume is " + std::to_string(s2->volume));
-    }
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_LEFT)) {
-        s2->decrementVolume(0.1f);
-        bi::log("volume is " + std::to_string(s2->volume));
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_R)) {
+       bi::log("rewind sound");
+       s4->rewindSound();
+       }
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_1)) {
+       this->getAudioManager().stop();
+       }
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_3)) {
+       this->s2->playSound();
+       }
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_D)) {
+       this->getAudioManager().start();
+       }
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_RIGHT)) {
+       s2->incrementVolume(0.1f);
+       bi::log("volume is " + std::to_string(s2->volume));
+       }
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_LEFT)) {
+       s2->decrementVolume(0.1f);
+       bi::log("volume is " + std::to_string(s2->volume));
 
-    }
+       }
 
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_P) && s1->isPause) {
-        s1->isPause = false;
-    }
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_P) && s1->isPause) {
+       s1->isPause = false;
+       }
+       */
 
 
     //renderSystem.update(this->getRenderer(), dt, world, this->registry);
@@ -92,6 +95,7 @@ void MyGame::update(float dt) {
 
     mAngle += dt;
     this->getRenderer().drawTexture({camX, camY}, {100.0f,100.0f}, color, textureId, glm::pi<float>() * mAngle);
+    this->getRenderer().drawTexture({214, 280}, {100.0f,100.0f}, color, textureId, glm::pi<float>() * mAngle);
     this->getRenderer().drawQuad({200, 300}, {30.0f,30.0f}, {1,1,1,1});
 
     this->getRenderer().endBatch();
@@ -133,24 +137,24 @@ void MyGame::init() {
     this->spriterenderer->setScale(glm::vec2(32,32));
 
 
-    s1 = std::make_shared<bi::Sound>("resources/assets/audio/test.wav");
-    s2 = std::make_shared<bi::Sound>("resources/assets/audio/music2.mp3");
-    s3 = std::make_shared<bi::Sound>("resources/assets/audio/music3.mp3");
-    //s4 = std::make_shared<bi::Sound>("resources/assets/audio/tower.mp3");
-    s4 = std::make_shared<bi::Sound>("resources/assets/audio/music4.mp3");
+    //s1 = std::make_shared<bi::Sound>("resources/assets/audio/test.wav");
+    //s2 = std::make_shared<bi::Sound>("resources/assets/audio/music2.mp3");
+    //s3 = std::make_shared<bi::Sound>("resources/assets/audio/music3.mp3");
+    ////s4 = std::make_shared<bi::Sound>("resources/assets/audio/tower.mp3");
+    //s4 = std::make_shared<bi::Sound>("resources/assets/audio/music4.mp3");
 
-    s1->init();
-    s2->init();
-    s3->init();
-    s4->init();
-    s4->setLoop(true);
+    //s1->init();
+    //s2->init();
+    //s3->init();
+    //s4->init();
+    //s4->setLoop(true);
     // must be initialized since not all games want to have sound
-    getAudioManager().init();
-    getAudioManager().addSound(s1);
-    getAudioManager().addSound(s2);
-    getAudioManager().addSound(s4);
-    getAudioManager().addSound(s3);
-    getAudioManager().setMaxVolume(3.0f);
+    //getAudioManager().init();
+    //getAudioManager().addSound(s1);
+    //getAudioManager().addSound(s2);
+    //getAudioManager().addSound(s4);
+    //getAudioManager().addSound(s3);
+    //getAudioManager().setMaxVolume(3.0f);
 
     textureId = getAssetManager().loadTexture("resources/assets/images/awesomeface.png");
     //log("TEXTURE ID : " + std::to_string(textureId));

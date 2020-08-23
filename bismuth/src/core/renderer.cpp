@@ -147,14 +147,14 @@ void Renderer::drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int t
     float textureIndex = 0.0f;
     for (int i = 0; i < maxTextures; i++) {
         if (textureIds[i] == texId) {
-            textureIndex = i + 1;
-            log("BREAK");
+            textureIndex = (float) (i + 1);
+            //log("BREAK");
             break;
         }
     }
 
     if (textureIndex == 0.0f) {
-        textureIndex = s_renderData.textureSlotsIndex;
+        textureIndex = (float) s_renderData.textureSlotsIndex + 1;
         textureIds[s_renderData.textureSlotsIndex] = texId;
         // not existing
         s_renderData.textureSlotsIndex++;
@@ -171,13 +171,13 @@ void Renderer::drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int t
     glm::vec2 botRight = rotatePoint(br, angle) + halfDims + pos;
     glm::vec2 topRight = rotatePoint(tr, angle) + halfDims + pos;
 
-    setQuadVertex(s_renderData.currentLocationPtr, botRight, size, {1.0f, 1.0f}, color, texId, angle);
+    setQuadVertex(s_renderData.currentLocationPtr, botRight, size, {1.0f, 1.0f}, color, textureIndex, angle);
     this->s_renderData.currentLocationPtr++;
-    setQuadVertex(s_renderData.currentLocationPtr, topRight, size, {1.0f, 0.0f}, color, texId, angle);
+    setQuadVertex(s_renderData.currentLocationPtr, topRight, size, {1.0f, 0.0f}, color, textureIndex, angle);
     this->s_renderData.currentLocationPtr++;
-    setQuadVertex(s_renderData.currentLocationPtr, topLeft, size, {0.0f, 0.0f}, color, texId, angle);
+    setQuadVertex(s_renderData.currentLocationPtr, topLeft, size, {0.0f, 0.0f}, color, textureIndex, angle);
     this->s_renderData.currentLocationPtr++;
-    setQuadVertex(s_renderData.currentLocationPtr, botLeft, size, {0.0f, 1.0f}, color, texId, angle);
+    setQuadVertex(s_renderData.currentLocationPtr, botLeft, size, {0.0f, 1.0f}, color, textureIndex, angle);
     this->s_renderData.currentLocationPtr++;
 
     s_renderData.indexCount += 6;
@@ -185,7 +185,7 @@ void Renderer::drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int t
 
 }
 
-void Renderer::setQuadVertex(QuadVertex* quadVertex, glm::vec2 position, glm::vec2 size, glm::vec2 texCoords, glm::vec4 color, int texId, float angle) {
+void Renderer::setQuadVertex(QuadVertex* quadVertex, glm::vec2 position, glm::vec2 size, glm::vec2 texCoords, glm::vec4 color, float texId, float angle) {
     quadVertex->position = { position, 0.0f};
     quadVertex->color = color;
     quadVertex->texcoords = texCoords;

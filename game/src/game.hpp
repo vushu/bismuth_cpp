@@ -12,6 +12,7 @@ class MyGame : public bi::Application {
     public:
         // constructors, asssignment, destructor
         MyGame() : bi::Application(1024, 768, "MyGAME") {}
+        //MyGame() : bi::Application(800, 600, "MyGAME") {}
         ~MyGame();
 
     protected:

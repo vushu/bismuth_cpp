@@ -2,6 +2,7 @@
 #include <bismuth/texture.hpp>
 #include <string>
 #include <map>
+#include <memory>
 
 namespace bi  {
     class AssetManager {
@@ -16,7 +17,7 @@ namespace bi  {
 
 
         private:
-            std::map<std::string, Texture> textures;
+            std::map<std::string, std::unique_ptr<Texture>> textures;
 
     };
 }

@@ -4,7 +4,7 @@
 //#include <imgui.h>
 //#include <imgui_impl_glfw.h>
 #define GLFW_INCLUDE_NONE
-#include <bismuth/textrenderer.hpp>
+//#include <bismuth/textrenderer.hpp>
 #include <bismuth/logging.hpp>
 #include <GLFW/glfw3.h>
 #include <bismuth/application.hpp>

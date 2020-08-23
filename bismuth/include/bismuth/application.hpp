@@ -1,5 +1,5 @@
 #pragma once
-#include "bismuth/textrenderer.hpp"
+//#include "bismuth/textrenderer.hpp"
 #include <bismuth/camera.hpp>
 //#include <bismuth/renderer.hpp>
 #include <bismuth/renderer.hpp>

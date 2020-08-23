@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.15)
 
+if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
+    add_compile_options("-s" "USE_FREETYPE=1")
+endif()
 set(PROJECT_VERSION "1.0.0")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
@@ -52,7 +55,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
         ${MINIAUDIO_INCLUDE_DIR}
         ${BOX2D_INCLUDE_DIRS}
         ${IMGUI_INCLUDE_DIRS}
-        ${FREETYPE_INCLUDE_DIRS}
+        #${FREETYPE_INCLUDE_DIRS}
         #${CATCH2_INCLUDE_DIRS}
         #${EMSCRIPTEN_INCLUDE_DIRS}
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -82,6 +85,7 @@ set(CMAKE_WINDOW_EXPORT_ALL_SYMBOLS ON)
 
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
     message("Compiling to WASM")
+
     target_link_libraries(${PROJECT_NAME} "-s USE_GLFW=3")
     target_link_libraries(${PROJECT_NAME} "-s USE_FREETYPE=1")
     #target_link_libraries(${PROJECT_NAME} "-s STB_IMAGE=1")
@@ -92,6 +96,7 @@ else()
     #sudo apt-get install libopenal-dev
     #find_package(OpenAL REQUIRED)
     find_package(glfw3 3.3 REQUIRED)
+    #find_package(freetype REQUIRED)
     #find_package(glm REQUIRED)
     #target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad openal miniaudio)
     target_link_libraries(${PROJECT_NAME} PRIVATE glfw miniaudio PUBLIC box2d imgui freetype glad)
