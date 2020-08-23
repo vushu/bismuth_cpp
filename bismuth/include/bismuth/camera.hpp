@@ -1,4 +1,5 @@
 #pragma once
+#include "glm/fwd.hpp"
 #include <glm/glm.hpp>
 namespace bi {
     class Camera {
@@ -12,6 +13,7 @@ namespace bi {
             glm::mat4 projectionMatrix;
             glm::vec2 position;
             glm::mat4 viewMatrix = glm::mat4(1.0f);
+            void setPosition(glm::vec2 pos);
     };
 
 }

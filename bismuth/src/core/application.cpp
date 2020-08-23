@@ -1,4 +1,4 @@
-#include "bismuth/renderino.hpp"
+#include "bismuth/renderer.hpp"
 #include <exception>
 //#include <imgui_impl_opengl3.h>
 //#include <imgui.h>
@@ -35,7 +35,7 @@ void Application::construct(int width, int height, std::string title) {
     this->audioManager = std::make_unique<AudioManager>();
     this->guimanager = std::make_unique<GuiManager>(this->getWindow());
     //this->textrenderer = std::make_unique<TextRenderer>();
-    this->renderer = std::make_unique<Renderino>(*this->camera);
+    this->renderer = std::make_unique<Renderer>(*this->camera);
 }
 
 Application::~Application() {
@@ -64,7 +64,7 @@ void Application::loop() {
     window->pollEvents();
     //if (dt >= 0) {
     //renderer->render(dt);
-    //renderer->clear(glm::vec4(0.30f, 0.30f, 0.30f, 1.0f));
+    renderer->clear(glm::vec4(0.30f, 0.30f, 0.30f, 1.0f));
     update(dt);
     //}
     window->swapBuffers();
@@ -103,7 +103,7 @@ void Application::applicationInit() {
 
 
 
-Renderino& Application::getRenderer() {
+Renderer& Application::getRenderer() {
     return *this->renderer;
 }
 

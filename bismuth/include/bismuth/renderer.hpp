@@ -1,43 +1,75 @@
 #pragma once
+#include "bismuth/texture.hpp"
+#include <array>
+//#include <bismuth/spriterenderer.hpp>
+#include <glm/glm.hpp>
+#include <glad/glad.h>
+#include <cstddef>
+#include <bismuth/primitives.hpp>
 #include <bismuth/shader.hpp>
-#include <bismuth/window.hpp>
 #include <bismuth/camera.hpp>
-#include <bismuth/renderbatch.hpp>
-#include <bismuth/assetmanager.hpp>
-#include <GLFW/glfw3.h>
-#include <glm/vec4.hpp>
-//#include <entt/entt.hpp>
+#include <set>
 #include <vector>
 namespace bi {
-    struct RenId
-    {
-        int batchId;
-        int spriteId;
-    };
+
     class Renderer {
+
         public:
-            Renderer(std::unique_ptr<Window>& win, std::unique_ptr<Camera>& cam, AssetManager& assetman) : camera(cam), window(win), assetmanager(assetman) {
-                this->shader = std::make_shared<Shader>("resources/assets/shaders/default.glsl");
-            }
+            struct RenderStats {
+                uint32_t drawCount = 0;
+                uint32_t quadCount = 0;
+            };
+
+            struct RendererData
+            {
+                GLuint quadVA = 0;
+                GLuint quadVB = 0;
+                GLuint quadIB = 0;
+
+                GLuint whiteTexture = 0;
+                uint32_t whiteTextureSlot = 0;
+
+                uint32_t indexCount = 0;
+
+                QuadVertex* quadBuffer = nullptr;
+                QuadVertex* currentLocationPtr = nullptr;
+
+                //std::array<uint32_t, 7> textureSlots;
+                uint32_t textureSlotsIndex = 0;
+
+                RenderStats stats;
+
+            };
+
+            // constructors, asssignment, destructor
+            Renderer(Camera& cam): camera(cam) {}
             ~Renderer();
             void init();
-            void clear(float r, float g, float b, float a);
+            void beginBatch();
+            void endBatch();
+            void flush();
+            void drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int texId, float angle);
+            void drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color, float angle);
+            void drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color);
+            //void draw(SpriteRenderer& sprite);
+            void resetStats();
             void clear(glm::vec4 color);
-            RenId addSprite(std::shared_ptr<SpriteRenderer> sprite);
-            SpriteRenderer& getSprite(int batchId, int spriteId);
-            void render(float dt);
+            void clear(float r, float g, float b, float a);
+            RenderStats& getRenderStats();
         private:
-            std::unique_ptr<Camera>& camera;
-            std::unique_ptr<Window>& window;
-            const int MAX_BATCH_SIZE = 1000;
-            std::shared_ptr<Shader> shader;
-            std::vector<std::unique_ptr<RenderBatch>> batches;
-            std::shared_ptr<Texture> textureTest;
-            AssetManager& assetmanager;
+            static const size_t maxQuadCount = 1000;
+            static const size_t maxVertexCount = maxQuadCount * 4;
+            static const size_t maxIndexCount = maxQuadCount * 6;
+            static const size_t maxTextures = 8;
+            std::array<float, maxVertexCount> vertices;
 
-            void testTriangle();
-            void renderTestTriangle();
-            void testTexture();
-            void renderTestTexture();
+            glm::vec2 rotatePoint(const glm::vec2& pos, float angle);
+            RendererData s_renderData;
+            Shader shader{"resources/assets/shaders/default.glsl"};
+
+            int textureSlots[8] = { 0, 1, 2, 3, 4, 5, 6, 7};
+            std::array<uint32_t, 8> textureIds;
+            Camera& camera;
+            void setQuadVertex(QuadVertex* quadVertex, glm::vec2 position, glm::vec2 size, glm::vec2 texCoords, glm::vec4 color, int texId, float angle);
     };
 }

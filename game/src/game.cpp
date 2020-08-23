@@ -2,7 +2,7 @@
 #include "bismuth/application.hpp"
 #include "bismuth/keylistener.hpp"
 #include "bismuth/logging.hpp"
-#include "bismuth/renderino.hpp"
+#include "bismuth/renderer.hpp"
 #include "bismuth/sprite.hpp"
 #include "bismuth/spriterenderer.hpp"
 #include "bismuth/texture.hpp"
@@ -12,6 +12,7 @@
 #include <memory>
 #include <string>
 #include "entitybuilder.hpp"
+#include "glm/ext/matrix_transform.hpp"
 #include "glm/ext/scalar_constants.hpp"
 #include "glm/fwd.hpp"
 #include <box2d/box2d.h>
@@ -88,35 +89,37 @@ void MyGame::update(float dt) {
     //for (int i = 0; i < 100; ++i) {
 
     glm::vec4 color{1,0,1,1};
-    position.y = sin(ticks/50);
-    position.x += 10 * dt;
 
-    this->getRenderer().drawQuad({0.0f,0.0f}, {10.0f,10.0f}, color);
-    this->getRenderer().drawQuad(position, {30.0f,30.0f}, {1,1,1,1});
-    //}
+    mAngle += dt;
+    this->getRenderer().drawTexture({camX, camY}, {100.0f,100.0f}, color, textureId, glm::pi<float>() * mAngle);
+    this->getRenderer().drawQuad({200, 300}, {30.0f,30.0f}, {1,1,1,1});
 
-    //this->getRenderer().draw(*this->spriterenderer);
     this->getRenderer().endBatch();
     this->getRenderer().flush();
 
-    //log("QuadCounts: "  + std::to_string(this->getRenderer().getRenderStats().quadCount));
-    //log("draw Calls: "  + std::to_string(this->getRenderer().getRenderStats().drawCount));
-    //this->getRenderer().
-
-
     getGuiManager().beginDraw();
-    getGuiManager().showFPS();
+    //getGuiManager().showFPS();
     ImGui::Begin("Render stats");
     ImGui::Text("Quads: %s", std::to_string(this->getRenderer().getRenderStats().quadCount).c_str());
     ImGui::Text("DrawCount: %s", std::to_string(this->getRenderer().getRenderStats().drawCount).c_str());
+    ImGui::Text("Average %.3f ms/frame", 1000.0f / ImGui::GetIO().Framerate);
+    ImGui::Text("%.1f FPS)", ImGui::GetIO().Framerate);
     ImGui::End();
 
+    ImGui::Begin("Camera Pos");
+    ImGui::SliderFloat("CamX:", &camX, -1000, 1000);
+    ImGui::SliderFloat("CamY:", &camY, -1000, 1000);
+    ImGui::End();
     getGuiManager().endDraw();
-    ticks++;
 
 }
 
 void MyGame::init() {
+
+    position = {0,0};
+    size = {100,100};
+
+    getCamera().viewMatrix = glm::translate(getCamera().viewMatrix, glm::vec3(100,0,0));
 
     //getRenderer().init();
     getGuiManager().init();
@@ -148,6 +151,10 @@ void MyGame::init() {
     getAudioManager().addSound(s4);
     getAudioManager().addSound(s3);
     getAudioManager().setMaxVolume(3.0f);
+
+    textureId = getAssetManager().loadTexture("resources/assets/images/awesomeface.png");
+    //log("TEXTURE ID : " + std::to_string(textureId));
+
     //sound2.playLoop("resources/assets/audio/test.wav");
     //std::unique_ptr<EntityBuilder> entitybuilder = std::make_unique<EntityBuilder>();
     //std::unique_ptr<EntityBuilder> entitybuilder2 = std::make_unique<EntityBuilder>();

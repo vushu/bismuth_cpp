@@ -2,7 +2,6 @@
 #include <bismuth/logging.hpp>
 #include <bismuth/spriterenderer.hpp>
 #include <glm/glm.hpp>
-#include <bismuth/renderino.hpp>
 #include <string>
 
 using namespace bi;

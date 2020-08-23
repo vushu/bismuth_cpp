@@ -6,6 +6,7 @@
 #include <glm/glm.hpp>
 #include <bismuth/logging.hpp>
 #include <memory>
+#include <bismuth/renderer.hpp>
 #include <bismuth/physicsmanager.hpp>
 
 EntityBuilder:: EntityBuilder() {}
@@ -33,7 +34,7 @@ EntityBuilder& EntityBuilder::setColor(glm::vec4 color) {
 
 EntityBuilder& EntityBuilder::sprite(std::string filepath, bi::AssetManager& assetmanager) {
     //std::shared_ptr<bi::Texture> texture = std::make_shared<bi::Texture>(filepath);
-    this->msprite = std::make_unique<bi::Sprite>(assetmanager.loadTexture(filepath));
+    this->msprite = std::make_unique<bi::Sprite>();
     spr = std::make_shared<bi::SpriteRenderer>(std::move(msprite));
     return *this;
 }
@@ -49,7 +50,7 @@ void EntityBuilder::buildEnemy(bi::Renderer& renderer, b2World& world, entt::reg
     spr->setScale(this->scale);
     spr->setPosition(this->position);
 
-    this->rid = renderer.addSprite(std::move(spr));
+    //this->rid = renderer.addSprite(std::move(spr));
 
     auto entity = registry.create();
 
@@ -63,7 +64,7 @@ void EntityBuilder::buildEnemy(bi::Renderer& renderer, b2World& world, entt::reg
 
 void EntityBuilder::buildBox(b2World& world, bi::Renderer& renderer, bool isStatic, bool isBox) {
     b2BodyDef bodyDef;
-    bodyDef.userData = &renderer.getSprite(this->rid.batchId, this->rid.spriteId);
+    //bodyDef.userData = &renderer.getSprite(this->rid.batchId, this->rid.spriteId);
     //coordinate system i at the center
     //bodyDef.position.Set(this->position.x * bi::P2M, this->position.y * bi::P2M);
     //origin is centered in box2d
@@ -137,11 +138,11 @@ void EntityBuilder::buildPlayer(bi::Renderer& renderer, entt::registry& registry
     spr->setScale(this->scale);
     spr->setPosition(this->position);
 
-    this->rid = renderer.addSprite(std::move(spr));
+    //this->rid = renderer.addSprite(std::move(spr));
 
     auto entity = registry.create();
 
-    registry.emplace<Player>(entity, rid.batchId, rid.spriteId);
+    //registry.emplace<Player>(entity, rid.batchId, rid.spriteId);
     registry.emplace<Movement>(entity, velocity.x, velocity.y);
     //reset();
 
@@ -149,7 +150,7 @@ void EntityBuilder::buildPlayer(bi::Renderer& renderer, entt::registry& registry
 
 void EntityBuilder::reset() {
     //spr.reset();
-    this->rid = {};
+    //this->rid = {};
     position = glm::vec2(0,0);
     scale = glm::vec2(32,32);
     color = glm::vec4(1,1,1,1);

@@ -7,13 +7,15 @@ AssetManager::AssetManager() { }
 
 AssetManager::~AssetManager() { }
 
-std::string AssetManager::loadTexture(std::string filepath) {
+int AssetManager::loadTexture(std::string filepath) {
+    int texId = 0;
     if (textures.count(filepath) == 0){
         Texture texture = Texture(filepath);
         texture.init();
+        texId = texture.textureId;
         textures.emplace(filepath, std::move(texture));
     }
-    return filepath;
+    return texId;
 }
 
 Texture& AssetManager::getTexture(std::string filepath) {

@@ -2,7 +2,7 @@
 #include "bismuth/textrenderer.hpp"
 #include <bismuth/camera.hpp>
 //#include <bismuth/renderer.hpp>
-#include <bismuth/renderino.hpp>
+#include <bismuth/renderer.hpp>
 #include <bismuth/window.hpp>
 #include <bismuth/audiomanager.hpp>
 #include <bismuth/assetmanager.hpp>
@@ -20,7 +20,7 @@ namespace bi {
             void loop();
             void run();
 
-            Renderino& getRenderer();
+            Renderer& getRenderer();
             Window& getWindow();
             Camera& getCamera();
             AudioManager& getAudioManager();
@@ -33,7 +33,7 @@ namespace bi {
             virtual void init();
         private:
             //std::unique_ptr<Renderer> renderer;
-            std::unique_ptr<Renderino> renderer;
+            std::unique_ptr<Renderer> renderer;
             std::unique_ptr<Window> window;
             std::unique_ptr<Camera> camera;
             std::unique_ptr<AudioManager> audioManager;

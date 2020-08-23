@@ -10,7 +10,7 @@ namespace bi  {
             AssetManager ();
             ~AssetManager ();
 
-            std::string loadTexture(std::string filepath);
+            int loadTexture(std::string filepath);
             Texture& getTexture(std::string filepath);
             bool textureExists(std::string filepath);
 

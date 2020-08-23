@@ -28,7 +28,6 @@ void RenderSystem::update(bi::Renderer& renderer, float dt, b2World& world, entt
             bi::SpriteRenderer* spr = (bi::SpriteRenderer*) b->GetUserData();
             spr->setPosition(glm::vec2((b->GetPosition().x  - spr->scale.x * 0.5f * bi::P2M) * bi::M2P,  (b->GetPosition().y - spr->scale.y * 0.5f * bi::P2M) * bi::M2P));
             spr->setRotation(b->GetAngle());
-
         }
     }
     //spr.setRotation(spr.angleDegrees + dt * 10.0f);

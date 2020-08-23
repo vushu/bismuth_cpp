@@ -1,4 +1,6 @@
 #pragma once
+#include "bismuth/assetmanager.hpp"
+#include "bismuth/spriterenderer.hpp"
 #include <box2d/b2_world.h>
 #include <bismuth/renderer.hpp>
 #include <entt/entt.hpp>
@@ -19,7 +21,7 @@ class EntityBuilder{
 
     private:
         std::shared_ptr<bi::SpriteRenderer> spr;
-        bi::RenId rid;
+        //bi::RenId rid;
         glm::vec2 position{0,0};
         glm::vec2 scale{32,32};
         glm::vec4 color{1,1,1,1};
