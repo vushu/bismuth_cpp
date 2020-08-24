@@ -4,6 +4,7 @@
 #include <glm/glm.hpp>
 #include <map>
 #include <ft2build.h>
+#include <vector>
 #include FT_FREETYPE_H
 #include <string>
 
@@ -20,7 +21,9 @@ namespace bi {
 
         public:
             // constructors, asssignment, destructor
-            Font(std::string fontFilePath, float fontSize) :  mfontFilePath(fontFilePath), mfontSize(fontSize) {}
+            //Font(std::string fontFilePath, float fontSize) :  mfontFilePath(fontFilePath), mfontSize(fontSize) {}
+            Font();
+            void loadFnt(std::string filePath);
             void init();
             ~Font();
             void updateBuffers(std::string text, glm::vec2 position, QuadVertex*& quadVertex);
@@ -28,12 +31,16 @@ namespace bi {
             std::array<float,100> getTextureIds(std::string text);
 
         private:
-            FT_Library ft;
+            std::string face;
+            //FT_Library ft;
             std::string mfontFilePath;
             float mfontSize;
-            FT_Face face;
+            //FT_Face face;
             std::map<char, Character> characters;
             void generateChars();
+            std::vector<std::string> split(std::string str, std::string sep);
+            int getDigit(std::string text);
+            std::string getInQuotes(std::string text);
 
     };
 }

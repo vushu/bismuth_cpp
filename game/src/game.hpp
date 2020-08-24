@@ -41,7 +41,7 @@ class MyGame : public bi::Application {
 
         //b2BodyDef boxBodyDef;
         b2Body* boxBody;
-        bi::Font font{"resources/assets/fonts/Ready.ttf", 48};
+        //bi::Font font{"resources/assets/fonts/Ready.ttf", 48};
 
 
 };

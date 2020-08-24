@@ -26,9 +26,9 @@ void TextRenderer::init() {
 }
 
 void TextRenderer::addFont(std::string fontFilePath, float fontSize) {
-    Font f(fontFilePath, fontSize);
-    f.init();
-    this->fonts.push_back(f);
+    //Font f(fontFilePath, fontSize);
+    //f.init();
+    //this->fonts.push_back(f);
     //return fonts.at(fonts.size() - 1);
 
 }

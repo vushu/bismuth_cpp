@@ -1,5 +1,6 @@
 #include "game.hpp"
 #include "bismuth/application.hpp"
+#include <bismuth/font.hpp>
 #include "bismuth/keylistener.hpp"
 #include "bismuth/logging.hpp"
 #include "bismuth/renderer.hpp"
@@ -123,7 +124,7 @@ void MyGame::init() {
 
     position = {0,0};
     size = {100,100};
-    font.init();
+    //font.init();
 
     getCamera().viewMatrix = glm::translate(getCamera().viewMatrix, glm::vec3(100,0,0));
 
@@ -134,6 +135,8 @@ void MyGame::init() {
     this->spriterenderer->setColor(glm::vec4(1,0,0,1));
     this->spriterenderer->setPosition(glm::vec2(0,0));
     this->spriterenderer->setScale(glm::vec2(32,32));
+    bi::Font font;
+    font.loadFnt("resources/assets/fonts/liberation.fnt");
 
 
     //s1 = std::make_shared<bi::Sound>("resources/assets/audio/test.wav");

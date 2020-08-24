@@ -4,78 +4,28 @@
 #include <bismuth/font.hpp>
 #include <bismuth/logging.hpp>
 #include <glad/glad.h>
+#include <iostream>
+#include <ostream>
+#include <regex>
 #include <string>
+#include <fstream>
+#include <vector>
+
 
 using namespace bi;
 
+Font::Font() {
+
+}
 Font::~Font() {
 
 }
 
 void Font::init() {
-    if (FT_Init_FreeType(&ft)) {
-        log("Failed to init FreeType Library");
-        throw std::runtime_error("Failed to init FreeType Library");
-    }
-
-    if (FT_New_Face(ft, "resources/assets/fonts/Ready.ttf", 0, &face)) {
-        log("Failed to init load font");
-        throw std::runtime_error("Failed to load font");
-    }
-
-    FT_Set_Pixel_Sizes(face, 0, this->mfontSize);
-    if (FT_Load_Char(face, 'X', FT_LOAD_RENDER))
-    {
-        log("ERROR::FREETYTPE: Failed to load Glyph");
-        throw std::runtime_error("ERROR::FREETYTPE: Failed to load Glyph");
-    }
-    log("Font: " + this->mfontFilePath + " initialized");
-
-    generateChars();
+    //generateChars();
 }
 
 void Font::generateChars() {
-    glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // disable byte-alignment restriction
-    for (unsigned char c = 0; c < 128; c++)
-    {
-        // load character glyph
-        if (FT_Load_Char(face, c, FT_LOAD_RENDER))
-        {
-            log("ERROR::FREETYTPE: Failed to load Glyph");
-            continue;
-        }
-        // generate texture
-        unsigned int texture;
-        glGenTextures(1, &texture);
-        glBindTexture(GL_TEXTURE_2D, texture);
-        glTexImage2D(
-                GL_TEXTURE_2D,
-                0,
-                GL_RED,
-                face->glyph->bitmap.width,
-                face->glyph->bitmap.rows,
-                0,
-                GL_RED,
-                GL_UNSIGNED_BYTE,
-                face->glyph->bitmap.buffer
-                );
-        // set texture options
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        // now store character for later use
-        Character character = {
-            texture,
-            glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
-            glm::ivec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
-            static_cast<unsigned int>(face->glyph->advance.x)
-        };
-        characters.insert(std::pair<char, Character>(c, character));
-        //log("Texture id char: " + std::to_string(texture));
-    }
-    FT_Done_Face(face);
-    log("Done initializing font " + mfontFilePath);
 }
 
 void Font::updateBuffers(std::string text, glm::vec2 position, QuadVertex*& quadVertex) {
@@ -117,6 +67,62 @@ void Font::updateBuffers(std::string text, glm::vec2 position, QuadVertex*& quad
         position.x = (ch.advanceOffset >> 6) * scale;
     }
 }
+std::vector<std::string> Font::split(std::string str,std::string sep){
+    char* cstr=const_cast<char*>(str.c_str());
+    char* current;
+    std::vector<std::string> arr;
+    current=strtok(cstr,sep.c_str());
+    while(current!=NULL){
+        arr.push_back(current);
+        current=strtok(NULL,sep.c_str());
+    }
+    return arr;
+}
+
+void Font::loadFnt(std::string filePath) {
+    std::ifstream file(filePath);
+    std::string line, line2;
+    std::vector<std::string> lines;
+    while (std::getline(file, line)) {
+        lines.push_back(line);
+    }
+
+    //std::regex rgx(R"(face=\"(.*?)\" size=(\d+) bold=(\d+) padding=(.,.,.,.?) ")");
+    std::smatch match;
+    std::string delimiter = "=";
+
+    std::string faceLine = lines.at(0);
+    size_t pos = 0;
+    std::string token;
+
+    face = getInQuotes(faceLine);
+    log("face: " + face);
+
+    bool first = true;
+    while ((pos = faceLine.find(delimiter)) != std::string::npos) {
+        if (first){
+            token = faceLine.substr(0, pos);
+            first = false;
+        }
+        else
+            token = split(faceLine.substr(0, pos), " ")[0];
+        std::cout << token << std::endl;
+        faceLine.erase(0, pos + delimiter.length());
+    }
+
+
+    // last line isnt needed
+
+    for (int i = 3; i < lines.size() - 1; i++) {
+        std::vector<std::string> l = split(lines.at(i), "=");
+        for (int j = 0; j < l.size(); j++) {
+            getDigit(l[j]);
+        }
+    }
+
+}
+
+//log("hej file");
 
 std::array<float, 100> Font::getTextureIds(std::string text) {
     std::array<float, 100> textureIds;
@@ -124,6 +130,31 @@ std::array<float, 100> Font::getTextureIds(std::string text) {
         textureIds[i] = characters.at(i).texId;
     }
     return textureIds;
+}
+
+int Font::getDigit(std::string text){
+    std::regex rgx("([0-9]+)");
+    std::smatch match;
+
+    if (std::regex_search(text, match, rgx))
+    {
+
+        std::cout << match[1] << std::endl;
+        return std::stoi(match[1]);
+    }
+
+    return 1;
+}
+std::string Font::getInQuotes(std::string text) {
+
+    std::regex rgx("\"(.*?)\"");
+    std::smatch match;
+
+    if (std::regex_search(text, match, rgx))
+    {
+        return match[1];
+    }
+    return text;
 }
 
 
