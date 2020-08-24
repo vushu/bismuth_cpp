@@ -91,6 +91,11 @@ void bi::glhelper::uploadUniformInt(int shaderProgramId, std::string varName, in
     glUniform1i(glGetUniformLocation(shaderProgramId, varName.c_str()), value);
 }
 
+void bi::glhelper::uploadUniformIntArray(int shaderProgramId, std::string varName, int size, const int* location) {
+    glUniform1iv(glGetUniformLocation(shaderProgramId, varName.c_str()), size, location);
+}
+
+
 void bi::glhelper::uploadUniformIntArray(int shaderProgramId, std::string varName, int size, int* location) {
     glUniform1iv(glGetUniformLocation(shaderProgramId, varName.c_str()), size, location);
 }

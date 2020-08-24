@@ -23,6 +23,7 @@ namespace bi {
             void uploadUniformFloat(std::string varName, float value);
             void uploadUniformInt(std::string varName, int value);
             void uploadIntArray(std::string varName,int size, int* location);
+            void uploadIntArray(std::string varName,int size, const int* location);
             void uploadIntArray2(std::string varName,int size, int location[]);
 
         private:

@@ -7,6 +7,7 @@
 #include <GLFW/glfw3.h>
 #include <bismuth/logging.hpp>
 #include "bismuth/primitives.hpp"
+#include "glm/fwd.hpp"
 #include <glm/gtx/string_cast.hpp>
 #include <iostream>
 #include <stdexcept>
@@ -125,7 +126,7 @@ void Renderer::endBatch() {
 
     GLsizeiptr size = (uint8_t*) this->s_renderData.currentLocationPtr - (uint8_t*) this->s_renderData.quadBuffer;
     glBindBuffer(GL_ARRAY_BUFFER, s_renderData.quadVB);
-    //log("Size of buffer:" + std::to_string(size));
+    log("Size of buffer:" + std::to_string(size));
     glBufferSubData(GL_ARRAY_BUFFER, 0, size, s_renderData.quadBuffer);
 }
 
@@ -136,137 +137,84 @@ glm::vec2 Renderer::rotatePoint(const glm::vec2& pos, float angle) {
     return newPos;
 }
 
-void Renderer::drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int texId, float angle) {
+void Renderer::drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int texId, float angle, std::array<glm::vec2, 4> texcoords) {
 
-    if (s_renderData.indexCount >= maxIndexCount || s_renderData.textureSlotsIndex >= 8) {
-        endBatch();
-        flush();
-        beginBatch();
-    }
+    reevaluateBatchSpace();
 
     float textureIndex = 0.0f;
     for (int i = 0; i < maxTextures; i++) {
-        if (textureIds[i] == texId) {
+        if (s_renderData.textureIds[i] == texId) {
             textureIndex = (float) (i + 1);
-            //log("BREAK");
             break;
         }
     }
 
     if (textureIndex == 0.0f) {
         textureIndex = (float) s_renderData.textureSlotsIndex + 1;
-        textureIds[s_renderData.textureSlotsIndex] = texId;
+        s_renderData.textureIds[s_renderData.textureSlotsIndex] = texId;
         // not existing
         s_renderData.textureSlotsIndex++;
     }
 
+    setQuadVertices(s_renderData.currentLocationPtr,pos, size, color, textureIndex, angle, texcoords);
+    incrementDrawCounters();
+}
+
+std::array<glm::vec2, 4> Renderer::getCorners(glm::vec2 position, glm::vec2 size, float angle) {
     glm::vec2 halfDims(size * 0.5f);
+
     glm::vec2 tl(-halfDims.x, halfDims.y);
     glm::vec2 bl(-halfDims.x, -halfDims.y);
     glm::vec2 br(halfDims.x, -halfDims.y);
     glm::vec2 tr(halfDims.x, halfDims.y);
 
-    glm::vec2 topLeft = rotatePoint(tl, angle) + halfDims + pos;
-    glm::vec2 botLeft = rotatePoint(bl, angle) + halfDims + pos;
-    glm::vec2 botRight = rotatePoint(br, angle) + halfDims + pos;
-    glm::vec2 topRight = rotatePoint(tr, angle) + halfDims + pos;
+    glm::vec2 topLeft, botLeft, botRight, topRight;
 
-    setQuadVertex(s_renderData.currentLocationPtr, botRight, size, {1.0f, 1.0f}, color, textureIndex, angle);
-    this->s_renderData.currentLocationPtr++;
-    setQuadVertex(s_renderData.currentLocationPtr, topRight, size, {1.0f, 0.0f}, color, textureIndex, angle);
-    this->s_renderData.currentLocationPtr++;
-    setQuadVertex(s_renderData.currentLocationPtr, topLeft, size, {0.0f, 0.0f}, color, textureIndex, angle);
-    this->s_renderData.currentLocationPtr++;
-    setQuadVertex(s_renderData.currentLocationPtr, botLeft, size, {0.0f, 1.0f}, color, textureIndex, angle);
-    this->s_renderData.currentLocationPtr++;
+    if (angle != 0) {
+        topLeft = rotatePoint(tl, angle) + halfDims + position;
+        botLeft = rotatePoint(bl, angle) + halfDims + position;
+        botRight = rotatePoint(br, angle) + halfDims + position;
+        topRight = rotatePoint(tr, angle) + halfDims + position;
+    }
+    else {
+        topLeft =  halfDims + position;
+        botLeft =  halfDims + position;
+        botRight = halfDims + position;
+        topRight = halfDims + position;
+    }
 
-    s_renderData.indexCount += 6;
-    s_renderData.stats.quadCount++;
 
+    return {botRight, topRight, topLeft, botLeft};
 }
 
-void Renderer::setQuadVertex(QuadVertex* quadVertex, glm::vec2 position, glm::vec2 size, glm::vec2 texCoords, glm::vec4 color, float texId, float angle) {
+void Renderer::setQuadVertex(QuadVertex*& quadVertex, glm::vec2 position, glm::vec2 size, glm::vec2 texCoord, glm::vec4 color, float texId) {
     quadVertex->position = { position, 0.0f};
     quadVertex->color = color;
-    quadVertex->texcoords = texCoords;
+    quadVertex->texcoords = texCoord;
     quadVertex->texId = texId;
+    quadVertex++;
+}
+
+void Renderer::setQuadVertices(QuadVertex*& quadVertex, glm::vec2 position, glm::vec2 size, glm::vec4 color, float texId, float angle, std::array<glm::vec2, 4> texcoords) {
+    std::array<glm::vec2,4> corners = getCorners(position, size, angle);
+    setQuadVertex(quadVertex, corners.at(0), size, texcoords.at(0), color, texId);
+    setQuadVertex(quadVertex, corners.at(1), size, texcoords.at(1), color, texId);
+    setQuadVertex(quadVertex, corners.at(2), size, texcoords.at(2), color, texId);
+    setQuadVertex(quadVertex, corners.at(3), size, texcoords.at(3), color, texId);
 }
 
 
 void Renderer::drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color, float angle) {
-
-    if (s_renderData.indexCount >= maxIndexCount) {
-        endBatch();
-        flush();
-        beginBatch();
-    }
-
+    reevaluateBatchSpace();
     int texId = 0;
-    glm::vec2 halfDims(size * 0.5f);
-    glm::vec2 tl(-halfDims.x, halfDims.y);
-    glm::vec2 bl(-halfDims.x, -halfDims.y);
-    glm::vec2 br(halfDims.x, -halfDims.y);
-    glm::vec2 tr(halfDims.x, halfDims.y);
-
-    glm::vec2 topLeft = rotatePoint(tl, angle) + halfDims + pos;
-    glm::vec2 botLeft = rotatePoint(bl, angle) + halfDims + pos;
-    glm::vec2 botRight = rotatePoint(br, angle) + halfDims + pos;
-    glm::vec2 topRight = rotatePoint(tr, angle) + halfDims + pos;
-
-    setQuadVertex(s_renderData.currentLocationPtr, botRight, size, {1.0f, 1.0f}, color, texId, angle);
-    this->s_renderData.currentLocationPtr++;
-    setQuadVertex(s_renderData.currentLocationPtr, topRight, size, {1.0f, 0.0f}, color, texId, angle);
-    this->s_renderData.currentLocationPtr++;
-    setQuadVertex(s_renderData.currentLocationPtr, topLeft, size, {0.0f, 0.0f}, color, texId, angle);
-    this->s_renderData.currentLocationPtr++;
-    setQuadVertex(s_renderData.currentLocationPtr, botLeft, size, {0.0f, 1.0f}, color, texId, angle);
-    this->s_renderData.currentLocationPtr++;
-
-    s_renderData.indexCount += 6;
-    s_renderData.stats.quadCount++;
-
+    setQuadVertices(s_renderData.currentLocationPtr, pos, size, color, texId, angle);
+    incrementDrawCounters();
 }
 
 void Renderer::drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color) {
-
-    if (s_renderData.indexCount >= maxIndexCount) {
-
-        endBatch();
-        flush();
-        beginBatch();
-        //log("Max reached flushed");
-    }
-
-    //log("*************************************************");
-    this->s_renderData.currentLocationPtr->position = {pos.x + size.x, pos.y + size.y , 0.0f};
-    this->s_renderData.currentLocationPtr->color = color;
-    this->s_renderData.currentLocationPtr->texcoords = { 1.0f, 1.0f};
-    this->s_renderData.currentLocationPtr->texId = 0;
-    this->s_renderData.currentLocationPtr++;
-
-
-    this->s_renderData.currentLocationPtr->position = {pos.x + size.x, pos.y, 0.0f};
-    this->s_renderData.currentLocationPtr->color = color;
-    this->s_renderData.currentLocationPtr->texcoords = {1.0f, 0.0f};
-    this->s_renderData.currentLocationPtr->texId = 0;
-    this->s_renderData.currentLocationPtr++;
-
-
-    this->s_renderData.currentLocationPtr->position = {pos.x, pos.y, 0.0f};
-    this->s_renderData.currentLocationPtr->color = color;
-    this->s_renderData.currentLocationPtr->texcoords = {0.0f, 0.0f};
-    this->s_renderData.currentLocationPtr->texId = 0;
-    s_renderData.currentLocationPtr++;
-
-    this->s_renderData.currentLocationPtr->position = {pos.x, pos.y + size.y, 0.0f};
-    this->s_renderData.currentLocationPtr->color = color;
-    this->s_renderData.currentLocationPtr->texcoords = { 0.0f, 1.0f};
-    this->s_renderData.currentLocationPtr->texId = 0;
-    s_renderData.currentLocationPtr++;
-
-    //log("draw called");
-    s_renderData.indexCount += 6;
-    s_renderData.stats.quadCount++;
+    reevaluateBatchSpace();
+    setQuadVertices(s_renderData.currentLocationPtr, pos, size,  color, 0, 0.0f);
+    incrementDrawCounters();
 }
 
 void Renderer::flush() {
@@ -277,7 +225,7 @@ void Renderer::flush() {
 
     for (int i = 0; i < s_renderData.textureSlotsIndex; i++) {
         glActiveTexture(GL_TEXTURE0 + i + 1);
-        glBindTexture(GL_TEXTURE_2D, textureIds.at(i));
+        glBindTexture(GL_TEXTURE_2D, s_renderData.textureIds.at(i));
     }
 
     shader.uploadIntArray("uTextures", 8, textureSlots);
@@ -304,7 +252,7 @@ void Renderer::flush() {
     s_renderData.indexCount = 0;
     s_renderData.textureSlotsIndex = 0;
 
-    textureIds = std::array<uint32_t, 8>();
+    s_renderData.textureIds = std::array<uint32_t, 8>();
 }
 
 void Renderer::resetStats() {
@@ -329,6 +277,24 @@ void Renderer::clear(float r, float g, float b, float a) {
     glClearColor(r,g,b,a);
     glClear(GL_COLOR_BUFFER_BIT);
 }
+
+void Renderer::incrementDrawCounters() {
+    s_renderData.indexCount += 6;
+    s_renderData.stats.quadCount++;
+}
+
+void Renderer::reevaluateBatchSpace() {
+    if (s_renderData.indexCount >= maxIndexCount || s_renderData.textureSlotsIndex >= 8) {
+        endBatch();
+        flush();
+        beginBatch();
+    }
+}
+
+void Renderer::drawText(std::string text, Font& f) {
+
+}
+
 
 
 

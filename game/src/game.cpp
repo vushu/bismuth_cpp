@@ -94,7 +94,7 @@ void MyGame::update(float dt) {
     glm::vec4 color{1,0,1,1};
 
     mAngle += dt;
-    this->getRenderer().drawTexture({camX, camY}, {100.0f,100.0f}, color, textureId, glm::pi<float>() * mAngle);
+    this->getRenderer().drawTexture({camX, camY}, {100.0f,100.0f}, color, textureId, glm::pi<float>() * -mAngle);
     this->getRenderer().drawTexture({214, 280}, {100.0f,100.0f}, color, textureId, glm::pi<float>() * mAngle);
     this->getRenderer().drawQuad({200, 300}, {30.0f,30.0f}, {1,1,1,1});
 
@@ -125,10 +125,7 @@ void MyGame::init() {
 
     getCamera().viewMatrix = glm::translate(getCamera().viewMatrix, glm::vec3(100,0,0));
 
-    //getRenderer().init();
     getGuiManager().init();
-    //this->renderino = std::make_unique<bi::Renderino>(this->getCamera());
-    //this->getRenderer().beginBatch();
     std::unique_ptr<Sprite> sprite = std::make_unique<Sprite>();
     this->spriterenderer = std::make_unique<bi::SpriteRenderer>(std::move(sprite));
 
@@ -206,8 +203,6 @@ void MyGame::init() {
     }
 
 */
-
-
     //entitybuilder->at(120, 200)
     //.size(50, 50)
     ////.vel(3, 2)
@@ -221,6 +216,5 @@ void MyGame::init() {
     ////.setColor(glm::vec4(1,1,1,1))
     //.sprite("resources/assets/images/tennis.png")
     //.buildEnemy(this->getRenderer(), this->world, this->registry, true);
-
 
 }

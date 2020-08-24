@@ -4,7 +4,7 @@
 
 #include <bismuth/font.hpp>
 #ifndef __EMSCRIPTEN__
-#include <freetype2/ft2build.h>
+#include <ft2build.h>
 #include FT_FREETYPE_H
 #endif
 
@@ -26,9 +26,9 @@ void TextRenderer::init() {
 }
 
 void TextRenderer::addFont(std::string fontFilePath, float fontSize) {
-    //Font f(ft, fontFilePath, fontSize);
-    //f.init();
-    //this->fonts.push_back(f);
+    Font f(ft, fontFilePath, fontSize);
+    f.init();
+    this->fonts.push_back(f);
     //return fonts.at(fonts.size() - 1);
 
 }

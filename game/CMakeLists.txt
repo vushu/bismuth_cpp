@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.15)
 project(TestGame)
 
+if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
+    add_compile_options("-s" "USE_FREETYPE=1")
+endif()
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
@@ -44,7 +47,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
     target_link_libraries(${PROJECT_NAME} "-s WASM=1") #web assembly FTW
     target_link_libraries(${PROJECT_NAME} "-s USE_WEBGL2=1")
     target_link_libraries(${PROJECT_NAME} "-s FULL_ES3=1")
-    #target_link_libraries(${PROJECT_NAME} "-s USE_FREETYPE=1")
+    target_link_libraries(${PROJECT_NAME} "-s USE_FREETYPE=1")
     target_link_libraries(${PROJECT_NAME} "--preload-file resources")
     target_link_libraries(${PROJECT_NAME} "--use-preload-plugins")
     target_link_libraries(${PROJECT_NAME} "-o ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/game.html")

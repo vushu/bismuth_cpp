@@ -149,6 +149,10 @@ void Shader::uploadIntArray(std::string varName,int size, int* location) {
     glhelper::uploadUniformIntArray(shaderProgramId, varName, size, location);
 }
 
+void Shader::uploadIntArray(std::string varName,int size, const int* location) {
+    glhelper::uploadUniformIntArray(shaderProgramId, varName, size, location);
+}
+
 void Shader::uploadIntArray2(std::string varName,int size, int location[]) {
     glhelper::uploadUniformIntArray2(shaderProgramId, varName, size, location);
 }

@@ -23,6 +23,8 @@ namespace bi {
         void uploadUniformFloat(int shaderProgramId, std::string varName, float value);
         void uploadUniformInt(int shaderProgramId, std::string varName, int value);
         void uploadUniformIntArray(int shaderProgramId, std::string varName, int size, int* location);
+        void uploadUniformIntArray(int shaderProgramId, std::string varName, int size, const int* location);
+
         void uploadUniformIntArray2(int shaderProgramId, std::string varName, int size, int location[]);
         TextureInfo generateTexture(std::string filepath);
     }
