@@ -1,4 +1,6 @@
 #pragma once
+#include <array>
+#include <bismuth/primitives.hpp>
 #include <glm/glm.hpp>
 #include <map>
 #include <ft2build.h>
@@ -18,13 +20,15 @@ namespace bi {
 
         public:
             // constructors, asssignment, destructor
-            Font(FT_Library& ftLibrary, std::string fontFilePath, float fontSize) : ft(ftLibrary),  mfontFilePath(fontFilePath), mfontSize(fontSize) {}
+            Font(std::string fontFilePath, float fontSize) :  mfontFilePath(fontFilePath), mfontSize(fontSize) {}
             void init();
             ~Font();
-            void render();
+            void updateBuffers(std::string text, glm::vec2 position, QuadVertex*& quadVertex);
+            unsigned int textureId;
+            std::array<float,100> getTextureIds(std::string text);
 
         private:
-            FT_Library& ft;
+            FT_Library ft;
             std::string mfontFilePath;
             float mfontSize;
             FT_Face face;

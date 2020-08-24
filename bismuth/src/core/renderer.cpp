@@ -126,7 +126,7 @@ void Renderer::endBatch() {
 
     GLsizeiptr size = (uint8_t*) this->s_renderData.currentLocationPtr - (uint8_t*) this->s_renderData.quadBuffer;
     glBindBuffer(GL_ARRAY_BUFFER, s_renderData.quadVB);
-    log("Size of buffer:" + std::to_string(size));
+    //log("Size of buffer:" + std::to_string(size));
     glBufferSubData(GL_ARRAY_BUFFER, 0, size, s_renderData.quadBuffer);
 }
 
@@ -291,9 +291,20 @@ void Renderer::reevaluateBatchSpace() {
     }
 }
 
-void Renderer::drawText(std::string text, Font& f) {
+void Renderer::drawText(std::string text, glm::vec2 position, Font& f) {
 
+    // make check if they exist
+    reevaluateBatchSpace();
+    auto textures = f.getTextureIds(text);
+    for (int i = 0; i < text.length(); i++) {
+        s_renderData.textureIds[i] = textures[i];
+        s_renderData.textureSlotsIndex++;
+    }
+
+    f.updateBuffers(text, position, s_renderData.currentLocationPtr);
+    incrementDrawCounters();
 }
+
 
 
 

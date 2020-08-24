@@ -56,7 +56,7 @@ namespace bi {
             void drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int texId, float angle, std::array<glm::vec2, 4> texCoords = defaultTexcoords);
             void drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color, float angle);
             void drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color);
-            void drawText(std::string text, Font& f);
+            void drawText(std::string text, glm::vec2 position, Font& f);
             //void draw(SpriteRenderer& sprite);
             void resetStats();
             void clear(glm::vec4 color);

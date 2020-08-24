@@ -1,6 +1,10 @@
+#include "bismuth/primitives.hpp"
+#include "glm/fwd.hpp"
+#include <array>
 #include <bismuth/font.hpp>
 #include <bismuth/logging.hpp>
 #include <glad/glad.h>
+#include <string>
 
 using namespace bi;
 
@@ -9,6 +13,10 @@ Font::~Font() {
 }
 
 void Font::init() {
+    if (FT_Init_FreeType(&ft)) {
+        log("Failed to init FreeType Library");
+        throw std::runtime_error("Failed to init FreeType Library");
+    }
 
     if (FT_New_Face(ft, "resources/assets/fonts/Ready.ttf", 0, &face)) {
         log("Failed to init load font");
@@ -64,12 +72,58 @@ void Font::generateChars() {
             static_cast<unsigned int>(face->glyph->advance.x)
         };
         characters.insert(std::pair<char, Character>(c, character));
+        //log("Texture id char: " + std::to_string(texture));
     }
     FT_Done_Face(face);
     log("Done initializing font " + mfontFilePath);
 }
 
-void Font::render() {
+void Font::updateBuffers(std::string text, glm::vec2 position, QuadVertex*& quadVertex) {
+    std::string::const_iterator c;
+    float scale = 1.5f;
+    float texId = 0.0f;
 
+    for (c = text.begin(); c != text.end(); c++) {
+        Character ch = characters[*c];
+        glm::vec2 pos (position.x + ch.bearing.x * scale, position.y - (ch.size.y - ch.bearing.y) * scale);
+        float w = ch.size.x * scale;
+        float h = ch.size.y * scale;
+
+        quadVertex->position = {pos.x + w, pos.y + h, 0.0f};
+        quadVertex->color = {1,1,1,0};
+        quadVertex->texId = texId;
+        quadVertex->texcoords = {1.0f, 1.0f};
+        quadVertex++;
+
+        quadVertex->position = {pos.x + w, pos.y, 0.0f};
+        quadVertex->color = {1,1,1,0};
+        quadVertex->texId = texId;
+        quadVertex->texcoords = {1.0f, 0.0f};
+        quadVertex++;
+
+        quadVertex->position = {pos.x, pos.y, 0.0f};
+        quadVertex->color = {1,1,1,0};
+        quadVertex->texId = texId;
+        quadVertex->texcoords = {0.0f, 0.0f};
+        quadVertex++;
+
+        quadVertex->position = {pos.x, pos.y + h, 0.0f};
+        quadVertex->color = {1,1,1,0};
+        quadVertex->texId = texId;
+        quadVertex->texcoords = {0.0f, 1.0f};
+        quadVertex++;
+
+        texId++;
+        position.x = (ch.advanceOffset >> 6) * scale;
+    }
 }
+
+std::array<float, 100> Font::getTextureIds(std::string text) {
+    std::array<float, 100> textureIds;
+    for (int i = 0; i < text.length(); i ++) {
+        textureIds[i] = characters.at(i).texId;
+    }
+    return textureIds;
+}
+
 

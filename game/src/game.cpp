@@ -97,6 +97,7 @@ void MyGame::update(float dt) {
     this->getRenderer().drawTexture({camX, camY}, {100.0f,100.0f}, color, textureId, glm::pi<float>() * -mAngle);
     this->getRenderer().drawTexture({214, 280}, {100.0f,100.0f}, color, textureId, glm::pi<float>() * mAngle);
     this->getRenderer().drawQuad({200, 300}, {30.0f,30.0f}, {1,1,1,1});
+    //this->getRenderer().drawText("mawr", {0, 100}, this->font);
 
     this->getRenderer().endBatch();
     this->getRenderer().flush();
@@ -122,6 +123,7 @@ void MyGame::init() {
 
     position = {0,0};
     size = {100,100};
+    font.init();
 
     getCamera().viewMatrix = glm::translate(getCamera().viewMatrix, glm::vec3(100,0,0));
 

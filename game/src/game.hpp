@@ -6,6 +6,7 @@
 //#include "rndersystem.hpp"
 #include <box2d/box2d.h>
 #include <glm/glm.hpp>
+#include <bismuth/font.hpp>
 #include <memory>
 
 class MyGame : public bi::Application {
@@ -40,6 +41,7 @@ class MyGame : public bi::Application {
 
         //b2BodyDef boxBodyDef;
         b2Body* boxBody;
+        bi::Font font{"resources/assets/fonts/Ready.ttf", 48};
 
 
 };
