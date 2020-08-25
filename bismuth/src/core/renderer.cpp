@@ -143,7 +143,6 @@ glm::vec2 Renderer::rotatePoint(const glm::vec2& pos, float angle) {
 void Renderer::drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int texId, float angle, std::array<glm::vec2, 4> texcoords) {
 
     reevaluateBatchSpace();
-
     float textureIndex = getTextureIndex(texId);
 
     setQuadVertices(s_renderData.currentLocationPtr,pos, size, color, textureIndex, angle, texcoords);
@@ -316,9 +315,6 @@ float Renderer::getTextureIndex(int texId) {
     }
     return textureIndex;
 }
-
-
-
 
 
 

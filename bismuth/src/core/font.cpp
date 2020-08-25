@@ -137,7 +137,7 @@ void Font::loadFnt(std::string filePath) {
     std::cout << fontInfo.file << std::endl;
     std::vector<std::string> info4 = split(lines.at(3), "=");
     int charLines = getDigit(info4[1]);
-    log("charlines " + std::to_string(charLines));
+    //log("charlines " + std::to_string(charLines));
 
 
     for (int i = 4; i <= charLines; i++) {
@@ -161,6 +161,7 @@ void Font::loadFnt(std::string filePath) {
     //for (auto& p : characters) {
     //log(std::to_string(p.first) + " : " + std::to_string(p.second.charId));
     //}
+    /*
     log("-----------------------");
     log("face " + fontInfo.face);
     log("file:" + fontInfo.file);
@@ -171,6 +172,7 @@ void Font::loadFnt(std::string filePath) {
     log("scaleW: " +std::to_string(fontInfo.scaleW));
     log("scaleH: " + std::to_string(fontInfo.scaleH));
     log("-----------------------");
+    */
     textureId = assetmanager.loadTexture("resources/assets/fonts/" + fontInfo.file);
 }
 

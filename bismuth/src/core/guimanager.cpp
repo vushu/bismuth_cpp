@@ -36,7 +36,10 @@ void GuiManager::beginDraw() {
 void GuiManager::showFPS() {
 
     ImGui::Begin("FPS");
-    ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+    //ImGui::Text("Quads: %s", std::to_string(this->getRenderer().getRenderStats().quadCount).c_str());
+    //ImGui::Text("DrawCount: %s", std::to_string(this->getRenderer().getRenderStats().drawCount).c_str());
+    ImGui::Text("Average %.3f ms/frame", 1000.0f / ImGui::GetIO().Framerate);
+    ImGui::Text("%.1f FPS)", ImGui::GetIO().Framerate);
     ImGui::End();
 
 }

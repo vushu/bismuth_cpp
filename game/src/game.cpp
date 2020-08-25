@@ -32,51 +32,51 @@ void MyGame::update(float dt) {
         getWindow().close();
     }
     /*
-       if (bi::keyInput().isKeyPressed(GLFW_KEY_S)) {
-       bi::log("STOP audioManager");
-       this->getAudioManager().stop();
-       }
+    if (bi::keyInput().isKeyPressed(GLFW_KEY_S)) {
+        bi::log("STOP audioManager");
+        this->getAudioManager().stop();
+    }
 
-       if (bi::keyInput().isKeyPressed(GLFW_KEY_UP)) {
-       bi::log("Start sound");
-       s4->playSound();
-       }
-       if (bi::keyInput().isKeyPressed(GLFW_KEY_DOWN)) {
-       bi::log("Stopping sound");
-       s4->stopSound();
-       }
-       if (bi::keyInput().isKeyPressed(GLFW_KEY_SPACE)) {
-       this->s2->stopSound();
-       }
+    if (bi::keyInput().isKeyPressed(GLFW_KEY_UP)) {
+        bi::log("Start sound");
+        s4->playSound();
+    }
+    if (bi::keyInput().isKeyPressed(GLFW_KEY_DOWN)) {
+        bi::log("Stopping sound");
+        s4->stopSound();
+    }
+    if (bi::keyInput().isKeyPressed(GLFW_KEY_SPACE)) {
+        this->s2->stopSound();
+    }
 
-       if (bi::keyInput().isKeyPressed(GLFW_KEY_R)) {
-       bi::log("rewind sound");
-       s4->rewindSound();
-       }
-       if (bi::keyInput().isKeyPressed(GLFW_KEY_1)) {
-       this->getAudioManager().stop();
-       }
-       if (bi::keyInput().isKeyPressed(GLFW_KEY_3)) {
-       this->s2->playSound();
-       }
-       if (bi::keyInput().isKeyPressed(GLFW_KEY_D)) {
-       this->getAudioManager().start();
-       }
-       if (bi::keyInput().isKeyPressed(GLFW_KEY_RIGHT)) {
-       s2->incrementVolume(0.1f);
-       bi::log("volume is " + std::to_string(s2->volume));
-       }
-       if (bi::keyInput().isKeyPressed(GLFW_KEY_LEFT)) {
-       s2->decrementVolume(0.1f);
-       bi::log("volume is " + std::to_string(s2->volume));
+    if (bi::keyInput().isKeyPressed(GLFW_KEY_R)) {
+        bi::log("rewind sound");
+        s4->rewindSound();
+    }
+    if (bi::keyInput().isKeyPressed(GLFW_KEY_1)) {
+        this->getAudioManager().stop();
+    }
+    if (bi::keyInput().isKeyPressed(GLFW_KEY_3)) {
+        this->s2->playSound();
+    }
+    if (bi::keyInput().isKeyPressed(GLFW_KEY_D)) {
+        this->getAudioManager().start();
+    }
+    if (bi::keyInput().isKeyPressed(GLFW_KEY_RIGHT)) {
+        s2->incrementVolume(0.1f);
+        bi::log("volume is " + std::to_string(s2->volume));
+    }
+    if (bi::keyInput().isKeyPressed(GLFW_KEY_LEFT)) {
+        s2->decrementVolume(0.1f);
+        bi::log("volume is " + std::to_string(s2->volume));
 
-       }
+    }
 
-       if (bi::keyInput().isKeyPressed(GLFW_KEY_P) && s1->isPause) {
-       s1->isPause = false;
-       }
-       */
+    if (bi::keyInput().isKeyPressed(GLFW_KEY_P) && s1->isPause) {
+        s1->isPause = false;
+    }
 
+    */
 
     //renderSystem.update(this->getRenderer(), dt, world, this->registry);
     //update world
@@ -92,19 +92,18 @@ void MyGame::update(float dt) {
     this->getRenderer().beginBatch();
     //for (int i = 0; i < 100; ++i) {
 
-    glm::vec4 color{1,0,1,1};
+    glm::vec4 colorSmiley{1,0,1,1};
 
     mAngle += dt;
     this->getRenderer().drawTexture({camX, camY}, {100.0f,100.0f}, color, textureId, glm::pi<float>() * -mAngle);
-    this->getRenderer().drawTexture({214, 280}, {100.0f,100.0f}, color, textureId, glm::pi<float>() * mAngle);
+    this->getRenderer().drawTexture({214, 280}, {100.0f,100.0f}, colorSmiley, textureId, glm::pi<float>() * mAngle);
     //this->getRenderer().drawQuad({200, 300}, {30.0f,30.0f}, {1,1,1,1});
-    this->getRenderer().drawText(text, {0, 125}, *this->font, {0,1,0,1}, 0.4f);
+    this->getRenderer().drawText(text, {0, 125}, *this->font, this->textColor, 0.4f);
 
     this->getRenderer().endBatch();
     this->getRenderer().flush();
 
     getGuiManager().beginDraw();
-    //getGuiManager().showFPS();
     ImGui::Begin("Render stats");
     ImGui::Text("Quads: %s", std::to_string(this->getRenderer().getRenderStats().quadCount).c_str());
     ImGui::Text("DrawCount: %s", std::to_string(this->getRenderer().getRenderStats().drawCount).c_str());
@@ -116,6 +115,14 @@ void MyGame::update(float dt) {
     ImGui::SliderFloat("CamX:", &camX, -1000, 1000);
     ImGui::SliderFloat("CamY:", &camY, -1000, 1000);
     ImGui::InputText("Text", text.data(), text.size());
+    ImGui::End();
+
+    ImGui::Begin("Color");
+    ImGui::ColorPicker4("Color", &color[0]);
+    ImGui::End();
+
+    ImGui::Begin("Text Color");
+    ImGui::ColorPicker4("TextColor", &textColor[0]);
     ImGui::End();
     getGuiManager().endDraw();
 

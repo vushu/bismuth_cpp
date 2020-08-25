@@ -39,7 +39,8 @@ class MyGame : public bi::Application {
         b2BodyDef groundBodyDef;
         b2Vec2 gravity{0.0f, 10.0f};
         b2World world{gravity};
-        glm::vec4 color ;
+        glm::vec4 color;
+        glm::vec4 textColor {0,0,0,1};
         std::array<char, 256> text;
 
 

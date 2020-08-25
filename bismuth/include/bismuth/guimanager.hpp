@@ -10,6 +10,7 @@ namespace bi {
             void beginDraw();
             void endDraw();
             void showFPS();
+
         private:
             Window& window;
 
