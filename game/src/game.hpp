@@ -1,5 +1,6 @@
 #pragma once
 #include "glm/fwd.hpp"
+#include <array>
 #include <bismuth/application.hpp>
 #include <entt/entt.hpp>
 #include <bismuth/spriterenderer.hpp>
@@ -7,6 +8,7 @@
 #include <box2d/box2d.h>
 #include <glm/glm.hpp>
 #include <bismuth/font.hpp>
+#include <bismuth/assetmanager.hpp>
 #include <memory>
 
 class MyGame : public bi::Application {
@@ -38,10 +40,11 @@ class MyGame : public bi::Application {
         b2Vec2 gravity{0.0f, 10.0f};
         b2World world{gravity};
         glm::vec4 color ;
+        std::array<char, 256> text;
+
 
         //b2BodyDef boxBodyDef;
         b2Body* boxBody;
-        //bi::Font font{"resources/assets/fonts/Ready.ttf", 48};
-
+        std::unique_ptr<bi::Font> font;
 
 };

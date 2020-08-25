@@ -32,6 +32,7 @@ void Renderer::init()  {
     //font
     //glEnable(GL_CULL_FACE);
     // alpha blending
+    //glBlendFunc(GL_SRC1_COLOR, GL_ONE_MINUS_SRC1_COLOR);
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -71,31 +72,33 @@ void Renderer::init()  {
     //texId
     glEnableVertexAttribArray(3);
     glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, sizeof(QuadVertex), (const GLvoid *) offsetof(QuadVertex, texId));
-
+    //type
+    glEnableVertexAttribArray(4);
+    glVertexAttribPointer(4, 1, GL_FLOAT, GL_FALSE, sizeof(QuadVertex), (const GLvoid *) offsetof(QuadVertex, type));
     //Create indices
     uint32_t indices[maxIndexCount];
     uint32_t offset = 0;
 
     for (int i = 0; i < maxIndexCount; i += 6) {
-        indices[i + 0] = 0 + offset;
-        indices[i + 1] = 1 + offset;
-        indices[i + 2] = 3 + offset;
-
-        indices[i + 3] = 1 + offset;
-        indices[i + 4] = 2 + offset;
-        indices[i + 5] = 3 + offset;
-
-
         /*
-           indices[i + 0] = 3 + offset;
-           indices[i + 1] = 2 + offset;
-           indices[i + 2] = 0 + offset;
+           indices[i + 0] = 0 + offset;
+           indices[i + 1] = 1 + offset;
+           indices[i + 2] = 3 + offset;
 
-           indices[i + 3] = 0 + offset;
+           indices[i + 3] = 1 + offset;
            indices[i + 4] = 2 + offset;
-           indices[i + 5] = 1 + offset;
+           indices[i + 5] = 3 + offset;
+           */
 
-*/
+
+        indices[i + 0] = 3 + offset;
+        indices[i + 1] = 2 + offset;
+        indices[i + 2] = 0 + offset;
+
+        indices[i + 3] = 0 + offset;
+        indices[i + 4] = 2 + offset;
+        indices[i + 5] = 1 + offset;
+
         offset += 4;
     }
 
@@ -141,20 +144,7 @@ void Renderer::drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int t
 
     reevaluateBatchSpace();
 
-    float textureIndex = 0.0f;
-    for (int i = 0; i < maxTextures; i++) {
-        if (s_renderData.textureIds[i] == texId) {
-            textureIndex = (float) (i + 1);
-            break;
-        }
-    }
-
-    if (textureIndex == 0.0f) {
-        textureIndex = (float) s_renderData.textureSlotsIndex + 1;
-        s_renderData.textureIds[s_renderData.textureSlotsIndex] = texId;
-        // not existing
-        s_renderData.textureSlotsIndex++;
-    }
+    float textureIndex = getTextureIndex(texId);
 
     setQuadVertices(s_renderData.currentLocationPtr,pos, size, color, textureIndex, angle, texcoords);
     incrementDrawCounters();
@@ -192,6 +182,7 @@ void Renderer::setQuadVertex(QuadVertex*& quadVertex, glm::vec2 position, glm::v
     quadVertex->color = color;
     quadVertex->texcoords = texCoord;
     quadVertex->texId = texId;
+    quadVertex->type = 0.0f;
     quadVertex++;
 }
 
@@ -291,18 +282,39 @@ void Renderer::reevaluateBatchSpace() {
     }
 }
 
-void Renderer::drawText(std::string text, glm::vec2 position, Font& f) {
+void Renderer::drawText(std::array<char, 256> text, glm::vec2 position, Font& f, glm::vec4 color,  float scale) {
+    std::string str(text.data());
+    drawText(str, position, f, color, scale);
+}
 
-    // make check if they exist
+void Renderer::drawText(std::string text, glm::vec2 position, Font& f, glm::vec4 color,  float scale) {
+
     reevaluateBatchSpace();
-    auto textures = f.getTextureIds(text);
-    for (int i = 0; i < text.length(); i++) {
-        s_renderData.textureIds[i] = textures[i];
-        s_renderData.textureSlotsIndex++;
+    float textureIndex = getTextureIndex(f.textureId);
+
+    f.updateBuffers(text, position, s_renderData.currentLocationPtr, color , scale, textureIndex);
+    // each character is a quad
+    s_renderData.indexCount += 6 * text.length();
+    s_renderData.stats.quadCount += text.length();
+}
+
+float Renderer::getTextureIndex(int texId) {
+
+    float textureIndex = 0.0f;
+    for (int i = 0; i < maxTextures; i++) {
+        if (s_renderData.textureIds[i] == texId) {
+            textureIndex = (float) (i + 1);
+            break;
+        }
     }
 
-    f.updateBuffers(text, position, s_renderData.currentLocationPtr);
-    incrementDrawCounters();
+    if (textureIndex == 0.0f) {
+        textureIndex = (float) s_renderData.textureSlotsIndex + 1;
+        s_renderData.textureIds[s_renderData.textureSlotsIndex] = texId;
+        // not existing
+        s_renderData.textureSlotsIndex++;
+    }
+    return textureIndex;
 }
 
 

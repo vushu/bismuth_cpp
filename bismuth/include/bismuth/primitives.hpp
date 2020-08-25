@@ -7,5 +7,6 @@ namespace bi {
         glm::vec4 color;
         glm::vec2 texcoords;
         float texId;
+        float type;
     };
 }

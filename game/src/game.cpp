@@ -97,8 +97,8 @@ void MyGame::update(float dt) {
     mAngle += dt;
     this->getRenderer().drawTexture({camX, camY}, {100.0f,100.0f}, color, textureId, glm::pi<float>() * -mAngle);
     this->getRenderer().drawTexture({214, 280}, {100.0f,100.0f}, color, textureId, glm::pi<float>() * mAngle);
-    this->getRenderer().drawQuad({200, 300}, {30.0f,30.0f}, {1,1,1,1});
-    //this->getRenderer().drawText("mawr", {0, 100}, this->font);
+    //this->getRenderer().drawQuad({200, 300}, {30.0f,30.0f}, {1,1,1,1});
+    this->getRenderer().drawText(text, {0, 125}, *this->font, {0,1,0,1}, 0.4f);
 
     this->getRenderer().endBatch();
     this->getRenderer().flush();
@@ -115,6 +115,7 @@ void MyGame::update(float dt) {
     ImGui::Begin("Camera Pos");
     ImGui::SliderFloat("CamX:", &camX, -1000, 1000);
     ImGui::SliderFloat("CamY:", &camY, -1000, 1000);
+    ImGui::InputText("Text", text.data(), text.size());
     ImGui::End();
     getGuiManager().endDraw();
 
@@ -126,7 +127,8 @@ void MyGame::init() {
     size = {100,100};
     //font.init();
 
-    getCamera().viewMatrix = glm::translate(getCamera().viewMatrix, glm::vec3(100,0,0));
+    //getCamera().setPosition(glm::vec2 pos)
+    //getCamera().viewMatrix = glm::translate(getCamera().viewMatrix, glm::vec3(100,0,0));
 
     getGuiManager().init();
     std::unique_ptr<Sprite> sprite = std::make_unique<Sprite>();
@@ -135,10 +137,25 @@ void MyGame::init() {
     this->spriterenderer->setColor(glm::vec4(1,0,0,1));
     this->spriterenderer->setPosition(glm::vec2(0,0));
     this->spriterenderer->setScale(glm::vec2(32,32));
-    bi::Font font;
-    font.loadFnt("resources/assets/fonts/liberation.fnt");
+    font = std::make_unique<Font>(getAssetManager());
+    font->loadFnt("resources/assets/fonts/manjaru.fnt");
+    std::vector<Character> vec = font->getCharacters("j");
+    for (auto& ch : vec) {
+        std::string s;
+        s.push_back(ch.charId);
+        log("-----------------------");
+        log("character " +  s);
+        log("charId " + std::to_string(ch.charId));
+        log("x:" + std::to_string(ch.x));
+        log("y:" + std::to_string(ch.y));
+        log("width:" + std::to_string(ch.width));
+        log("height:" + std::to_string(ch.height));
+        log("xoffset:" + std::to_string(ch.xoffset));
+        log("yoffset:" + std::to_string(ch.yoofset));
+        log("xadvance:" + std::to_string(ch.xadvance));
+        log("-----------------------");
 
-
+    }
     //s1 = std::make_shared<bi::Sound>("resources/assets/audio/test.wav");
     //s2 = std::make_shared<bi::Sound>("resources/assets/audio/music2.mp3");
     //s3 = std::make_shared<bi::Sound>("resources/assets/audio/music3.mp3");

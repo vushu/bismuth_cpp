@@ -1,12 +1,16 @@
-#include "bismuth/primitives.hpp"
 #include "glm/fwd.hpp"
+#include <bismuth/primitives.hpp>
+#include <glm/glm.hpp>
+#include <glm/gtx/string_cast.hpp>
 #include <array>
 #include <bismuth/font.hpp>
 #include <bismuth/logging.hpp>
+#include <exception>
 #include <glad/glad.h>
 #include <iostream>
 #include <ostream>
 #include <regex>
+#include <stdexcept>
 #include <string>
 #include <fstream>
 #include <vector>
@@ -14,58 +18,77 @@
 
 using namespace bi;
 
-Font::Font() {
-
-}
 Font::~Font() {
 
 }
 
-void Font::init() {
-    //generateChars();
-}
+void Font::updateBuffers(std::string text, glm::vec2 position, QuadVertex*& quadVertex, glm::vec4 color, float scale , float renderTexId) {
+    //float scale = 1.5f;
 
-void Font::generateChars() {
-}
+    glm::vec2 pos = position;
+    glm::vec4 color1 = {1.0f,1.0f,0.0f,1.0f};
+    glm::vec4 color2 = {1.0f,1.0f,0.0f,1.0f};
+    glm::vec4 color3 = {1.0f,1.0f,0.0f,1.0f};
+    glm::vec4 color4 = {1.0f,1.0f,0.0f,1.0f};
+    for (auto& ch : text) {
+        std::string s;
+        s.push_back(ch);
+        if (characters.count(ch) == 0) {
+            //throw std::runtime_error("Char: " + s + " isn't found");
+            log("Failed to find char: " + s);
+            break;
+        }
+        //log("next char: " + s);
+        Character& c = characters.at(ch);
 
-void Font::updateBuffers(std::string text, glm::vec2 position, QuadVertex*& quadVertex) {
-    std::string::const_iterator c;
-    float scale = 1.5f;
-    float texId = 0.0f;
+        glm::vec2 texcoordBR = {(c.x + c.width) / (float)fontInfo.scaleW, (c.y + c.height) / (float)fontInfo.scaleH };
+        glm::vec2 texcoordTR = {(c.x + c.width) / (float)fontInfo.scaleW, c.y / (float)fontInfo.scaleH };
+        glm::vec2 texcoordTL = {c.x / (float)fontInfo.scaleW, c.y / (float)fontInfo.scaleH };
+        glm::vec2 texcoordBL = {c.x / (float)fontInfo.scaleW, (c.y + c.height) / (float)fontInfo.scaleH };
 
-    for (c = text.begin(); c != text.end(); c++) {
-        Character ch = characters[*c];
-        glm::vec2 pos (position.x + ch.bearing.x * scale, position.y - (ch.size.y - ch.bearing.y) * scale);
-        float w = ch.size.x * scale;
-        float h = ch.size.y * scale;
-
-        quadVertex->position = {pos.x + w, pos.y + h, 0.0f};
-        quadVertex->color = {1,1,1,0};
-        quadVertex->texId = texId;
-        quadVertex->texcoords = {1.0f, 1.0f};
+        glm::vec3 posBR = {pos.x + c.width + c.xoffset, pos.y + c.height + c.yoofset, 0.0f};
+        glm::vec3 posTR = {pos.x + c.width + c.xoffset, pos.y + c.yoofset, 0.0f};
+        glm::vec3 posTL = {pos.x + c.xoffset, pos.y + c.yoofset, 0.0f};
+        glm::vec3 posBL = {pos.x + c.xoffset, pos.y + c.height + c.yoofset, 0.0f};
+        /*
+           log("-------------------------------");
+           log(glm::to_string(texcoordBR));
+           log(glm::to_string(texcoordTR));
+           log(glm::to_string(texcoordTL));
+           log(glm::to_string(texcoordBL));
+           log("-------------------------------");
+           */
+        quadVertex->texId = renderTexId;
+        quadVertex->position = posBR * scale;
+        quadVertex->color = color;
+        quadVertex->texcoords = texcoordBR;
+        quadVertex->type = 1.0f;
         quadVertex++;
 
-        quadVertex->position = {pos.x + w, pos.y, 0.0f};
-        quadVertex->color = {1,1,1,0};
-        quadVertex->texId = texId;
-        quadVertex->texcoords = {1.0f, 0.0f};
+        quadVertex->texId = renderTexId;
+        quadVertex->position = posTR * scale;
+        quadVertex->color = color;
+        quadVertex->texcoords = texcoordTR;
+        quadVertex->type = 1.0f;
         quadVertex++;
 
-        quadVertex->position = {pos.x, pos.y, 0.0f};
-        quadVertex->color = {1,1,1,0};
-        quadVertex->texId = texId;
-        quadVertex->texcoords = {0.0f, 0.0f};
+        quadVertex->texId = renderTexId;
+        quadVertex->position = posTL * scale;
+        quadVertex->color = color;
+        quadVertex->texcoords = texcoordTL;
+        quadVertex->type = 1.0f;
         quadVertex++;
 
-        quadVertex->position = {pos.x, pos.y + h, 0.0f};
-        quadVertex->color = {1,1,1,0};
-        quadVertex->texId = texId;
-        quadVertex->texcoords = {0.0f, 1.0f};
+        quadVertex->texId = renderTexId;
+        quadVertex->position = posBL * scale;
+        quadVertex->color = color;
+        quadVertex->texcoords = texcoordBL;
+        quadVertex->type = 1.0f;
         quadVertex++;
 
-        texId++;
-        position.x = (ch.advanceOffset >> 6) * scale;
+        pos.x += c.xadvance;
     }
+
 }
 std::vector<std::string> Font::split(std::string str,std::string sep){
     char* cstr=const_cast<char*>(str.c_str());
@@ -80,66 +103,86 @@ std::vector<std::string> Font::split(std::string str,std::string sep){
 }
 
 void Font::loadFnt(std::string filePath) {
+
     std::ifstream file(filePath);
-    std::string line, line2;
+    std::string line;
     std::vector<std::string> lines;
+
     while (std::getline(file, line)) {
         lines.push_back(line);
     }
 
-    //std::regex rgx(R"(face=\"(.*?)\" size=(\d+) bold=(\d+) padding=(.,.,.,.?) ")");
-    std::smatch match;
     std::string delimiter = "=";
 
     std::string faceLine = lines.at(0);
-    size_t pos = 0;
     std::string token;
 
-    face = getInQuotes(faceLine);
-    log("face: " + face);
-
-    bool first = true;
-    while ((pos = faceLine.find(delimiter)) != std::string::npos) {
-        if (first){
-            token = faceLine.substr(0, pos);
-            first = false;
-        }
-        else
-            token = split(faceLine.substr(0, pos), " ")[0];
-        std::cout << token << std::endl;
-        faceLine.erase(0, pos + delimiter.length());
-    }
-
+    std::vector<std::string> info1 = split(lines.at(0), "=");
+    fontInfo.face = getInQuotes(info1.at(1));
+    fontInfo.size = getDigit(info1.at(2));
+    fontInfo.bold = getDigit(info1.at(3));
+    fontInfo.italic = getDigit(info1.at(4));
 
     // last line isnt needed
+    std::vector<std::string> info2 = split(lines.at(1), "=");
+    fontInfo.lineHeight = getDigit(info2.at(1));
+    fontInfo.base = getDigit(info2.at(2));
+    fontInfo.scaleW = getDigit(info2.at(3));
+    fontInfo.scaleH = getDigit(info2.at(4));
+    fontInfo.pages = getDigit(info2.at(5));
+    fontInfo.packed = getDigit(info2.at(6));
 
-    for (int i = 3; i < lines.size() - 1; i++) {
+    std::vector<std::string> info3 = split(lines.at(2), "=");
+    fontInfo.file = getInQuotes(info3[2]);
+    std::cout << fontInfo.file << std::endl;
+    std::vector<std::string> info4 = split(lines.at(3), "=");
+    int charLines = getDigit(info4[1]);
+    log("charlines " + std::to_string(charLines));
+
+
+    for (int i = 4; i <= charLines; i++) {
         std::vector<std::string> l = split(lines.at(i), "=");
-        for (int j = 0; j < l.size(); j++) {
-            getDigit(l[j]);
-        }
+        Character ch;
+        ch.charId = getDigit(l[1]);
+        ch.x = getDigit(l[2]);
+        ch.y = getDigit(l[3]);
+        ch.width = getDigit(l[4]);
+        ch.height = getDigit(l[5]);
+        ch.xoffset = getDigit(l[6]);
+        ch.yoofset = getDigit(l[7]);
+        ch.xadvance = getDigit(l[8]);
+        ch.page = getDigit(l[9]);
+        ch.chnl = getDigit(l[10]);
+        this->characters.insert({ch.charId, ch});
     }
 
-}
+    //log("-----------------------");
 
-//log("hej file");
-
-std::array<float, 100> Font::getTextureIds(std::string text) {
-    std::array<float, 100> textureIds;
-    for (int i = 0; i < text.length(); i ++) {
-        textureIds[i] = characters.at(i).texId;
-    }
-    return textureIds;
+    //for (auto& p : characters) {
+    //log(std::to_string(p.first) + " : " + std::to_string(p.second.charId));
+    //}
+    log("-----------------------");
+    log("face " + fontInfo.face);
+    log("file:" + fontInfo.file);
+    log("size:" + std::to_string(fontInfo.size));
+    log("bold:" + std::to_string(fontInfo.bold));
+    log("italic:" + std::to_string(fontInfo.italic));
+    log("base:" + std::to_string(fontInfo.base));
+    log("scaleW: " +std::to_string(fontInfo.scaleW));
+    log("scaleH: " + std::to_string(fontInfo.scaleH));
+    log("-----------------------");
+    textureId = assetmanager.loadTexture("resources/assets/fonts/" + fontInfo.file);
 }
 
 int Font::getDigit(std::string text){
-    std::regex rgx("([0-9]+)");
+    std::regex rgx("(^-?[0-9]+)");
     std::smatch match;
 
     if (std::regex_search(text, match, rgx))
     {
 
         std::cout << match[1] << std::endl;
+
         return std::stoi(match[1]);
     }
 
@@ -155,6 +198,16 @@ std::string Font::getInQuotes(std::string text) {
         return match[1];
     }
     return text;
+}
+
+std::vector<Character> Font::getCharacters(std::string text) {
+    std::vector<Character> chars;
+    for (char& ch : text) {
+        if (characters.count(ch) > 0)
+            chars.push_back(characters.at(ch));
+    }
+    log("found: " + std::to_string(chars.size()));
+    return chars;
 }
 
 

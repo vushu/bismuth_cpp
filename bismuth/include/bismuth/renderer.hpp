@@ -56,7 +56,8 @@ namespace bi {
             void drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int texId, float angle, std::array<glm::vec2, 4> texCoords = defaultTexcoords);
             void drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color, float angle);
             void drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color);
-            void drawText(std::string text, glm::vec2 position, Font& f);
+            void drawText(std::string text, glm::vec2 position, Font& f, glm::vec4 color, float scale);
+            void drawText(std::array<char, 256> text, glm::vec2 position, Font& f, glm::vec4 color , float scale);
             //void draw(SpriteRenderer& sprite);
             void resetStats();
             void clear(glm::vec4 color);
@@ -89,6 +90,7 @@ namespace bi {
             void setQuadVertices(QuadVertex*& quadVertex, glm::vec2 position, glm::vec2 size, glm::vec4 color, float texId, float angle, std::array<glm::vec2, 4> texCoords = defaultTexcoords);
             void incrementDrawCounters();
             void reevaluateBatchSpace();
+            float getTextureIndex(int texId);
             std::array<glm::vec2, 4> getCorners(glm::vec2 position, glm::vec2 size, float angle);
 
     };
