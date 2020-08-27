@@ -3,10 +3,10 @@
 #include <stdexcept>
 
 #include <bismuth/font.hpp>
-#ifndef __EMSCRIPTEN__
-#include <ft2build.h>
-#include FT_FREETYPE_H
-#endif
+//#ifndef __EMSCRIPTEN__
+//#include <ft2build.h>
+//#include FT_FREETYPE_H
+//#endif
 
 using namespace bi;
 
@@ -14,14 +14,14 @@ TextRenderer::TextRenderer() {}
 
 TextRenderer::~TextRenderer() {
     log("Destroyed TextRenderer");
-    FT_Done_FreeType(ft);
+    //FT_Done_FreeType(ft);
 }
 
 void TextRenderer::init() {
-    if (FT_Init_FreeType(&ft)) {
-        log("Failed to init FreeType Library");
-        throw std::runtime_error("Failed to init FreeType Library");
-    }
+    //if (FT_Init_FreeType(&ft)) {
+        //log("Failed to init FreeType Library");
+        //throw std::runtime_error("Failed to init FreeType Library");
+    //}
     log("TextRenderer initialized");
 }
 

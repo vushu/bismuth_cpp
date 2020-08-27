@@ -1,13 +1,12 @@
 #pragma once
-#include "glm/fwd.hpp"
 #include <array>
 #include <bismuth/assetmanager.hpp>
 #include <bismuth/primitives.hpp>
 #include <glm/glm.hpp>
 #include <map>
-#include <ft2build.h>
+//#include <ft2build.h>
 #include <vector>
-#include FT_FREETYPE_H
+//#include FT_FREETYPE_H
 #include <string>
 
 namespace bi {

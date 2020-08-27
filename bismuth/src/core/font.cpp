@@ -1,4 +1,3 @@
-#include "glm/fwd.hpp"
 #include <bismuth/primitives.hpp>
 #include <glm/glm.hpp>
 #include <glm/gtx/string_cast.hpp>
@@ -183,7 +182,7 @@ int Font::getDigit(std::string text){
     if (std::regex_search(text, match, rgx))
     {
 
-        std::cout << match[1] << std::endl;
+        //std::cout << match[1] << std::endl;
 
         return std::stoi(match[1]);
     }

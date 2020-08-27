@@ -32,51 +32,51 @@ void MyGame::update(float dt) {
         getWindow().close();
     }
     /*
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_S)) {
-        bi::log("STOP audioManager");
-        this->getAudioManager().stop();
-    }
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_S)) {
+       bi::log("STOP audioManager");
+       this->getAudioManager().stop();
+       }
 
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_UP)) {
-        bi::log("Start sound");
-        s4->playSound();
-    }
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_DOWN)) {
-        bi::log("Stopping sound");
-        s4->stopSound();
-    }
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_SPACE)) {
-        this->s2->stopSound();
-    }
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_UP)) {
+       bi::log("Start sound");
+       s4->playSound();
+       }
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_DOWN)) {
+       bi::log("Stopping sound");
+       s4->stopSound();
+       }
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_SPACE)) {
+       this->s2->stopSound();
+       }
 
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_R)) {
-        bi::log("rewind sound");
-        s4->rewindSound();
-    }
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_1)) {
-        this->getAudioManager().stop();
-    }
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_3)) {
-        this->s2->playSound();
-    }
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_D)) {
-        this->getAudioManager().start();
-    }
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_RIGHT)) {
-        s2->incrementVolume(0.1f);
-        bi::log("volume is " + std::to_string(s2->volume));
-    }
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_LEFT)) {
-        s2->decrementVolume(0.1f);
-        bi::log("volume is " + std::to_string(s2->volume));
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_R)) {
+       bi::log("rewind sound");
+       s4->rewindSound();
+       }
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_1)) {
+       this->getAudioManager().stop();
+       }
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_3)) {
+       this->s2->playSound();
+       }
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_D)) {
+       this->getAudioManager().start();
+       }
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_RIGHT)) {
+       s2->incrementVolume(0.1f);
+       bi::log("volume is " + std::to_string(s2->volume));
+       }
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_LEFT)) {
+       s2->decrementVolume(0.1f);
+       bi::log("volume is " + std::to_string(s2->volume));
 
-    }
+       }
 
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_P) && s1->isPause) {
-        s1->isPause = false;
-    }
+       if (bi::keyInput().isKeyPressed(GLFW_KEY_P) && s1->isPause) {
+       s1->isPause = false;
+       }
 
-    */
+*/
 
     //renderSystem.update(this->getRenderer(), dt, world, this->registry);
     //update world
@@ -88,13 +88,33 @@ void MyGame::update(float dt) {
     //bi::log("FPS: " + std::to_string(1.0f/dt));
     // since we are using variable time put dt
     //world.Step(dt, velocityIterations, positionIterations);
+    //
+    //
+    //
+    mAngle += dt;
+    //drawStuff2(dt);
+    drawStuff(dt);
+
+
+}
+
+void MyGame::drawStuff(float dt) {
+    this->shaperenderer->drawPolygon({400, 200}, 50.0f, 3, {0,1,0,1}, M_PI * 0.5f , true);
+    //this->shaperenderer->drawPolygon({200, 200}, 50.0f, 3, {0,1,0,1}, 0.0f , true);
+
+    //this->shaperenderer->drawLine({10,200}, {500,200}, color);
+    //this->shaperenderer->drawLine({10,300}, {500,300}, color);
+    //this->shaperenderer->drawPolygon({300, 300}, 50.0f, 24, color, true);
+    this->shaperenderer->flush();
+}
+
+void MyGame::drawStuff2(float dt) {
     this->getRenderer().resetStats();
     this->getRenderer().beginBatch();
     //for (int i = 0; i < 100; ++i) {
 
     glm::vec4 colorSmiley{1,0,1,1};
 
-    mAngle += dt;
     this->getRenderer().drawTexture({camX, camY}, {100.0f,100.0f}, color, textureId, glm::pi<float>() * -mAngle);
     this->getRenderer().drawTexture({214, 280}, {100.0f,100.0f}, colorSmiley, textureId, glm::pi<float>() * mAngle);
     //this->getRenderer().drawQuad({200, 300}, {30.0f,30.0f}, {1,1,1,1});
@@ -137,6 +157,9 @@ void MyGame::init() {
     //getCamera().setPosition(glm::vec2 pos)
     //getCamera().viewMatrix = glm::translate(getCamera().viewMatrix, glm::vec3(100,0,0));
 
+    shaperenderer = std::make_unique<bi::ShapeRenderer>(getCamera());
+    shaperenderer->init();
+
     getGuiManager().init();
     std::unique_ptr<Sprite> sprite = std::make_unique<Sprite>();
     this->spriterenderer = std::make_unique<bi::SpriteRenderer>(std::move(sprite));
@@ -146,23 +169,26 @@ void MyGame::init() {
     this->spriterenderer->setScale(glm::vec2(32,32));
     font = std::make_unique<Font>(getAssetManager());
     font->loadFnt("resources/assets/fonts/manjaru.fnt");
-    std::vector<Character> vec = font->getCharacters("j");
-    for (auto& ch : vec) {
-        std::string s;
-        s.push_back(ch.charId);
-        log("-----------------------");
-        log("character " +  s);
-        log("charId " + std::to_string(ch.charId));
-        log("x:" + std::to_string(ch.x));
-        log("y:" + std::to_string(ch.y));
-        log("width:" + std::to_string(ch.width));
-        log("height:" + std::to_string(ch.height));
-        log("xoffset:" + std::to_string(ch.xoffset));
-        log("yoffset:" + std::to_string(ch.yoofset));
-        log("xadvance:" + std::to_string(ch.xadvance));
-        log("-----------------------");
+    /*
+       std::vector<Character> vec = font->getCharacters("j");
 
-    }
+       for (auto& ch : vec) {
+       std::string s;
+       s.push_back(ch.charId);
+       log("-----------------------");
+       log("character " +  s);
+       log("charId " + std::to_string(ch.charId));
+       log("x:" + std::to_string(ch.x));
+       log("y:" + std::to_string(ch.y));
+       log("width:" + std::to_string(ch.width));
+       log("height:" + std::to_string(ch.height));
+       log("xoffset:" + std::to_string(ch.xoffset));
+       log("yoffset:" + std::to_string(ch.yoofset));
+       log("xadvance:" + std::to_string(ch.xadvance));
+       log("-----------------------");
+
+       }
+       */
     //s1 = std::make_shared<bi::Sound>("resources/assets/audio/test.wav");
     //s2 = std::make_shared<bi::Sound>("resources/assets/audio/music2.mp3");
     //s3 = std::make_shared<bi::Sound>("resources/assets/audio/music3.mp3");

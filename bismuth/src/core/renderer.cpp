@@ -25,20 +25,7 @@ void checkGLError()
 
 void Renderer::init()  {
 
-    if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
-        log("Renderer: Failed to initialize GLAD");
-        throw std::runtime_error("Renderer: Failed to initialize GLAD");
-    }
-    //font
-    //glEnable(GL_CULL_FACE);
-    // alpha blending
-    //glBlendFunc(GL_SRC1_COLOR, GL_ONE_MINUS_SRC1_COLOR);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-
     this->shader.compile();
-
-
 
     s_renderData.quadBuffer = new QuadVertex[maxVertexCount];
 
@@ -57,7 +44,6 @@ void Renderer::init()  {
         throw std::runtime_error("Failed to bind buffer");
         //vbo = 0;
     }
-
     // Enabling attributes
     // position
     //
@@ -75,11 +61,21 @@ void Renderer::init()  {
     //type
     glEnableVertexAttribArray(4);
     glVertexAttribPointer(4, 1, GL_FLOAT, GL_FALSE, sizeof(QuadVertex), (const GLvoid *) offsetof(QuadVertex, type));
+
+    //disable for good measure
+    glDisableVertexAttribArray(0);
+    glDisableVertexAttribArray(1);
+    glDisableVertexAttribArray(2);
+    glDisableVertexAttribArray(3);
+    glDisableVertexAttribArray(4);
+
+
     //Create indices
     uint32_t indices[maxIndexCount];
     uint32_t offset = 0;
 
     for (int i = 0; i < maxIndexCount; i += 6) {
+
         /*
            indices[i + 0] = 0 + offset;
            indices[i + 1] = 1 + offset;
@@ -113,6 +109,8 @@ void Renderer::init()  {
     if (erre != GL_NO_ERROR) {
         log("ERROR: !!" + std::to_string(erre));
     }
+    // remember to close very important or other attributes made by others is overwritting it
+    glBindVertexArray(0);
 
 }
 
@@ -224,11 +222,18 @@ void Renderer::flush() {
 
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(2);
+    glEnableVertexAttribArray(3);
+    glEnableVertexAttribArray(4);
 
     glDrawElements(GL_TRIANGLES, s_renderData.indexCount, GL_UNSIGNED_INT, 0);
 
+
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
+    glDisableVertexAttribArray(2);
+    glDisableVertexAttribArray(3);
+    glDisableVertexAttribArray(4);
 
     glBindVertexArray(0);
 
@@ -295,6 +300,21 @@ void Renderer::drawText(std::string text, glm::vec2 position, Font& f, glm::vec4
     // each character is a quad
     s_renderData.indexCount += 6 * text.length();
     s_renderData.stats.quadCount += text.length();
+}
+
+void Renderer::drawCircle(float cx, float cy, float radius, unsigned int segments) {
+
+
+}
+
+void Renderer::drawLine() {
+    std::array<float, 4> vertices;
+    vertices[0] = 0.0f;
+    vertices[1] = 10.0f;
+    vertices[2] = 200.0f;
+    vertices[3] = 10.0f;
+
+    glDrawArrays(GL_LINE, 0, 4);
 }
 
 float Renderer::getTextureIndex(int texId) {

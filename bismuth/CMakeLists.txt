@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.15)
 
-if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
-    add_compile_options("-s" "USE_FREETYPE=1")
-endif()
+#if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
+    #add_compile_options("-s" "USE_FREETYPE=1")
+#endif()
 set(PROJECT_VERSION "1.0.0")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
@@ -43,7 +43,7 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/box2d)
 #imgui
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/imgui)
 #freetype2
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/freetype2)
+#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/freetype2)
 
 #message(STATUS "GLM included at ${GLM_INCLUDE_DIRS}")
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
@@ -87,7 +87,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
     message("Compiling to WASM")
 
     target_link_libraries(${PROJECT_NAME} "-s USE_GLFW=3")
-    target_link_libraries(${PROJECT_NAME} "-s USE_FREETYPE=1")
+    #target_link_libraries(${PROJECT_NAME} "-s USE_FREETYPE=1")
     #target_link_libraries(${PROJECT_NAME} "-s STB_IMAGE=1")
     #target_link_libraries(${PROJECT_NAME} "-lopenal")
     target_link_libraries(${PROJECT_NAME} glad miniaudio box2d imgui)
@@ -99,7 +99,7 @@ else()
     #find_package(freetype REQUIRED)
     #find_package(glm REQUIRED)
     #target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad openal miniaudio)
-    target_link_libraries(${PROJECT_NAME} PRIVATE glfw miniaudio PUBLIC box2d imgui freetype glad)
+    target_link_libraries(${PROJECT_NAME} PRIVATE glfw miniaudio PUBLIC box2d imgui glad)
 endif()
 
 add_subdirectory(tests)

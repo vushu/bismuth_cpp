@@ -58,10 +58,12 @@ namespace bi {
             void drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color);
             void drawText(std::string text, glm::vec2 position, Font& f, glm::vec4 color, float scale);
             void drawText(std::array<char, 256> text, glm::vec2 position, Font& f, glm::vec4 color , float scale);
+            void drawLine();
             //void draw(SpriteRenderer& sprite);
             void resetStats();
             void clear(glm::vec4 color);
             void clear(float r, float g, float b, float a);
+            void drawCircle(float cx, float cy, float radius, unsigned int segments);
             RenderStats& getRenderStats();
 
         private:

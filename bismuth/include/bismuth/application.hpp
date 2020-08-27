@@ -43,6 +43,7 @@ namespace bi {
 
             void construct(int width, int height, std::string title);
             void applicationInit();
+            void initOpenGL();
             void nativeLoop();
             std::string title;
             float beginTime;

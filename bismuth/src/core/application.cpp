@@ -90,9 +90,25 @@ void Application::nativeLoop() {
 
 }
 
+void Application::initOpenGL() {
+    if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
+        log("Renderer: Failed to initialize GLAD");
+        throw std::runtime_error("Renderer: Failed to initialize GLAD");
+    }
+    //font
+    //glEnable(GL_CULL_FACE);
+    // alpha blending
+    //glBlendFunc(GL_SRC1_COLOR, GL_ONE_MINUS_SRC1_COLOR);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
+
+}
+
 void Application::applicationInit() {
     log("Application: init");
     this->window->init();
+    initOpenGL();
     this->renderer->init();
 
     //self init

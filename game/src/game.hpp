@@ -1,4 +1,5 @@
 #pragma once
+#include "bismuth/shaperenderer.hpp"
 #include "glm/fwd.hpp"
 #include <array>
 #include <bismuth/application.hpp>
@@ -42,6 +43,9 @@ class MyGame : public bi::Application {
         glm::vec4 color;
         glm::vec4 textColor {0,0,0,1};
         std::array<char, 256> text;
+        std::unique_ptr<bi::ShapeRenderer> shaperenderer;
+        void drawStuff(float dt);
+        void drawStuff2(float dt);
 
 
         //b2BodyDef boxBodyDef;

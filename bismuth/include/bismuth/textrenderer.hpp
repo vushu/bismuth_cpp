@@ -8,8 +8,8 @@
 //#include <freetype2/ft2build.h>
 //#include FT_FREETYPE_H
 //#else
-#include <ft2build.h>
-#include FT_FREETYPE_H
+//#include <ft2build.h>
+//#include FT_FREETYPE_H
 //#endif
 
 
@@ -28,7 +28,7 @@ namespace bi {
 
         private:
             std::vector<Font> fonts;
-            FT_Library ft;
+            //FT_Library ft;
 
     };
 }
