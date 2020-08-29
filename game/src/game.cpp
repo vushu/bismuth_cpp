@@ -99,12 +99,13 @@ void MyGame::update(float dt) {
 }
 
 void MyGame::drawStuff(float dt) {
-    this->shaperenderer->drawPolygon({400, 200}, 50.0f, 3, {0,1,0,1}, M_PI * 0.5f , true);
+    this->shaperenderer->drawPolygon({400, 200}, 50.0f, 4, {0,1,0,1}, M_PI * mAngle , true);
+    this->shaperenderer->drawPolygon({400, 240}, 50.0f, 5, {1,1,0,1}, M_PI * mAngle , true);
     //this->shaperenderer->drawPolygon({200, 200}, 50.0f, 3, {0,1,0,1}, 0.0f , true);
 
-    //this->shaperenderer->drawLine({10,200}, {500,200}, color);
+    this->shaperenderer->drawLine({10,200}, {500,200}, {1,0,0,1});
     //this->shaperenderer->drawLine({10,300}, {500,300}, color);
-    //this->shaperenderer->drawPolygon({300, 300}, 50.0f, 24, color, true);
+    this->shaperenderer->drawPolygon({300, 300}, 50.0f, 24, {0,0,1,1}, M_PI * mAngle, true);
     this->shaperenderer->flush();
 }
 

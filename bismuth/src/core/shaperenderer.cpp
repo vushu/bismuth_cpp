@@ -45,6 +45,19 @@ void ShapeRenderer::drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color
 
 }
 
+void ShapeRenderer::drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color, float angle) {
+
+    glm::vec2 diff = posTo - posFrom;
+    glm::vec2 rotatedDiff = rotatePoint(diff, angle);
+    glm::vec2 test = rotatedDiff + 100.0f;
+
+
+    setVertex(rotatedDiff, color);
+    setVertex(test, color);
+    //setVertex(rotatePoint(posFrom, angle), color);
+    //setVertex(rotatePoint(posTo, angle), color);
+}
+
 // segments >= 12 is a cicle
 void ShapeRenderer::drawPolygon(glm::vec2 centerPos, float radius, int segments, glm::vec4 color, float angle, bool centerShown) {
     if (segments < 3) {
@@ -53,48 +66,40 @@ void ShapeRenderer::drawPolygon(glm::vec2 centerPos, float radius, int segments,
     }
     float fullCicle = M_PI * 2.0f;
 
-    //centerPos = rotatePoint(centerPos, angle);
-
-    if (centerShown) {
-
-        //setVertex(rotatePoint(centerPos, angle), color);
-        //setVertex(rotatePoint({centerPos.x + radius,  centerPos.y}, angle), color);
-    }
-    //centerPos = rotatePoint(centerPos, angle);
-    // reaching the start point
-    glm::vec2 startPos;
-    //glm::vec2 startPos = {centerRotate.x + radius, centerRotate.y};
-    //startPos = rotatePoint({centerPos.x + radius, centerPos.y}, angle);
-
-    setVertex(startPos, color);
+    glm::vec2 startpos;
 
     glm::vec2 slicePos;
     for (int i = 0; i < segments; i++) {
         float slice = fullCicle * (float) i / static_cast<float>(segments);
-        slicePos = { radius * cos(slice), radius * sin(slice) };
-        slicePos = rotatePoint(slicePos, angle);
-
-        glm::vec2 pos = {slicePos.x + centerPos.x, slicePos.y + centerPos.y};
+        slicePos = rotatePoint({ radius * cos(slice), radius * sin(slice) }, angle);
+        glm::vec2 pos = { slicePos.x + centerPos.x, slicePos.y + centerPos.y };
+        //glm::vec2 pos = {slicePos.x + startpos.x, slicePos.y + startpos.y};
         if (i == 0) {
-            startPos = pos;
-        }
-        if ((i + 1) % 2 == 0 )
+            startpos = pos;
+            //setVertex(pos, color);
             setVertex(pos, color);
-        //setVertex(pos, color);
+        }
         // could use an element buffer instead since we are using the same vertex
         // one more to connect to the next vertex
         setVertex(pos, color);
+        setVertex(pos, color);
         //setVertex(pos, color);
-        if(i == segments-1) {
-            setVertex(startPos, color);
+        if (i == segments-1) {
+
+            //setVertex(pos, color);
+            setVertex(startpos, color);
+            //setVertex(startpos, color);
+            //setVertex(startpos, color);
+            //setVertex(startpos, color);
         }
+        //setVertex(pos, color);
     }
+    if (centerShown)
+    {
+        setVertex(startpos, color);
+        setVertex(centerPos, color);
 
-    //setVertex(rotatePoint(startPos, angle), color);
-    // reaching the start again
-    setVertex(startPos, color);
-    //setVertex(startPos, color);
-
+    }
 }
 
 
@@ -138,6 +143,9 @@ void ShapeRenderer::setVertex(glm::vec2 position, glm::vec4 color) {
 }
 
 glm::vec2 ShapeRenderer::rotatePoint(const glm::vec2& pos, float angle) {
+    if (angle == 0) {
+        return pos;
+    }
     glm::vec2 newPos;
     newPos.x = pos.x * cos(angle) - pos.y * sin(angle);
     newPos.y = pos.x * sin(angle) + pos.y * cos(angle);
