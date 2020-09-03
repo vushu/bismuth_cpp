@@ -1,5 +1,6 @@
 #pragma once
-#include <bismuth/renderer.hpp>
+#include "bismuth/renderer.hpp"
+#include <bismuth/shaperenderer.hpp>
 #include <entt/entt.hpp>
 #include <box2d/box2d.h>
 class RenderSystem {
@@ -8,7 +9,7 @@ class RenderSystem {
         RenderSystem ();
         ~RenderSystem ();
 
-        void update(bi::Renderer& renderer,float dt, b2World& world, entt::registry& registry);
+        void update(bi::ShapeRenderer& shaperenderer, bi::Renderer& renderer,float dt, b2World& world, entt::registry& registry, int texId);
 
     private:
 

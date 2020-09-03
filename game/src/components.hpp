@@ -16,3 +16,8 @@ struct Block {
     int spriteId;
 };
 
+struct Ball {
+    float radius = 0.0f;
+    int texId = 0;
+};
+

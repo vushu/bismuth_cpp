@@ -20,6 +20,7 @@
 #include <bismuth/physicsmanager.hpp>
 #include <bismuth/assetmanager.hpp>
 #include <imgui/imgui.h>
+#include "shapebuilder.hpp"
 using namespace bi;
 
 MyGame::~MyGame() {}
@@ -78,23 +79,22 @@ void MyGame::update(float dt) {
 
 */
 
-    //renderSystem.update(this->getRenderer(), dt, world, this->registry);
+    renderSystem->update(*this->shaperenderer, this->getRenderer(),dt, world, this->registry, textureId);
     //update world
     //world.Step(1.0f/60.0f, 6, 2);
     //world.Step(1.0f/60.0f, 6, 2);
     //float timeStep = 1.0f/60.0f;      //the length of time passed to simulate (seconds)
-    //int velocityIterations = 6;   //how strongly to correct velocity
-    //int positionIterations = 2;   //how strongly to correct position
+    int velocityIterations = 6;   //how strongly to correct velocity
+    int positionIterations = 2;   //how strongly to correct position
     //bi::log("FPS: " + std::to_string(1.0f/dt));
     // since we are using variable time put dt
-    //world.Step(dt, velocityIterations, positionIterations);
+    world.Step(dt, velocityIterations, positionIterations);
     //
     //
     //
     mAngle += dt;
     //drawStuff2(dt);
-    drawStuff(dt);
-
+    //drawStuff(dt);
 
 }
 
@@ -158,6 +158,7 @@ void MyGame::init() {
     //getCamera().setPosition(glm::vec2 pos)
     //getCamera().viewMatrix = glm::translate(getCamera().viewMatrix, glm::vec3(100,0,0));
 
+    renderSystem = std::make_unique<RenderSystem>();
     shaperenderer = std::make_unique<bi::ShapeRenderer>(getCamera());
     shaperenderer->init();
 
@@ -170,6 +171,19 @@ void MyGame::init() {
     this->spriterenderer->setScale(glm::vec2(32,32));
     font = std::make_unique<Font>(getAssetManager());
     font->loadFnt("resources/assets/fonts/manjaru.fnt");
+    textureId = getAssetManager().loadTexture("resources/assets/images/awesomeface.png");
+    shapeBuilder = std::make_unique<ShapeBuilder>();
+
+    shapeBuilder->
+        setPosition(100.0f, 100.0f)
+        .setRadius(30.0f)
+        .setTexture(textureId)
+        .buildBall(this->world, registry);
+    shapeBuilder->setPosition(300.0f, 90.0f).setRadius(20.0f).buildBall(this->world, registry);
+    shapeBuilder->setPosition(100.0f, 300.0f).setRadius(20.0f).isStatic(true).buildBall(this->world, registry);
+    shapeBuilder->setPosition(100.0f, 500.0f).setRadius(100.0f).isStatic(true).buildBall(this->world, registry);
+    shapeBuilder->setPosition(500.0f, 90.0f).setRadius(50.0f).buildBall(this->world, registry);
+    //shapeBuilder->setRadius(40.0f);
     /*
        std::vector<Character> vec = font->getCharacters("j");
 
@@ -209,7 +223,6 @@ void MyGame::init() {
     //getAudioManager().addSound(s3);
     //getAudioManager().setMaxVolume(3.0f);
 
-    textureId = getAssetManager().loadTexture("resources/assets/images/awesomeface.png");
     //log("TEXTURE ID : " + std::to_string(textureId));
 
     //sound2.playLoop("resources/assets/audio/test.wav");
