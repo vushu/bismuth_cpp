@@ -164,5 +164,5 @@ void Shader::free() {
 }
 
 Shader::~Shader() {
-    bi::log("shader destroyed");
+    bi::log("Shader destroyed");
 }

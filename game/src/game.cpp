@@ -1,26 +1,17 @@
 #include "game.hpp"
-#include "bismuth/application.hpp"
-#include <bismuth/font.hpp>
-#include "bismuth/keylistener.hpp"
 #include "bismuth/logging.hpp"
-#include "bismuth/renderer.hpp"
-#include "bismuth/sprite.hpp"
-#include "bismuth/spriterenderer.hpp"
-#include "bismuth/texture.hpp"
 #include "components.hpp"
-#include <algorithm>
+#include <bismuth/bismuth.hpp>
 #include <entt/entt.hpp>
 #include <memory>
 #include <string>
 #include "entitybuilder.hpp"
 #include "glm/ext/matrix_transform.hpp"
 #include "glm/ext/scalar_constants.hpp"
-#include "glm/fwd.hpp"
 #include <box2d/box2d.h>
-#include <bismuth/physicsmanager.hpp>
-#include <bismuth/assetmanager.hpp>
 #include <imgui/imgui.h>
 #include "shapebuilder.hpp"
+#include "playerball.hpp"
 using namespace bi;
 
 MyGame::~MyGame() {}
@@ -79,21 +70,23 @@ void MyGame::update(float dt) {
 
 */
 
-    renderSystem->update(*this->shaperenderer, this->getRenderer(),dt, world, this->registry, textureId);
     //update world
     //world.Step(1.0f/60.0f, 6, 2);
     //world.Step(1.0f/60.0f, 6, 2);
     //float timeStep = 1.0f/60.0f;      //the length of time passed to simulate (seconds)
-    int velocityIterations = 6;   //how strongly to correct velocity
+    int velocityIterations = 4;   //how strongly to correct velocity
     int positionIterations = 2;   //how strongly to correct position
     //bi::log("FPS: " + std::to_string(1.0f/dt));
     // since we are using variable time put dt
+    renderSystem->update(*this->shaperenderer, this->getRenderer() ,dt, world, registry);
+    //this->getRenderer().drawTexture({400, 280}, {100.0f,100.0f}, {1,1,1,1}, textureId, glm::pi<float>() * mAngle);
     world.Step(dt, velocityIterations, positionIterations);
+    //playerball->draw(getRenderer());
     //
     //
     //
     mAngle += dt;
-    //drawStuff2(dt);
+    drawStuff2(dt);
     //drawStuff(dt);
 
 }
@@ -110,19 +103,22 @@ void MyGame::drawStuff(float dt) {
 }
 
 void MyGame::drawStuff2(float dt) {
-    this->getRenderer().resetStats();
-    this->getRenderer().beginBatch();
+    //this->getRenderer().resetStats();
+    //this->getRenderer().beginBatch();
     //for (int i = 0; i < 100; ++i) {
 
-    glm::vec4 colorSmiley{1,0,1,1};
+    glm::vec4 colorSmiley{1,1,1,1};
 
-    this->getRenderer().drawTexture({camX, camY}, {100.0f,100.0f}, color, textureId, glm::pi<float>() * -mAngle);
-    this->getRenderer().drawTexture({214, 280}, {100.0f,100.0f}, colorSmiley, textureId, glm::pi<float>() * mAngle);
+    //this->getRenderer().drawTexture({camX, camY}, {100.0f,100.0f}, color, textureId, glm::pi<float>() * -mAngle);
+    //this->getRenderer().drawTexture({214, 280}, {100.0f,100.0f}, colorSmiley, textureId, glm::pi<float>() * mAngle);
+
+    //this->getRenderer().drawTexture({400, 280}, {100.0f,100.0f}, colorSmiley, textureId, glm::pi<float>() * mAngle);
     //this->getRenderer().drawQuad({200, 300}, {30.0f,30.0f}, {1,1,1,1});
-    this->getRenderer().drawText(text, {0, 125}, *this->font, this->textColor, 0.4f);
+    //getRenderer().drawTexture({400,200}, playerball->mSize, {1,1,1,1}, playerball->mTextureId, M_PI * mAngle);
+    //this->getRenderer().drawText(text, {0, 125}, *this->font, this->textColor, 0.4f);
 
-    this->getRenderer().endBatch();
-    this->getRenderer().flush();
+    //this->getRenderer().endBatch();
+    //this->getRenderer().flush();
 
     getGuiManager().beginDraw();
     ImGui::Begin("Render stats");
@@ -153,137 +149,48 @@ void MyGame::init() {
 
     position = {0,0};
     size = {100,100};
-    //font.init();
-
     //getCamera().setPosition(glm::vec2 pos)
     //getCamera().viewMatrix = glm::translate(getCamera().viewMatrix, glm::vec3(100,0,0));
-
-    renderSystem = std::make_unique<RenderSystem>();
     shaperenderer = std::make_unique<bi::ShapeRenderer>(getCamera());
     shaperenderer->init();
-
+    renderSystem = std::make_unique<RenderSystem>();
     getGuiManager().init();
-    std::unique_ptr<Sprite> sprite = std::make_unique<Sprite>();
-    this->spriterenderer = std::make_unique<bi::SpriteRenderer>(std::move(sprite));
 
-    this->spriterenderer->setColor(glm::vec4(1,0,0,1));
-    this->spriterenderer->setPosition(glm::vec2(0,0));
-    this->spriterenderer->setScale(glm::vec2(32,32));
+    std::unique_ptr<Sprite> sprite = std::make_unique<Sprite>();
     font = std::make_unique<Font>(getAssetManager());
     font->loadFnt("resources/assets/fonts/manjaru.fnt");
     textureId = getAssetManager().loadTexture("resources/assets/images/awesomeface.png");
+    bi::log("TextureId: ", std::to_string(textureId));
     shapeBuilder = std::make_unique<ShapeBuilder>();
 
+    playerball = std::make_unique<PlayerBall>(textureId);
+
     shapeBuilder->
-        setPosition(100.0f, 100.0f)
+        setPosition(140.0f, 100.0f)
         .setRadius(30.0f)
-        .setTexture(textureId)
+        .setUserData(&playerball)
+        //.setTexture(textureId)
         .buildBall(this->world, registry);
-    shapeBuilder->setPosition(300.0f, 90.0f).setRadius(20.0f).buildBall(this->world, registry);
-    shapeBuilder->setPosition(100.0f, 300.0f).setRadius(20.0f).isStatic(true).buildBall(this->world, registry);
-    shapeBuilder->setPosition(100.0f, 500.0f).setRadius(100.0f).isStatic(true).buildBall(this->world, registry);
-    shapeBuilder->setPosition(500.0f, 90.0f).setRadius(50.0f).buildBall(this->world, registry);
-    //shapeBuilder->setRadius(40.0f);
-    /*
-       std::vector<Character> vec = font->getCharacters("j");
 
-       for (auto& ch : vec) {
-       std::string s;
-       s.push_back(ch.charId);
-       log("-----------------------");
-       log("character " +  s);
-       log("charId " + std::to_string(ch.charId));
-       log("x:" + std::to_string(ch.x));
-       log("y:" + std::to_string(ch.y));
-       log("width:" + std::to_string(ch.width));
-       log("height:" + std::to_string(ch.height));
-       log("xoffset:" + std::to_string(ch.xoffset));
-       log("yoffset:" + std::to_string(ch.yoofset));
-       log("xadvance:" + std::to_string(ch.xadvance));
-       log("-----------------------");
+    shapeBuilder->
+        setPosition(140.0f, 0.0f)
+        .setRadius(20.0f)
+        //.isStatic(true)
+        .buildBall(this->world, registry);
 
-       }
-       */
-    //s1 = std::make_shared<bi::Sound>("resources/assets/audio/test.wav");
-    //s2 = std::make_shared<bi::Sound>("resources/assets/audio/music2.mp3");
-    //s3 = std::make_shared<bi::Sound>("resources/assets/audio/music3.mp3");
-    ////s4 = std::make_shared<bi::Sound>("resources/assets/audio/tower.mp3");
-    //s4 = std::make_shared<bi::Sound>("resources/assets/audio/music4.mp3");
-
-    //s1->init();
-    //s2->init();
-    //s3->init();
-    //s4->init();
-    //s4->setLoop(true);
-    // must be initialized since not all games want to have sound
-    //getAudioManager().init();
-    //getAudioManager().addSound(s1);
-    //getAudioManager().addSound(s2);
-    //getAudioManager().addSound(s4);
-    //getAudioManager().addSound(s3);
-    //getAudioManager().setMaxVolume(3.0f);
-
-    //log("TEXTURE ID : " + std::to_string(textureId));
-
-    //sound2.playLoop("resources/assets/audio/test.wav");
-    //std::unique_ptr<EntityBuilder> entitybuilder = std::make_unique<EntityBuilder>();
-    //std::unique_ptr<EntityBuilder> entitybuilder2 = std::make_unique<EntityBuilder>();
-
-    //entitybuilder->at(100, 100)
-    //.size(100, 100)
-    //.vel(3, 2)
-    //.setColor(glm::vec4(1,1,1,1))
-    //.sprite("resources/assets/images/tennis.png")
-    //.buildEnemy(this->getRenderer(), this->world, this->registry, true);
-    /*
-       EntityBuilder en;
-
-       en.at(0, 590)
-       .size(1000, 10)
-       .vel(3, 2)
-       .setColor(glm::vec4(1,0,0,1))
-    //.sprite("resources/assets/images/tennis.png")
-    .buildEnemy(this->getRenderer(), this->world, this->registry, true, true);
-
-    en.at(0, 0)
-    .size(10, 600)
-    .vel(3, 2)
-    .setColor(glm::vec4(0,1,0,1))
-    //.sprite("resources/assets/images/tennis.png")
-    .buildEnemy(this->getRenderer(), this->world, this->registry, true, true);
-
-    en.at(790, 0)
-    .size(10, 600)
-    .vel(3, 2)
-    .setColor(glm::vec4(0,0,1,1))
-    //.sprite("resources/assets/images/tennis.png")
-    .buildEnemy(this->getRenderer(), this->world, this->registry, true, true);
-
-
-    for (int i = 0; i < 220; i++) {
-    EntityBuilder entitybuilder;
-    entitybuilder.at(60 + (i), 10 + i)
-    .size(25,25)
-    .vel(3, 2)
-    //.setColor(glm::vec4(i/10.0f,i/100.0f,sin(i*20),1))
-    //.setColor(glm::vec4(i/10.0f,i/100.0f,sin(i*20),1))
-    .sprite("resources/assets/images/tennis.png", this->getAssetManager())
-    .buildEnemy(this->getRenderer(), this->world, this->registry, false, false);
+    for (int i = 0; i < 3000; i++) {
+        shapeBuilder->
+            setPosition(i * 10, 10)
+            .setRadius(10.0f)
+            //.isStatic(true)
+            .buildBall(this->world, registry);
     }
 
-*/
-    //entitybuilder->at(120, 200)
-    //.size(50, 50)
-    ////.vel(3, 2)
-    //.setColor(glm::vec4(1,0,1,1))
-    //.sprite("resources/assets/images/ball2.png")
-    //.buildEnemy(this->getRenderer(), this->world, this->registry, false);
 
-    //boxBody = entitybuilder->at(100, 100)
-    //.size(100, 100)
-    //.vel(3, 2)
-    ////.setColor(glm::vec4(1,1,1,1))
-    //.sprite("resources/assets/images/tennis.png")
-    //.buildEnemy(this->getRenderer(), this->world, this->registry, true);
+    shapeBuilder->setPosition(100.0f, 700.0f)
+        .setRadius(500.0f)
+        //.setTexture(textureId)
+        .isStatic(true)
+        .buildBall(this->world, registry);
 
 }

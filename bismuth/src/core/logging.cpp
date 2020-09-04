@@ -9,8 +9,20 @@ void bi::log(std::string message) {
         std::cout << message << std::endl;
     }
 }
+void bi::log(int message) {
 
-void bi::log(std::string from,std::string message) {
+    if (bi::isLogging) {
+        std::cout << std::to_string(message) << std::endl;
+    }
+}
+
+void bi::log(float message) {
+
+    if (bi::isLogging) {
+        std::cout << std::to_string(message) << std::endl;
+    }
+}
+void bi::log(std::string from, std::string message) {
 
     if (bi::isLogging) {
         std::cout << from << message << std::endl;

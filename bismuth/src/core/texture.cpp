@@ -10,7 +10,7 @@ Texture::Texture(std::string filepath) {
 }
 
 Texture::~Texture() {
-    bi::log("Texture destroyed");
+    bi::log("Texture destroyed " + this->filepath);
 }
 
 void Texture::init() {

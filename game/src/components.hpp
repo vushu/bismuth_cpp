@@ -19,5 +19,8 @@ struct Block {
 struct Ball {
     float radius = 0.0f;
     int texId = 0;
+    float posX, posY;
+    float sizeX, sizeY;
+    float angle;
 };
 

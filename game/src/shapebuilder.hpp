@@ -13,6 +13,7 @@ class ShapeBuilder{
         ShapeBuilder& setPosition(float x, float y);
         ShapeBuilder& setTexture(int texId);
         ShapeBuilder& isStatic(bool enable);
+        ShapeBuilder& setUserData(void* userData);
         void buildBall(b2World& world, entt::registry& registry);
 
     private:
@@ -22,6 +23,7 @@ class ShapeBuilder{
         glm::vec2 size{32,32};
         glm::vec4 color{1,1,1,1};
         glm::vec2 velocity{1,1};
+        void* userData;
         int textureId = 0;
         void reset();
 

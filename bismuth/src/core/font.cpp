@@ -25,10 +25,6 @@ void Font::updateBuffers(std::string text, glm::vec2 position, QuadVertex*& quad
     //float scale = 1.5f;
 
     glm::vec2 pos = position;
-    glm::vec4 color1 = {1.0f,1.0f,0.0f,1.0f};
-    glm::vec4 color2 = {1.0f,1.0f,0.0f,1.0f};
-    glm::vec4 color3 = {1.0f,1.0f,0.0f,1.0f};
-    glm::vec4 color4 = {1.0f,1.0f,0.0f,1.0f};
     for (auto& ch : text) {
         std::string s;
         s.push_back(ch);

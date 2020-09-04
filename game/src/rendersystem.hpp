@@ -9,7 +9,7 @@ class RenderSystem {
         RenderSystem ();
         ~RenderSystem ();
 
-        void update(bi::ShapeRenderer& shaperenderer, bi::Renderer& renderer,float dt, b2World& world, entt::registry& registry, int texId);
+        void update(bi::ShapeRenderer& shaperenderer, bi::Renderer& renderer,float dt, b2World& world, entt::registry& registry);
 
     private:
 

@@ -27,17 +27,21 @@ ShapeBuilder& ShapeBuilder::setTexture(int texId) {
     return *this;
 }
 
+ShapeBuilder& ShapeBuilder::setUserData(void* userData){
+    this->userData = userData;
+    return *this;
+}
+
+
 
 void ShapeBuilder::buildBall(b2World& world, entt::registry& registry) {
 
     float x = (this->position.x + radius * 0.5f) * bi::P2M;
     float y = (this->position.y + radius * 0.5f) * bi::P2M;
 
-
     Ball ball {radius, textureId};
     auto e = registry.create();
     registry.emplace<Ball>(e, ball);
-
 
     b2BodyDef bodyDef;
     bodyDef.position.Set(x, y);
@@ -55,7 +59,9 @@ void ShapeBuilder::buildBall(b2World& world, entt::registry& registry) {
 
     b2Body* body = world.CreateBody(&bodyDef);
 
-    body->SetUserData(&e);
+    if (userData != NULL) {
+        body->SetUserData(this->userData);
+    }
     body->SetMassData(&massData);
 
     b2FixtureDef fixtureDef;

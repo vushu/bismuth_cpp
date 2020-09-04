@@ -143,7 +143,7 @@ void Renderer::drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int t
     reevaluateBatchSpace();
     float textureIndex = getTextureIndex(texId);
 
-    setQuadVertices(s_renderData.currentLocationPtr,pos, size, color, textureIndex, angle, texcoords);
+    setQuadVertices(s_renderData.currentLocationPtr, pos, size, color, textureIndex, angle, texcoords);
     incrementDrawCounters();
 }
 
@@ -163,11 +163,12 @@ std::array<glm::vec2, 4> Renderer::getCorners(glm::vec2 position, glm::vec2 size
         botRight = rotatePoint(br, angle) + halfDims + position;
         topRight = rotatePoint(tr, angle) + halfDims + position;
     }
+
     else {
-        topLeft =  halfDims + position;
-        botLeft =  halfDims + position;
-        botRight = halfDims + position;
-        topRight = halfDims + position;
+        topLeft = position;
+        botLeft = {position.x, position.y + size.y};
+        botRight = {position.x + size.x, position.y + size.y };
+        topRight = {position.x + size.x, position.y};
     }
 
 
@@ -185,6 +186,7 @@ void Renderer::setQuadVertex(QuadVertex*& quadVertex, glm::vec2 position, glm::v
 
 void Renderer::setQuadVertices(QuadVertex*& quadVertex, glm::vec2 position, glm::vec2 size, glm::vec4 color, float texId, float angle, std::array<glm::vec2, 4> texcoords) {
     std::array<glm::vec2,4> corners = getCorners(position, size, angle);
+
     setQuadVertex(quadVertex, corners.at(0), size, texcoords.at(0), color, texId);
     setQuadVertex(quadVertex, corners.at(1), size, texcoords.at(1), color, texId);
     setQuadVertex(quadVertex, corners.at(2), size, texcoords.at(2), color, texId);
@@ -300,21 +302,6 @@ void Renderer::drawText(std::string text, glm::vec2 position, Font& f, glm::vec4
     // each character is a quad
     s_renderData.indexCount += 6 * text.length();
     s_renderData.stats.quadCount += text.length();
-}
-
-void Renderer::drawCircle(float cx, float cy, float radius, unsigned int segments) {
-
-
-}
-
-void Renderer::drawLine() {
-    std::array<float, 4> vertices;
-    vertices[0] = 0.0f;
-    vertices[1] = 10.0f;
-    vertices[2] = 200.0f;
-    vertices[3] = 10.0f;
-
-    glDrawArrays(GL_LINE, 0, 4);
 }
 
 float Renderer::getTextureIndex(int texId) {

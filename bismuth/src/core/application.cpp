@@ -101,6 +101,8 @@ void Application::initOpenGL() {
     //glBlendFunc(GL_SRC1_COLOR, GL_ONE_MINUS_SRC1_COLOR);
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+    //glfwWindowHint(GLFW_SAMPLES, 4);
+    //glEnable(GL_MULTISAMPLE);
 
 
 }

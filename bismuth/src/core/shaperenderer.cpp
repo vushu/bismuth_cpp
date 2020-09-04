@@ -40,12 +40,14 @@ void ShapeRenderer::init() {
 
 void ShapeRenderer::drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color) {
 
+    checkVertexLimit();
     setVertex(posFrom, color);
     setVertex(posTo, color);
 
 }
 
 void ShapeRenderer::drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color, float angle) {
+    checkVertexLimit();
 
     glm::vec2 diff = posTo - posFrom;
     glm::vec2 rotatedDiff = rotatePoint(diff, angle);
@@ -58,8 +60,15 @@ void ShapeRenderer::drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color
     //setVertex(rotatePoint(posTo, angle), color);
 }
 
+void ShapeRenderer::checkVertexLimit() {
+    if (maxVertexCount >= 1000) {
+        flush();
+    }
+}
+
 // segments >= 12 is a cicle
 void ShapeRenderer::drawPolygon(glm::vec2 centerPos, float radius, int segments, glm::vec4 color, float angle, bool centerShown) {
+    checkVertexLimit();
     if (segments < 3) {
         log("Segments are too small");
         return;
@@ -119,7 +128,7 @@ void ShapeRenderer::flush() {
     //enable color
     glEnableVertexAttribArray(1);
 
-    glLineWidth(2.0f);
+    glLineWidth(3.0f);
     glDrawArrays(GL_LINES, 0, renderData.vertexCounter);
 
     glDisableVertexAttribArray(0);
