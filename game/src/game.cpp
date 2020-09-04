@@ -13,6 +13,8 @@
 #include <imgui/imgui.h>
 #include "shapebuilder.hpp"
 #include "playerball.hpp"
+#include "factories.hpp"
+#include "rectrendersystem.hpp"
 using namespace bi;
 
 MyGame::~MyGame() {}
@@ -79,7 +81,9 @@ void MyGame::update(float dt) {
     int positionIterations = 2;   //how strongly to correct position
     //bi::log("FPS: " + std::to_string(1.0f/dt));
     // since we are using variable time put dt
+    this->shaperenderer->drawRect({100,10}, {100,50}, {1,0,0,1});
     renderSystem->update(*this->shaperenderer, this->getRenderer(), dt, world, registry);
+    RectRenderSystem::update(registry, *this->shaperenderer);
     //this->getRenderer().drawTexture({400, 280}, {100.0f,100.0f}, {1,1,1,1}, textureId, glm::pi<float>() * mAngle);
     world.Step(dt, velocityIterations, positionIterations);
     //playerball->draw(getRenderer());
@@ -170,13 +174,14 @@ void MyGame::init() {
     shapeBuilder->
         setPosition(140.0f, 100.0f)
         .setRadius(30.0f)
-        .setUserData(&playerball)
         //.setTexture(textureId)
+        .setUserData(&getAssetManager().getTexture("resources/assets/images/awesomeface.png"))
         .buildBall(this->world, registry);
 
     shapeBuilder->
         setPosition(140.0f, 0.0f)
         .setRadius(20.0f)
+        .setUserData(&getAssetManager().getTexture("resources/assets/images/awesomeface.png"))
         //.isStatic(true)
         .buildBall(this->world, registry);
 
@@ -184,10 +189,13 @@ void MyGame::init() {
         shapeBuilder->
             setPosition(i * 10, 10)
             .setRadius(10.0f)
+            .setUserData(&getAssetManager().getTexture("resources/assets/images/awesomeface.png"))
             //.isStatic(true)
             .buildBall(this->world, registry);
     }
 
+
+    Factories::createRect(registry, {100, 100}, {100, 50});
 
     shapeBuilder->setPosition(100.0f, 700.0f)
         .setRadius(500.0f)

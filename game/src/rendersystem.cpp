@@ -38,26 +38,25 @@ void RenderSystem::update(bi::ShapeRenderer &shaperenderer, bi::Renderer& render
         float sy = sx;
 
         if (b->GetPosition().y * bi::M2P > 1000) {
-            bi::log("body destroyed");
+            //bi::log("body destroyed");
             world.DestroyBody(b);
             continue;
         }
 
-        //renderer.drawTexture(glm::vec2(100,100), {sx, sy}, {1,0,1,1}, texId, b->GetAngle());
-        renderer.drawTexture((glm::vec2(b->GetPosition().x, b->GetPosition().y) - glm::vec2(rad, rad)) * bi::M2P, {sx, sy}, {1,0,0,1}, 24, b->GetAngle());
+        if (b->GetUserData() != NULL) {
+            bi::Texture* texture = (bi::Texture*) b->GetUserData();
+            renderer.drawTexture((glm::vec2(b->GetPosition().x, b->GetPosition().y) - glm::vec2(rad, rad)) * bi::M2P, {sx, sy}, {1,0,0,1}, texture->textureId, b->GetAngle());
+        }
 
         shaperenderer.drawPolygon(
                 {b->GetPosition().x * bi::M2P, b->GetPosition().y * bi::M2P},
                 b->GetFixtureList()[0].GetShape()->m_radius * bi::M2P, 24,
-                {0, 1, 0, 1}, b->GetAngle(), true);
+                {0, 1, 0, 1}, b->GetAngle(), false);
 
-        if (b->GetUserData() != NULL) {
-            //PlayerBall* playerball = (PlayerBall*) b->GetUserData();
-            //playerball->mAngle = b->GetAngle();
-            //playerball->mPosition = (glm::vec2(b->GetPosition().x, b->GetPosition().y) - glm::vec2(rad, rad)) * bi::M2P;
-            //bi::log("OK");
-        }
-
+        //PlayerBall* playerball = (PlayerBall*) b->GetUserData();
+        //playerball->mAngle = b->GetAngle();
+        //playerball->mPosition = (glm::vec2(b->GetPosition().x, b->GetPosition().y) - glm::vec2(rad, rad)) * bi::M2P;
+        //bi::log("OK");
 
         hasbody = true;
     }
@@ -66,8 +65,8 @@ void RenderSystem::update(bi::ShapeRenderer &shaperenderer, bi::Renderer& render
 
         //renderer.endBatch();
         renderer.endFlushBegin();
-        //bi::log("Flushing");
         shaperenderer.flush();
+        //bi::log("Flushing");
     }
 }
 

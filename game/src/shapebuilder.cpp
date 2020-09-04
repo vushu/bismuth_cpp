@@ -22,8 +22,8 @@ ShapeBuilder& ShapeBuilder::isStatic(bool enable) {
     return *this;
 }
 
-ShapeBuilder& ShapeBuilder::setTexture(int texId) {
-    this->textureId = texId;
+ShapeBuilder& ShapeBuilder::setTexture(bi::Texture* texture) {
+    this->texture = texture;
     return *this;
 }
 
@@ -32,16 +32,12 @@ ShapeBuilder& ShapeBuilder::setUserData(void* userData){
     return *this;
 }
 
-
-
 void ShapeBuilder::buildBall(b2World& world, entt::registry& registry) {
 
     float x = (this->position.x + radius * 0.5f) * bi::P2M;
     float y = (this->position.y + radius * 0.5f) * bi::P2M;
 
-    Ball ball {radius, textureId};
-    auto e = registry.create();
-    registry.emplace<Ball>(e, ball);
+    //auto e = registry.create();
 
     b2BodyDef bodyDef;
     bodyDef.position.Set(x, y);

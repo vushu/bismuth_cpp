@@ -128,7 +128,7 @@ void ShapeRenderer::flush() {
     //enable color
     glEnableVertexAttribArray(1);
 
-    glLineWidth(3.0f);
+    glLineWidth(1.5f);
     glDrawArrays(GL_LINES, 0, renderData.vertexCounter);
 
     glDisableVertexAttribArray(0);
@@ -159,5 +159,16 @@ glm::vec2 ShapeRenderer::rotatePoint(const glm::vec2& pos, float angle) {
     newPos.x = pos.x * cos(angle) - pos.y * sin(angle);
     newPos.y = pos.x * sin(angle) + pos.y * cos(angle);
     return newPos;
+}
+
+void ShapeRenderer::drawRect(glm::vec2 position, glm::vec2 size, glm::vec4 color) {
+    //Topline
+    drawLine(position, {position.x + size.x, position.y}, color);
+    //Left side
+    drawLine(position, {position.x, position.y + size.y}, color);
+    //Botline
+    drawLine({position.x, position.y + size.y }, {position.x + size.x, position.y + size.y}, color);
+    // RightSide
+    drawLine({position.x + size.x, position.y + size.y }, {position.x + size.x, position.y}, color);
 }
 

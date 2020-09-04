@@ -6,6 +6,17 @@ struct Movement {
     float y;
 };
 
+struct Position {
+    float x;
+    float y;
+};
+
+
+struct Size {
+    float x;
+    float y;
+};
+
 struct Player {
     int batchId;
     int spriteId;

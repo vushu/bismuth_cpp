@@ -10,5 +10,6 @@
 #include "spriterenderer.hpp"
 #include "texture.hpp"
 #include "assetmanager.hpp"
+#include "shaperenderer.hpp"
 
 

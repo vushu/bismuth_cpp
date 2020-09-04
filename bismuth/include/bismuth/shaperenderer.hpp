@@ -25,6 +25,7 @@ namespace bi {
             void init();
             void drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color);
             void drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color, float angle);
+            void drawRect(glm::vec2 position, glm::vec2 size, glm::vec4 color);
             void drawPolygon(glm::vec2 centerPos, float radius, int segments, glm::vec4 color, float angle, bool centerShown = false);
             void flush();
 

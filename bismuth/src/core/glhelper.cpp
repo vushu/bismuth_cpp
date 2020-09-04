@@ -138,5 +138,10 @@ glhelper::TextureInfo bi::glhelper::generateTexture(std::string filepath) {
     return TextureInfo{textureId, width, height};
 }
 
+unsigned int glhelper::createFrameBuffer() {
+    unsigned int fbo;
+    glGenFramebuffers(1, &fbo);
+    return fbo;
+}
 
 
