@@ -15,23 +15,12 @@ RenderSystem::~RenderSystem() { }
 
 void RenderSystem::update(bi::ShapeRenderer &shaperenderer, bi::Renderer& renderer, float dt,
         b2World &world, entt::registry& registry) {
-    // const float M2P=32;
-    // const float P2M=1/M2P;
-    // float maxTime = 0.0f;
-
-    // auto view = registry.view<Block, Movement>();
-
-    // for (auto entity : view ) {
-    // auto& player = view.get<Player>(entity);
-    // auto& movement = view.get<Movement>(entity);
-
-    // auto& spr = renderer.getSprite(player.batchId, player.spriteId);
 
     bool hasbody = false;
 
     if (world.GetBodyCount() > 0) {
         renderer.resetStats();
-        renderer.beginBatch();
+        //renderer.beginBatch();
     }
     for (b2Body *b = world.GetBodyList(); b; b = b->GetNext()) {
 
@@ -47,15 +36,15 @@ void RenderSystem::update(bi::ShapeRenderer &shaperenderer, bi::Renderer& render
         //float rad = 100.0f;
         float sx = b->GetFixtureList()[0].GetShape()->m_radius * bi::M2P * 2;
         float sy = sx;
+
         if (b->GetPosition().y * bi::M2P > 1000) {
             bi::log("body destroyed");
             world.DestroyBody(b);
             continue;
         }
 
-
         //renderer.drawTexture(glm::vec2(100,100), {sx, sy}, {1,0,1,1}, texId, b->GetAngle());
-        renderer.drawTexture((glm::vec2(b->GetPosition().x, b->GetPosition().y) - glm::vec2(rad, rad)) * bi::M2P, {sx, sy}, {1,1,1,1}, 2, b->GetAngle());
+        renderer.drawTexture((glm::vec2(b->GetPosition().x, b->GetPosition().y) - glm::vec2(rad, rad)) * bi::M2P, {sx, sy}, {1,0,0,1}, 24, b->GetAngle());
 
         shaperenderer.drawPolygon(
                 {b->GetPosition().x * bi::M2P, b->GetPosition().y * bi::M2P},
@@ -73,12 +62,10 @@ void RenderSystem::update(bi::ShapeRenderer &shaperenderer, bi::Renderer& render
         hasbody = true;
     }
 
-    //renderer.endBatch();
-    //renderer.flush();
     if (hasbody) {
 
-        renderer.endBatch();
-        renderer.flush();
+        //renderer.endBatch();
+        renderer.endFlushBegin();
         //bi::log("Flushing");
         shaperenderer.flush();
     }

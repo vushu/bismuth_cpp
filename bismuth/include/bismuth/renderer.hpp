@@ -52,6 +52,7 @@ namespace bi {
             void endBatch();
             //Sending all data to the GPU
             void flush();
+            void endFlushBegin();
 
             void drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int texId, float angle, std::array<glm::vec2, 4> texCoords = defaultTexcoords);
             //void drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int texId, float angle);

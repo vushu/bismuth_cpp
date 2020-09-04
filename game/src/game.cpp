@@ -2,6 +2,7 @@
 #include "bismuth/logging.hpp"
 #include "components.hpp"
 #include <bismuth/bismuth.hpp>
+#include <cstdio>
 #include <entt/entt.hpp>
 #include <memory>
 #include <string>
@@ -78,7 +79,7 @@ void MyGame::update(float dt) {
     int positionIterations = 2;   //how strongly to correct position
     //bi::log("FPS: " + std::to_string(1.0f/dt));
     // since we are using variable time put dt
-    renderSystem->update(*this->shaperenderer, this->getRenderer() ,dt, world, registry);
+    renderSystem->update(*this->shaperenderer, this->getRenderer(), dt, world, registry);
     //this->getRenderer().drawTexture({400, 280}, {100.0f,100.0f}, {1,1,1,1}, textureId, glm::pi<float>() * mAngle);
     world.Step(dt, velocityIterations, positionIterations);
     //playerball->draw(getRenderer());
@@ -86,7 +87,7 @@ void MyGame::update(float dt) {
     //
     //
     mAngle += dt;
-    drawStuff2(dt);
+    //drawStuff2(dt);
     //drawStuff(dt);
 
 }
@@ -110,12 +111,13 @@ void MyGame::drawStuff2(float dt) {
     glm::vec4 colorSmiley{1,1,1,1};
 
     //this->getRenderer().drawTexture({camX, camY}, {100.0f,100.0f}, color, textureId, glm::pi<float>() * -mAngle);
-    //this->getRenderer().drawTexture({214, 280}, {100.0f,100.0f}, colorSmiley, textureId, glm::pi<float>() * mAngle);
+    this->getRenderer().drawTexture({214, 280}, {100.0f,100.0f}, colorSmiley, textureId, glm::pi<float>() * mAngle);
 
-    //this->getRenderer().drawTexture({400, 280}, {100.0f,100.0f}, colorSmiley, textureId, glm::pi<float>() * mAngle);
+    this->getRenderer().drawTexture({400, 280}, {100.0f,100.0f}, colorSmiley, textureId, glm::pi<float>() * mAngle);
     //this->getRenderer().drawQuad({200, 300}, {30.0f,30.0f}, {1,1,1,1});
     //getRenderer().drawTexture({400,200}, playerball->mSize, {1,1,1,1}, playerball->mTextureId, M_PI * mAngle);
     //this->getRenderer().drawText(text, {0, 125}, *this->font, this->textColor, 0.4f);
+    getRenderer().endFlushBegin();
 
     //this->getRenderer().endBatch();
     //this->getRenderer().flush();
@@ -125,7 +127,7 @@ void MyGame::drawStuff2(float dt) {
     ImGui::Text("Quads: %s", std::to_string(this->getRenderer().getRenderStats().quadCount).c_str());
     ImGui::Text("DrawCount: %s", std::to_string(this->getRenderer().getRenderStats().drawCount).c_str());
     ImGui::Text("Average %.3f ms/frame", 1000.0f / ImGui::GetIO().Framerate);
-    ImGui::Text("%.1f FPS)", ImGui::GetIO().Framerate);
+    ImGui::Text("%.1f FPS", ImGui::GetIO().Framerate);
     ImGui::End();
 
     ImGui::Begin("Camera Pos");
@@ -178,7 +180,7 @@ void MyGame::init() {
         //.isStatic(true)
         .buildBall(this->world, registry);
 
-    for (int i = 0; i < 3000; i++) {
+    for (int i = 0; i < 100; i++) {
         shapeBuilder->
             setPosition(i * 10, 10)
             .setRadius(10.0f)

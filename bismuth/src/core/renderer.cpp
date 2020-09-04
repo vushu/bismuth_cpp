@@ -111,6 +111,7 @@ void Renderer::init()  {
     }
     // remember to close very important or other attributes made by others is overwritting it
     glBindVertexArray(0);
+    beginBatch();
 
 }
 
@@ -138,6 +139,12 @@ glm::vec2 Renderer::rotatePoint(const glm::vec2& pos, float angle) {
     return newPos;
 }
 
+void Renderer::endFlushBegin(){
+    endBatch();
+    flush();
+    beginBatch();
+
+}
 void Renderer::drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int texId, float angle, std::array<glm::vec2, 4> texcoords) {
 
     reevaluateBatchSpace();
