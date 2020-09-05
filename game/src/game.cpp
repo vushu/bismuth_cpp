@@ -83,7 +83,7 @@ void MyGame::update(float dt) {
     // since we are using variable time put dt
     this->shaperenderer->drawRect({100,10}, {100,50}, {1,0,0,1});
     renderSystem->update(*this->shaperenderer, this->getRenderer(), dt, world, registry);
-    RectRenderSystem::update(registry, *this->shaperenderer);
+    RectRenderSystem::update(registry, *this->shaperenderer, mAngle * M_PI);
     //this->getRenderer().drawTexture({400, 280}, {100.0f,100.0f}, {1,1,1,1}, textureId, glm::pi<float>() * mAngle);
     world.Step(dt, velocityIterations, positionIterations);
     //playerball->draw(getRenderer());
@@ -92,7 +92,7 @@ void MyGame::update(float dt) {
     //
     mAngle += dt;
     //drawStuff2(dt);
-    //drawStuff(dt);
+    drawStuff(dt);
 
 }
 
@@ -101,7 +101,8 @@ void MyGame::drawStuff(float dt) {
     this->shaperenderer->drawPolygon({400, 240}, 50.0f, 5, {1,1,0,1}, M_PI * mAngle , true);
     //this->shaperenderer->drawPolygon({200, 200}, 50.0f, 3, {0,1,0,1}, 0.0f , true);
 
-    this->shaperenderer->drawLine({10,200}, {500,200}, {1,0,0,1});
+    this->shaperenderer->drawLine({10,200}, {500,500}, {1,0,1,1});
+    this->shaperenderer->drawLine({10,200}, {500,500}, {1,1,0,1}, M_PI * mAngle);
     //this->shaperenderer->drawLine({10,300}, {500,300}, color);
     this->shaperenderer->drawPolygon({300, 300}, 50.0f, 24, {0,0,1,1}, M_PI * mAngle, true);
     this->shaperenderer->flush();

@@ -23,9 +23,8 @@ namespace bi {
             ~ShapeRenderer();
 
             void init();
-            void drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color);
-            void drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color, float angle);
-            void drawRect(glm::vec2 position, glm::vec2 size, glm::vec4 color);
+            void drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color, float angle = 0.0f, bool centerShown = false);
+            void drawRect(glm::vec2 position, glm::vec2 size, glm::vec4 color, float angle = 0.0f, bool centerShown = false);
             void drawPolygon(glm::vec2 centerPos, float radius, int segments, glm::vec4 color, float angle, bool centerShown = false);
             void flush();
 
@@ -37,6 +36,7 @@ namespace bi {
             void setVertex(glm::vec2 position, glm::vec4);
             void checkVertexLimit();
             glm::vec2 rotatePoint(const glm::vec2& pos, float angle);
+            void drawPoint(glm::vec2 point, float angle = 0.0f);
 
     };
 }

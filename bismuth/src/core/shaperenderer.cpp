@@ -38,26 +38,45 @@ void ShapeRenderer::init() {
     glBindVertexArray(0);
 }
 
-void ShapeRenderer::drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color) {
+//void ShapeRenderer::drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color, bool centerShown) {
 
+//checkVertexLimit();
+//setVertex(posFrom, color);
+//setVertex(posTo, color);
+//if (centerShown) {
+//drawPoint((posFrom + posTo) * 0.5f);
+//}
+
+//}
+
+void ShapeRenderer::drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color, float angle, bool centerShown) {
     checkVertexLimit();
-    setVertex(posFrom, color);
-    setVertex(posTo, color);
-
-}
-
-void ShapeRenderer::drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color, float angle) {
-    checkVertexLimit();
-
-    glm::vec2 diff = posTo - posFrom;
-    glm::vec2 rotatedDiff = rotatePoint(diff, angle);
-    glm::vec2 test = rotatedDiff + 100.0f;
 
 
-    setVertex(rotatedDiff, color);
-    setVertex(test, color);
-    //setVertex(rotatePoint(posFrom, angle), color);
-    //setVertex(rotatePoint(posTo, angle), color);
+    //finding center point
+    //showing center
+    //drawPolygon(center, 10, 6, {1,1,1,1}, angle, false);
+    glm::vec2 center = (posFrom + posTo) * 0.5f;
+
+    //using center to calculate new positions which are rotated
+    glm::vec2 newFrom = rotatePoint(posFrom - center, angle);
+    glm::vec2 newTo = rotatePoint(posTo - center, angle);
+
+    if (angle == 0) {
+
+        setVertex(posFrom, color);
+        setVertex(posTo, color);
+    }
+    else {
+
+        //displace with center so its not at origin {0,0}
+        setVertex(newFrom + center, color);
+        setVertex(newTo + center, color);
+
+    }
+    if (centerShown) {
+        drawPoint((posFrom + posTo) * 0.5f);
+    }
 }
 
 void ShapeRenderer::checkVertexLimit() {
@@ -161,14 +180,47 @@ glm::vec2 ShapeRenderer::rotatePoint(const glm::vec2& pos, float angle) {
     return newPos;
 }
 
-void ShapeRenderer::drawRect(glm::vec2 position, glm::vec2 size, glm::vec4 color) {
-    //Topline
-    drawLine(position, {position.x + size.x, position.y}, color);
-    //Left side
-    drawLine(position, {position.x, position.y + size.y}, color);
-    //Botline
-    drawLine({position.x, position.y + size.y }, {position.x + size.x, position.y + size.y}, color);
-    // RightSide
-    drawLine({position.x + size.x, position.y + size.y }, {position.x + size.x, position.y}, color);
+void ShapeRenderer::drawRect(glm::vec2 position, glm::vec2 size, glm::vec4 color, float angle, bool centerShown) {
+
+
+    if (angle == 0) {
+        //Topline
+        drawLine(position, {position.x + size.x, position.y}, color);
+        //Left side
+        drawLine(position, {position.x, position.y + size.y}, color);
+        //Botline
+        drawLine({position.x, position.y + size.y }, {position.x + size.x, position.y + size.y}, color);
+        // RightSide
+        drawLine({position.x + size.x, position.y + size.y }, {position.x + size.x, position.y}, color);
+    }
+    else {
+        glm::vec2 halfDims(size * 0.5f);
+
+        glm::vec2 tl(-halfDims.x, halfDims.y);
+        glm::vec2 bl(-halfDims.x, -halfDims.y);
+        glm::vec2 br(halfDims.x, -halfDims.y);
+        glm::vec2 tr(halfDims.x, halfDims.y);
+
+        glm::vec2 topLeft, botLeft, botRight, topRight;
+
+        topLeft = rotatePoint(tl, angle) + halfDims + position;
+        botLeft = rotatePoint(bl, angle) + halfDims + position;
+        botRight = rotatePoint(br, angle) + halfDims + position;
+        topRight = rotatePoint(tr, angle) + halfDims + position;
+        drawLine(topLeft, topRight, color);
+        drawLine(topLeft, botLeft, color);
+        drawLine(botLeft, botRight, color);
+        drawLine(botRight, topRight, color);
+
+    }
+
+    if (centerShown) {
+        glm::vec2 center = (position + size * 0.5f);
+        drawPoint((center));
+    }
+}
+
+void ShapeRenderer::drawPoint(glm::vec2 point, float angle) {
+    drawPolygon(point, 4, 8, {0,1,0,1}, angle);
 }
 
