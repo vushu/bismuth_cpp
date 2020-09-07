@@ -81,9 +81,9 @@ void MyGame::update(float dt) {
     int positionIterations = 2;   //how strongly to correct position
     //bi::log("FPS: " + std::to_string(1.0f/dt));
     // since we are using variable time put dt
-    this->shaperenderer->drawRect({100,10}, {100,50}, {1,0,0,1});
+    //this->shaperenderer->drawRect({100,10}, {100,50}, {1,0,0,1});
     renderSystem->update(*this->shaperenderer, this->getRenderer(), dt, world, registry);
-    RectRenderSystem::update(registry, *this->shaperenderer, mAngle * M_PI);
+    //RectRenderSystem::update(registry, *this->shaperenderer, mAngle * M_PI);
     //this->getRenderer().drawTexture({400, 280}, {100.0f,100.0f}, {1,1,1,1}, textureId, glm::pi<float>() * mAngle);
     world.Step(dt, velocityIterations, positionIterations);
     //playerball->draw(getRenderer());
@@ -97,6 +97,7 @@ void MyGame::update(float dt) {
 }
 
 void MyGame::drawStuff(float dt) {
+    getMainFramebuffer().bind();
     this->shaperenderer->drawPolygon({400, 200}, 50.0f, 4, {0,1,0,1}, M_PI * mAngle , true);
     this->shaperenderer->drawPolygon({400, 240}, 50.0f, 5, {1,1,0,1}, M_PI * mAngle , true);
     //this->shaperenderer->drawPolygon({200, 200}, 50.0f, 3, {0,1,0,1}, 0.0f , true);
@@ -105,6 +106,12 @@ void MyGame::drawStuff(float dt) {
     this->shaperenderer->drawLine({10,200}, {500,500}, {1,1,0,1}, M_PI * mAngle);
     //this->shaperenderer->drawLine({10,300}, {500,300}, color);
     this->shaperenderer->drawPolygon({300, 300}, 50.0f, 24, {0,0,1,1}, M_PI * mAngle, true);
+    this->shaperenderer->flush();
+    getMainFramebuffer().unbind();
+
+    //glClearColor(1.0f, 1.0f, 1.0f, 1.0f); // set clear color to white (not really necessery actually, since we won't be able to see behind the quad anyways)
+    //glClear(GL_COLOR_BUFFER_BIT);
+    this->getRenderer().drawTexture({100,100}, {400, 350}, {1,1,1,1}, getMainFramebuffer().textureId, 0);
     this->shaperenderer->flush();
 }
 
@@ -154,6 +161,8 @@ void MyGame::drawStuff2(float dt) {
 
 void MyGame::init() {
 
+    //bi::log("************** Max width ",std::to_string(getWindow().maxWidth));
+    //bi::log("************** Max height ",std::to_string(getWindow().maxHeight));
     position = {0,0};
     size = {100,100};
     //getCamera().setPosition(glm::vec2 pos)

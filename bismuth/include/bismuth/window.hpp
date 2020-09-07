@@ -15,8 +15,12 @@ namespace  bi {
             int width;
             int height;
             void swapBuffers();
+            int maxWidth;
+            int maxHeight;
 
         private:
+
+            void getResolution();
             void setupCallbacks();
             static void resizeWindowCallback(GLFWwindow* window, int width, int height);
             static void frameBufferSizeCallback(GLFWwindow* window, int width, int height);

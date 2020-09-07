@@ -34,6 +34,7 @@ void Application::construct(int width, int height, std::string title) {
     //this->renderer = std::make_unique<Renderer>(this->window, this->camera, *this->assetmanager);
     this->audioManager = std::make_unique<AudioManager>();
     this->guimanager = std::make_unique<GuiManager>(this->getWindow());
+    this->mainFramebuffer = std::make_unique<Framebuffer>();
     //this->textrenderer = std::make_unique<TextRenderer>();
     this->renderer = std::make_unique<Renderer>(*this->camera);
 }
@@ -111,6 +112,7 @@ void Application::applicationInit() {
     log("Application: init");
     this->window->init();
     initOpenGL();
+    //this->mainFramebuffer->init(window->maxWidth, window->maxHeight);
     this->renderer->init();
 
     //self init
@@ -143,6 +145,10 @@ AssetManager& Application::getAssetManager() {
 
 GuiManager& Application::getGuiManager() {
     return *this->guimanager;
+}
+
+Framebuffer& Application::getMainFramebuffer() {
+    return *this->mainFramebuffer;
 }
 
 

@@ -48,9 +48,11 @@ void main () {
     }
     else if (fTexId == 1.0f) {
         tempColor = texture(uTextures[1], fTexCoords);
+        //tempColor = vec4(vec3(1.0 - texture(uTextures[1], fTexCoords)), 1.0);
     }
     else if (fTexId == 2.0f) {
         tempColor = texture(uTextures[2], fTexCoords);
+        //tempColor = vec4(vec3(1.0 - texture(uTextures[1], fTexCoords)), 1.0);
     }
     else if (fTexId == 3.0f) {
         tempColor = texture(uTextures[3], fTexCoords);

@@ -6,6 +6,7 @@
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
 #include <bismuth/logging.hpp>
+#include "bismuth/glhelper.hpp"
 #include "bismuth/primitives.hpp"
 #include "glm/fwd.hpp"
 #include <glm/gtx/string_cast.hpp>
@@ -25,6 +26,7 @@ void checkGLError()
 
 void Renderer::init()  {
 
+    //glhelper::createFrameBuffer();
     this->shader.compile();
 
     s_renderData.quadBuffer = new QuadVertex[maxVertexCount];

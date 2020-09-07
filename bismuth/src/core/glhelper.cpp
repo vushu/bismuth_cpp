@@ -104,6 +104,14 @@ void glhelper::uploadUniformIntArray2(int shaderProgramId, std::string varName, 
     glUniform1iv(glGetUniformLocation(shaderProgramId, varName.c_str()), size, location);
 }
 
+unsigned int glhelper::generateEmptyTexture(int width, int height) {
+    unsigned int textureId;
+    glGenTextures(1, &textureId);
+    glBindTexture(GL_TEXTURE_2D, textureId);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
+    return textureId;
+}
+
 glhelper::TextureInfo bi::glhelper::generateTexture(std::string filepath) {
     unsigned int textureId;
     glGenTextures(1, &textureId);
@@ -121,8 +129,11 @@ glhelper::TextureInfo bi::glhelper::generateTexture(std::string filepath) {
     if (!data) {
         throw std::runtime_error("No image data");
     }
-
-    if (nrChannels == 3) {
+    if (nrChannels == 1) {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, width, height, 0, GL_RED, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else if (nrChannels == 3) {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
     }
@@ -138,9 +149,16 @@ glhelper::TextureInfo bi::glhelper::generateTexture(std::string filepath) {
     return TextureInfo{textureId, width, height};
 }
 
-unsigned int glhelper::createFrameBuffer() {
+unsigned int glhelper::createFrameBuffer(unsigned int textureId) {
     unsigned int fbo;
     glGenFramebuffers(1, &fbo);
+    glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureId, 0);
+    //if (glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE) {
+    //bi::log("Framebuffer created: ","OK");
+    //}
+
+
     return fbo;
 }
 

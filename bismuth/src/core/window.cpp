@@ -7,17 +7,18 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <stdexcept>
+using namespace bi;
 
 void errorCallback(int error, const char* description) {
-    bi::log("Window: " + std::string(description));
+    log("Window: " + std::string(description));
 }
 
 void bi::Window::frameBufferSizeCallback(GLFWwindow* window, int width, int height) {
     glViewport(0,0, width, height);
 }
 
-void bi::Window::resizeWindowCallback(GLFWwindow* window, int width, int height) {
-    bi::Window* ptr = reinterpret_cast<bi::Window*>(glfwGetWindowUserPointer(window));
+void Window::resizeWindowCallback(GLFWwindow* window, int width, int height) {
+    Window* ptr = reinterpret_cast<bi::Window*>(glfwGetWindowUserPointer(window));
     if (ptr) {
         ptr->width = width;
         ptr->height = height;
@@ -26,19 +27,19 @@ void bi::Window::resizeWindowCallback(GLFWwindow* window, int width, int height)
     //bi::log("Resizing window " + std::to_string(width) + " : " +  std::to_string(height));
 }
 
-bi::Window::Window(int width, int height, std::string title) {
+Window::Window(int width, int height, std::string title) {
     this->width = width;
     this->height = height;
     this->title = title;
 }
 
-bi::Window::~Window() {
+Window::~Window() {
     glfwDestroyWindow(window);
     glfwTerminate();
     bi::log("Window: Destroyed");
 }
 
-void bi::Window::configureOpenGL() {
+void Window::configureOpenGL() {
     //#ifdef __EMSCRIPTEN__
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
@@ -58,7 +59,7 @@ void bi::Window::configureOpenGL() {
     //glfwDefaultWindowHints();
 }
 
-void bi::Window::setupCallbacks() {
+void Window::setupCallbacks() {
     glfwSetErrorCallback(errorCallback);
     glfwSetKeyCallback(window, bi::KeyListener::keyCallback);
     glfwSetWindowUserPointer(window, reinterpret_cast<void*>(this));
@@ -69,29 +70,30 @@ void bi::Window::setupCallbacks() {
     glfwSetScrollCallback(window, bi::MouseListener::mouseScrollCallback);
 }
 
-void bi::Window::pollEvents() {
+void Window::pollEvents() {
     glfwPollEvents();
 }
 
-bool bi::Window::windowShouldClose() {
+bool Window::windowShouldClose() {
     return glfwWindowShouldClose(window);
 }
 
-void bi::Window::swapBuffers() {
+void Window::swapBuffers() {
     glfwSwapBuffers(window);
 }
 
-void bi::Window::close() {
+void Window::close() {
     glfwSetWindowShouldClose(window, GLFW_TRUE);
 }
 
-void bi::Window::init() {
+void Window::init() {
 
     if (!glfwInit()) {
-        bi::log("Window: GLFW failed to initialized!");
+        log("Window: GLFW failed to initialized!");
         throw std::runtime_error("Failed to init GLFW");
     }
 
+    getResolution();
     configureOpenGL();
 
     window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
@@ -102,6 +104,7 @@ void bi::Window::init() {
         glfwTerminate();
         throw std::runtime_error("Failed to create GLFW Window");
     }
+
     glfwMakeContextCurrent(window);
     //ENABLE VSYNC
     glfwSwapInterval(GLFW_TRUE);
@@ -109,6 +112,13 @@ void bi::Window::init() {
     setupCallbacks();
 
     bi::log("Window: GLFW window successfully created!");
+}
+
+void Window::getResolution() {
+    const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+
+    maxWidth = mode->width;
+    maxHeight = mode->height;
 }
 
 

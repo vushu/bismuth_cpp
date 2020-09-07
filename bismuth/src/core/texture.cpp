@@ -14,13 +14,21 @@ Texture::~Texture() {
 }
 
 void Texture::init() {
-     glhelper::TextureInfo textureInfo = glhelper::generateTexture(this->filepath);
-     this->textureId = textureInfo.textureId;
-     this->width = textureInfo.width;
-     this->height = textureInfo.height;
-     bi::log("Texture initialized: " + filepath);
-     //bi::log("Texture Width: " + std::to_string(this->width));
-     //bi::log("Texture Height: " + std::to_string(this->height));
+    if (width != 0){
+        filepath = "Generated Empty Texture";
+        bi::log("Empty Texture initialized: ");
+        textureId = glhelper::generateEmptyTexture(width, height);
+        return;
+    }
+
+
+    glhelper::TextureInfo textureInfo = glhelper::generateTexture(this->filepath);
+    this->textureId = textureInfo.textureId;
+    this->width = textureInfo.width;
+    this->height = textureInfo.height;
+    bi::log("Texture initialized: " + filepath);
+    //bi::log("Texture Width: " + std::to_string(this->width));
+    //bi::log("Texture Height: " + std::to_string(this->height));
 }
 
 void Texture::bind() {

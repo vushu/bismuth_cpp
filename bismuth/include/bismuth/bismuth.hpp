@@ -1,4 +1,6 @@
 #include "application.hpp"
+#include "mouselistener.hpp"
+#include "keylistener.hpp"
 #include "camera.hpp"
 #include "renderer.hpp"
 #include "guimanager.hpp"

@@ -21,7 +21,6 @@ void MouseListener::mouseButtonCallback(GLFWwindow* window, int button, int acti
             MouseListener::get().mouseButtonPressed[button] = true;
         }
     }
-
     else if (action == GLFW_RELEASE) {
         if (button < MouseListener::numberOfMouseButtons) {
             MouseListener::get().mouseButtonPressed[button] = false;

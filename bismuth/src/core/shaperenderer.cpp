@@ -38,17 +38,6 @@ void ShapeRenderer::init() {
     glBindVertexArray(0);
 }
 
-//void ShapeRenderer::drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color, bool centerShown) {
-
-//checkVertexLimit();
-//setVertex(posFrom, color);
-//setVertex(posTo, color);
-//if (centerShown) {
-//drawPoint((posFrom + posTo) * 0.5f);
-//}
-
-//}
-
 void ShapeRenderer::drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color, float angle, bool centerShown) {
     checkVertexLimit();
 
@@ -68,7 +57,6 @@ void ShapeRenderer::drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color
         setVertex(posTo, color);
     }
     else {
-
         //displace with center so its not at origin {0,0}
         setVertex(newFrom + center, color);
         setVertex(newTo + center, color);

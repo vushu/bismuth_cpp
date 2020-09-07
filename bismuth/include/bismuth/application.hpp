@@ -7,6 +7,7 @@
 #include <bismuth/audiomanager.hpp>
 #include <bismuth/assetmanager.hpp>
 #include <bismuth/guimanager.hpp>
+#include <bismuth/framebuffer.hpp>
 
 #include <memory>
 
@@ -26,6 +27,7 @@ namespace bi {
             AudioManager& getAudioManager();
             AssetManager& getAssetManager();
             GuiManager& getGuiManager();
+            Framebuffer& getMainFramebuffer();
             //static void emscriptenloop(void* arg);
         protected:
 
@@ -39,6 +41,7 @@ namespace bi {
             std::unique_ptr<AudioManager> audioManager;
             std::unique_ptr<AssetManager> assetmanager;
             std::unique_ptr<GuiManager> guimanager;
+            std::unique_ptr<Framebuffer> mainFramebuffer;
             //std::unique_ptr<TextRenderer> textrenderer;
 
             void construct(int width, int height, std::string title);
