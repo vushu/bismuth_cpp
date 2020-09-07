@@ -2,6 +2,7 @@
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <memory>
+#include "camera.hpp"
 namespace bi {
 
     class MouseListener{
@@ -9,6 +10,8 @@ namespace bi {
             static void mousePosCallback(GLFWwindow* window, double xPos, double yPos);
             static void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
             static void mouseScrollCallback(GLFWwindow* window, double xOffset, double yOffset);
+            static float toOrthoX(Camera& camera, int width);
+            static float toOrthoY(Camera& camera, int height);
 
             static MouseListener& get() {
                 static MouseListener instance;

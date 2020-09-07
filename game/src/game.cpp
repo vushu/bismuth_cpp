@@ -1,5 +1,6 @@
 #include "game.hpp"
 #include "bismuth/logging.hpp"
+#include "bismuth/mouselistener.hpp"
 #include "components.hpp"
 #include <bismuth/bismuth.hpp>
 #include <cstdio>
@@ -11,6 +12,7 @@
 #include "glm/ext/scalar_constants.hpp"
 #include <box2d/box2d.h>
 #include <imgui/imgui.h>
+#include "glm/gtx/string_cast.hpp"
 #include "shapebuilder.hpp"
 #include "playerball.hpp"
 #include "factories.hpp"
@@ -25,6 +27,15 @@ void MyGame::update(float dt) {
     if (bi::keyInput().isKeyPressed(GLFW_KEY_ESCAPE)) {
         bi::log("Escape Pushed");
         getWindow().close();
+    }
+    if (bi::mouseInput().isDragging){
+        float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);
+        bi::log("Mouse x:",std::to_string(x));
+
+        float y= bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
+        bi::log("Mouse y:",std::to_string(y));
+        //bi::log("Mouse x:",bi::mouseInput().xPos);
+        //bi::log("Mouse y:",bi::mouseInput().yPos);
     }
     /*
        if (bi::keyInput().isKeyPressed(GLFW_KEY_S)) {
@@ -83,6 +94,7 @@ void MyGame::update(float dt) {
     // since we are using variable time put dt
     //this->shaperenderer->drawRect({100,10}, {100,50}, {1,0,0,1});
     renderSystem->update(*this->shaperenderer, this->getRenderer(), dt, world, registry);
+
     //RectRenderSystem::update(registry, *this->shaperenderer, mAngle * M_PI);
     //this->getRenderer().drawTexture({400, 280}, {100.0f,100.0f}, {1,1,1,1}, textureId, glm::pi<float>() * mAngle);
     world.Step(dt, velocityIterations, positionIterations);
@@ -92,7 +104,10 @@ void MyGame::update(float dt) {
     //
     mAngle += dt;
     //drawStuff2(dt);
-    drawStuff(dt);
+    //drawStuff(dt);
+    getGuiManager().beginDraw();
+    getGuiManager().showFPS();
+    getGuiManager().endDraw();
 
 }
 
@@ -163,9 +178,10 @@ void MyGame::init() {
 
     //bi::log("************** Max width ",std::to_string(getWindow().maxWidth));
     //bi::log("************** Max height ",std::to_string(getWindow().maxHeight));
+    //getMainFramebuffer().init(1000, 700);
     position = {0,0};
-    size = {100,100};
-    //getCamera().setPosition(glm::vec2 pos)
+    //size = {100,100};
+    getCamera().setPosition(position);
     //getCamera().viewMatrix = glm::translate(getCamera().viewMatrix, glm::vec3(100,0,0));
     shaperenderer = std::make_unique<bi::ShapeRenderer>(getCamera());
     shaperenderer->init();
@@ -195,7 +211,7 @@ void MyGame::init() {
         //.isStatic(true)
         .buildBall(this->world, registry);
 
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 2000; i++) {
         shapeBuilder->
             setPosition(i * 10, 10)
             .setRadius(10.0f)

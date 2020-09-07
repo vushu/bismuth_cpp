@@ -219,7 +219,7 @@ void Renderer::drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color) {
 void Renderer::flush() {
 
     shader.use();
-    shader.uploadUniformMat4("uMvp", camera.projectionMatrix * camera.viewMatrix);
+    shader.uploadUniformMat4("uMvp", camera.projectionMatrix * camera.getViewMatrix());
 
 
     for (int i = 0; i < s_renderData.textureSlotsIndex; i++) {

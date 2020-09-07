@@ -16,13 +16,31 @@ Camera::~Camera() {
 
 void Camera::adjustProjection() {
     projectionMatrix = glm::mat4(1.0);
-    projectionMatrix = glm::ortho(0.0f, 800.0f, 600.0f, 0.0f, -1.0f, 1.0f);
+    projectionMatrix = glm::ortho(0.0f, 1024.0f, 768.0f, 0.0f, -1.0f, 100.0f);
+    inverseProjectionMatrix = glm::inverse(projectionMatrix);
+    inverseViewMatrix = glm::inverse(viewMatrix);
     //projectionMatrix = glm::orthoRH(0.0f, 32.0f * 40.0f, 0.0f, 32.0f * 40.0f, 0.0f, 1.0f);
     //projectionMatrix = glm::orthoLH(0.0f, 225.0f * 40.0f, 0.0f, 225.0f * 21.0f, 0.0f, 100.0f);
 }
 
 void Camera::setPosition(glm::vec2 pos) {
-    this->viewMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(pos,0));
+    this->position = pos;
+    //this->viewMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(pos,0));
 }
 
+glm::mat4 Camera::getViewMatrix() {
+    glm::vec3 cameraFront{0.0f,0.0f,-1.0f};
+    glm::vec3 cameraUp{0.0f,1.0f,0.0f};
+
+    viewMatrix = glm::mat4(1.0f);
+    viewMatrix = glm::lookAt({position.x, position.y, 20.0f}, cameraFront + glm::vec3(position.x, position.y, 0.0f), cameraUp);
+
+    this->inverseViewMatrix = glm::inverse(this->viewMatrix);
+    return this->viewMatrix;
+}
+
+glm::mat4 Camera::getInversePV() {
+    //return this->inverseViewMatrix * this->inverseProjectionMatrix;
+    return this->inverseProjectionMatrix * this->inverseViewMatrix;
+}
 
