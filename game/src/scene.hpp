@@ -1,5 +1,8 @@
+#pragma once
 class Scene {
     public:
-        void render();
+        //Scene();
+        //~Scene();
+        virtual void update(float dt) = 0;
 
 };

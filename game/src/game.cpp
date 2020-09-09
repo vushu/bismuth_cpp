@@ -17,6 +17,8 @@
 #include "playerball.hpp"
 #include "factories.hpp"
 #include "rectrendersystem.hpp"
+#include "mainmenu.hpp"
+#include <map>
 using namespace bi;
 
 MyGame::~MyGame() {}
@@ -84,15 +86,8 @@ void MyGame::update(float dt) {
 
 */
 
-    //update world
-    //world.Step(1.0f/60.0f, 6, 2);
-    //world.Step(1.0f/60.0f, 6, 2);
-    //float timeStep = 1.0f/60.0f;      //the length of time passed to simulate (seconds)
     int velocityIterations = 4;   //how strongly to correct velocity
     int positionIterations = 2;   //how strongly to correct position
-    //bi::log("FPS: " + std::to_string(1.0f/dt));
-    // since we are using variable time put dt
-    //this->shaperenderer->drawRect({100,10}, {100,50}, {1,0,0,1});
     renderSystem->update(*this->shaperenderer, this->getRenderer(), dt, world, registry);
 
     //RectRenderSystem::update(registry, *this->shaperenderer, mAngle * M_PI);
@@ -105,9 +100,13 @@ void MyGame::update(float dt) {
     mAngle += dt;
     //drawStuff2(dt);
     //drawStuff(dt);
-    getGuiManager().beginDraw();
-    getGuiManager().showFPS();
-    getGuiManager().endDraw();
+    //getGuiManager().beginDraw();
+    //getGuiManager().showFPS();
+    //getGuiManager().endDraw();
+    for (auto& s : scenes) {
+        s.second->update(dt);
+        //((Scene)s.second);
+    }
 
 }
 
@@ -176,27 +175,34 @@ void MyGame::drawStuff2(float dt) {
 
 void MyGame::init() {
 
+    std::unique_ptr<MainMenuScene> mainMenu = std::make_unique<MainMenuScene>();
+    //MainMenuScene mainMenu;
+    scenes.emplace("mainMenu", std::move(mainMenu));
+
+    //scenes.insert();
+
     //bi::log("************** Max width ",std::to_string(getWindow().maxWidth));
     //bi::log("************** Max height ",std::to_string(getWindow().maxHeight));
     //getMainFramebuffer().init(1000, 700);
-    position = {0,0};
+    //position = {0,0};
     //size = {100,100};
-    getCamera().setPosition(position);
+    //getCamera().setPosition(position);
     //getCamera().viewMatrix = glm::translate(getCamera().viewMatrix, glm::vec3(100,0,0));
     shaperenderer = std::make_unique<bi::ShapeRenderer>(getCamera());
     shaperenderer->init();
     renderSystem = std::make_unique<RenderSystem>();
     getGuiManager().init();
 
-    std::unique_ptr<Sprite> sprite = std::make_unique<Sprite>();
-    font = std::make_unique<Font>(getAssetManager());
-    font->loadFnt("resources/assets/fonts/manjaru.fnt");
-    textureId = getAssetManager().loadTexture("resources/assets/images/awesomeface.png");
-    bi::log("TextureId: ", std::to_string(textureId));
-    shapeBuilder = std::make_unique<ShapeBuilder>();
+    //std::unique_ptr<Sprite> sprite = std::make_unique<Sprite>();
+    //font = std::make_unique<Font>(getAssetManager());
+    //font->loadFnt("resources/assets/fonts/manjaru.fnt");
+    //textureId = getAssetManager().loadTexture("resources/assets/images/awesomeface.png");
+    //bi::log("TextureId: ", std::to_string(textureId));
+    //shapeBuilder = std::make_unique<ShapeBuilder>();
 
-    playerball = std::make_unique<PlayerBall>(textureId);
+    //playerball = std::make_unique<PlayerBall>(textureId);
 
+    /*
     shapeBuilder->
         setPosition(140.0f, 100.0f)
         .setRadius(30.0f)
@@ -219,14 +225,13 @@ void MyGame::init() {
             //.isStatic(true)
             .buildBall(this->world, registry);
     }
+    */
+    //Factories::createRect(registry, {100, 100}, {100, 50});
 
-
-    Factories::createRect(registry, {100, 100}, {100, 50});
-
-    shapeBuilder->setPosition(100.0f, 700.0f)
-        .setRadius(500.0f)
-        //.setTexture(textureId)
-        .isStatic(true)
-        .buildBall(this->world, registry);
+    //shapeBuilder->setPosition(100.0f, 700.0f)
+        //.setRadius(500.0f)
+        ////.setTexture(textureId)
+        //.isStatic(true)
+        //.buildBall(this->world, registry);
 
 }
