@@ -103,10 +103,10 @@ void MyGame::update(float dt) {
     //getGuiManager().beginDraw();
     //getGuiManager().showFPS();
     //getGuiManager().endDraw();
-    for (auto& s : scenes) {
-        s.second->update(dt);
+    //for (auto& s : scenes) {
+        //s.second->update(dt);
         //((Scene)s.second);
-    }
+    //}
 
 }
 
@@ -177,7 +177,7 @@ void MyGame::init() {
 
     std::unique_ptr<MainMenuScene> mainMenu = std::make_unique<MainMenuScene>();
     //MainMenuScene mainMenu;
-    scenes.emplace("mainMenu", std::move(mainMenu));
+    //scenes.emplace("mainMenu", std::move(mainMenu));
 
     //scenes.insert();
 

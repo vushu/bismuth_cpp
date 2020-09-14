@@ -27,16 +27,18 @@ Application::Application(int width, int height, std::string title) {
 }
 
 void Application::construct(int width, int height, std::string title) {
+
+    this->ioManager = std::make_unique<IOManager>(width, height, title);
     this->title = title;
-    this->window = std::make_unique<Window>(width, height, title);
-    this->camera = std::make_unique<Camera>();
-    this->assetmanager = std::make_unique<AssetManager>();
+    //this->window = std::make_unique<Window>(width, height, title);
+    //this->camera = std::make_unique<Camera>();
+    //this->assetmanager = std::make_unique<AssetManager>();
     //this->renderer = std::make_unique<Renderer>(this->window, this->camera, *this->assetmanager);
-    this->audioManager = std::make_unique<AudioManager>();
-    this->guimanager = std::make_unique<GuiManager>(this->getWindow());
-    this->mainFramebuffer = std::make_unique<Framebuffer>();
+    //this->audioManager = std::make_unique<AudioManager>();
+    //this->guimanager = std::make_unique<GuiManager>(this->getWindow());
+    //this->mainFramebuffer = std::make_unique<Framebuffer>();
     //this->textrenderer = std::make_unique<TextRenderer>();
-    this->renderer = std::make_unique<Renderer>(*this->camera);
+    //this->renderer = std::make_unique<Renderer>(*this->camera);
 }
 
 Application::~Application() {
@@ -62,13 +64,13 @@ void Application::update(float dt) { }
 void Application::init() { }
 
 void Application::loop() {
-    window->pollEvents();
+    this->ioManager->window->pollEvents();
     //if (dt >= 0) {
     //renderer->render(dt);
-    renderer->clear(glm::vec4(0.30f, 0.30f, 0.30f, 1.0f));
+    this->ioManager->renderer->clear(glm::vec4(0.30f, 0.30f, 0.30f, 1.0f));
     update(dt);
     //}
-    window->swapBuffers();
+    this->ioManager->window->swapBuffers();
     endTime = glfwGetTime();
     dt = endTime - beginTime;
     beginTime = endTime;
@@ -85,7 +87,7 @@ void Application::nativeLoop() {
     //float accumulator = 0;
     //float lastFrameTime = 0.0f;
     //float lastUpdateTime = 0.0f;
-    while (!window->windowShouldClose()) {
+    while (!this->ioManager->window->windowShouldClose()) {
         loop();
     }
 
@@ -110,10 +112,10 @@ void Application::initOpenGL() {
 
 void Application::applicationInit() {
     log("Application: init");
-    this->window->init();
+    this->ioManager->window->init();
     initOpenGL();
     //this->mainFramebuffer->init(window->maxWidth, window->maxHeight);
-    this->renderer->init();
+    this->ioManager->renderer->init();
 
     //self init
     //this->textrenderer->init();
@@ -124,34 +126,32 @@ void Application::applicationInit() {
 
 
 Renderer& Application::getRenderer() {
-    return *this->renderer;
+    return *this->ioManager->renderer;
 }
 
 Window& Application::getWindow() {
-    return *this->window;
+    return *this->ioManager->window;
 }
 
 Camera& Application::getCamera() {
-    return *this->camera;
+    return *this->ioManager->camera;
 }
 
 AudioManager& Application::getAudioManager() {
-    return *this->audioManager;
+    return *this->ioManager->audioManager;
 }
 
 AssetManager& Application::getAssetManager() {
-    return *this->assetmanager;
+    return *this->ioManager->assetmanager;
 }
 
 GuiManager& Application::getGuiManager() {
-    return *this->guimanager;
+    return *this->ioManager->guimanager;
 }
 
 Framebuffer& Application::getMainFramebuffer() {
-    return *this->mainFramebuffer;
+    return *this->ioManager->mainFramebuffer;
 }
-
-
 
 
 

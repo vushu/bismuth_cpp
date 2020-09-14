@@ -1,6 +1,5 @@
 #pragma once
 #include <bismuth/bismuth.hpp>
-#include "scene.hpp"
 #include "shapebuilder.hpp"
 #include <array>
 #include <entt/entt.hpp>
@@ -29,7 +28,6 @@ class MyGame : public bi::Application {
         std::shared_ptr<bi::Sound> s4;
     private:
 
-        std::map<std::string, std::unique_ptr<Scene>> scenes;
         //std::map<std::string, Scene> scenes;
 
         glm::vec2 position, size;

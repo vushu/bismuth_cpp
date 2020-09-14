@@ -1,18 +1,18 @@
 #pragma once
-//#include "bismuth/textrenderer.hpp"
 #include <bismuth/camera.hpp>
-//#include <bismuth/renderer.hpp>
 #include <bismuth/renderer.hpp>
 #include <bismuth/window.hpp>
 #include <bismuth/audiomanager.hpp>
 #include <bismuth/assetmanager.hpp>
 #include <bismuth/guimanager.hpp>
 #include <bismuth/framebuffer.hpp>
+#include <bismuth/scenemanager.hpp>
+#include <bismuth/iomanager.hpp>
 
 #include <memory>
 
 namespace bi {
-    class Application{
+    class Application {
         public:
             // constructors, asssignment, destructor
             Application();
@@ -28,21 +28,21 @@ namespace bi {
             AssetManager& getAssetManager();
             GuiManager& getGuiManager();
             Framebuffer& getMainFramebuffer();
-            //static void emscriptenloop(void* arg);
+
         protected:
 
             virtual void update(float dt);
             virtual void init();
         private:
+            std::unique_ptr<IOManager> ioManager;
             //std::unique_ptr<Renderer> renderer;
-            std::unique_ptr<Renderer> renderer;
-            std::unique_ptr<Window> window;
-            std::unique_ptr<Camera> camera;
-            std::unique_ptr<AudioManager> audioManager;
-            std::unique_ptr<AssetManager> assetmanager;
-            std::unique_ptr<GuiManager> guimanager;
-            std::unique_ptr<Framebuffer> mainFramebuffer;
-            //std::unique_ptr<TextRenderer> textrenderer;
+            //std::unique_ptr<Window> window;
+            //std::unique_ptr<Camera> camera;
+            //std::unique_ptr<AudioManager> audioManager;
+            //std::unique_ptr<AssetManager> assetmanager;
+            //std::unique_ptr<GuiManager> guimanager;
+            //std::unique_ptr<Framebuffer> mainFramebuffer;
+            std::unique_ptr<SceneManager> scenemanager;
 
             void construct(int width, int height, std::string title);
             void applicationInit();

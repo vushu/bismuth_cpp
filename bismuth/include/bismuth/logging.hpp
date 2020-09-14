@@ -8,5 +8,6 @@ namespace bi {
     void log(float message);
     void log(int message);
     void log(std::string from,int message);
+    void log(std::string from,float message);
 
 }

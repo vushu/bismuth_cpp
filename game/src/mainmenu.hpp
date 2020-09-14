@@ -1,6 +1,6 @@
 #pragma once
-#include "scene.hpp"
-class MainMenuScene : public Scene {
+#include <bismuth/scene.hpp>
+class MainMenuScene : public bi::Scene {
     public:
         // constructors, asssignment, destructor
         MainMenuScene ();
