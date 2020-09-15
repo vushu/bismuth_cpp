@@ -29,16 +29,8 @@ Application::Application(int width, int height, std::string title) {
 void Application::construct(int width, int height, std::string title) {
 
     this->ioManager = std::make_unique<IOManager>(width, height, title);
+    this->scenemanager = std::make_unique<SceneManager>(*this->ioManager);
     this->title = title;
-    //this->window = std::make_unique<Window>(width, height, title);
-    //this->camera = std::make_unique<Camera>();
-    //this->assetmanager = std::make_unique<AssetManager>();
-    //this->renderer = std::make_unique<Renderer>(this->window, this->camera, *this->assetmanager);
-    //this->audioManager = std::make_unique<AudioManager>();
-    //this->guimanager = std::make_unique<GuiManager>(this->getWindow());
-    //this->mainFramebuffer = std::make_unique<Framebuffer>();
-    //this->textrenderer = std::make_unique<TextRenderer>();
-    //this->renderer = std::make_unique<Renderer>(*this->camera);
 }
 
 Application::~Application() {
@@ -65,11 +57,12 @@ void Application::init() { }
 
 void Application::loop() {
     this->ioManager->window->pollEvents();
-    //if (dt >= 0) {
-    //renderer->render(dt);
+
     this->ioManager->renderer->clear(glm::vec4(0.30f, 0.30f, 0.30f, 1.0f));
+
     update(dt);
-    //}
+    this->scenemanager->update(dt);
+
     this->ioManager->window->swapBuffers();
     endTime = glfwGetTime();
     dt = endTime - beginTime;
@@ -77,16 +70,9 @@ void Application::loop() {
 }
 
 void Application::nativeLoop() {
-
-    //const float FRAME_DURATION = 1.0f/60.0f;
-
     beginTime = glfwGetTime();
     endTime = glfwGetTime();
-    //float dt = -1.0f;
     dt = 1.0f/60.0f;
-    //float accumulator = 0;
-    //float lastFrameTime = 0.0f;
-    //float lastUpdateTime = 0.0f;
     while (!this->ioManager->window->windowShouldClose()) {
         loop();
     }
@@ -114,19 +100,18 @@ void Application::applicationInit() {
     log("Application: init");
     this->ioManager->window->init();
     initOpenGL();
-    //this->mainFramebuffer->init(window->maxWidth, window->maxHeight);
     this->ioManager->renderer->init();
-
-    //self init
-    //this->textrenderer->init();
-    //this->guimanager->init();
-    //this->audioManager->init();
+    this->ioManager->shaperenderer->init();
 }
 
 
 
 Renderer& Application::getRenderer() {
     return *this->ioManager->renderer;
+}
+
+ShapeRenderer& Application::getShapeRenderer() {
+    return *this->ioManager->shaperenderer;
 }
 
 Window& Application::getWindow() {
@@ -153,5 +138,12 @@ Framebuffer& Application::getMainFramebuffer() {
     return *this->ioManager->mainFramebuffer;
 }
 
+SceneManager& Application::getSceneManager() {
+    return *this->scenemanager;
+}
+
+IOManager& Application::getIOManager(){
+    return *this->ioManager;
+}
 
 

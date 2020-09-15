@@ -12,10 +12,12 @@ namespace bi {
             SceneManager(IOManager& iomanager) : ioManager(iomanager) {}
 
             ~SceneManager();
-            void createScene(std::string name);
+            void addScene(std::string name, std::unique_ptr<Scene> scene);
+            void setScene(std::string name);
             void update(float dt);
 
         private:
+            std::string currentScene;
             std::map<std::string, std::unique_ptr<Scene>> scenes;
             IOManager& ioManager;
 

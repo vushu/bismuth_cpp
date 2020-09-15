@@ -23,6 +23,7 @@ namespace bi {
             std::unique_ptr<AssetManager> assetmanager;
             std::unique_ptr<GuiManager> guimanager;
             std::unique_ptr<Framebuffer> mainFramebuffer;
+            std::unique_ptr<ShapeRenderer> shaperenderer;
         private:
     };
 }

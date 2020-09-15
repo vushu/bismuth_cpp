@@ -22,12 +22,15 @@ namespace bi {
             void run();
 
             Renderer& getRenderer();
+            ShapeRenderer& getShapeRenderer();
             Window& getWindow();
             Camera& getCamera();
             AudioManager& getAudioManager();
             AssetManager& getAssetManager();
             GuiManager& getGuiManager();
             Framebuffer& getMainFramebuffer();
+            SceneManager& getSceneManager();
+            IOManager& getIOManager();
 
         protected:
 
@@ -35,13 +38,6 @@ namespace bi {
             virtual void init();
         private:
             std::unique_ptr<IOManager> ioManager;
-            //std::unique_ptr<Renderer> renderer;
-            //std::unique_ptr<Window> window;
-            //std::unique_ptr<Camera> camera;
-            //std::unique_ptr<AudioManager> audioManager;
-            //std::unique_ptr<AssetManager> assetmanager;
-            //std::unique_ptr<GuiManager> guimanager;
-            //std::unique_ptr<Framebuffer> mainFramebuffer;
             std::unique_ptr<SceneManager> scenemanager;
 
             void construct(int width, int height, std::string title);

@@ -32,10 +32,10 @@ void MyGame::update(float dt) {
     }
     if (bi::mouseInput().isDragging){
         float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);
-        bi::log("Mouse x:",std::to_string(x));
+        //bi::log("Mouse x:",std::to_string(x));
 
         float y= bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
-        bi::log("Mouse y:",std::to_string(y));
+        //bi::log("Mouse y:",std::to_string(y));
         //bi::log("Mouse x:",bi::mouseInput().xPos);
         //bi::log("Mouse y:",bi::mouseInput().yPos);
     }
@@ -88,18 +88,16 @@ void MyGame::update(float dt) {
 
     int velocityIterations = 4;   //how strongly to correct velocity
     int positionIterations = 2;   //how strongly to correct position
-    renderSystem->update(*this->shaperenderer, this->getRenderer(), dt, world, registry);
+    renderSystem->update(this->getShapeRenderer(), this->getRenderer(), dt, world, registry);
 
     //RectRenderSystem::update(registry, *this->shaperenderer, mAngle * M_PI);
     //this->getRenderer().drawTexture({400, 280}, {100.0f,100.0f}, {1,1,1,1}, textureId, glm::pi<float>() * mAngle);
     world.Step(dt, velocityIterations, positionIterations);
     //playerball->draw(getRenderer());
     //
-    //
-    //
     mAngle += dt;
     //drawStuff2(dt);
-    //drawStuff(dt);
+    drawStuff(dt);
     //getGuiManager().beginDraw();
     //getGuiManager().showFPS();
     //getGuiManager().endDraw();
@@ -111,26 +109,26 @@ void MyGame::update(float dt) {
 }
 
 void MyGame::drawStuff(float dt) {
-    getMainFramebuffer().bind();
-    this->shaperenderer->drawPolygon({400, 200}, 50.0f, 4, {0,1,0,1}, M_PI * mAngle , true);
-    this->shaperenderer->drawPolygon({400, 240}, 50.0f, 5, {1,1,0,1}, M_PI * mAngle , true);
+    //getMainFramebuffer().bind();
+    this->getShapeRenderer().drawPolygon({400, 200}, 50.0f, 4, {0,1,0,1}, M_PI * mAngle , true);
+    this->getShapeRenderer().drawPolygon({400, 240}, 50.0f, 5, {1,1,0,1}, M_PI * mAngle , true);
     //this->shaperenderer->drawPolygon({200, 200}, 50.0f, 3, {0,1,0,1}, 0.0f , true);
 
-    this->shaperenderer->drawLine({10,200}, {500,500}, {1,0,1,1});
-    this->shaperenderer->drawLine({10,200}, {500,500}, {1,1,0,1}, M_PI * mAngle);
+    //this->shaperenderer->drawLine({10,200}, {500,500}, {1,0,1,1});
+    //this->shaperenderer->drawLine({10,200}, {500,500}, {1,1,0,1}, M_PI * mAngle);
     //this->shaperenderer->drawLine({10,300}, {500,300}, color);
-    this->shaperenderer->drawPolygon({300, 300}, 50.0f, 24, {0,0,1,1}, M_PI * mAngle, true);
-    this->shaperenderer->flush();
-    getMainFramebuffer().unbind();
+    //this->shaperenderer->drawPolygon({300, 300}, 50.0f, 24, {0,0,1,1}, M_PI * mAngle, true);
+    this->getShapeRenderer().flush();
+    //getMainFramebuffer().unbind();
 
     //glClearColor(1.0f, 1.0f, 1.0f, 1.0f); // set clear color to white (not really necessery actually, since we won't be able to see behind the quad anyways)
     //glClear(GL_COLOR_BUFFER_BIT);
-    this->getRenderer().drawTexture({100,100}, {400, 350}, {1,1,1,1}, getMainFramebuffer().textureId, 0);
-    this->shaperenderer->flush();
+    //this->getRenderer().drawTexture({100,100}, {400, 350}, {1,1,1,1}, getMainFramebuffer().textureId, 0);
+    //this->shaperenderer->flush();
 }
 
 void MyGame::drawStuff2(float dt) {
-    //this->getRenderer().resetStats();
+    this->getRenderer().resetStats();
     //this->getRenderer().beginBatch();
     //for (int i = 0; i < 100; ++i) {
 
@@ -176,8 +174,7 @@ void MyGame::drawStuff2(float dt) {
 void MyGame::init() {
 
     std::unique_ptr<MainMenuScene> mainMenu = std::make_unique<MainMenuScene>();
-    //MainMenuScene mainMenu;
-    //scenes.emplace("mainMenu", std::move(mainMenu));
+    this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
 
     //scenes.insert();
 
@@ -188,8 +185,6 @@ void MyGame::init() {
     //size = {100,100};
     //getCamera().setPosition(position);
     //getCamera().viewMatrix = glm::translate(getCamera().viewMatrix, glm::vec3(100,0,0));
-    shaperenderer = std::make_unique<bi::ShapeRenderer>(getCamera());
-    shaperenderer->init();
     renderSystem = std::make_unique<RenderSystem>();
     getGuiManager().init();
 
