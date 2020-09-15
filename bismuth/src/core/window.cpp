@@ -22,9 +22,7 @@ void Window::resizeWindowCallback(GLFWwindow* window, int width, int height) {
     if (ptr) {
         ptr->width = width;
         ptr->height = height;
-        bi::log("NOT NULL");
     }
-    //bi::log("Resizing window " + std::to_string(width) + " : " +  std::to_string(height));
 }
 
 Window::Window(int width, int height, std::string title) {

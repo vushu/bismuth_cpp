@@ -20,8 +20,6 @@ void FirstScene::init() {
 
 
 void FirstScene::update(float dt) {
-    getShapeRenderer().drawPolygon({100,100}, 30.0, 12, {0,0,1,1}, 0);
-    getShapeRenderer().flush();
 
     getGuiManager().beginDraw();
     getGuiManager().showFPS();

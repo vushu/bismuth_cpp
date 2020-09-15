@@ -10,7 +10,6 @@ MainMenuScene::MainMenuScene() {}
 MainMenuScene::~MainMenuScene() {}
 
 void MainMenuScene::start() {
-    //mainMenuMusic->playSound();
     tower->playSound();
 }
 
@@ -99,6 +98,7 @@ void MainMenuScene::update(float dt) {
 
 void MainMenuScene::close() {
     bi::log("closing mainMenuMusic");
+    tower->stopSound();
     //mainMenuMusic->stopSound();
-    mainMenuMusic->pauseSound();
+    //mainMenuMusic->pauseSound();
 }
