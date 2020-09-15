@@ -28,8 +28,8 @@ Application::Application(int width, int height, std::string title) {
 
 void Application::construct(int width, int height, std::string title) {
 
-    this->ioManager = std::make_unique<IOManager>(width, height, title);
-    this->scenemanager = std::make_unique<SceneManager>(*this->ioManager);
+    this->ioManager = std::make_shared<IOManager>(width, height, title);
+    this->scenemanager = std::make_unique<SceneManager>(this->ioManager);
     this->title = title;
 }
 
@@ -58,12 +58,14 @@ void Application::init() { }
 void Application::loop() {
     this->ioManager->window->pollEvents();
 
-    this->ioManager->renderer->clear(glm::vec4(0.30f, 0.30f, 0.30f, 1.0f));
+    //this->ioManager->renderer->clear(glm::vec4(0.30f, 0.30f, 0.30f, 1.0f));
 
     update(dt);
+
     this->scenemanager->update(dt);
 
     this->ioManager->window->swapBuffers();
+
     endTime = glfwGetTime();
     dt = endTime - beginTime;
     beginTime = endTime;

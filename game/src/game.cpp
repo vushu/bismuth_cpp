@@ -1,4 +1,5 @@
 #include "game.hpp"
+#include "bismuth/keylistener.hpp"
 #include "bismuth/logging.hpp"
 #include "bismuth/mouselistener.hpp"
 #include "components.hpp"
@@ -8,6 +9,7 @@
 #include <memory>
 #include <string>
 #include "entitybuilder.hpp"
+#include "firstscene.hpp"
 #include "glm/ext/matrix_transform.hpp"
 #include "glm/ext/scalar_constants.hpp"
 #include <box2d/box2d.h>
@@ -39,6 +41,16 @@ void MyGame::update(float dt) {
         //bi::log("Mouse x:",bi::mouseInput().xPos);
         //bi::log("Mouse y:",bi::mouseInput().yPos);
     }
+
+    if (bi::keyInput().isKeyPressed(GLFW_KEY_1)) {
+        bi::log("Scene changed");
+        this->getSceneManager().setScene("mainmenu");
+    }
+    if (bi::keyInput().isKeyPressed(GLFW_KEY_2)) {
+        bi::log("Scene changed");
+        this->getSceneManager().setScene("firstscene");
+    }
+
     /*
        if (bi::keyInput().isKeyPressed(GLFW_KEY_S)) {
        bi::log("STOP audioManager");
@@ -88,22 +100,22 @@ void MyGame::update(float dt) {
 
     int velocityIterations = 4;   //how strongly to correct velocity
     int positionIterations = 2;   //how strongly to correct position
-    renderSystem->update(this->getShapeRenderer(), this->getRenderer(), dt, world, registry);
+    //renderSystem->update(this->getShapeRenderer(), this->getRenderer(), dt, world, registry);
 
     //RectRenderSystem::update(registry, *this->shaperenderer, mAngle * M_PI);
     //this->getRenderer().drawTexture({400, 280}, {100.0f,100.0f}, {1,1,1,1}, textureId, glm::pi<float>() * mAngle);
-    world.Step(dt, velocityIterations, positionIterations);
+    //world.Step(dt, velocityIterations, positionIterations);
     //playerball->draw(getRenderer());
     //
-    mAngle += dt;
+    //mAngle += dt;
     //drawStuff2(dt);
-    drawStuff(dt);
+    //drawStuff(dt);
     //getGuiManager().beginDraw();
     //getGuiManager().showFPS();
     //getGuiManager().endDraw();
     //for (auto& s : scenes) {
-        //s.second->update(dt);
-        //((Scene)s.second);
+    //s.second->update(dt);
+    //((Scene)s.second);
     //}
 
 }
@@ -176,17 +188,13 @@ void MyGame::init() {
     std::unique_ptr<MainMenuScene> mainMenu = std::make_unique<MainMenuScene>();
     this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
 
-    //scenes.insert();
+    std::unique_ptr<FirstScene> firstScene = std::make_unique<FirstScene>();
+    this->getSceneManager().addScene("firstscene", std::move(firstScene));
 
-    //bi::log("************** Max width ",std::to_string(getWindow().maxWidth));
-    //bi::log("************** Max height ",std::to_string(getWindow().maxHeight));
-    //getMainFramebuffer().init(1000, 700);
-    //position = {0,0};
-    //size = {100,100};
-    //getCamera().setPosition(position);
-    //getCamera().viewMatrix = glm::translate(getCamera().viewMatrix, glm::vec3(100,0,0));
     renderSystem = std::make_unique<RenderSystem>();
     getGuiManager().init();
+    getAudioManager().init();
+    getAudioManager().start();
 
     //std::unique_ptr<Sprite> sprite = std::make_unique<Sprite>();
     //font = std::make_unique<Font>(getAssetManager());
@@ -198,35 +206,35 @@ void MyGame::init() {
     //playerball = std::make_unique<PlayerBall>(textureId);
 
     /*
-    shapeBuilder->
-        setPosition(140.0f, 100.0f)
-        .setRadius(30.0f)
-        //.setTexture(textureId)
-        .setUserData(&getAssetManager().getTexture("resources/assets/images/awesomeface.png"))
-        .buildBall(this->world, registry);
+       shapeBuilder->
+       setPosition(140.0f, 100.0f)
+       .setRadius(30.0f)
+    //.setTexture(textureId)
+    .setUserData(&getAssetManager().getTexture("resources/assets/images/awesomeface.png"))
+    .buildBall(this->world, registry);
 
     shapeBuilder->
-        setPosition(140.0f, 0.0f)
-        .setRadius(20.0f)
-        .setUserData(&getAssetManager().getTexture("resources/assets/images/awesomeface.png"))
-        //.isStatic(true)
-        .buildBall(this->world, registry);
+    setPosition(140.0f, 0.0f)
+    .setRadius(20.0f)
+    .setUserData(&getAssetManager().getTexture("resources/assets/images/awesomeface.png"))
+    //.isStatic(true)
+    .buildBall(this->world, registry);
 
     for (int i = 0; i < 2000; i++) {
-        shapeBuilder->
-            setPosition(i * 10, 10)
-            .setRadius(10.0f)
-            .setUserData(&getAssetManager().getTexture("resources/assets/images/awesomeface.png"))
-            //.isStatic(true)
-            .buildBall(this->world, registry);
+    shapeBuilder->
+    setPosition(i * 10, 10)
+    .setRadius(10.0f)
+    .setUserData(&getAssetManager().getTexture("resources/assets/images/awesomeface.png"))
+    //.isStatic(true)
+    .buildBall(this->world, registry);
     }
     */
     //Factories::createRect(registry, {100, 100}, {100, 50});
 
     //shapeBuilder->setPosition(100.0f, 700.0f)
-        //.setRadius(500.0f)
-        ////.setTexture(textureId)
-        //.isStatic(true)
-        //.buildBall(this->world, registry);
+    //.setRadius(500.0f)
+    ////.setTexture(textureId)
+    //.isStatic(true)
+    //.buildBall(this->world, registry);
 
 }

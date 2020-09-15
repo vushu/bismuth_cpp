@@ -37,7 +37,7 @@ namespace bi {
             virtual void update(float dt);
             virtual void init();
         private:
-            std::unique_ptr<IOManager> ioManager;
+            std::shared_ptr<IOManager> ioManager;
             std::unique_ptr<SceneManager> scenemanager;
 
             void construct(int width, int height, std::string title);

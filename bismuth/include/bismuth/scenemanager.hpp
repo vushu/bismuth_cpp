@@ -9,7 +9,7 @@ namespace bi {
     class SceneManager {
         public:
             // constructors, asssignment, destructor
-            SceneManager(IOManager& iomanager) : ioManager(iomanager) {}
+            SceneManager(std::shared_ptr<IOManager> iomanager) : ioManager(iomanager) {}
 
             ~SceneManager();
             void addScene(std::string name, std::unique_ptr<Scene> scene);
@@ -17,9 +17,9 @@ namespace bi {
             void update(float dt);
 
         private:
-            std::string currentScene;
+            std::string currentScene = "";
             std::map<std::string, std::unique_ptr<Scene>> scenes;
-            IOManager& ioManager;
+            std::shared_ptr<IOManager> ioManager;
 
 
     };
