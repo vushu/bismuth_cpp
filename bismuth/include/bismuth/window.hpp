@@ -17,6 +17,7 @@ namespace  bi {
             void swapBuffers();
             int maxWidth;
             int maxHeight;
+            void fullscreen(int width, int height);
 
         private:
 

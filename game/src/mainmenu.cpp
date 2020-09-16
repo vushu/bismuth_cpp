@@ -10,7 +10,8 @@ MainMenuScene::MainMenuScene() {}
 MainMenuScene::~MainMenuScene() {}
 
 void MainMenuScene::start() {
-    tower->playSound();
+    //tower->playSound();
+    mainMenuMusic->playSound();
 }
 
 
@@ -41,6 +42,10 @@ void MainMenuScene::drawMenu() {
         if (ImGui::Button("Start", ImVec2(200, 50))) {
             //this->mainMenuMusic->stopSound();
             this->nextScene = "firstscene";
+        }
+
+        if (ImGui::Button("Fullscreen", ImVec2(200, 50))) {
+            getWindow().fullscreen(getWindow().width, getWindow().height);
         }
         if (ImGui::Button("Exit", ImVec2(200, 50))) {
             bi::log("exit clicked ");
@@ -98,7 +103,7 @@ void MainMenuScene::update(float dt) {
 
 void MainMenuScene::close() {
     bi::log("closing mainMenuMusic");
-    tower->stopSound();
-    //mainMenuMusic->stopSound();
+    //tower->stopSound();
+    mainMenuMusic->stopSound();
     //mainMenuMusic->pauseSound();
 }

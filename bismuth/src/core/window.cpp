@@ -37,6 +37,10 @@ Window::~Window() {
     bi::log("Window: Destroyed");
 }
 
+void Window::fullscreen(int width, int height) {
+    glfwSetWindowMonitor(this->window, glfwGetPrimaryMonitor(), 0,0, width, height, 0);
+}
+
 void Window::configureOpenGL() {
     //#ifdef __EMSCRIPTEN__
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
