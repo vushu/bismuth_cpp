@@ -11,7 +11,7 @@ FirstScene::FirstScene() {}
 FirstScene::~FirstScene() {}
 
 void FirstScene::start() {
-    //levelSound->playSound();
+    levelSound->playSound();
 }
 void FirstScene::init() {
     this->levelSound = std::make_shared<bi::Sound>("resources/assets/audio/Soliloquy.mp3");
@@ -30,11 +30,14 @@ void FirstScene::init() {
 
         const auto& tileSize = map.getTileSize();
         const auto& tilesets = map.getTilesets();
+        glm::vec2 imageSize;
+
         for (const auto& tileset : tilesets) {
             //bi::log("tilesetPath", tileset.getImagePath());
-            int texId = getAssetManager().loadTexture(tileset.getImagePath());
+            texId = getAssetManager().loadTexture(tileset.getImagePath());
             bi::log("imgX", std::to_string(tileset.getImageSize().x));
             bi::log("imgY", std::to_string(tileset.getImageSize().y));
+            imageSize = {tileset.getImageSize().x, tileset.getImageSize().y};
             //mTileset = tileset;
             //bi::log("texId", texId);
 
@@ -56,26 +59,17 @@ void FirstScene::init() {
                 int tilePosY = 0;
                 int sizeX = tileLayer.getSize().x; //* tileSize.x; //x: 30 * 16 =  480
                 int sizeY = tileLayer.getSize().y;// * tileSize.y; //y: 17 * 16 = 272
-                int layerSizeX = sizeX * tileSize.x;
-                int layerSizeY = sizeY * tileSize.x;
 
                 int index = 0;
                 for (const auto& tile : tileLayer.getTiles()) {
                     tilePosX = index % sizeX;
-                    if (index % sizeX == 0 && index > 0){
-                        tilePosY++;
-                    }
+                    tilePosY = (int) index / sizeX;
+
                     glm::vec2 pos = {tilePosX * tileSize.x, tilePosY * tileSize.y};
-                    //std::array<glm::vec2, 4> defaultTexcoords = {
-                    //glm::vec2(1.0f, 1.0f), //br
-                    //glm::vec2(1.0f, 0.0f), //tr
-                    //glm::vec2(0.0f, 0.0f), //tl
-                    //glm::vec2(0.0f, 1.0f) //bl
-                    //};
-                    tiles.push_back(pos);
+                    bi::Tile t(tile.ID, texId, imageSize, pos, {tileSize.x, tileSize.y });
+                    tiles.push_back(t);
                     index++;
                 }
-                //layers.emplace(layerIndex, tiles);
             }
         }
     }
@@ -88,8 +82,9 @@ void FirstScene::update(float dt) {
         getWindow().fullscreen(getWindow().width, getWindow().height);
     }
 
-    for(const auto& pos : tiles) {
-        getRenderer().drawTexture(pos, {16,16}, {1,1,1,1}, 1, 0);
+    for(bi::Tile& tile : tiles) {
+        //bi::log("TileID: ", (int) tile.getId());
+        getRenderer().drawTexture(tile.getPosition(), tile.getTileSize(), {1,1,1,1}, tile.getTextureId(), 0, tile.getTexCoords());
     }
 
     getRenderer().endFlushBegin();

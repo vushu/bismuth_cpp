@@ -10,12 +10,14 @@ void Scene::sceneInit(std::shared_ptr<IOManager> iomanager) {
 }
 
 void Scene::init() {}
+
 void Scene::sceneStart() {
     if (!started) {
         start();
         started = true;
     }
 }
+
 void Scene::start() {}
 void Scene::close() {}
 void Scene::update(float dt) {}
