@@ -13,6 +13,7 @@ namespace bi {
         public:
             // constructors, asssignment, destructor
             IOManager(int width, int height, std::string title);
+            IOManager(glm::vec2 resolution, glm::vec4 tileInfo, std::string title);
             ~IOManager();
             void init();
 
@@ -25,5 +26,6 @@ namespace bi {
             std::unique_ptr<Framebuffer> mainFramebuffer;
             std::unique_ptr<ShapeRenderer> shaperenderer;
         private:
+            void construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string);
     };
 }

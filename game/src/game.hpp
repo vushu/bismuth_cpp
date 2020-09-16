@@ -15,7 +15,12 @@ class MyGame : public bi::Application {
         // constructors, asssignment, destructor
         //MyGame() : bi::Application(1024, 768, "MyGAME") {}
         //MyGame() : bi::Application(1920, 1080, "MyGAME") {}
-        MyGame() : bi::Application(480, 270, "MyGAME") {}
+        //column 30 tiles
+        //row 17 tiles
+        //MyGame() : bi::Application({480, 270}, {30,17,16,16}, "MyGAME") {}
+        MyGame() : bi::Application({1600, 900}, {30,17,16,16}, "MyGAME") {}
+        //MyGame() : bi::Application({1920, 1080}, {30,17,16,16}, "MyGAME") {}
+        //MyGame() : bi::Application({480, 270}, {}, "MyGAME") {}
         ~MyGame();
 
     protected:

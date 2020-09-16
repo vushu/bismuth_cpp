@@ -17,6 +17,7 @@ namespace bi {
             // constructors, asssignment, destructor
             Application();
             Application(int width, int height, std::string title);
+            Application(glm::vec2 resolution, glm::vec4 tileInfo, std::string title);
             ~Application();
             void loop();
             void run();
@@ -40,7 +41,7 @@ namespace bi {
             std::shared_ptr<IOManager> ioManager;
             std::unique_ptr<SceneManager> scenemanager;
 
-            void construct(int width, int height, std::string title);
+            void construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string title);
             void applicationInit();
             void initOpenGL();
             void nativeLoop();

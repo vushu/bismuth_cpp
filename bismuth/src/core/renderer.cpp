@@ -297,12 +297,12 @@ void Renderer::reevaluateBatchSpace() {
     }
 }
 
-void Renderer::drawText(std::array<char, 256> text, glm::vec2 position, Font& f, glm::vec4 color,  float scale) {
+void Renderer::drawText(std::array<char, 256> text, glm::vec2 position, Font& f, glm::vec4 color, float scale) {
     std::string str(text.data());
     drawText(str, position, f, color, scale);
 }
 
-void Renderer::drawText(std::string text, glm::vec2 position, Font& f, glm::vec4 color,  float scale) {
+void Renderer::drawText(std::string text, glm::vec2 position, Font& f, glm::vec4 color, float scale) {
 
     reevaluateBatchSpace();
     float textureIndex = getTextureIndex(f.textureId);
@@ -322,7 +322,6 @@ float Renderer::getTextureIndex(int texId) {
             break;
         }
     }
-
     if (textureIndex == 0.0f) {
         textureIndex = (float) s_renderData.textureSlotsIndex + 1;
         s_renderData.textureIds[s_renderData.textureSlotsIndex] = texId;

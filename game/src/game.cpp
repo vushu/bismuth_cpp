@@ -154,7 +154,6 @@ void MyGame::drawStuff2(float dt) {
     //getRenderer().drawTexture({400,200}, playerball->mSize, {1,1,1,1}, playerball->mTextureId, M_PI * mAngle);
     //this->getRenderer().drawText(text, {0, 125}, *this->font, this->textColor, 0.4f);
     getRenderer().endFlushBegin();
-
     //this->getRenderer().endBatch();
     //this->getRenderer().flush();
 

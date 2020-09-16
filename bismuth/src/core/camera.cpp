@@ -6,17 +6,14 @@
 
 using namespace bi;
 
-Camera::Camera() {
-    adjustProjection();
-}
-
 Camera::~Camera() {
     bi::log("Camera destroyed");
 }
 
 void Camera::adjustProjection() {
     projectionMatrix = glm::mat4(1.0);
-    projectionMatrix = glm::ortho(0.0f, 1024.0f, 768.0f, 0.0f, -1.0f, 100.0f);
+    //projectionMatrix = glm::ortho(0.0f, 1024.0f, 768.0f, 0.0f, -1.0f, 100.0f);
+    projectionMatrix = glm::ortho(0.0f, width, height, 0.0f, -1.0f, 100.0f);
     inverseProjectionMatrix = glm::inverse(projectionMatrix);
     inverseViewMatrix = glm::inverse(viewMatrix);
     //projectionMatrix = glm::orthoRH(0.0f, 32.0f * 40.0f, 0.0f, 32.0f * 40.0f, 0.0f, 1.0f);

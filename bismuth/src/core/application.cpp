@@ -19,16 +19,20 @@
 using namespace bi;
 
 Application::Application() {
-    construct(800, 600, "Bismuth");
+    construct({800, 600}, {}, "Bismuth");
 }
 
 Application::Application(int width, int height, std::string title) {
-    construct(width, height, title);
+    construct({width, height}, {}, title);
 }
 
-void Application::construct(int width, int height, std::string title) {
+Application::Application(glm::vec2 resolution, glm::vec4 tileInfo, std::string title) {
+    construct(resolution, tileInfo, title);
+}
 
-    this->ioManager = std::make_shared<IOManager>(width, height, title);
+void Application::construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string title) {
+
+    this->ioManager = std::make_shared<IOManager>(resolution, tileInfo, title);
     this->scenemanager = std::make_unique<SceneManager>(this->ioManager);
     this->title = title;
 }

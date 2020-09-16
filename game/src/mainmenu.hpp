@@ -14,6 +14,8 @@ class MainMenuScene : public bi::Scene {
         float accTime = 0.0;
         std::shared_ptr<bi::Sound> mainMenuMusic;
         std::shared_ptr<bi::Sound> tower;
+        int buttonWidth = 100, buttonHeight = 35;
+        int menuWidth = buttonWidth + 15, menuHeight = buttonHeight * 3 + 25;
         unsigned int textureId = 0;
         void setStyle();
         void drawMenu();

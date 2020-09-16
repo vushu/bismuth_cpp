@@ -10,8 +10,7 @@ MainMenuScene::MainMenuScene() {}
 MainMenuScene::~MainMenuScene() {}
 
 void MainMenuScene::start() {
-    //tower->playSound();
-    mainMenuMusic->playSound();
+    //mainMenuMusic->playSound();
 }
 
 
@@ -34,20 +33,20 @@ void MainMenuScene::drawMenu() {
 
     getGuiManager().beginDraw();
 
-    ImGui::SetNextWindowSize(ImVec2(215, 120));
+    ImGui::SetNextWindowSize(ImVec2(menuWidth, menuHeight));
     bool open = true;
 
-    ImGui::SetNextWindowPos(ImVec2(getWindow().width/2.0f - 100, getWindow().height/2.0f - 120/2 ));
-    if (ImGui::Begin(" ", &open, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar)){
-        if (ImGui::Button("Start", ImVec2(200, 50))) {
+    ImGui::SetNextWindowPos(ImVec2(getWindow().width/2.0f - menuWidth/2, getWindow().height/2.0f - menuHeight/2));
+    if (ImGui::Begin(" ", &open, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_AlwaysAutoResize)){
+        if (ImGui::Button("Start", ImVec2(buttonWidth, buttonHeight))) {
             //this->mainMenuMusic->stopSound();
             this->nextScene = "firstscene";
         }
 
-        if (ImGui::Button("Fullscreen", ImVec2(200, 50))) {
+        if (ImGui::Button("Fullscreen", ImVec2(buttonWidth, buttonHeight))) {
             getWindow().fullscreen(getWindow().width, getWindow().height);
         }
-        if (ImGui::Button("Exit", ImVec2(200, 50))) {
+        if (ImGui::Button("Exit", ImVec2(buttonWidth, buttonHeight))) {
             bi::log("exit clicked ");
             getWindow().close();
         }
@@ -84,7 +83,6 @@ void MainMenuScene::update(float dt) {
         bi::log("Start sound");
         tower->playSound();
     }
-
     setStyle();
     accTime += dt;
 
