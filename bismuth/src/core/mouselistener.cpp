@@ -47,7 +47,8 @@ float MouseListener::toOrthoY(Camera& camera, int height) {
     float currentY = (MouseListener::get().yPos / (float) height) * 2.0f - 1.0f;
     glm::vec4 tmp (0,currentY,0,1);
     tmp = camera.inverseViewMatrix * camera.inverseProjectionMatrix * tmp;
-    return height-tmp.y;
+    return camera.height - tmp.y;
+    //return tmp.y;
 
 }
 

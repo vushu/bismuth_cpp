@@ -1,13 +1,18 @@
 #include "bismuth/assetmanager.hpp"
 #include <bismuth/tiledmap.hpp>
 #include <bismuth/logging.hpp>
+#include <stdexcept>
 #include <tmxlite/TileLayer.hpp>
 using namespace bi;
 
 TiledMap::~TiledMap() { }
 
 std::vector<bi::Tile> TiledMap::getTiles(unsigned int layerNumber) {
-    return tiles.at(layerNumber);
+    if (tiles.count(layerNumber) > 0)
+        return tiles.at(layerNumber);
+    else {
+         throw std::runtime_error("Layer number " + std::to_string(layerNumber) + " doesn't exists!");
+    }
 }
 
 void TiledMap::loadMap() {

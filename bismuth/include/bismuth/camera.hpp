@@ -19,8 +19,8 @@ namespace bi {
             glm::mat4 inverseProjectionMatrix = glm::mat4(1.0f);
             void setPosition(glm::vec2 pos);
             glm::mat4 getInversePV();
-        private:
             float width, height;
+        private:
 
 
     };

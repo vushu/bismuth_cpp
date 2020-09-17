@@ -33,11 +33,11 @@ void MyGame::update(float dt) {
         getWindow().close();
     }
     if (bi::mouseInput().isDragging){
-        float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);
-        //bi::log("Mouse x:",std::to_string(x));
 
+        float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);
+        bi::log("Mouse x:",std::to_string(x));
         float y= bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
-        //bi::log("Mouse y:",std::to_string(y));
+        bi::log("Mouse y:",std::to_string(y));
         //bi::log("Mouse x:",bi::mouseInput().xPos);
         //bi::log("Mouse y:",bi::mouseInput().yPos);
     }
