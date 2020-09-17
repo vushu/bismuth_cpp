@@ -50,3 +50,7 @@ AssetManager& Scene::getAssetManager() {
     return *this->ioManager->assetmanager;
 }
 
+TiledManager& Scene::getTileManager() {
+    return *this->ioManager->tiledManager;
+}
+

@@ -22,6 +22,7 @@ namespace bi {
             AudioManager& getAudioManager();
             AssetManager& getAssetManager();
             GuiManager& getGuiManager();
+            TiledManager& getTileManager();
 
         private:
             std::shared_ptr<IOManager> ioManager;

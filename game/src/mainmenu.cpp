@@ -10,7 +10,7 @@ MainMenuScene::MainMenuScene() {}
 MainMenuScene::~MainMenuScene() {}
 
 void MainMenuScene::start() {
-    //mainMenuMusic->playSound();
+    mainMenuMusic->playSound();
 }
 
 
