@@ -7,13 +7,20 @@ using namespace bi;
 
 TiledMap::~TiledMap() { }
 
-std::vector<bi::Tile> TiledMap::getTiles(unsigned int layerNumber) {
+std::vector<bi::Tile>& TiledMap::getTiles(unsigned int layerNumber) {
     if (tiles.count(layerNumber) > 0)
         return tiles.at(layerNumber);
     else {
-         throw std::runtime_error("Layer number " + std::to_string(layerNumber) + " doesn't exists!");
+        throw std::runtime_error("Layer number " + std::to_string(layerNumber) + " doesn't exists!");
     }
 }
+
+std::vector<bi::TiledObject>& TiledMap::getObjects(unsigned int objectNumber) {
+    if (objects.count(objectNumber) > 0)
+        return this->objects.at(objectNumber);
+    throw std::runtime_error("Layer number " + std::to_string(objectNumber) + " doesn't exists!");
+}
+
 
 void TiledMap::loadMap() {
     tmx::Map map;
@@ -31,10 +38,42 @@ void TiledMap::loadMap() {
         int tileCount = 0;
         int objectCount = 0;
         int tileSetIdx = -1;
+        int tileSetIdxForObject = -1;
+        glm::vec2 pos;
 
         for (const auto& layer : map.getLayers()) {
 
-            if (layer->getType() == tmx::Layer::Type::Tile) {
+            if (layer->getType() == tmx::Layer::Type::Object) {
+                std::vector<bi::TiledObject> objectList;
+                const auto& objectLayer = layer->getLayerAs<tmx::ObjectGroup>();
+
+                for (int i = 0; i < objectLayer.getObjects().size(); i++) {
+                    const auto& o = objectLayer.getObjects()[i];
+
+                    //tilePosX = i % objectLayer.getSize().x;
+                    //tilePosY = (int) (i / objectLayer.getSize().x);
+
+                    //pos = {tilePosX * tileSize.x, tilePosY * tileSize.y};
+
+                    //tileSetIdxForObject = tilesetIndexOfTile(o.getTileID());
+                    //bi::log("TileIdX", tileSetIdxForObject);
+
+                    //const auto &imgSize = this->tilesets.at(tileSetIdxForObject).getImageSize();
+
+                    //bi::Tile tile(o.getTileID(), textureIds.at(tileSetIdxForObject), {imgSize.x, imgSize.y}, pos, {tileSize.x, tileSize.y});
+
+                    //TiledObject obj{o, tile};
+
+                    //objectList.push_back(obj);
+
+                }
+
+                //objects.emplace(objectCount, std::move(objectList));
+                objectCount++;
+                bi::log("Done with objects");
+            }
+
+            else if (layer->getType() == tmx::Layer::Type::Tile) {
                 std::vector<bi::Tile> tileList;
                 const auto& tileLayer = layer->getLayerAs<tmx::TileLayer>();
 
@@ -44,7 +83,7 @@ void TiledMap::loadMap() {
                     tilePosX = i % tileLayer.getSize().x;
                     tilePosY = (int) (i / tileLayer.getSize().x);
 
-                    glm::vec2 pos = {tilePosX * tileSize.x, tilePosY * tileSize.y};
+                    pos = {tilePosX * tileSize.x, tilePosY * tileSize.y};
 
                     tileSetIdx = tilesetIndexOfTile(t.ID);
 

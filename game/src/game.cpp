@@ -36,18 +36,16 @@ void MyGame::update(float dt) {
 
         float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);
         bi::log("Mouse x:",std::to_string(x));
-        float y= bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
+        float y = bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
         bi::log("Mouse y:",std::to_string(y));
-        //bi::log("Mouse x:",bi::mouseInput().xPos);
-        //bi::log("Mouse y:",bi::mouseInput().yPos);
     }
 
     if (bi::keyInput().isKeyPressed(GLFW_KEY_1)) {
-        bi::log("Scene changed");
+        //bi::log("Scene changed");
         this->getSceneManager().setScene("mainmenu");
     }
     if (bi::keyInput().isKeyPressed(GLFW_KEY_2)) {
-        bi::log("Scene changed");
+        //bi::log("Scene changed");
         this->getSceneManager().setScene("firstscene");
     }
 

@@ -5,18 +5,23 @@
 #include <bismuth/tile.hpp>
 #include <tmxlite/Tileset.hpp>
 #include <tmxlite/Map.hpp>
+#include <tmxlite/Object.hpp>
 
 namespace bi {
+    struct TiledObject {
+        tmx::Object object;
+        Tile tile;
+    };
     class TiledMap{
         public:
-            // constructors, asssignment, destructor
             TiledMap(std::string filepath) : filePath(filepath) {
                 loadMap();
-                //bi::log("loaded map");
             }
+
             ~TiledMap();
 
-            std::vector<Tile> getTiles(unsigned int layerNumber);
+            std::vector<Tile>& getTiles(unsigned int layerNumber);
+            std::vector<TiledObject>& getObjects(unsigned int objectNumber);
             void loadMap();
 
         private:
@@ -27,8 +32,7 @@ namespace bi {
             std::map<int, std::vector<Tile>> tiles;
             std::map<int, tmx::Tileset> tilesets;
             std::map<int, int> textureIds;
+            std::map<int, std::vector<TiledObject>> objects;
             int tilesetIndexOfTile (unsigned int tileId);
-
-            //tmx::Map map;
     };
 }

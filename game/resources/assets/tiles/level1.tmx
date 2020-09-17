@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="1">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="27">
  <tileset firstgid="1" name="tileset" tilewidth="16" tileheight="16" tilecount="36" columns="6">
   <image source="tileset.png" width="96" height="96"/>
  </tileset>
@@ -8,5 +8,14 @@
    eJxjZGBgYCIBM1MBswAxOxBz0hlzjdo7au+ovaP2jtpLlL0cA2gvKZga9vICMR+ZmJ9MLADEwkAsQgYWpQCLATEAPdITEw==
   </data>
  </layer>
- <objectgroup id="2" name="Rocks"/>
+ <objectgroup id="6" name="Rocks">
+  <object id="13" gid="36" x="176.5" y="114.5" width="16" height="16"/>
+  <object id="14" gid="36" x="208.5" y="192.5" width="16" height="16"/>
+  <object id="21" gid="36" x="46" y="158" width="16" height="16"/>
+  <object id="22" gid="36" x="312.5" y="109.5" width="16" height="16"/>
+  <object id="23" gid="36" x="228.5" y="59.5" width="16" height="16"/>
+  <object id="24" gid="35" x="300" y="190.5" width="16" height="16"/>
+  <object id="25" gid="35" x="107.5" y="213" width="16" height="16"/>
+  <object id="26" gid="35" x="67.5" y="70.5" width="16" height="16"/>
+ </objectgroup>
 </map>
