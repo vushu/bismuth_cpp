@@ -83,6 +83,9 @@ void MainMenuScene::update(float dt) {
         bi::log("Start sound");
         tower->playSound();
     }
+    else if (bi::keyInput().isKeyPressed(GLFW_KEY_W)) {
+        getWindow().windowed(getWindow().width, getWindow().height);
+    }
     setStyle();
     accTime += dt;
 

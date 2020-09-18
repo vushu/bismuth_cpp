@@ -48,7 +48,7 @@ void TiledMap::loadMap() {
                 const auto& objectLayer = layer->getLayerAs<tmx::ObjectGroup>();
 
                 for (int i = 0; i < objectLayer.getObjects().size(); i++) {
-                    const auto& o = objectLayer.getObjects()[i];
+                    //const auto& o = objectLayer.getObjects()[i];
 
                     //tilePosX = i % objectLayer.getSize().x;
                     //tilePosY = (int) (i / objectLayer.getSize().x);
