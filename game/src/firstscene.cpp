@@ -2,10 +2,12 @@
 #include "bismuth/keylistener.hpp"
 #include "bismuth/logging.hpp"
 #include "bismuth/mouselistener.hpp"
+#include <cmath>
 #include <tmxlite/Map.hpp>
 #include <tmxlite/Layer.hpp>
 #include <tmxlite/TileLayer.hpp>
 #include <tmxlite/ObjectGroup.hpp>
+#include "objectsystem.hpp"
 
 FirstScene::FirstScene() {}
 
@@ -26,9 +28,11 @@ void FirstScene::init() {
 }
 
 void FirstScene::update(float dt) {
+
     if (bi::keyInput().isKeyPressed(GLFW_KEY_F)) {
         getWindow().fullscreen(getWindow().width, getWindow().height);
     }
+
     if (bi::mouseInput().isDragging) {
         float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);
         bi::log("Mouse x:",std::to_string(x));
@@ -37,7 +41,24 @@ void FirstScene::update(float dt) {
 
         bi::log("Mouse y:",std::to_string(y));
     }
+
+    std::vector<bi::TiledObject>& objects = getTileManager().loadTileMap(tilemapPath).getObjects(0);
+    std::vector<bi::TiledObject>& object = getTileManager().loadTileMap(tilemapPath).getObjects(1);
+
     getTileManager().draw(tilemapPath, 0, getRenderer());
+
+    ObjectSystem::update(objects, getRenderer());
+    ObjectSystem::update(object, getRenderer());
+    //getRenderer().endFlushBegin();
+
+
+
+    //for (bi::TiledObject o : objects) {
+        //getShapeRenderer().drawRect(o.tile.getPosition(), o.tile.getTileSize(), {1,0,1,1}, 0);
+        //getRenderer().drawTexture(o.tile.getPosition(), o.tile.getTileSize(), {1,1,1,1}, o.tile.getTextureId(), 0, o.tile.getTexCoords());
+    //}
+
+    //getShapeRenderer().flush();
 
     getRenderer().endFlushBegin();
 

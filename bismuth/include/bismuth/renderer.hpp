@@ -9,6 +9,7 @@
 #include <bismuth/primitives.hpp>
 #include <bismuth/shader.hpp>
 #include <bismuth/camera.hpp>
+#include <bismuth/tile.hpp>
 
 #include <bismuth/font.hpp>
 #include <set>
@@ -60,6 +61,7 @@ namespace bi {
             void drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color);
             void drawText(std::string text, glm::vec2 position, Font& f, glm::vec4 color, float scale);
             void drawText(std::array<char, 256> text, glm::vec2 position, Font& f, glm::vec4 color , float scale);
+            void drawTile(Tile& tile, glm::vec4 color);
             //void draw(SpriteRenderer& sprite);
             void resetStats();
             void clear(glm::vec4 color);

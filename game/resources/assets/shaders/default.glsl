@@ -75,6 +75,7 @@ void main () {
     if (fType == 0.0f){
         color = fColor * tempColor;
     }
+    //font
     else if (fType == 1.0f){
         color = fColor * tempColor.a;
     }

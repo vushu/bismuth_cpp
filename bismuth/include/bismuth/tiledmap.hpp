@@ -11,6 +11,7 @@ namespace bi {
     struct TiledObject {
         tmx::Object object;
         Tile tile;
+        glm::vec2 position;
     };
     class TiledMap{
         public:

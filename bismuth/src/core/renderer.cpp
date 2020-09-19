@@ -313,6 +313,10 @@ void Renderer::drawText(std::string text, glm::vec2 position, Font& f, glm::vec4
     s_renderData.stats.quadCount += text.length();
 }
 
+void Renderer::drawTile(Tile& tile, glm::vec4 color) {
+    drawTexture(tile.getPosition(), tile.getTileSize(), color, tile.getTextureId(), 0, tile.getTexCoords());
+}
+
 float Renderer::getTextureIndex(int texId) {
 
     float textureIndex = 0.0f;

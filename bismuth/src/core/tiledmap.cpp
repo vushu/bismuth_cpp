@@ -22,6 +22,12 @@ std::vector<bi::TiledObject>& TiledMap::getObjects(unsigned int objectNumber) {
 }
 
 
+//std::vector<bi::TiledObject>& TiledMap::getObjects(unsigned int objectNumber) {
+    //if (objects.count(objectNumber) > 0)
+        //return this->objects.at(objectNumber);
+    //throw std::runtime_error("Layer number " + std::to_string(objectNumber) + " doesn't exists!");
+//}
+
 void TiledMap::loadMap() {
     tmx::Map map;
     if (map.load(filePath)) {
@@ -48,29 +54,27 @@ void TiledMap::loadMap() {
                 const auto& objectLayer = layer->getLayerAs<tmx::ObjectGroup>();
 
                 for (int i = 0; i < objectLayer.getObjects().size(); i++) {
-                    //const auto& o = objectLayer.getObjects()[i];
+                    const auto& o = objectLayer.getObjects()[i];
 
-                    //tilePosX = i % objectLayer.getSize().x;
-                    //tilePosY = (int) (i / objectLayer.getSize().x);
+                    tilePosX = o.getPosition().x;
+                    tilePosY = o.getPosition().y;
 
-                    //pos = {tilePosX * tileSize.x, tilePosY * tileSize.y};
-
-                    //tileSetIdxForObject = tilesetIndexOfTile(o.getTileID());
+                    tileSetIdxForObject = tilesetIndexOfTile(o.getTileID());
                     //bi::log("TileIdX", tileSetIdxForObject);
 
-                    //const auto &imgSize = this->tilesets.at(tileSetIdxForObject).getImageSize();
+                    const auto &imgSize = this->tilesets.at(tileSetIdxForObject).getImageSize();
 
-                    //bi::Tile tile(o.getTileID(), textureIds.at(tileSetIdxForObject), {imgSize.x, imgSize.y}, pos, {tileSize.x, tileSize.y});
+                    // position.y - tileSize.y, since it looks like tiled uses bottom left as origin
+                    bi::Tile tile(o.getTileID(), textureIds.at(tileSetIdxForObject), {imgSize.x, imgSize.y}, { o.getPosition().x, o.getPosition().y - tileSize.y }, { tileSize.x, tileSize.y });
 
-                    //TiledObject obj{o, tile};
+                    TiledObject obj{o, tile};
 
-                    //objectList.push_back(obj);
+                    objectList.push_back(std::move(obj));
 
                 }
-
-                //objects.emplace(objectCount, std::move(objectList));
+                objects.emplace(objectCount, std::move(objectList));
                 objectCount++;
-                bi::log("Done with objects");
+                bi::log("Done with objects layers: ", objectCount);
             }
 
             else if (layer->getType() == tmx::Layer::Type::Tile) {

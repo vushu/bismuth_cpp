@@ -38,6 +38,11 @@ glm::vec2 Tile::getPosition() {
     return this->position;
 }
 
+
+void Tile::setPosition(glm::vec2 pos) {
+    this->position = pos;
+}
+
 unsigned int Tile::getTextureId() {
     return this->texId;
 }

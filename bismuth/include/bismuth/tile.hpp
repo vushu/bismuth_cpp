@@ -12,6 +12,7 @@ namespace bi {
             void animate();
             std::array<glm::vec2, 4> getTexCoords();
             glm::vec2 getPosition();
+            void setPosition(glm::vec2 pos);
             unsigned int getTextureId();
             unsigned int getId();
             glm::vec2 getTileSize();

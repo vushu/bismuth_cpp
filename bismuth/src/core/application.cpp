@@ -62,8 +62,6 @@ void Application::init() { }
 void Application::loop() {
     this->ioManager->window->pollEvents();
 
-    //this->ioManager->renderer->clear(glm::vec4(0.30f, 0.30f, 0.30f, 1.0f));
-
     update(dt);
 
     this->scenemanager->update(dt);
@@ -94,8 +92,12 @@ void Application::initOpenGL() {
     //glEnable(GL_CULL_FACE);
     // alpha blending
     //glBlendFunc(GL_SRC1_COLOR, GL_ONE_MINUS_SRC1_COLOR);
+    //glEnable(GLenum(GL_DEPTH_TEST));
+    //glEnable(GLenum(GL_POINT_SIZE));
+    //glBlendFunc(GLenum(GL_SRC_ALPHA), GLenum(GL_ONE_MINUS_SRC_ALPHA));
+    //glEnable(GLenum(GL_POINT_SMOOTH));
     glEnable(GL_BLEND);
-    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     //glfwWindowHint(GLFW_SAMPLES, 4);
     //glEnable(GL_MULTISAMPLE);
 
