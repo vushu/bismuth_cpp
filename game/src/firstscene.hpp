@@ -4,6 +4,7 @@
 #include "tmxlite/Tileset.hpp"
 #include <bismuth/scene.hpp>
 #include <bismuth/tiledmap.hpp>
+#include "playersystem.hpp"
 #include <vector>
 class FirstScene : public bi::Scene {
     public:
@@ -19,6 +20,7 @@ class FirstScene : public bi::Scene {
         std::vector<bi::Tile> tiles;
         std::map<int, std::vector<glm::vec2>> layers;
         unsigned int texId;
+        PlayerSystem playersystem;
         std::string tilemapPath = "resources/assets/tiles/level1.tmx";
 
 };

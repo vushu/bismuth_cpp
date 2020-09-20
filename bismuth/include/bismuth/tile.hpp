@@ -16,6 +16,7 @@ namespace bi {
             unsigned int getTextureId();
             unsigned int getId();
             glm::vec2 getTileSize();
+
         private:
             std::array<glm::vec2, 4> texCoords;
             void setup();

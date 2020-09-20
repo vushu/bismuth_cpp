@@ -6,6 +6,7 @@
 #include <tmxlite/Map.hpp>
 #include <tmxlite/Layer.hpp>
 #include <tmxlite/TileLayer.hpp>
+#include "playersystem.hpp"
 #include <tmxlite/ObjectGroup.hpp>
 #include "objectsystem.hpp"
 
@@ -43,12 +44,19 @@ void FirstScene::update(float dt) {
     }
 
     std::vector<bi::TiledObject>& objects = getTileManager().loadTileMap(tilemapPath).getObjects(0);
-    std::vector<bi::TiledObject>& object = getTileManager().loadTileMap(tilemapPath).getObjects(1);
+    bi::TiledObject& player = getTileManager().loadTileMap(tilemapPath).getObjects(1).at(0);
+
 
     getTileManager().draw(tilemapPath, 0, getRenderer());
 
+    getRenderer().endFlushBegin();
+
+
+    playersystem.update(dt, player, getRenderer(), getShapeRenderer());
+    getTileManager().drawGrid(tilemapPath, getShapeRenderer(), {0,0.54,1,1});
+
     ObjectSystem::update(objects, getRenderer());
-    ObjectSystem::update(object, getRenderer());
+    //ObjectSystem::update(object, getRenderer());
     //getRenderer().endFlushBegin();
 
 
@@ -58,7 +66,7 @@ void FirstScene::update(float dt) {
         //getRenderer().drawTexture(o.tile.getPosition(), o.tile.getTileSize(), {1,1,1,1}, o.tile.getTextureId(), 0, o.tile.getTexCoords());
     //}
 
-    //getShapeRenderer().flush();
+    getShapeRenderer().flush();
 
     getRenderer().endFlushBegin();
 

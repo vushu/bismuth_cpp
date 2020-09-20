@@ -32,6 +32,7 @@ void TiledMap::loadMap() {
     tmx::Map map;
     if (map.load(filePath)) {
         tileSize = { map.getTileSize().x, map.getTileSize().y };
+        tileCount = { map.getTileCount().x, map.getTileCount().y };
         const auto& ts = map.getTilesets();
 
         for (int i = 0; i < ts.size(); i++) {
@@ -74,7 +75,7 @@ void TiledMap::loadMap() {
                 }
                 objects.emplace(objectCount, std::move(objectList));
                 objectCount++;
-                bi::log("Done with objects layers: ", objectCount);
+                //bi::log("Done with objects layers: ", objectCount);
             }
 
             else if (layer->getType() == tmx::Layer::Type::Tile) {

@@ -135,7 +135,7 @@ void ShapeRenderer::flush() {
     //enable color
     glEnableVertexAttribArray(1);
 
-    glLineWidth(1.5f);
+    glLineWidth(1.2f);
     glDrawArrays(GL_LINES, 0, renderData.vertexCounter);
 
     glDisableVertexAttribArray(0);

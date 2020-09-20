@@ -11,7 +11,6 @@ namespace bi {
     struct TiledObject {
         tmx::Object object;
         Tile tile;
-        glm::vec2 position;
     };
     class TiledMap{
         public:
@@ -25,9 +24,11 @@ namespace bi {
             std::vector<TiledObject>& getObjects(unsigned int objectNumber);
             void loadMap();
 
+            glm::vec2 tileCount;
+            glm::vec2 tileSize;
+
         private:
 
-            glm::vec2 tileSize;
             std::string filePath;
             //layers
             std::map<int, std::vector<Tile>> tiles;

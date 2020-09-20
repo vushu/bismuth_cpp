@@ -10,12 +10,8 @@ void Tile::setup() {
     int posX = (id-1) % (int) (imageSize.x / tileSize.x);
     int posY = (int) ((id-1) / (imageSize.x / tileSize.x));
 
-    //bi::log("tileID: ",id);
-
     posX = posX * tileSize.x;
     posY = posY * tileSize.y;
-    //bi::log("posX", posX);
-    //bi::log("posY", posY);
 
     this->texCoords = {
         glm::vec2{(float)(posX + tileSize.x) / imageSize.x, (float)(posY + tileSize.y) / imageSize.y}, //BR
@@ -37,7 +33,6 @@ std::array<glm::vec2, 4> Tile::getTexCoords() {
 glm::vec2 Tile::getPosition() {
     return this->position;
 }
-
 
 void Tile::setPosition(glm::vec2 pos) {
     this->position = pos;

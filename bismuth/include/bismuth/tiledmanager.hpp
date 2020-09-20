@@ -3,6 +3,7 @@
 #include <map>
 #include <bismuth/tile.hpp>
 #include <bismuth/tiledmap.hpp>
+#include <bismuth/shaperenderer.hpp>
 #include <bismuth/assetmanager.hpp>
 #include <bismuth/renderer.hpp>
 #include <tmxlite/Tileset.hpp>
@@ -15,6 +16,7 @@ namespace bi {
             ~TiledManager();
             TiledMap& loadTileMap(std::string filepath);
             void draw(std::string filepath, int layerNumber, Renderer& renderer);
+            void drawGrid(std::string filepath, ShapeRenderer& renderer, glm::vec4 color = {0,0.54,1,1});
         private:
             //layer index, and tiles
             std::map<std::string, std::unique_ptr<TiledMap>> tiledMaps;
