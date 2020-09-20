@@ -34,14 +34,14 @@ void FirstScene::update(float dt) {
         getWindow().fullscreen(getWindow().width, getWindow().height);
     }
 
-    if (bi::mouseInput().isDragging) {
-        float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);
-        bi::log("Mouse x:",std::to_string(x));
+    //if (bi::mouseInput().isDragging) {
+        //float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);
+        //bi::log("Mouse x:",std::to_string(x));
 
-        float y = bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
+        //float y = bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
 
-        bi::log("Mouse y:",std::to_string(y));
-    }
+        //bi::log("Mouse y:",std::to_string(y));
+    //}
 
     std::vector<bi::TiledObject>& objects = getTileManager().loadTileMap(tilemapPath).getObjects(0);
     bi::TiledObject& player = getTileManager().loadTileMap(tilemapPath).getObjects(1).at(0);
@@ -51,9 +51,15 @@ void FirstScene::update(float dt) {
 
     getRenderer().endFlushBegin();
 
+    //float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);
+    //bi::log("Mouse x:",std::to_string(x));
 
-    playersystem.update(dt, player, getRenderer(), getShapeRenderer());
-    getTileManager().drawGrid(tilemapPath, getShapeRenderer(), {0,0.54,1,1});
+    //float y = bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
+
+
+    playersystem.update(dt, player, getRenderer(), getShapeRenderer(), {0, 0});
+
+    getTileManager().drawGrid(tilemapPath, getShapeRenderer(), {0.4,0.74,1,0.5});
 
     ObjectSystem::update(objects, getRenderer());
     //ObjectSystem::update(object, getRenderer());
@@ -62,8 +68,8 @@ void FirstScene::update(float dt) {
 
 
     //for (bi::TiledObject o : objects) {
-        //getShapeRenderer().drawRect(o.tile.getPosition(), o.tile.getTileSize(), {1,0,1,1}, 0);
-        //getRenderer().drawTexture(o.tile.getPosition(), o.tile.getTileSize(), {1,1,1,1}, o.tile.getTextureId(), 0, o.tile.getTexCoords());
+    //getShapeRenderer().drawRect(o.tile.getPosition(), o.tile.getTileSize(), {1,0,1,1}, 0);
+    //getRenderer().drawTexture(o.tile.getPosition(), o.tile.getTileSize(), {1,1,1,1}, o.tile.getTextureId(), 0, o.tile.getTexCoords());
     //}
 
     getShapeRenderer().flush();

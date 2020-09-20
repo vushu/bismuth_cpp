@@ -16,7 +16,7 @@ namespace bi {
             ~TiledManager();
             TiledMap& loadTileMap(std::string filepath);
             void draw(std::string filepath, int layerNumber, Renderer& renderer);
-            void drawGrid(std::string filepath, ShapeRenderer& renderer, glm::vec4 color = {0,0.54,1,1});
+            void drawGrid(std::string filepath, ShapeRenderer& renderer, glm::vec4 color = {0,0.54,1,0.4});
         private:
             //layer index, and tiles
             std::map<std::string, std::unique_ptr<TiledMap>> tiledMaps;
