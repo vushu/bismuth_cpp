@@ -88,8 +88,6 @@ void Application::initOpenGL() {
         log("Renderer: Failed to initialize GLAD");
         throw std::runtime_error("Renderer: Failed to initialize GLAD");
     }
-    //font
-    //glEnable(GL_CULL_FACE);
     // alpha blending
     glEnable(GL_BLEND);
     glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);

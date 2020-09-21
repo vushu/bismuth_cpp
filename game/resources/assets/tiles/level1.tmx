@@ -30,6 +30,6 @@
   <object id="42" name="rock" gid="35" x="137" y="205.5" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="9" name="player">
-  <object id="44" name="player" gid="33" x="80" y="114.5" width="16" height="16"/>
+  <object id="44" name="player" gid="33" x="48.5" y="111.5" width="16" height="16"/>
  </objectgroup>
 </map>
