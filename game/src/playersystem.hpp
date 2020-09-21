@@ -15,6 +15,7 @@ class PlayerSystem{
         glm::vec2 newPos{0,0};
         glm::vec2 direction{0,0};
         glm::vec2 currentDir{0,0};
+        glm::vec2 newDirection {0,0};
         glm::vec2 nextTile {0,0};
         glm::vec2 currentTile {0,0};
         std::queue<glm::vec2> directionQueue;
@@ -22,15 +23,18 @@ class PlayerSystem{
         glm::vec2 left{-1,0};
         glm::vec2 up{0,-1};
         glm::vec2 down{0,1};
-        float speed = 100;
+        float speed = 89;
         bool hit = false;
-        glm::vec2 getCurrentTile();
+        glm::vec2 getCurrentTile(glm::vec2 dir);
         glm::vec2 setNextTile();
+        glm::vec2 getNextTile();
 
-        void drawRight();
-        void drawLeft();
-        void drawUp();
-        void drawDown();
+        void drawRight(bi::ShapeRenderer& shaperenderer);
+        void drawLeft(bi::ShapeRenderer& shaperenderer);
+        void drawUp(bi::ShapeRenderer& shaperenderer);
+        void drawDown(bi::ShapeRenderer& shaperenderer);
+        void drawDirection(bi::ShapeRenderer& shaperenderer);
+
 
 
 
