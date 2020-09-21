@@ -10,6 +10,6 @@ void ObjectSystem::update(std::vector<bi::TiledObject> &objects, bi::Renderer& r
         if (o.object.getName() == "player") {
             o.tile.setPosition({101, 200});
         }
-        renderer.drawTile(o.tile, {1,1,1,1});
+        renderer.drawTile(o.tile, {1,1,1, 1});
     }
 }

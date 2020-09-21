@@ -74,6 +74,8 @@ void main () {
 
     if (fType == 0.0f){
         color = fColor * tempColor;
+        //color.rgb = (fColor.rgb) + (tempColor.rgb * (1.0f - fColor.a)) ;
+        //color.rgb = (tempColor.rgb) + (fColor.rgb * (1.0f - tempColor.a)) ;
     }
     //font
     else if (fType == 1.0f){
