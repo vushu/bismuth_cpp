@@ -8,10 +8,10 @@
    <property name="destroyable" value=""/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjZGBgYCIBM1MBswAxOxBz0hlzjdo7au+ovaP2jtpLlL0cA2gvKZga9vICMR+ZmJ9MLADEwkAsQgYWpQCLATEAPdITEw==
+   eJxjYBhYwAjETDTGLFjsZQdiThpjrlF7R+0dtXfU3iFsLy8Q85GJ+YnEAljsFQZiERKwKBlYDIu9IwUAAAuJDcY=
   </data>
  </layer>
- <objectgroup id="6" name="Rocks">
+ <objectgroup id="6" name="Rocks" visible="0">
   <object id="13" name="crystal" gid="36" x="176.5" y="114.5" width="16" height="16"/>
   <object id="21" gid="36" x="46" y="158" width="16" height="16"/>
   <object id="22" gid="36" x="312.5" y="109.5" width="16" height="16"/>

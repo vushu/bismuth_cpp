@@ -15,10 +15,11 @@ FirstScene::FirstScene() {}
 FirstScene::~FirstScene() {}
 
 void FirstScene::start() {
-    levelSound->playSound();
+    //levelSound->playSound();
 }
 void FirstScene::init() {
     this->levelSound = std::make_shared<bi::Sound>("resources/assets/audio/Soliloquy.mp3");
+
     levelSound->init();
     levelSound->setLoop(true);
 
@@ -30,6 +31,7 @@ void FirstScene::init() {
 
 void FirstScene::update(float dt) {
 
+    getRenderer().clear(0,0,0,1);
     if (bi::keyInput().isKeyPressed(GLFW_KEY_F)) {
         getWindow().fullscreen(getWindow().width, getWindow().height);
     }

@@ -21,7 +21,7 @@ void SceneManager::update(float dt) {
 
     if (scenes.count(currentScene) > 0) {
 
-        this->ioManager->renderer->clear(glm::vec4(0.30f, 0.30f, 0.30f, 1.0f));
+        //this->ioManager->renderer->clear(glm::vec4(0.30f, 0.30f, 0.30f, 1.0f));
 
         scenes.at(currentScene)->sceneStart();
         scenes.at(currentScene)->update(dt);
