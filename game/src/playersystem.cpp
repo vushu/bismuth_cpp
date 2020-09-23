@@ -1,7 +1,9 @@
 #include "playersystem.hpp"
+#include "bismuth/keylistener.hpp"
 #include "bismuth/logging.hpp"
 #include "bismuth/mouselistener.hpp"
 #include "glm/fwd.hpp"
+#include "glm/gtc/constants.hpp"
 #include "glm/gtx/string_cast.hpp"
 
 PlayerSystem::PlayerSystem() {}
@@ -10,49 +12,46 @@ PlayerSystem::~PlayerSystem() {}
 void PlayerSystem::update(float dt, bi::TiledObject player, bi::Renderer &renderer, bi::ShapeRenderer& shaperenderer, glm::vec2 mouse) {
     glm::vec2 currentTile = getCurrentTile(currentDir);
 
-    bi::log("current tile", glm::to_string(currentTile));
-    //if (((int)newPos.x - 8) % 8 == 0 && ((int) (newPos.y - 8)) % 8 == 0) {
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_D)  && !moving && !xAxisMoving()) {
+    //bi::log("current tile", glm::to_string(currentTile));
+    if (bi::keyInput().isKeyPressed(GLFW_KEY_D) && !xAxisMoving()) {
+        keyDown = true;
         newDirection = glm::vec2 {1, 0};
-        currentDir = newDirection;
+        bi::log("adding right");
         directionQueue.push(newDirection);
-        setNextTile(currentDir);
-        moving = true;
+        bi::keyInput().keyPressed[GLFW_KEY_D] = false;
+
     }
 
-    else if (bi::keyInput().isKeyPressed(GLFW_KEY_A) && !moving && !xAxisMoving()) {
+    else if (bi::keyInput().isKeyPressed(GLFW_KEY_A) && !xAxisMoving()) {
+        keyDown = true;
         newDirection = {-1,0};
-        currentDir = newDirection;
+        bi::log("adding left");
         directionQueue.push(newDirection);
-        setNextTile(currentDir);
-        moving = true;
+        bi::keyInput().keyPressed[GLFW_KEY_A] = false;
     }
 
-    else if (bi::keyInput().isKeyPressed(GLFW_KEY_S) && !yAxisMoving() && !moving) {
+    else if (bi::keyInput().isKeyPressed(GLFW_KEY_S) && !yAxisMoving()) {
+        keyDown = true;
         newDirection = {0, 1} ;
-        currentDir = newDirection;
+        bi::log("adding down");
         directionQueue.push(newDirection);
-        setNextTile(currentDir);
-        moving = true;
+        bi::keyInput().keyPressed[GLFW_KEY_S] = false;
     }
 
-    else if (bi::keyInput().isKeyPressed(GLFW_KEY_W) && !yAxisMoving() && !moving) {
+    else if (bi::keyInput().isKeyPressed(GLFW_KEY_W) && !yAxisMoving()) {
+        keyDown = true;
         newDirection = { 0,-1 };
-        currentDir = newDirection;
         directionQueue.push(newDirection);
-        setNextTile(currentDir);
-        moving = true;
+        bi::keyInput().keyPressed[GLFW_KEY_W] = false;
+        bi::log("adding up");
     }
     else if (bi::keyInput().isKeyPressed(GLFW_KEY_SPACE)) {
+        keyDown = true;
         newDirection = { 0, 0 };
-        currentDir = newDirection;
         directionQueue.push(newDirection);
-        //setNextTile();
     }
-    //}
 
-    if (newPos == glm::zero<glm::vec2>()) {
-        //newPos = player.tile.getPosition();
+    if (newPos == zero) {
         newPos = {32,32};
         currentDir = {1,0};
         lastTile = getCurrentTile(currentDir);
@@ -62,54 +61,71 @@ void PlayerSystem::update(float dt, bi::TiledObject player, bi::Renderer &render
         else {
             bi::log("Failed isnt as expected", glm::to_string(lastTile));
         }
-
-        //
     }
+
+
     newPos += currentDir * dt * speed;
     //
     currentTile = getCurrentTile(currentDir);
 
 
     if (currentDir == right) {
-        //newPos.y -= 8;
-        //currentTile = getCurrentTile(left);
-        bi::log("right x", newPos.x);
-        bi::log("last tile", lastTile.x * 16.0f);
         if (newPos.x - 16 > (lastTile.x * 16.0f)) {
-            newPos.x =  (currentTile.x) * 16.0f;
-            moving = false;
+            //bi::log("reached right");
+            newPos.x = (currentTile.x) * 16.0f;
+            if (!directionQueue.empty()){
+                currentDir = directionQueue.front();
+                directionQueue.pop();
+                //showDirection();
+            }
+            lastTile = currentTile;
         }
 
     }
     else if (currentDir == left) {
         // fix y axis
         if (newPos.x + 16 < (lastTile.x * 16.0f)) {
+
             newPos.x = (currentTile.x) * 16.0f;
-            //lastTile = currentTile + currentDir;
-            moving = false;
+            if (!directionQueue.empty()){
+                currentDir = directionQueue.front();
+                directionQueue.pop();
+                //showDirection();
+            }
+            lastTile = currentTile;
         }
     }
 
     else if (currentDir == up) {
 
-        //lastTile.y -= 1;
         if (newPos.y + 16 < (lastTile.y * 16.0f)) {
             newPos.y = (currentTile.y) * 16.0f;
-            //currentDir = {0,0};
-            moving = false;
+            if (!directionQueue.empty()){
+                currentDir = directionQueue.front();
+                directionQueue.pop();
+                //showDirection();
+            }
+            lastTile = currentTile;
+
         }
     }
     else if (currentDir == down) {
 
         if (newPos.y - 16 > (lastTile.y * 16.0f)) {
+
+            //bi::log("reached down");
             newPos.y = (currentTile.y) * 16.0f;
-            moving = false;
-            //currentDir = {0,0};
+            if (!directionQueue.empty()){
+                currentDir = directionQueue.front();
+                directionQueue.pop();
+                //showDirection();
+            }
+
+            lastTile = currentTile;
         }
 
     }
 
-    //lastTile = currentTile + currentDir;
 
     player.tile.setPosition(newPos);
 
@@ -207,11 +223,33 @@ glm::vec2 PlayerSystem::getCurrentTile(glm::vec2 dir) {
 }
 
 bool PlayerSystem::xAxisMoving() {
-    return currentDir == left || currentDir == right;
+    return newDirection == left || newDirection == right;
+    //return newDirection == left || newDirection == right || currentDir == left || currentDir == right;
 }
 
 bool PlayerSystem::yAxisMoving() {
-    return currentDir == up || currentDir == down;
+    return newDirection == up || newDirection == down;
+    //return newDirection == up || newDirection == down || currentDir == down || currentDir == up;
+}
+void PlayerSystem::showDirection() {
+    if (currentDir == right) {
+        bi::log("playing right");
+    }
+
+    else if (currentDir == left) {
+
+        bi::log("playing left");
+    }
+
+    else if (currentDir == up) {
+
+        bi::log("playing up");
+    }
+
+    else if (currentDir == down) {
+
+        bi::log("playing down");
+    }
 }
 /*
    glm::vec2 PlayerSystem::getCurrentTile() {

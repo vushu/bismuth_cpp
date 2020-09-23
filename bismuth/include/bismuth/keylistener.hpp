@@ -18,6 +18,7 @@ namespace bi {
 
             bool isKeyPressed(int keyCode);
 
+            bool isKeyReleased(int keyCode);
 
             ~KeyListener();
         private:
