@@ -5,45 +5,53 @@
 #include "glm/fwd.hpp"
 #include "glm/gtc/constants.hpp"
 #include "glm/gtx/string_cast.hpp"
+#include <bismuth/particle.hpp>
+#include <glad/glad.h>
 
-PlayerSystem::PlayerSystem() {}
+PlayerSystem::PlayerSystem() {
+    particleemitter.init();
+}
 PlayerSystem::~PlayerSystem() {}
 
-void PlayerSystem::update(float dt, bi::TiledObject player, bi::Renderer &renderer, bi::ShapeRenderer& shaperenderer, glm::vec2 mouse) {
+void PlayerSystem::update(float dt, bi::TiledObject player, bi::Renderer &renderer, bi::ShapeRenderer& shaperenderer, glm::vec2 mouse, int smokeTexId) {
+    accDt += dt;
     glm::vec2 currentTile = getCurrentTile(currentDir);
 
-    //bi::log("current tile", glm::to_string(currentTile));
+
     if (bi::keyInput().isKeyPressed(GLFW_KEY_D) && !xAxisMoving()) {
         keyDown = true;
         newDirection = glm::vec2 {1, 0};
-        bi::log("adding right");
+        //bi::log("adding right");
         directionQueue.push(newDirection);
-        bi::keyInput().keyPressed[GLFW_KEY_D] = false;
+        bi::keyInput().donePressing(GLFW_KEY_D);
 
     }
 
     else if (bi::keyInput().isKeyPressed(GLFW_KEY_A) && !xAxisMoving()) {
         keyDown = true;
         newDirection = {-1,0};
-        bi::log("adding left");
         directionQueue.push(newDirection);
-        bi::keyInput().keyPressed[GLFW_KEY_A] = false;
+        bi::keyInput().donePressing(GLFW_KEY_A);
     }
 
     else if (bi::keyInput().isKeyPressed(GLFW_KEY_S) && !yAxisMoving()) {
         keyDown = true;
         newDirection = {0, 1} ;
-        bi::log("adding down");
         directionQueue.push(newDirection);
-        bi::keyInput().keyPressed[GLFW_KEY_S] = false;
+        if (currentDir == zero) {
+            currentDir = newDirection;
+            lastTile = lastTile + newDirection;
+            directionQueue.pop();
+        }
+        bi::keyInput().donePressing(GLFW_KEY_S);
     }
 
     else if (bi::keyInput().isKeyPressed(GLFW_KEY_W) && !yAxisMoving()) {
         keyDown = true;
         newDirection = { 0,-1 };
         directionQueue.push(newDirection);
-        bi::keyInput().keyPressed[GLFW_KEY_W] = false;
-        bi::log("adding up");
+        bi::keyInput().donePressing(GLFW_KEY_W);
+        //bi::log("adding up");
     }
     else if (bi::keyInput().isKeyPressed(GLFW_KEY_SPACE)) {
         keyDown = true;
@@ -63,7 +71,6 @@ void PlayerSystem::update(float dt, bi::TiledObject player, bi::Renderer &render
         }
     }
 
-
     newPos += currentDir * dt * speed;
     //
     currentTile = getCurrentTile(currentDir);
@@ -71,7 +78,6 @@ void PlayerSystem::update(float dt, bi::TiledObject player, bi::Renderer &render
 
     if (currentDir == right) {
         if (newPos.x - 16 > (lastTile.x * 16.0f)) {
-            //bi::log("reached right");
             newPos.x = (currentTile.x) * 16.0f;
             if (!directionQueue.empty()){
                 currentDir = directionQueue.front();
@@ -128,14 +134,18 @@ void PlayerSystem::update(float dt, bi::TiledObject player, bi::Renderer &render
 
 
     player.tile.setPosition(newPos);
-
-
     renderer.drawTile(player.tile, {1,1,1,1});
+    renderer.endFlushBegin();
+    if (currentDir == zero) {
+        particleemitter.setLife(0.0f);
+    }
+    else
+        particleemitter.setLife(1.0f);
 
+    particleemitter.emit(dt, {newPos.x, newPos.y + 4}, currentDir, {0.3,0.4f,0.4f,0.6f}, smokeTexId, 2, {16.0f,16.0f}, {14,14}, renderer);
+    //shaperenderer.drawRect(newPos, {player.tile.getTileSize().x, player.tile.getTileSize().y} , {1,0,0,1});
 
-    shaperenderer.drawRect(newPos, {player.tile.getTileSize().x, player.tile.getTileSize().y} , {1,0,0,1});
-
-    drawDirection(shaperenderer);
+    //drawDirection(shaperenderer);
 }
 
 
@@ -251,12 +261,7 @@ void PlayerSystem::showDirection() {
         bi::log("playing down");
     }
 }
-/*
-   glm::vec2 PlayerSystem::getCurrentTile() {
-// need to consider direction to collide on tile
-float currentx  = (int) (newPos.x + 16 * newDirection.x) / 16;
-float currenty  = (int) (newPos.y + 16 * newDirection.y) / 16;
-currentTile = {currentx, currenty};
-return currentTile;
-}
-*/
+
+
+
+

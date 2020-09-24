@@ -1,4 +1,5 @@
 #include "firstscene.hpp"
+#include "bismuth/assetmanager.hpp"
 #include "bismuth/keylistener.hpp"
 #include "bismuth/logging.hpp"
 #include "bismuth/mouselistener.hpp"
@@ -19,6 +20,7 @@ void FirstScene::start() {
 }
 void FirstScene::init() {
     this->levelSound = std::make_shared<bi::Sound>("resources/assets/audio/Soliloquy.mp3");
+    this->smokeTexId = bi::assetManager().loadTexture(smokeImage);
 
     levelSound->init();
     levelSound->setLoop(true);
@@ -59,7 +61,7 @@ void FirstScene::update(float dt) {
     //float y = bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
 
 
-    playersystem.update(dt, player, getRenderer(), getShapeRenderer(), {0, 0});
+    playersystem.update(dt, player, getRenderer(), getShapeRenderer(), {0, 0}, smokeTexId);
 
     getTileManager().drawGrid(tilemapPath, getShapeRenderer(), {0.4,0.74,1,0.5});
 
@@ -74,7 +76,7 @@ void FirstScene::update(float dt) {
     //getRenderer().drawTexture(o.tile.getPosition(), o.tile.getTileSize(), {1,1,1,1}, o.tile.getTextureId(), 0, o.tile.getTexCoords());
     //}
 
-    getShapeRenderer().flush();
+    //getShapeRenderer().flush();
 
     getRenderer().endFlushBegin();
 

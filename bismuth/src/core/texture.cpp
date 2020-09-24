@@ -26,9 +26,11 @@ void Texture::init() {
     this->textureId = textureInfo.textureId;
     this->width = textureInfo.width;
     this->height = textureInfo.height;
+
     bi::log("Texture initialized: " + filepath);
-    //bi::log("Texture Width: " + std::to_string(this->width));
-    //bi::log("Texture Height: " + std::to_string(this->height));
+    bi::log("Texture Id: " + std::to_string(textureId));
+    bi::log("Texture Width: " + std::to_string(this->width));
+    bi::log("Texture Height: " + std::to_string(this->height));
 }
 
 void Texture::bind() {
@@ -38,4 +40,20 @@ void Texture::bind() {
 
 void Texture::unbind() {
     glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+std::array<glm::vec2, 4> Texture::getTexCoords(int tileNumber, glm::vec2 tilesize) {
+
+    glm::vec2 tileCount { this->width/tilesize.x, this->height / tilesize.y };
+    int x = tileNumber % (int) tileCount.x;
+    int y = tileNumber / tileCount.x;
+    x = x * tilesize.x;
+    y = y * tilesize.y;
+
+    return std::array<glm::vec2,4> {
+        glm::vec2((float)(x + tilesize.x) / width, (float) (y + tilesize.y) /  height), // br
+        glm::vec2((float)(x + tilesize.x) / width, (float) y / height), // tr
+        glm::vec2((float) x / width, (float) y / height), // tl
+        glm::vec2((float) x / width, (float)(y + tilesize.y) / height) // bl
+    };
 }

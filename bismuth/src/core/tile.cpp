@@ -5,7 +5,6 @@ using namespace bi;
 Tile::~Tile() {}
 
 void Tile::setup() {
-
     //id is 1 index, but we want it 0 indexed which is why id-1
     int posX = (id-1) % (int) (imageSize.x / tileSize.x);
     int posY = (int) ((id-1) / (imageSize.x / tileSize.x));

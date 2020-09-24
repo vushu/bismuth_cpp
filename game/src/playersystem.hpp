@@ -1,5 +1,7 @@
 #pragma once
 #include "bismuth/keylistener.hpp"
+#include "bismuth/particle.hpp"
+#include "bismuth/particleemitter.hpp"
 #include "bismuth/renderer.hpp"
 #include "bismuth/shaperenderer.hpp"
 #include "bismuth/tiledmap.hpp"
@@ -10,10 +12,11 @@ class PlayerSystem{
     public:
         PlayerSystem();
         ~PlayerSystem();
-        void update(float dt, bi::TiledObject player, bi::Renderer& renderer, bi::ShapeRenderer& shaperenderer, glm::vec2 mouse);
+        void update(float dt, bi::TiledObject player, bi::Renderer& renderer, bi::ShapeRenderer& shaperenderer, glm::vec2 mouse, int smokeTexId);
     private:
 
         glm::vec2 zero {0,0};
+        float accDt = 0.0f;
 
         glm::vec2 newPos{0,0};
         glm::vec2 direction{0,0};
@@ -27,7 +30,7 @@ class PlayerSystem{
         glm::vec2 up{0,-1};
         glm::vec2 down{0,1};
         bool keyDown = false;
-        float speed = 140;
+        float speed = 200;
         bool moving = false;
         glm::vec2 getCurrentTile(glm::vec2 dir);
         glm::vec2 setNextTile(glm::vec2 point);
@@ -41,8 +44,18 @@ class PlayerSystem{
         bool xAxisMoving();
         bool yAxisMoving();
         void showDirection();
+            //ParticleEmitter(glm::vec2 pos, glm::vec2 vel, unsigned int nparticles) :
+        bi::ParticleEmitter particleemitter { 500 };
+        bi::ParticleEmitter particleemitter2 { 100 };
+        //void initParticle();
+        //void particleLifeCheck(float dt);
+        //void drawParticles(float dt, bi::Renderer& renderer);
+        //unsigned int nr_particles = 120;
+        //std::vector<Particle> particles;
+        //unsigned int lastUsedParticle = 0;
+        //unsigned int firstUnusedParticle();
 
-
+        //void respawnParticle(Particle& particle, glm::vec2 offset);
 
 
 };

@@ -120,6 +120,8 @@ void Renderer::init()  {
 
 
 void Renderer::beginBatch() {
+
+    //glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     //log("*************** begin batch ******************");
     s_renderData.currentLocationPtr = s_renderData.quadBuffer;
     //s_renderData.indexCount = 0;
@@ -132,6 +134,7 @@ void Renderer::endBatch() {
     glBindBuffer(GL_ARRAY_BUFFER, s_renderData.quadVB);
     //log("Size of buffer:" + std::to_string(size));
     glBufferSubData(GL_ARRAY_BUFFER, 0, size, s_renderData.quadBuffer);
+    //glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 glm::vec2 Renderer::rotatePoint(const glm::vec2& pos, float angle) {
@@ -147,6 +150,7 @@ void Renderer::endFlushBegin(){
     beginBatch();
 
 }
+
 void Renderer::drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int texId, float angle, std::array<glm::vec2, 4> texcoords) {
 
     reevaluateBatchSpace();
@@ -335,6 +339,12 @@ float Renderer::getTextureIndex(int texId) {
     return textureIndex;
 }
 
+void Renderer::setDefaultBlend() {
+    glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+}
+void Renderer::setAdditiveBlend() {
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+}
 
 
 

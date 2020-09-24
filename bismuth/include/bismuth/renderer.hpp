@@ -66,6 +66,8 @@ namespace bi {
             void resetStats();
             void clear(glm::vec4 color);
             void clear(float r, float g, float b, float a);
+            void setDefaultBlend();
+            void setAdditiveBlend();
             RenderStats& getRenderStats();
 
         private:

@@ -13,7 +13,9 @@ namespace bi  {
 
             int loadTexture(std::string filepath);
             Texture& getTexture(std::string filepath);
+            Texture& getTexture(int texId);
             bool textureExists(std::string filepath);
+
             static AssetManager& get() {
                 static AssetManager instance;
                 return instance;
@@ -21,6 +23,7 @@ namespace bi  {
 
         private:
             std::map<std::string, std::unique_ptr<Texture>> textures;
+            std::map<int, std::string> filepaths;
 
     };
     AssetManager& assetManager();

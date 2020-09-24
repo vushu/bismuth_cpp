@@ -22,5 +22,7 @@ class FirstScene : public bi::Scene {
         unsigned int texId;
         PlayerSystem playersystem;
         std::string tilemapPath = "resources/assets/tiles/level1.tmx";
+        std::string smokeImage = "resources/assets/images/smoke.png";
+        unsigned smokeTexId;
 
 };
