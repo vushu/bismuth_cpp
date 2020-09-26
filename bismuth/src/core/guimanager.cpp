@@ -13,6 +13,7 @@ GuiManager::~GuiManager() {
 }
 
 void GuiManager::init() {
+    if (initialized) { return; }
     const char* glslVersion = "#version 300 es";
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -22,6 +23,7 @@ void GuiManager::init() {
 
     ImGui_ImplGlfw_InitForOpenGL(window.window, true);
     ImGui_ImplOpenGL3_Init(glslVersion);
+    initialized = true;
 
 }
 

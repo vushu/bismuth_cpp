@@ -13,6 +13,7 @@ namespace bi {
 
         private:
             Window& window;
+            bool initialized = false;
 
 
     };
