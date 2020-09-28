@@ -26,7 +26,6 @@ void FirstScene::init() {
     levelSound->setLoop(true);
 
     getAudioManager().addSound(levelSound);
-
     //Loading tmx
     getTileManager().loadTileMap(tilemapPath);
 }
@@ -48,6 +47,7 @@ void FirstScene::update(float dt) {
     //}
 
     std::vector<bi::TiledObject>& objects = getTileManager().loadTileMap(tilemapPath).getObjects(0);
+
     bi::TiledObject& player = getTileManager().loadTileMap(tilemapPath).getObjects(1).at(0);
 
 

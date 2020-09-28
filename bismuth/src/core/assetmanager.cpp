@@ -1,13 +1,17 @@
+#include "bismuth/logging.hpp"
 #include <bismuth/texture.hpp>
 #include <bismuth/assetmanager.hpp>
 #include <memory>
 #include <stdexcept>
 #include <string>
+#include <vector>
 
 using namespace bi;
 
 AssetManager::AssetManager () {}
-AssetManager::~AssetManager() { }
+AssetManager::~AssetManager() {
+    bi::log("AssetManager destroyed");
+}
 
 int AssetManager::loadTexture(std::string filepath) {
     int texId = 0;
@@ -20,6 +24,7 @@ int AssetManager::loadTexture(std::string filepath) {
         texture->init();
         texId = texture->textureId;
         filepaths.emplace(texId, filepath);
+        this->values.push_back(texture.get());
         AssetManager::get().textures.emplace(filepath, std::move(texture));
     }
     return texId;
@@ -43,6 +48,9 @@ bool AssetManager::textureExists(std::string filepath) {
     return AssetManager::get().textures.count(filepath) > 0;
 }
 
+std::vector<Texture*>& AssetManager::getTextures() {
+    return values;
+}
 
 bi::AssetManager& bi::assetManager() {
     return AssetManager::get();

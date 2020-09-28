@@ -1,4 +1,5 @@
 #include "game.hpp"
+#include "bismuth/editors/asseteditor.hpp"
 #include "bismuth/keylistener.hpp"
 #include "bismuth/logging.hpp"
 #include "bismuth/mouselistener.hpp"
@@ -44,10 +45,15 @@ void MyGame::update(float dt) {
         //bi::log("Scene changed");
         this->getSceneManager().setScene("mainmenu");
     }
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_2)) {
+    else if (bi::keyInput().isKeyPressed(GLFW_KEY_2)) {
         //bi::log("Scene changed");
         this->getSceneManager().setScene("firstscene");
     }
+    else if (bi::keyInput().isKeyPressed(GLFW_KEY_3)) {
+        //bi::log("Scene changed");
+        this->getSceneManager().setScene("asseteditor");
+    }
+
 
     /*
        if (bi::keyInput().isKeyPressed(GLFW_KEY_S)) {
@@ -182,11 +188,17 @@ void MyGame::drawStuff2(float dt) {
 
 void MyGame::init() {
 
+    // Scene registration
     std::unique_ptr<MainMenuScene> mainMenu = std::make_unique<MainMenuScene>();
     this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
 
     std::unique_ptr<FirstScene> firstScene = std::make_unique<FirstScene>();
     this->getSceneManager().addScene("firstscene", std::move(firstScene));
+
+    std::unique_ptr<AssetEditor> asseteditor = std::make_unique<AssetEditor>();
+    this->getSceneManager().addScene("asseteditor", std::move(asseteditor));
+
+
 
     renderSystem = std::make_unique<RenderSystem>();
     getGuiManager().init();

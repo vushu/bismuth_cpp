@@ -21,6 +21,7 @@ namespace bi {
             ~Application();
             void loop();
             void run();
+            void fixedLoop();
 
             Renderer& getRenderer();
             ShapeRenderer& getShapeRenderer();
@@ -38,6 +39,11 @@ namespace bi {
             virtual void update(float dt);
             virtual void init();
         private:
+
+            const float FRAMES_PER_SEC = 1.0f/60.0f;
+
+            float accumulated;
+
             std::shared_ptr<IOManager> ioManager;
             std::unique_ptr<SceneManager> scenemanager;
 

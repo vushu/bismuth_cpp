@@ -22,7 +22,7 @@ namespace bi {
             std::unique_ptr<Window> window;
             std::unique_ptr<Camera> camera;
             std::unique_ptr<AudioManager> audioManager;
-            std::unique_ptr<AssetManager> assetmanager;
+            //std::unique_ptr<AssetManager> assetmanager;
             std::unique_ptr<GuiManager> guimanager;
             std::unique_ptr<Framebuffer> mainFramebuffer;
             std::unique_ptr<ShapeRenderer> shaperenderer;

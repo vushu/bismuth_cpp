@@ -16,7 +16,7 @@ class PlayerSystem{
     private:
 
         glm::vec2 zero {0,0};
-        float accDt = 0.0f;
+        float accDt;
 
         glm::vec2 newPos{0,0};
         glm::vec2 direction{0,0};

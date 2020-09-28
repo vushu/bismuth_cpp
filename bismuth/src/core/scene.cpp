@@ -1,3 +1,4 @@
+#include "bismuth/assetmanager.hpp"
 #include <bismuth/scene.hpp>
 using namespace bi;
 
@@ -47,7 +48,8 @@ AudioManager& Scene::getAudioManager() {
 }
 
 AssetManager& Scene::getAssetManager() {
-    return *this->ioManager->assetmanager;
+    //return *this->ioManager->assetmanager;
+    return bi::assetManager();
 }
 
 TiledManager& Scene::getTileManager() {

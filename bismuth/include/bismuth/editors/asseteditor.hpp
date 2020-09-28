@@ -1,5 +1,6 @@
 #pragma once
 #include <bismuth/scene.hpp>
+#include <bismuth/texture.hpp>
 namespace bi {
     class AssetEditor : public Scene {
         public:
@@ -12,6 +13,11 @@ namespace bi {
             void close();
 
         private:
+
+            Texture* currentTexture = nullptr;
+            float scale = 6.0f;
+            float maxScale = 10.0f;
+            bool open = false;
 
     };
 }

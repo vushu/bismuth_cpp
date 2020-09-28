@@ -142,7 +142,12 @@ void PlayerSystem::update(float dt, bi::TiledObject player, bi::Renderer &render
     else
         particleemitter.setLife(1.0f);
 
-    particleemitter.emit(dt, {newPos.x, newPos.y + 4}, currentDir, {0.3,0.4f,0.4f,0.6f}, smokeTexId, 4, {16.0f,16.0f}, {14,14}, renderer);
+    bi::log("ACC:", accDt);
+    if (accDt > 1.0f/60.0f) {
+        particleemitter.emit(dt, {newPos.x, newPos.y + 4}, currentDir, {0.3,0.4f,0.4f,0.6f}, smokeTexId, 4, {16.0f,16.0f}, {14,14}, renderer);
+        accDt -= 1.0f/60.0f;
+        accDt = std::max(0.0f, accDt);
+    }
     //shaperenderer.drawRect(newPos, {player.tile.getTileSize().x, player.tile.getTileSize().y} , {1,0,0,1});
 
     //drawDirection(shaperenderer);

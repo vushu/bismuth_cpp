@@ -65,7 +65,7 @@ namespace bi {
             //void draw(SpriteRenderer& sprite);
             void resetStats();
             void clear(glm::vec4 color);
-            void clear(float r, float g, float b, float a);
+            void clear(float r = 0.0f, float g = 0.0f, float b = 0.0f, float a=0.0f);
             void setDefaultBlend();
             void setAdditiveBlend();
             RenderStats& getRenderStats();

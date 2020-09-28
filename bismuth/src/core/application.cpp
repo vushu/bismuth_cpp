@@ -1,3 +1,4 @@
+#include "bismuth/assetmanager.hpp"
 #include "bismuth/renderer.hpp"
 #include <exception>
 //#include <imgui_impl_opengl3.h>
@@ -64,6 +65,8 @@ void Application::loop() {
 
     update(dt);
 
+    accumulated += dt;
+
     this->scenemanager->update(dt);
 
     this->ioManager->window->swapBuffers();
@@ -73,15 +76,34 @@ void Application::loop() {
     beginTime = endTime;
 }
 
+void Application::fixedLoop() {
+    this->ioManager->window->pollEvents();
+
+    dt = endTime - beginTime;
+    beginTime = endTime;
+    accumulated += dt;
+
+    while(accumulated > FRAMES_PER_SEC) {
+        update(1.0f);
+        this->scenemanager->update(dt);
+        accumulated -= FRAMES_PER_SEC;
+        accumulated = std::max(0.0f, accumulated);
+    }
+
+    this->ioManager->window->swapBuffers();
+}
+
 void Application::nativeLoop() {
     beginTime = glfwGetTime();
     endTime = glfwGetTime();
     dt = 1.0f/60.0f;
     while (!this->ioManager->window->windowShouldClose()) {
         loop();
+        //fixedLoop();
     }
 
 }
+
 
 void Application::initOpenGL() {
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
@@ -91,7 +113,6 @@ void Application::initOpenGL() {
     // alpha blending
     glEnable(GL_BLEND);
     glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-
 
 }
 
@@ -126,7 +147,7 @@ AudioManager& Application::getAudioManager() {
 }
 
 AssetManager& Application::getAssetManager() {
-    return *this->ioManager->assetmanager;
+    return bi::assetManager();
 }
 
 GuiManager& Application::getGuiManager() {
