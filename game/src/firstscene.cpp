@@ -1,8 +1,8 @@
 #include "firstscene.hpp"
-#include "bismuth/assetmanager.hpp"
-#include "bismuth/keylistener.hpp"
-#include "bismuth/logging.hpp"
-#include "bismuth/mouselistener.hpp"
+#include <bismuth/assetmanager.hpp>
+#include <bismuth/keylistener.hpp>
+#include <bismuth/logging.hpp>
+#include <bismuth/mouselistener.hpp>
 #include <cmath>
 #include <tmxlite/Map.hpp>
 #include <tmxlite/Layer.hpp>
@@ -58,10 +58,10 @@ void FirstScene::update(float dt) {
 
     bi::TiledObject& player = getTileManager().loadTileMap(tilemapPath).getObjects(1).at(0);
 
-    animatedSprite->draw(getRenderer(), {100, 200}, {16,16}, {1,1,1,1}, 0, dt, 0.05f);
 
     getTileManager().draw(tilemapPath, 0, getRenderer());
 
+    animatedSprite->draw(getRenderer(), {100, 200}, {16,16}, {1,1,1,1}, 0, dt, 0.05f);
     getRenderer().endFlushBegin();
 
     //float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);

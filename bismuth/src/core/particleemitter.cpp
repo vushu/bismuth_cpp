@@ -1,4 +1,4 @@
-#include "bismuth/assetmanager.hpp"
+#include <bismuth/assetmanager.hpp>
 #include <bismuth/particleemitter.hpp>
 #include <bismuth/renderer.hpp>
 using namespace bi;
@@ -23,9 +23,17 @@ void ParticleEmitter::emit(float dt, glm::vec2 position, glm::vec2 velocity, glm
             renderer.drawTexture(p.position, particleSize, color, textureId, 0, texCoord);
         }
     }
+    accDt += dt;
     renderer.endFlushBegin();
     renderer.setDefaultBlend();
-    particleLifeCheck(dt);
+    // 60 fps
+    if (accDt >= 1.0f/60.0f) {
+        particleLifeCheck(1.0f/60.0f);
+        accDt -= 1.0f/60.0f;
+        if (accDt < 0) {
+            accDt = 0;
+        }
+    }
 }
 
 unsigned int ParticleEmitter::firstUnusedParticle() {

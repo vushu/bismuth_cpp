@@ -7,7 +7,7 @@
 #include "bismuth/tiledmap.hpp"
 #include "glm/gtc/constants.hpp"
 #include <queue>
-class PlayerSystem{
+class PlayerSystem {
 
     public:
         PlayerSystem();
@@ -32,6 +32,7 @@ class PlayerSystem{
         bool keyDown = false;
         float speed = 90;
         bool moving = false;
+
         glm::vec2 getCurrentTile(glm::vec2 dir);
         glm::vec2 setNextTile(glm::vec2 point);
         glm::vec2 getNextTile();

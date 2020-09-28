@@ -18,6 +18,7 @@ namespace bi{
             glm::vec2 position, velocity;
             float life = 1.0f;
             std::vector<Particle> particles;
+            float accDt = 0;
 
             unsigned int nr_particles = 0;
             unsigned int lastUsedParticle = 0;
