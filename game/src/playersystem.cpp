@@ -18,23 +18,23 @@ void PlayerSystem::update(float dt, bi::TiledObject player, bi::Renderer &render
     glm::vec2 currentTile = getCurrentTile(currentDir);
 
 
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_D) && !xAxisMoving()) {
+    if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_D) && !xAxisMoving()) {
         keyDown = true;
         newDirection = glm::vec2 {1, 0};
         //bi::log("adding right");
         directionQueue.push(newDirection);
-        bi::keyInput().donePressing(GLFW_KEY_D);
+        //bi::keyInput().donePressing(GLFW_KEY_D);
 
     }
 
-    else if (bi::keyInput().isKeyPressed(GLFW_KEY_A) && !xAxisMoving()) {
+    else if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_A) && !xAxisMoving()) {
         keyDown = true;
         newDirection = {-1,0};
         directionQueue.push(newDirection);
         bi::keyInput().donePressing(GLFW_KEY_A);
     }
 
-    else if (bi::keyInput().isKeyPressed(GLFW_KEY_S) && !yAxisMoving()) {
+    else if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_S) && !yAxisMoving()) {
         keyDown = true;
         newDirection = {0, 1} ;
         directionQueue.push(newDirection);
@@ -43,17 +43,17 @@ void PlayerSystem::update(float dt, bi::TiledObject player, bi::Renderer &render
             lastTile = lastTile + newDirection;
             directionQueue.pop();
         }
-        bi::keyInput().donePressing(GLFW_KEY_S);
+        //bi::keyInput().donePressing(GLFW_KEY_S);
     }
 
-    else if (bi::keyInput().isKeyPressed(GLFW_KEY_W) && !yAxisMoving()) {
+    else if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_W) && !yAxisMoving()) {
         keyDown = true;
         newDirection = { 0,-1 };
         directionQueue.push(newDirection);
         bi::keyInput().donePressing(GLFW_KEY_W);
         //bi::log("adding up");
     }
-    else if (bi::keyInput().isKeyPressed(GLFW_KEY_SPACE)) {
+    else if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_SPACE)) {
         keyDown = true;
         newDirection = { 0, 0 };
         directionQueue.push(newDirection);
