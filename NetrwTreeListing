@@ -4,32 +4,16 @@ somethingcpp/
 | .git/
 | bismuth/
 | | externals/
-| | | catch2/
-| | | entt/
-| | | glad/
-| | | glm/
-| | | miniaudio/
-| | | stb/
 | | include/
 | | src/
 | | tests/
 | | CMakeLists.txt
 | game/
-| | components/
-| | resources/
-| | src/
-| | | entitybuilder.cpp
-| | | game.cpp
-| | | main.cpp
-| | | rendersystem.cpp
-| | | components.hpp
-| | | entitybuilder.hpp
-| | | game.hpp
-| | | rendersystem.hpp
-| | CMakeLists.txt
 | native/
 | wasm/
+| run*
 | rundev.sh*
+| .gitignore
 | CMakeLists.txt
 | NetrwTreeListing
 | compile_commands.json@	 --> compile_commands.json

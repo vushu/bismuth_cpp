@@ -30,7 +30,7 @@ class PlayerSystem{
         glm::vec2 up{0,-1};
         glm::vec2 down{0,1};
         bool keyDown = false;
-        float speed = 200;
+        float speed = 90;
         bool moving = false;
         glm::vec2 getCurrentTile(glm::vec2 dir);
         glm::vec2 setNextTile(glm::vec2 point);

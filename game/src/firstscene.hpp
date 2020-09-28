@@ -4,6 +4,7 @@
 #include "tmxlite/Tileset.hpp"
 #include <bismuth/scene.hpp>
 #include <bismuth/tiledmap.hpp>
+#include <bismuth/animatedsprite.hpp>
 #include "playersystem.hpp"
 #include <vector>
 class FirstScene : public bi::Scene {
@@ -16,6 +17,7 @@ class FirstScene : public bi::Scene {
         void close();
         void start();
     private:
+        std::unique_ptr<bi::AnimatedSprite> animatedSprite;
         std::shared_ptr<bi::Sound> levelSound;
         std::vector<bi::Tile> tiles;
         std::map<int, std::vector<glm::vec2>> layers;
@@ -23,6 +25,8 @@ class FirstScene : public bi::Scene {
         PlayerSystem playersystem;
         std::string tilemapPath = "resources/assets/tiles/level1.tmx";
         std::string smokeImage = "resources/assets/images/smoke.png";
+        std::string drillPath = "resources/assets/images/drill.png";
         unsigned smokeTexId;
+        unsigned drillTexId;
 
 };

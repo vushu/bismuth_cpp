@@ -10,7 +10,7 @@ MainMenuScene::MainMenuScene() {}
 MainMenuScene::~MainMenuScene() {}
 
 void MainMenuScene::start() {
-    //mainMenuMusic->playSound();
+    mainMenuMusic->playSound();
 }
 
 
@@ -26,7 +26,7 @@ void MainMenuScene::init() {
     getAudioManager().addSound(tower);
 
 
-    textureId = getAssetManager().loadTexture("resources/assets/images/awesomeface.png");
+    //textureId = getAssetManager().loadTexture("resources/assets/images/awesomeface.png");
 }
 
 void MainMenuScene::drawMenu() {

@@ -20,7 +20,6 @@ void AssetEditor::update(float dt) {
             currentTexture = tex;
         }
     }
-
     ImGui::End();
 
     if (currentTexture) {
@@ -33,7 +32,6 @@ void AssetEditor::update(float dt) {
         if (ImGui::Button("Close")) {
             currentTexture = nullptr;
         }
-
 
         ImGui::SameLine();
 
@@ -50,7 +48,6 @@ void AssetEditor::update(float dt) {
 
         ImGui::End();
     }
-    bi::log("Scroll Y", (float)bi::mouseInput().scrollY);
 
     if(bi::mouseInput().scrollY == 1.0f){
         bi::mouseInput().scrollY = 0.0f;
