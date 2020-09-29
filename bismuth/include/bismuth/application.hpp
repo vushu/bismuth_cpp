@@ -44,7 +44,7 @@ namespace bi {
 
             float accumulated;
 
-            std::shared_ptr<IOManager> ioManager;
+            //std::shared_ptr<IOManager> ioManager;
             std::unique_ptr<SceneManager> scenemanager;
 
             void construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string title);
@@ -58,4 +58,5 @@ namespace bi {
 
 
     };
+
 }

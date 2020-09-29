@@ -2,7 +2,6 @@
 #include "bismuth/texture.hpp"
 #include "glm/fwd.hpp"
 #include <array>
-//#include <bismuth/spriterenderer.hpp>
 #include <glm/glm.hpp>
 #include <glad/glad.h>
 #include <cstddef>
@@ -100,4 +99,5 @@ namespace bi {
             std::array<glm::vec2, 4> getCorners(glm::vec2 position, glm::vec2 size, float angle);
 
     };
+
 }

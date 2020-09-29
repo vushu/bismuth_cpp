@@ -1,4 +1,5 @@
 #include "bismuth/assetmanager.hpp"
+#include "bismuth/iomanager.hpp"
 #include "bismuth/renderer.hpp"
 #include <exception>
 //#include <imgui_impl_opengl3.h>
@@ -33,8 +34,9 @@ Application::Application(glm::vec2 resolution, glm::vec4 tileInfo, std::string t
 
 void Application::construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string title) {
 
-    this->ioManager = std::make_shared<IOManager>(resolution, tileInfo, title);
-    this->scenemanager = std::make_unique<SceneManager>(this->ioManager);
+    //this->ioManager = std::make_shared<IOManager>(resolution, tileInfo, title);
+    getIOManager().construct(resolution, tileInfo, title);
+    this->scenemanager = std::make_unique<SceneManager>();
     this->title = title;
 }
 
@@ -61,7 +63,7 @@ void Application::update(float dt) { }
 void Application::init() { }
 
 void Application::loop() {
-    this->ioManager->window->pollEvents();
+    getWindow().pollEvents();
 
     update(dt);
 
@@ -69,7 +71,7 @@ void Application::loop() {
 
     this->scenemanager->update(dt);
 
-    this->ioManager->window->swapBuffers();
+    getWindow().swapBuffers();
 
     endTime = glfwGetTime();
     dt = endTime - beginTime;
@@ -77,7 +79,7 @@ void Application::loop() {
 }
 
 void Application::fixedLoop() {
-    this->ioManager->window->pollEvents();
+    getWindow().pollEvents();
 
     dt = endTime - beginTime;
     beginTime = endTime;
@@ -90,14 +92,14 @@ void Application::fixedLoop() {
         accumulated = std::max(0.0f, accumulated);
     }
 
-    this->ioManager->window->swapBuffers();
+    getWindow().swapBuffers();
 }
 
 void Application::nativeLoop() {
     beginTime = glfwGetTime();
     endTime = glfwGetTime();
     dt = 1.0f/60.0f;
-    while (!this->ioManager->window->windowShouldClose()) {
+    while (!getWindow().windowShouldClose()) {
         loop();
         //fixedLoop();
     }
@@ -118,44 +120,42 @@ void Application::initOpenGL() {
 
 void Application::applicationInit() {
     log("Application: init");
-    this->ioManager->window->init();
+    getWindow().init();
     initOpenGL();
-    this->ioManager->renderer->init();
-    this->ioManager->shaperenderer->init();
+    getRenderer().init();
+    getShapeRenderer().init();
 }
 
-
-
 Renderer& Application::getRenderer() {
-    return *this->ioManager->renderer;
+    return *bi::ioManager().renderer;
 }
 
 ShapeRenderer& Application::getShapeRenderer() {
-    return *this->ioManager->shaperenderer;
+    return *bi::ioManager().shaperenderer;
 }
 
 Window& Application::getWindow() {
-    return *this->ioManager->window;
+    return *bi::ioManager().window;
 }
 
 Camera& Application::getCamera() {
-    return *this->ioManager->camera;
+    return *bi::ioManager().camera;
 }
 
 AudioManager& Application::getAudioManager() {
-    return *this->ioManager->audioManager;
+    return *bi::ioManager().audioManager;
 }
 
 AssetManager& Application::getAssetManager() {
-    return bi::assetManager();
+    return *bi::ioManager().assetmanager;
 }
 
 GuiManager& Application::getGuiManager() {
-    return *this->ioManager->guimanager;
+    return *bi::ioManager().guimanager;
 }
 
 Framebuffer& Application::getMainFramebuffer() {
-    return *this->ioManager->mainFramebuffer;
+    return *bi::ioManager().mainFramebuffer;
 }
 
 SceneManager& Application::getSceneManager() {
@@ -163,7 +163,7 @@ SceneManager& Application::getSceneManager() {
 }
 
 IOManager& Application::getIOManager(){
-    return *this->ioManager;
+    return bi::ioManager();
 }
 
 

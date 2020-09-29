@@ -11,7 +11,7 @@ namespace bi {
             virtual void start();
             virtual void close();
             void sceneStart();
-            void sceneInit(std::shared_ptr<IOManager> iomanager);
+            void sceneInit();
             std::string nextScene = "";
             bool started = false;
         protected:
@@ -25,7 +25,6 @@ namespace bi {
             TiledManager& getTileManager();
 
         private:
-            std::shared_ptr<IOManager> ioManager;
 
     };
 }

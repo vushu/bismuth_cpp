@@ -1,12 +1,11 @@
 #include <bismuth/scenemanager.hpp>
 using namespace bi;
 
-SceneManager::~SceneManager() {
-
-}
+SceneManager::SceneManager() {}
+SceneManager::~SceneManager() {}
 
 void SceneManager::addScene(std::string name, std::unique_ptr<Scene> scene) {
-    scene->sceneInit(ioManager);
+    scene->sceneInit();
     scene->init();
     scenes.emplace(name, std::move(scene));
     if (currentScene == "")

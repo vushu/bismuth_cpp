@@ -18,17 +18,11 @@ namespace bi  {
             bool textureExists(std::string filepath);
             std::vector<Texture*>& getTextures();
 
-            static AssetManager& get() {
-                static AssetManager instance;
-                return instance;
-            }
-
         private:
             std::map<std::string, std::unique_ptr<Texture>> textures;
             std::map<int, std::string> filepaths;
             std::vector<Texture*> values;
 
     };
-    AssetManager& assetManager();
 }
 

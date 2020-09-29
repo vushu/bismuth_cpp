@@ -19,6 +19,7 @@ namespace bi{
             float life = 1.0f;
             std::vector<Particle> particles;
             float accDt = 0;
+            const float FPS = 1.0f/60.0f;
 
             unsigned int nr_particles = 0;
             unsigned int lastUsedParticle = 0;

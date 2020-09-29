@@ -16,7 +16,7 @@ FirstScene::FirstScene() {}
 FirstScene::~FirstScene() {}
 
 void FirstScene::start() {
-    levelSound->playSound();
+    //levelSound->playSound();
 }
 void FirstScene::init() {
     this->levelSound = std::make_shared<bi::Sound>("resources/assets/audio/Soliloquy.mp3");
@@ -31,7 +31,7 @@ void FirstScene::init() {
     tileNumbers.push_back(1);
     tileNumbers.push_back(2);
     tileNumbers.push_back(3);
-    animatedSprite = std::make_unique<bi::AnimatedSprite>(drillTexId, tileNumbers);
+    animatedSprite = std::make_unique<bi::Animation>(drillTexId, tileNumbers);
 
     getAudioManager().addSound(levelSound);
     //Loading tmx
@@ -61,7 +61,7 @@ void FirstScene::update(float dt) {
 
     getTileManager().draw(tilemapPath, 0, getRenderer());
 
-    animatedSprite->draw(getRenderer(), {100, 200}, {16,16}, {1,1,1,1}, 0, dt, 0.05f);
+    //animatedSprite->draw(getRenderer(), {100, 200}, {16,16}, {1,1,1,1}, 0, dt, 0.05f);
     getRenderer().endFlushBegin();
 
     //float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);

@@ -1,4 +1,4 @@
-#include <bismuth/assetmanager.hpp>
+#include <bismuth/iomanager.hpp>
 #include <bismuth/particleemitter.hpp>
 #include <bismuth/renderer.hpp>
 using namespace bi;
@@ -14,22 +14,27 @@ void ParticleEmitter::init(float lifeTime) {
 }
 
 void ParticleEmitter::emit(float dt, glm::vec2 position, glm::vec2 velocity, glm::vec4 color, int textureId, int tileNumber, glm::vec2 tilesize, glm::vec2 particleSize, Renderer& renderer) {
+    accDt += dt;
     this->position = position;
     this->velocity = velocity;
+
     renderer.setAdditiveBlend();
-    auto texCoord = bi::assetManager().getTexture(textureId).getTexCoords(tileNumber, tilesize);
+
+    auto texCoord = bi::ioManager().assetmanager->getTexture(textureId).getTexCoords(tileNumber, tilesize);
+
     for (Particle& p : this->particles) {
         if (p.life > 0.0f) {
             renderer.drawTexture(p.position, particleSize, color, textureId, 0, texCoord);
         }
     }
-    accDt += dt;
+
     renderer.endFlushBegin();
     renderer.setDefaultBlend();
+
     // 60 fps
-    if (accDt >= 1.0f/60.0f) {
-        particleLifeCheck(1.0f/60.0f);
-        accDt -= 1.0f/60.0f;
+    if (accDt >= FPS) {
+        particleLifeCheck(FPS);
+        accDt -= FPS;
         if (accDt < 0) {
             accDt = 0;
         }

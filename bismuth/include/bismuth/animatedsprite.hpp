@@ -1,20 +1,18 @@
 #pragma once
-#include <bismuth/renderer.hpp>
-#include <vector>
+#include <map>
+#include <bismuth/animation.hpp>
 namespace bi {
     class AnimatedSprite{
         public:
             // constructors, asssignment, destructor
-            AnimatedSprite(int texId, std::vector<int> tileNr): textureId(texId), tileNumbers(tileNr) {}
+            AnimatedSprite();
+            AnimatedSprite(const AnimatedSprite&);
+            AnimatedSprite& operator=(const AnimatedSprite&);
             ~AnimatedSprite();
-            void draw(Renderer& renderer, glm::vec2 pos, glm::vec2 size, glm::vec4 color, float angle, float dt, float frameTime);
+            void play(std::string name);
 
         private:
-            int textureId;
-            std::vector<int> tileNumbers;
-            float timer = 0.0f;
-            int index = 0;
-
+            std::map<std::string, Animation> animations;
 
     };
 }

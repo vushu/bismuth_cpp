@@ -13,8 +13,9 @@ namespace bi {
     class IOManager {
         public:
             // constructors, asssignment, destructor
-            IOManager(int width, int height, std::string title);
-            IOManager(glm::vec2 resolution, glm::vec4 tileInfo, std::string title);
+            //IOManager(int width, int height, std::string title);
+            //IOManager(glm::vec2 resolution, glm::vec4 tileInfo, std::string title);
+            IOManager();
             ~IOManager();
             void init();
 
@@ -22,12 +23,23 @@ namespace bi {
             std::unique_ptr<Window> window;
             std::unique_ptr<Camera> camera;
             std::unique_ptr<AudioManager> audioManager;
-            //std::unique_ptr<AssetManager> assetmanager;
+            std::unique_ptr<AssetManager> assetmanager;
             std::unique_ptr<GuiManager> guimanager;
             std::unique_ptr<Framebuffer> mainFramebuffer;
             std::unique_ptr<ShapeRenderer> shaperenderer;
             std::unique_ptr<TiledManager> tiledManager;
-        private:
             void construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string);
+            static IOManager& get() {
+                static IOManager instance;
+                return instance;
+            }
+        private:
+            glm::vec2 resolution;
+            std::string title;
+            glm::vec4 tileInfo;
+
     };
+
+    bi::IOManager& ioManager();
+
 }
