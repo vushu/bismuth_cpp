@@ -17,7 +17,7 @@ class FirstScene : public bi::Scene {
         void close();
         void start();
     private:
-        std::unique_ptr<bi::Animation> animatedSprite;
+        //std::unique_ptr<bi::Animation> animatedSprite;
         std::shared_ptr<bi::Sound> levelSound;
         std::vector<bi::Tile> tiles;
         std::map<int, std::vector<glm::vec2>> layers;

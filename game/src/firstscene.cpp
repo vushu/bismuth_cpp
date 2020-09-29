@@ -31,7 +31,7 @@ void FirstScene::init() {
     tileNumbers.push_back(1);
     tileNumbers.push_back(2);
     tileNumbers.push_back(3);
-    animatedSprite = std::make_unique<bi::Animation>(drillTexId, tileNumbers);
+    ////animatedSprite = std::make_unique<bi::Animation>(drillTexId, tileNumbers, {16,16}, {1,1,1,1}, 0.05f);
 
     getAudioManager().addSound(levelSound);
     //Loading tmx
@@ -72,12 +72,11 @@ void FirstScene::update(float dt) {
 
     playersystem.update(dt, player, getRenderer(), getShapeRenderer(), {0, 0}, smokeTexId);
 
-    getTileManager().drawGrid(tilemapPath, getShapeRenderer(), {0.4,0.74,1,0.5});
+    getTileManager().drawGrid(tilemapPath, {0.4,0.74,1,0.5});
 
     ObjectSystem::update(objects, getRenderer());
     //ObjectSystem::update(object, getRenderer());
     //getRenderer().endFlushBegin();
-
 
 
     //for (bi::TiledObject o : objects) {
