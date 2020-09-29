@@ -1,4 +1,4 @@
-#include "bismuth/assetmanager.hpp"
+#include <bismuth/iomanager.hpp>
 #include <bismuth/tiledmap.hpp>
 #include <bismuth/logging.hpp>
 #include <stdexcept>
@@ -37,7 +37,7 @@ void TiledMap::loadMap() {
 
         for (int i = 0; i < ts.size(); i++) {
             this->tilesets.emplace(i, ts[i]);
-            this->textureIds.emplace(i, bi::assetManager().loadTexture(ts[i].getImagePath()));
+            this->textureIds.emplace(i, bi::ioManager().assetmanager->loadTexture(ts[i].getImagePath()));
         }
 
         int tilePosX = 0;

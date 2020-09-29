@@ -1,4 +1,4 @@
-#include "bismuth/assetmanager.hpp"
+#include "bismuth/iomanager.hpp"
 #include "bismuth/mouselistener.hpp"
 #include <bismuth/editors/asseteditor.hpp>
 #include <imgui/imgui.h>
@@ -15,7 +15,7 @@ void AssetEditor::update(float dt) {
     ImGui::SetNextWindowPos(ImVec2(getWindow().width - 405, 10));
     ImGui::Begin("Assets loaded");
 
-    for (const auto& tex : bi::assetManager().getTextures()){
+    for (const auto& tex : bi::ioManager().assetmanager->getTextures()){
         if (ImGui::Button((std::to_string(tex->textureId) + ":" + tex->filepath).c_str())) {
             currentTexture = tex;
         }

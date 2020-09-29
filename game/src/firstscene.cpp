@@ -20,7 +20,7 @@ void FirstScene::start() {
 }
 void FirstScene::init() {
     this->levelSound = std::make_shared<bi::Sound>("resources/assets/audio/Soliloquy.mp3");
-    this->smokeTexId = bi::assetManager().loadTexture(smokeImage);
+    this->smokeTexId = getAssetManager().loadTexture(smokeImage);
     this->drillTexId = getAssetManager().loadTexture(drillPath);
 
 
