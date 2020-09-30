@@ -97,7 +97,7 @@ void FirstScene::update(float dt) {
     bi::TiledObject& player = getTileManager().loadTileMap(tilemapPath).getObjects(1).at(0);
 
 
-    //getTileManager().draw(tilemapPath, 0);
+    getTileManager().draw(tilemapPath, 0);
 
 
     //float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);
@@ -105,10 +105,10 @@ void FirstScene::update(float dt) {
 
     //float y = bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
     //
-    //animatedSprite.play("right", dt, {50.0f, 40.0f});
-    //animatedSprite.play("left", dt, {30.0f, 40.0f});
-    //animatedSprite.play("up", dt, {70.0f, 40.0f});
-    //animatedSprite.play("down", dt, {90.0f, 40.0f});
+    animatedSprite.play("right", dt, {50.0f, 40.0f});
+    animatedSprite.play("left", dt, {30.0f, 40.0f});
+    animatedSprite.play("up", dt, {70.0f, 40.0f});
+    animatedSprite.play("down", dt, {90.0f, 40.0f});
 
     playersystem.update(dt, player, {0, 0}, smokeTexId);
 
@@ -118,7 +118,7 @@ void FirstScene::update(float dt) {
     }
     //this->anim->draw(dt, glm::vec2(10.0f,50.0f), 0);
     //getShapeRenderer().drawLine({0,100}, {100,300}, {1,1,0,1});
-    //ObjectSystem::update(objects, getRenderer());
+    ObjectSystem::update(objects, getRenderer());
 
     getRenderer().endFlushBegin();
 

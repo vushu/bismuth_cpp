@@ -17,7 +17,6 @@
 #include <emscripten/emscripten.h>
 #endif
 
-//#include <nanovg/nanovg_gl.h>
 
 
 using namespace bi;
