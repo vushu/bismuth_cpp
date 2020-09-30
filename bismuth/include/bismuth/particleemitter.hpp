@@ -11,7 +11,7 @@ namespace bi{
                 nr_particles(nparticles) { }
             ~ParticleEmitter();
 
-            void emit(float dt, glm::vec2 position, glm::vec2 velocity, glm::vec4 color, int textureId, int tileNumber, glm::vec2 tilesize, glm::vec2 particleSize, Renderer& renderer);
+            void emit(float dt, glm::vec2 position, glm::vec2 velocity, glm::vec4 color, int textureId, int tileNumber, glm::vec2 tilesize, glm::vec2 particleSize, bool useAddiveBlend = false);
             void init(float lifeTime = 1.0f);
             void setLife(float lifeTime);
         private:

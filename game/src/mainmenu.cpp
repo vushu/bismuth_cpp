@@ -98,8 +98,8 @@ void MainMenuScene::update(float dt) {
     //getShapeRenderer().drawRect({100,100}, {100,100}, {1,0,1,1}, M_PI * accTime);
     //getShapeRenderer().drawPolygon({550,100}, 50, 13, {1,1,0,1}, M_PI * accTime);
 
-    getRenderer().drawTexture({100,400}, {100,100}, {1,1,1,1}, textureId, M_PI * accTime);
-    getRenderer().endFlushBegin();
+    //getRenderer().drawTexture({100,400}, {100,100}, {1,1,1,1}, textureId, M_PI * accTime);
+    //getRenderer().endFlushBegin();
     //getShapeRenderer().flush();
 
     drawMenu();

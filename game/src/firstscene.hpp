@@ -28,5 +28,6 @@ class FirstScene : public bi::Scene {
         std::string drillPath = "resources/assets/images/drill.png";
         unsigned smokeTexId;
         unsigned drillTexId;
+        bool showGrid = false;
 
 };

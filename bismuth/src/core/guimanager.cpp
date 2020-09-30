@@ -1,3 +1,4 @@
+#include "bismuth/iomanager.hpp"
 #include <bismuth/guimanager.hpp>
 #include <imgui/imgui.h>
 #include <imgui/imgui_impl_glfw.h>
@@ -6,10 +7,7 @@
 using namespace bi;
 
 GuiManager::~GuiManager() {
-    ImGui_ImplOpenGL3_Shutdown();
-    ImGui_ImplGlfw_Shutdown();
-    ImGui::DestroyContext();
-
+    destroy();
 }
 
 void GuiManager::init() {
@@ -38,8 +36,8 @@ void GuiManager::beginDraw() {
 void GuiManager::showFPS() {
 
     ImGui::Begin("FPS");
-    //ImGui::Text("Quads: %s", std::to_string(this->getRenderer().getRenderStats().quadCount).c_str());
-    //ImGui::Text("DrawCount: %s", std::to_string(this->getRenderer().getRenderStats().drawCount).c_str());
+    ImGui::Text("Quads: %s", std::to_string(ioManager().renderer->getRenderStats().quadCount).c_str());
+    ImGui::Text("DrawCount: %s", std::to_string(ioManager().renderer->getRenderStats().drawCount).c_str());
     ImGui::Text("Average %.3f ms/frame", 1000.0f / ImGui::GetIO().Framerate);
     ImGui::Text("%.1f FPS", ImGui::GetIO().Framerate);
     ImGui::End();
@@ -54,4 +52,10 @@ void GuiManager::endDraw()  {
     ImGui::Render();
 
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+}
+
+void GuiManager::destroy() {
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
 }

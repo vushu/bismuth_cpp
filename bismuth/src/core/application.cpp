@@ -34,7 +34,6 @@ Application::Application(glm::vec2 resolution, glm::vec4 tileInfo, std::string t
 
 void Application::construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string title) {
 
-    //this->ioManager = std::make_shared<IOManager>(resolution, tileInfo, title);
     getIOManager().construct(resolution, tileInfo, title);
     this->scenemanager = std::make_unique<SceneManager>();
     this->title = title;
@@ -63,11 +62,10 @@ void Application::update(float dt) { }
 void Application::init() { }
 
 void Application::loop() {
+
     getWindow().pollEvents();
 
     update(dt);
-
-    accumulated += dt;
 
     this->scenemanager->update(dt);
 
@@ -124,6 +122,7 @@ void Application::applicationInit() {
     initOpenGL();
     getRenderer().init();
     getShapeRenderer().init();
+    getGuiManager().init();
 }
 
 Renderer& Application::getRenderer() {

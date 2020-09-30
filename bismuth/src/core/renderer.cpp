@@ -148,7 +148,6 @@ void Renderer::endFlushBegin(){
     endBatch();
     flush();
     beginBatch();
-
 }
 
 void Renderer::drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int texId, float angle, std::array<glm::vec2, 4> texcoords) {
@@ -295,9 +294,7 @@ void Renderer::incrementDrawCounters() {
 
 void Renderer::reevaluateBatchSpace() {
     if (s_renderData.indexCount >= maxIndexCount || s_renderData.textureSlotsIndex >= 8) {
-        endBatch();
-        flush();
-        beginBatch();
+        endFlushBegin();
     }
 }
 

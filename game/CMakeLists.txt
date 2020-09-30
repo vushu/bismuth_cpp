@@ -47,7 +47,8 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
 
     target_link_libraries(${PROJECT_NAME} "-s WASM=1") #web assembly FTW
     target_link_libraries(${PROJECT_NAME} "-s USE_WEBGL2=1")
-    target_link_libraries(${PROJECT_NAME} "-s FULL_ES3=1")
+    #target_link_libraries(${PROJECT_NAME} "-s FULL_ES3=1")
+    #target_link_libraries(${PROJECT_NAME} "-s FULL_ES2=1")
     #target_link_libraries(${PROJECT_NAME} "-s USE_FREETYPE=1")
     target_link_libraries(${PROJECT_NAME} "-s ALLOW_MEMORY_GROWTH=1")
     target_link_libraries(${PROJECT_NAME} "--preload-file resources")

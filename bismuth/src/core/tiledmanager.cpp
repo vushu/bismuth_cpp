@@ -15,9 +15,9 @@ TiledMap& TiledManager::loadTileMap(std::string filepath) {
     return *this->tiledMaps.at(filepath);
 }
 
-void TiledManager::draw(std::string filepath, int layerNumber, Renderer& renderer) {
+void TiledManager::draw(std::string filepath, int layerNumber) {
     for(auto& tile : loadTileMap(filepath).getTiles(layerNumber)) {
-        renderer.drawTexture(tile.getPosition(), tile.getTileSize(), {1,1,1, 0.5f}, tile.getTextureId(), 0, tile.getTexCoords());
+        bi::ioManager().renderer->drawTexture(tile.getPosition(), tile.getTileSize(), {1,1,1, 0.5f}, tile.getTextureId(), 0, tile.getTexCoords());
     }
 }
 

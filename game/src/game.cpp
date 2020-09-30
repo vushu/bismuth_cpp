@@ -33,13 +33,13 @@ void MyGame::update(float dt) {
         bi::log("Escape Pushed");
         getWindow().close();
     }
-    if (bi::mouseInput().isDragging){
+    //if (bi::mouseInput().isDragging){
 
-        float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);
-        bi::log("Mouse x:",std::to_string(x));
-        float y = bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
-        bi::log("Mouse y:",std::to_string(y));
-    }
+        //float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);
+        //bi::log("Mouse x:",std::to_string(x));
+        //float y = bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
+        //bi::log("Mouse y:",std::to_string(y));
+    //}
 
     if (bi::keyInput().isKeyPressed(GLFW_KEY_1)) {
         //bi::log("Scene changed");
@@ -53,7 +53,6 @@ void MyGame::update(float dt) {
         //bi::log("Scene changed");
         this->getSceneManager().setScene("asseteditor");
     }
-
 
     /*
        if (bi::keyInput().isKeyPressed(GLFW_KEY_S)) {
@@ -200,8 +199,7 @@ void MyGame::init() {
 
 
 
-    renderSystem = std::make_unique<RenderSystem>();
-    getGuiManager().init();
+    //renderSystem = std::make_unique<RenderSystem>();
     getAudioManager().init();
     getAudioManager().start();
 

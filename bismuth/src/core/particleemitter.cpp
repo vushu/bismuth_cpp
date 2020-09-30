@@ -13,23 +13,26 @@ void ParticleEmitter::init(float lifeTime) {
 
 }
 
-void ParticleEmitter::emit(float dt, glm::vec2 position, glm::vec2 velocity, glm::vec4 color, int textureId, int tileNumber, glm::vec2 tilesize, glm::vec2 particleSize, Renderer& renderer) {
+void ParticleEmitter::emit(float dt, glm::vec2 position, glm::vec2 velocity, glm::vec4 color, int textureId, int tileNumber, glm::vec2 tilesize, glm::vec2 particleSize, bool useAddiveBlend) {
     accDt += dt;
     this->position = position;
     this->velocity = velocity;
 
-    renderer.setAdditiveBlend();
+    if (useAddiveBlend)
+       ioManager().renderer->setAdditiveBlend();
 
     auto texCoord = bi::ioManager().assetmanager->getTexture(textureId).getTexCoords(tileNumber, tilesize);
 
     for (Particle& p : this->particles) {
         if (p.life > 0.0f) {
-            renderer.drawTexture(p.position, particleSize, color, textureId, 0, texCoord);
+            ioManager().renderer->drawTexture(p.position, particleSize, color, textureId, 0, texCoord);
         }
     }
 
-    renderer.endFlushBegin();
-    renderer.setDefaultBlend();
+    if (useAddiveBlend){
+        ioManager().renderer->endFlushBegin();
+        ioManager().renderer->setDefaultBlend();
+    }
 
     // 60 fps
     if (accDt >= FPS) {

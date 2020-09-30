@@ -38,6 +38,23 @@ void ShapeRenderer::init() {
     glBindVertexArray(0);
 }
 
+void ShapeRenderer::beginBatch() {
+    renderData.currentLocationPtr = renderData.vertexBuffer;
+}
+
+void ShapeRenderer::endBatch() {
+    GLsizeiptr size = (uint8_t*) this->renderData.currentLocationPtr - (uint8_t*) this->renderData.vertexBuffer;
+    glBindBuffer(GL_ARRAY_BUFFER, renderData.quadVB);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, size, renderData.vertexBuffer);
+
+
+}
+
+void ShapeRenderer::endFlushBegin() {
+    endBatch();
+    flush();
+    beginBatch();
+}
 void ShapeRenderer::drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color, float angle, bool centerShown) {
     checkVertexLimit();
 
@@ -68,8 +85,8 @@ void ShapeRenderer::drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color
 }
 
 void ShapeRenderer::checkVertexLimit() {
-    if (maxVertexCount >= 1000) {
-        flush();
+    if (renderData.vertexCounter >= maxVertexCount) {
+        endFlushBegin();
     }
 }
 
@@ -121,10 +138,6 @@ void ShapeRenderer::drawPolygon(glm::vec2 centerPos, float radius, int segments,
 
 void ShapeRenderer::flush() {
 
-    GLsizeiptr size = (uint8_t*) this->renderData.currentLocationPtr - (uint8_t*) this->renderData.vertexBuffer;
-    glBindBuffer(GL_ARRAY_BUFFER, renderData.quadVB);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, size, renderData.vertexBuffer);
-
     this->shader.use();
 
     shader.uploadUniformMat4("uMvp", camera.projectionMatrix * camera.viewMatrix);
@@ -136,6 +149,7 @@ void ShapeRenderer::flush() {
     glEnableVertexAttribArray(1);
 
     glLineWidth(1.2f);
+    //glDrawArrays(GL_LINES, 0, renderData.vertexCounter);
     glDrawArrays(GL_LINES, 0, renderData.vertexCounter);
 
     glDisableVertexAttribArray(0);

@@ -26,7 +26,10 @@ namespace bi {
             void drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color, float angle = 0.0f, bool centerShown = false);
             void drawRect(glm::vec2 position, glm::vec2 size, glm::vec4 color, float angle = 0.0f, bool centerShown = false);
             void drawPolygon(glm::vec2 centerPos, float radius, int segments, glm::vec4 color, float angle, bool centerShown = false);
+            void beginBatch();
+            void endBatch();
             void flush();
+            void endFlushBegin();
 
         private:
             Camera& camera;

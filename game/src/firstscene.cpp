@@ -39,19 +39,24 @@ void FirstScene::init() {
 }
 
 void FirstScene::update(float dt) {
+    getRenderer().resetStats();
 
     getRenderer().clear(0,0,0,1);
     if (bi::keyInput().isKeyPressed(GLFW_KEY_F)) {
         getWindow().fullscreen(getWindow().width, getWindow().height);
     }
 
+    if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_G)) {
+        showGrid = !showGrid;
+    }
+
     //if (bi::mouseInput().isDragging) {
-        //float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);
-        //bi::log("Mouse x:",std::to_string(x));
+    //float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);
+    //bi::log("Mouse x:",std::to_string(x));
 
-        //float y = bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
+    //float y = bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
 
-        //bi::log("Mouse y:",std::to_string(y));
+    //bi::log("Mouse y:",std::to_string(y));
     //}
 
     std::vector<bi::TiledObject>& objects = getTileManager().loadTileMap(tilemapPath).getObjects(0);
@@ -59,24 +64,29 @@ void FirstScene::update(float dt) {
     bi::TiledObject& player = getTileManager().loadTileMap(tilemapPath).getObjects(1).at(0);
 
 
-    getTileManager().draw(tilemapPath, 0, getRenderer());
+    getTileManager().draw(tilemapPath, 0);
 
     //animatedSprite->draw(getRenderer(), {100, 200}, {16,16}, {1,1,1,1}, 0, dt, 0.05f);
-    getRenderer().endFlushBegin();
+    //getRenderer().endFlushBegin();
 
     //float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);
     //bi::log("Mouse x:",std::to_string(x));
 
     //float y = bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
 
-
     playersystem.update(dt, player, getRenderer(), getShapeRenderer(), {0, 0}, smokeTexId);
+    if (showGrid) {
+        getTileManager().drawGrid(tilemapPath, {0.4,0.74,1,0.5});
+        getShapeRenderer().endFlushBegin();
+    }
+    //getShapeRenderer().drawLine({0,100}, {100,300}, {1,1,0,1});
 
-    getTileManager().drawGrid(tilemapPath, {0.4,0.74,1,0.5});
-
+    getGuiManager().beginDraw();
+    getGuiManager().showFPS();
+    getGuiManager().endDraw();
     ObjectSystem::update(objects, getRenderer());
     //ObjectSystem::update(object, getRenderer());
-    //getRenderer().endFlushBegin();
+    getRenderer().endFlushBegin();
 
 
     //for (bi::TiledObject o : objects) {
@@ -84,13 +94,11 @@ void FirstScene::update(float dt) {
     //getRenderer().drawTexture(o.tile.getPosition(), o.tile.getTileSize(), {1,1,1,1}, o.tile.getTextureId(), 0, o.tile.getTexCoords());
     //}
 
-    //getShapeRenderer().flush();
 
-    getRenderer().endFlushBegin();
 
-    getGuiManager().beginDraw();
-    getGuiManager().showFPS();
-    getGuiManager().endDraw();
+    //getGuiManager().beginDraw();
+    //getGuiManager().showFPS();
+    //getGuiManager().endDraw();
 
 }
 

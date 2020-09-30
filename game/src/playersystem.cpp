@@ -142,7 +142,7 @@ void PlayerSystem::update(float dt, bi::TiledObject player, bi::Renderer &render
     else
         particleemitter.setLife(1.0f);
 
-    particleemitter.emit(dt, {newPos.x, newPos.y + 4}, currentDir, {0.3,0.4f,0.4f,0.6f}, smokeTexId, 4, {16.0f,16.0f}, {14,14}, renderer);
+    particleemitter.emit(dt, {newPos.x, newPos.y + 4}, currentDir, {0.3,0.4f,0.4f,1.0f}, smokeTexId, 3, {16.0f,16.0f}, {14,14});
     //shaperenderer.drawRect(newPos, {player.tile.getTileSize().x, player.tile.getTileSize().y} , {1,0,0,1});
 
     //drawDirection(shaperenderer);
