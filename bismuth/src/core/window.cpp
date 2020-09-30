@@ -53,6 +53,9 @@ void Window::configureOpenGL() {
     //glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_OPENGL_ES_API);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
+    // antialiasing;
+    //glfwWindowHint(GLFW_SAMPLES, 4);
+
     //#else
 
     //glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);

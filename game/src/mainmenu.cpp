@@ -77,7 +77,8 @@ void MainMenuScene::setStyle() {
 void MainMenuScene::update(float dt) {
 
 
-    getRenderer().clear(0.5,0.5,0.5,1);
+    //getRenderer().clear(0.5,0.5,0.5,1);
+    getRenderer().clear();
 
     if (bi::keyInput().isKeyPressed(GLFW_KEY_P)) {
         bi::log("Start sound");

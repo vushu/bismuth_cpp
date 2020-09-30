@@ -29,27 +29,26 @@ MyGame::~MyGame() {}
 
 void MyGame::update(float dt) {
 
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_ESCAPE)) {
+    if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_ESCAPE)) {
         bi::log("Escape Pushed");
         getWindow().close();
     }
     //if (bi::mouseInput().isDragging){
-
-        //float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);
-        //bi::log("Mouse x:",std::to_string(x));
-        //float y = bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
-        //bi::log("Mouse y:",std::to_string(y));
+    //float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);
+    //bi::log("Mouse x:",std::to_string(x));
+    //float y = bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
+    //bi::log("Mouse y:",std::to_string(y));
     //}
 
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_1)) {
+    if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_1)) {
         //bi::log("Scene changed");
         this->getSceneManager().setScene("mainmenu");
     }
-    else if (bi::keyInput().isKeyPressed(GLFW_KEY_2)) {
+    else if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_2)) {
         //bi::log("Scene changed");
         this->getSceneManager().setScene("firstscene");
     }
-    else if (bi::keyInput().isKeyPressed(GLFW_KEY_3)) {
+    else if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_3)) {
         //bi::log("Scene changed");
         this->getSceneManager().setScene("asseteditor");
     }
@@ -120,7 +119,6 @@ void MyGame::update(float dt) {
     //s.second->update(dt);
     //((Scene)s.second);
     //}
-
 }
 
 void MyGame::drawStuff(float dt) {

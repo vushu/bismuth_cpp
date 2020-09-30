@@ -17,6 +17,8 @@
 #include <emscripten/emscripten.h>
 #endif
 
+//#include <nanovg/nanovg_gl.h>
+
 
 using namespace bi;
 
@@ -65,6 +67,7 @@ void Application::loop() {
 
     getWindow().pollEvents();
 
+    getRenderer().resetStats();
     update(dt);
 
     this->scenemanager->update(dt);
@@ -113,6 +116,9 @@ void Application::initOpenGL() {
     // alpha blending
     glEnable(GL_BLEND);
     glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
+    //stencil buffer
+    glEnable(GL_STENCIL_TEST);
 
 }
 

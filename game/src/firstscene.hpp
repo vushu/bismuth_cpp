@@ -6,6 +6,7 @@
 #include <bismuth/tiledmap.hpp>
 #include <bismuth/animation.hpp>
 #include "playersystem.hpp"
+#include <bismuth/animatedsprite.hpp>
 #include <vector>
 class FirstScene : public bi::Scene {
     public:
@@ -17,7 +18,9 @@ class FirstScene : public bi::Scene {
         void close();
         void start();
     private:
-        //std::unique_ptr<bi::Animation> animatedSprite;
+        void createAnimatedSprite();
+        bi::AnimatedSprite animatedSprite;
+        std::unique_ptr<bi::Animation> anim;
         std::shared_ptr<bi::Sound> levelSound;
         std::vector<bi::Tile> tiles;
         std::map<int, std::vector<glm::vec2>> layers;

@@ -12,7 +12,7 @@ class PlayerSystem {
     public:
         PlayerSystem();
         ~PlayerSystem();
-        void update(float dt, bi::TiledObject player, bi::Renderer& renderer, bi::ShapeRenderer& shaperenderer, glm::vec2 mouse, int smokeTexId);
+        void update(float dt, bi::TiledObject player, glm::vec2 mouse, int smokeTexId);
     private:
 
         glm::vec2 zero {0,0};
@@ -46,7 +46,7 @@ class PlayerSystem {
         bool yAxisMoving();
         void showDirection();
             //ParticleEmitter(glm::vec2 pos, glm::vec2 vel, unsigned int nparticles) :
-        bi::ParticleEmitter particleemitter { 500 };
+        bi::ParticleEmitter particleemitter { 200 };
         bi::ParticleEmitter particleemitter2 { 100 };
         //void initParticle();
         //void particleLifeCheck(float dt);

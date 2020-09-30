@@ -1,4 +1,5 @@
 #include "playersystem.hpp"
+#include "bismuth/iomanager.hpp"
 #include "bismuth/keylistener.hpp"
 #include "bismuth/logging.hpp"
 #include "bismuth/mouselistener.hpp"
@@ -13,10 +14,9 @@ PlayerSystem::PlayerSystem() {
 }
 PlayerSystem::~PlayerSystem() {}
 
-void PlayerSystem::update(float dt, bi::TiledObject player, bi::Renderer &renderer, bi::ShapeRenderer& shaperenderer, glm::vec2 mouse, int smokeTexId) {
+void PlayerSystem::update(float dt, bi::TiledObject player, glm::vec2 mouse, int smokeTexId) {
     accDt += dt;
     glm::vec2 currentTile = getCurrentTile(currentDir);
-
 
     if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_D) && !xAxisMoving()) {
         keyDown = true;
@@ -64,7 +64,7 @@ void PlayerSystem::update(float dt, bi::TiledObject player, bi::Renderer &render
         currentDir = {1,0};
         lastTile = getCurrentTile(currentDir);
         if (lastTile.x == 2.0f && lastTile.y == 2.0f) {
-            bi::log("Last tile is {2.2}");
+            //bi::log("Last tile is {2.2}");
         }
         else {
             bi::log("Failed isnt as expected", glm::to_string(lastTile));
@@ -115,6 +115,7 @@ void PlayerSystem::update(float dt, bi::TiledObject player, bi::Renderer &render
 
         }
     }
+
     else if (currentDir == down) {
 
         if (newPos.y - 16 > (lastTile.y * 16.0f)) {
@@ -134,15 +135,18 @@ void PlayerSystem::update(float dt, bi::TiledObject player, bi::Renderer &render
 
 
     player.tile.setPosition(newPos);
-    renderer.drawTile(player.tile, {1,1,1,1});
-    renderer.endFlushBegin();
+
+    bi::ioManager().renderer->drawTile(player.tile, {1,1,1,1});
+    bi::ioManager().renderer->endFlushBegin();
+
     if (currentDir == zero) {
         particleemitter.setLife(0.0f);
     }
     else
         particleemitter.setLife(1.0f);
 
-    particleemitter.emit(dt, {newPos.x, newPos.y + 4}, currentDir, {0.3,0.4f,0.4f,1.0f}, smokeTexId, 3, {16.0f,16.0f}, {14,14});
+    //particleemitter.emit(dt, {newPos.x, newPos.y + 4}, currentDir, {0.3,0.4f,0.4f,1.0f}, smokeTexId, 3, {16.0f,16.0f}, {14,14});
+    particleemitter.emit(dt, {newPos.x, newPos.y + 4}, currentDir, {1,1,1,1}, smokeTexId, 3, {16.0f, 16.0f}, {16,16});
     //shaperenderer.drawRect(newPos, {player.tile.getTileSize().x, player.tile.getTileSize().y} , {1,0,0,1});
 
     //drawDirection(shaperenderer);
@@ -225,10 +229,11 @@ glm::vec2 PlayerSystem::getCurrentTile(glm::vec2 dir) {
     //bi::log("currentTile" ,glm::to_string(currentTile));
     //currentTile = newPos) / tileSize * 16.0f;
 
-
     currentx  = (int) (newPos.x + (tileSize.x/2.0f)) / tileSize.x;
     currenty  = (int) (newPos.y + (tileSize.y/2.0f)) / tileSize.y;
+
     currentTile = { currentx, currenty };
+
     return currentTile;
 }
 

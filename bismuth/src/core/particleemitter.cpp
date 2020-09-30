@@ -10,7 +10,6 @@ void ParticleEmitter::init(float lifeTime) {
         Particle p (0.0f);
         particles.push_back(std::move(p));
     }
-
 }
 
 void ParticleEmitter::emit(float dt, glm::vec2 position, glm::vec2 velocity, glm::vec4 color, int textureId, int tileNumber, glm::vec2 tilesize, glm::vec2 particleSize, bool useAddiveBlend) {
@@ -54,7 +53,7 @@ unsigned int ParticleEmitter::firstUnusedParticle() {
     }
     // otherwise, do a linear search
     for (unsigned int i = 0; i < lastUsedParticle; ++i) {
-        if (particles[i].life <= 0.0f){
+        if (particles[i].life <= 0.0f) {
             lastUsedParticle = i;
             return i;
         }
@@ -90,13 +89,13 @@ void ParticleEmitter::respawnParticle(Particle& particle) {
     float random = ((rand() % 100) - 50) / 10.0f;
     float rColor = 0.5f + ((rand() % 100) / 100.0f);
     particle.position = position + random;
+    //particle.color = glm::vec4(1, 1, 1, 1.0f);
     particle.color = glm::vec4(rColor, rColor, rColor, 1.0f);
     particle.life = life;
     particle.velocity = velocity;
 }
 
-void ParticleEmitter::setLife(float lifeTime)
-{
+void ParticleEmitter::setLife(float lifeTime) {
     this->life = lifeTime;
 }
 

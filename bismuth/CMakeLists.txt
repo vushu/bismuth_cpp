@@ -17,6 +17,7 @@ set(BOX2D_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/box2d/include")
 set(IMGUI_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/imgui/include")
 set(FREETYPE_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/freetype2/include")
 set(TMXLITE_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/tmxlite/include")
+set(NANO_VG_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/nanovg/include")
 
 include(GNUInstallDirs)
 
@@ -60,6 +61,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
         ${BOX2D_INCLUDE_DIRS}
         ${IMGUI_INCLUDE_DIRS}
         ${TMXLITE_INCLUDE_DIRS}
+        ${NANO_VG_INCLUDE_DIRS}
         #${FREETYPE_INCLUDE_DIRS}
         #${CATCH2_INCLUDE_DIRS}
         #${EMSCRIPTEN_INCLUDE_DIRS}
@@ -77,6 +79,7 @@ else()
         ${BOX2D_INCLUDE_DIRS}
         ${IMGUI_INCLUDE_DIRS}
         ${TMXLITE_INCLUDE_DIRS}
+        ${NANO_VG_INCLUDE_DIRS}
         #${FREETYPE_INCLUDE_DIRS}
         #${CATCH2_INCLUDE_DIRS}
         #${EMSCRIPTEN_INCLUDE_DIRS}
