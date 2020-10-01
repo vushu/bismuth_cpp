@@ -18,6 +18,7 @@ set(IMGUI_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/imgui/include")
 set(FREETYPE_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/freetype2/include")
 set(TMXLITE_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/tmxlite/include")
 set(NANO_VG_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/nanovg/include")
+set(GLWF_INDLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/glfw/include")
 
 include(GNUInstallDirs)
 
@@ -35,7 +36,8 @@ set_target_properties(${PROJECT_NAME}
     PROPERTIES
     VERSION ${PROJECT_VERSION}
     SOVERSION ${PROJECT_VERSION})
-
+#GLFW
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/glfw)
 #GLAD
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/glad)
 #Miniaudio
@@ -62,6 +64,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
         ${IMGUI_INCLUDE_DIRS}
         ${TMXLITE_INCLUDE_DIRS}
         ${NANO_VG_INCLUDE_DIRS}
+        ${GLFW_INCLUDE_DIRS}
         #${FREETYPE_INCLUDE_DIRS}
         #${CATCH2_INCLUDE_DIRS}
         #${EMSCRIPTEN_INCLUDE_DIRS}
@@ -80,6 +83,7 @@ else()
         ${IMGUI_INCLUDE_DIRS}
         ${TMXLITE_INCLUDE_DIRS}
         ${NANO_VG_INCLUDE_DIRS}
+        ${GLFW_INCLUDE_DIRS}
         #${FREETYPE_INCLUDE_DIRS}
         #${CATCH2_INCLUDE_DIRS}
         #${EMSCRIPTEN_INCLUDE_DIRS}
@@ -104,7 +108,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
 else()
     #sudo apt-get install libopenal-dev
     #find_package(OpenAL REQUIRED)
-    find_package(glfw3 3.3 REQUIRED)
+    #find_package(glfw3 3.3 REQUIRED)
     #find_package(freetype REQUIRED)
     #find_package(glm REQUIRED)
     #target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad openal miniaudio)
