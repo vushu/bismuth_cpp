@@ -74,7 +74,8 @@ void FirstScene::createAnimatedSprite() {
 
 void FirstScene::update(float dt) {
 
-    getRenderer().clear(0.06f,0.04f,0.01f,1);
+    //getRenderer().clear(0.06f,0.04f,0.01f,1);
+    getRenderer().clear();
     if (bi::keyInput().isKeyPressed(GLFW_KEY_F)) {
         getWindow().fullscreen(getWindow().width, getWindow().height);
     }

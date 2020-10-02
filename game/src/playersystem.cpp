@@ -146,7 +146,7 @@ void PlayerSystem::update(float dt, bi::TiledObject player, glm::vec2 mouse, int
         particleemitter.setLife(1.0f);
 
     //particleemitter.emit(dt, {newPos.x, newPos.y + 4}, currentDir, {0.3,0.4f,0.4f,1.0f}, smokeTexId, 3, {16.0f,16.0f}, {14,14});
-    particleemitter.emit(dt, {newPos.x, newPos.y + 4}, currentDir, {1,1,1,1}, smokeTexId, 3, {16.0f, 16.0f}, {16,16});
+    particleemitter.emit(dt, {newPos.x, newPos.y + 4}, currentDir, {1,1,1,1}, smokeTexId, 1, {16.0f, 16.0f}, {10,10}, true);
     //shaperenderer.drawRect(newPos, {player.tile.getTileSize().x, player.tile.getTileSize().y} , {1,0,0,1});
 
     //drawDirection(shaperenderer);

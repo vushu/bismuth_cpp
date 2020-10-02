@@ -127,6 +127,8 @@ void Window::getResolution() {
 
     maxWidth = mode->width;
     maxHeight = mode->height;
+    bi::log("width max", maxWidth);
+    bi::log("height max", maxHeight);
 }
 
 

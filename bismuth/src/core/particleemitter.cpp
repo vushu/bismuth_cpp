@@ -86,8 +86,9 @@ void ParticleEmitter::particleLifeCheck(float dt) {
 }
 
 void ParticleEmitter::respawnParticle(Particle& particle) {
-    float random = ((rand() % 100) - 50) / 10.0f;
-    float rColor = 0.5f + ((rand() % 100) / 100.0f);
+    //float random = ((rand() % 100) - 50) / 10.0f;
+    float random = ((rand() % 100) - 100) / 10.0f; // spread
+    float rColor = 0.5f + ((rand() % 100) / 10.0f);
     particle.position = position + random;
     //particle.color = glm::vec4(1, 1, 1, 1.0f);
     particle.color = glm::vec4(rColor, rColor, rColor, 1.0f);
