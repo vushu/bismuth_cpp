@@ -37,7 +37,7 @@ set_target_properties(${PROJECT_NAME}
     VERSION ${PROJECT_VERSION}
     SOVERSION ${PROJECT_VERSION})
 #GLFW
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/glfw)
+#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/glfw)
 #GLAD
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/glad)
 #Miniaudio
