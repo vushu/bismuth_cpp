@@ -24,6 +24,9 @@ void Window::resizeWindowCallback(GLFWwindow* window, int width, int height) {
         ptr->height = height;
     }
 }
+Window::Window(std::string title) {
+    this->title = title;
+}
 
 Window::Window(int width, int height, std::string title) {
     this->width = width;
@@ -124,9 +127,13 @@ void Window::init() {
 
 void Window::getResolution() {
     const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-
     maxWidth = mode->width;
     maxHeight = mode->height;
+
+    if (this->width == 0 && this->height == 0){
+        this->width = maxWidth;
+        this->height = maxHeight;
+    }
     bi::log("width max", maxWidth);
     bi::log("height max", maxHeight);
 }

@@ -25,6 +25,13 @@ Application::Application() {
     construct({800, 600}, {}, "Bismuth");
 }
 
+Application::Application(std::string title) {
+    construct({0,0}, {}, title);
+}
+
+Application::Application(glm::vec4 tileInfo,std::string title) {
+    construct({0,0}, tileInfo, title);
+}
 Application::Application(int width, int height, std::string title) {
     construct({width, height}, {}, title);
 }

@@ -18,6 +18,7 @@ IOManager::IOManager() { }
 IOManager::~IOManager() { }
 
 void IOManager::construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string title){
+
     this->window = std::make_unique<Window>(resolution.x, resolution.y, title);
     if (tileInfo.x != 0 && tileInfo.y != 0)
         this->camera = std::make_unique<Camera>(tileInfo.x * tileInfo.z, tileInfo.y * tileInfo.w);

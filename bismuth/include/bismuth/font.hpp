@@ -35,7 +35,7 @@ namespace bi {
         public:
             // constructors, asssignment, destructor
             //Font(std::string fontFilePath, float fontSize) :  mfontFilePath(fontFilePath), mfontSize(fontSize) {}
-            Font(AssetManager& assetman) : assetmanager(assetman)  {}
+            Font();
             void loadFnt(std::string filePath);
             ~Font();
             void updateBuffers(std::string text, glm::vec2 position, QuadVertex*& quadVertex, glm::vec4 color, float scale, float renderTexId);
@@ -44,7 +44,6 @@ namespace bi {
             std::vector<Character> getCharacters(std::string text);
 
         private:
-            AssetManager& assetmanager;
             FontInfo fontInfo;
             std::string face;
             //FT_Library ft;

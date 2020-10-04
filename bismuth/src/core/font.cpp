@@ -1,3 +1,4 @@
+#include "bismuth/iomanager.hpp"
 #include <bismuth/primitives.hpp>
 #include <glm/glm.hpp>
 #include <glm/gtx/string_cast.hpp>
@@ -16,10 +17,9 @@
 
 
 using namespace bi;
+Font::Font() { }
 
-Font::~Font() {
-
-}
+Font::~Font() {}
 
 void Font::updateBuffers(std::string text, glm::vec2 position, QuadVertex*& quadVertex, glm::vec4 color, float scale , float renderTexId) {
     //float scale = 1.5f;
@@ -168,7 +168,7 @@ void Font::loadFnt(std::string filePath) {
     log("scaleH: " + std::to_string(fontInfo.scaleH));
     log("-----------------------");
     */
-    textureId = assetmanager.loadTexture("resources/assets/fonts/" + fontInfo.file);
+    textureId = bi::ioManager().assetmanager->loadTexture("resources/assets/fonts/" + fontInfo.file);
 }
 
 int Font::getDigit(std::string text){

@@ -16,7 +16,9 @@ namespace bi {
         public:
             // constructors, asssignment, destructor
             Application();
+            Application(std::string title);
             Application(int width, int height, std::string title);
+            Application(glm::vec4 tileInfo, std::string title);
             Application(glm::vec2 resolution, glm::vec4 tileInfo, std::string title);
             ~Application();
             void loop();

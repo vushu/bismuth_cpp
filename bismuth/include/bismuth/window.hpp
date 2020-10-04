@@ -5,6 +5,7 @@ namespace  bi {
     class Window{
         public:
             // constructors, asssignment, destructor
+            Window(std::string title);
             Window(int width, int height, std::string title);
             ~Window();
             void init();
@@ -12,8 +13,8 @@ namespace  bi {
             void pollEvents();
             void close();
             GLFWwindow* window;
-            int width;
-            int height;
+            int width = 0;
+            int height = 0;
             void swapBuffers();
             int maxWidth;
             int maxHeight;

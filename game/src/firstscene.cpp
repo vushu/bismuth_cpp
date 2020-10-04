@@ -15,7 +15,7 @@ FirstScene::FirstScene() {}
 FirstScene::~FirstScene() {}
 
 void FirstScene::start() {
-    //levelSound->playSound();
+    levelSound->playSound();
 }
 void FirstScene::init() {
     this->levelSound = std::make_shared<bi::Sound>("resources/assets/audio/Soliloquy.mp3");
@@ -28,7 +28,7 @@ void FirstScene::init() {
     getAudioManager().addSound(levelSound);
     //Loading tmx
     getTileManager().loadTileMap(tilemapPath);
-    createAnimatedSprite();
+    //createAnimatedSprite();
 }
 
 void FirstScene::createAnimatedSprite() {
@@ -113,10 +113,11 @@ void FirstScene::update(float dt) {
 
     playersystem.update(dt, player, {0, 0}, smokeTexId);
 
+    getShapeRenderer().drawRect({100,100}, {100, 50}, {1,1,1,1});
     if (showGrid) {
         getTileManager().drawGrid(tilemapPath, {0.4,0.74,1,0.5});
-        getShapeRenderer().endFlushBegin();
     }
+    getShapeRenderer().endFlushBegin();
     //this->anim->draw(dt, glm::vec2(10.0f,50.0f), 0);
     //getShapeRenderer().drawLine({0,100}, {100,300}, {1,1,0,1});
     ObjectSystem::update(objects, getRenderer());

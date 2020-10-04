@@ -149,8 +149,9 @@ void ShapeRenderer::flush() {
     glEnableVertexAttribArray(1);
 
     glLineWidth(1.2f);
-    //glDrawArrays(GL_LINES, 0, renderData.vertexCounter);
     glDrawArrays(GL_LINES, 0, renderData.vertexCounter);
+    //if Filled
+    //glDrawArrays(GL_POLYGON, 0, renderData.vertexCounter);
 
     glDisableVertexAttribArray(0);
     //enable color
