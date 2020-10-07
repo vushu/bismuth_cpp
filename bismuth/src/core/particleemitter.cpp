@@ -2,7 +2,9 @@
 #include <bismuth/particleemitter.hpp>
 #include <bismuth/renderer.hpp>
 using namespace bi;
-ParticleEmitter::~ParticleEmitter() {}
+ParticleEmitter::~ParticleEmitter() {
+    bi::log("ParticleEmitter destroyed");
+}
 
 void ParticleEmitter::init(float lifeTime) {
     this->life = lifeTime;

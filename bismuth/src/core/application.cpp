@@ -110,6 +110,7 @@ void Application::nativeLoop() {
         loop();
         //fixedLoop();
     }
+    getWindow().destroy();
 
 }
 
@@ -134,7 +135,7 @@ void Application::applicationInit() {
     initOpenGL();
     getRenderer().init();
     getShapeRenderer().init();
-    getGuiManager().init();
+    //getGuiManager().init();
 }
 
 Renderer& Application::getRenderer() {

@@ -106,10 +106,10 @@ void FirstScene::update(float dt) {
 
     //float y = bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
     //
-    animatedSprite.play("right", dt, {50.0f, 40.0f});
-    animatedSprite.play("left", dt, {30.0f, 40.0f});
-    animatedSprite.play("up", dt, {70.0f, 40.0f});
-    animatedSprite.play("down", dt, {90.0f, 40.0f});
+    //animatedSprite.play("right", dt, {50.0f, 40.0f});
+    //animatedSprite.play("left", dt, {30.0f, 40.0f});
+    //animatedSprite.play("up", dt, {70.0f, 40.0f});
+    //animatedSprite.play("down", dt, {90.0f, 40.0f});
 
     playersystem.update(dt, player, {0, 0}, smokeTexId);
 
@@ -123,10 +123,6 @@ void FirstScene::update(float dt) {
     ObjectSystem::update(objects, getRenderer());
 
     getRenderer().endFlushBegin();
-
-    //getGuiManager().beginDraw();
-    //getGuiManager().showFPS();
-    //getGuiManager().endDraw();
 
     //ObjectSystem::update(object, getRenderer());
 

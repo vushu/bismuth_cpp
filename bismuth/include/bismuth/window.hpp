@@ -20,6 +20,7 @@ namespace  bi {
             int maxHeight;
             void fullscreen(int width, int height);
             void windowed(int width, int height);
+            void destroy();
 
         private:
 

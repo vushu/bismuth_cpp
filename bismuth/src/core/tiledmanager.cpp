@@ -4,7 +4,9 @@
 using namespace bi;
 
 TiledManager::TiledManager() { }
-TiledManager::~TiledManager() { }
+TiledManager::~TiledManager() {
+    bi::log("TiledManager destroyed");
+}
 
 TiledMap& TiledManager::loadTileMap(std::string filepath) {
     if (tiledMaps.count(filepath) > 0)

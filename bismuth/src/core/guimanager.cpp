@@ -8,6 +8,7 @@ using namespace bi;
 
 GuiManager::~GuiManager() {
     destroy();
+    bi::log("GuiManager destroyed");
 }
 
 void GuiManager::init() {
@@ -55,6 +56,8 @@ void GuiManager::endDraw()  {
 }
 
 void GuiManager::destroy() {
+    if (!initialized)
+        return;
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();

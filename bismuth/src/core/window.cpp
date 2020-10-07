@@ -35,9 +35,11 @@ Window::Window(int width, int height, std::string title) {
 }
 
 Window::~Window() {
+}
+
+void Window::destroy() {
     glfwDestroyWindow(window);
     glfwTerminate();
-    bi::log("Window: Destroyed");
 }
 
 void Window::fullscreen(int width, int height) {

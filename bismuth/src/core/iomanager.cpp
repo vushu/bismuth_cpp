@@ -15,7 +15,9 @@ using namespace bi;
 
 
 IOManager::IOManager() { }
-IOManager::~IOManager() { }
+IOManager::~IOManager() {
+    bi::log("IOManager destroyed");
+}
 
 void IOManager::construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string title){
 

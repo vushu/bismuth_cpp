@@ -8,7 +8,9 @@
 
 using namespace bi;
 
-ShapeRenderer::~ShapeRenderer() {}
+ShapeRenderer::~ShapeRenderer() {
+    bi::log("ShapeRenderer destroyed");
+}
 
 void ShapeRenderer::init() {
     this->shader.compile();
