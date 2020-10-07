@@ -35,6 +35,7 @@ Window::Window(int width, int height, std::string title) {
 }
 
 Window::~Window() {
+    //destroy();
 }
 
 void Window::destroy() {

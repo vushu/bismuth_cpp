@@ -29,6 +29,7 @@ namespace bi {
             std::unique_ptr<ShapeRenderer> shaperenderer;
             std::unique_ptr<TiledManager> tiledManager;
             void construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string);
+            void destroy();
             static IOManager& get() {
                 static IOManager instance;
                 return instance;

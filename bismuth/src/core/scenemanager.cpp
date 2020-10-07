@@ -1,8 +1,11 @@
+#include "bismuth/logging.hpp"
 #include <bismuth/scenemanager.hpp>
 using namespace bi;
 
 SceneManager::SceneManager() {}
-SceneManager::~SceneManager() {}
+SceneManager::~SceneManager() {
+    bi::log("Destroying scenemanager");
+}
 
 void SceneManager::addScene(std::string name, std::unique_ptr<Scene> scene) {
     scene->sceneInit();

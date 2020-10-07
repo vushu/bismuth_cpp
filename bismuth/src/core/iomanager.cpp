@@ -19,6 +19,10 @@ IOManager::~IOManager() {
     bi::log("IOManager destroyed");
 }
 
+void IOManager::destroy() {
+    window->destroy();
+}
+
 void IOManager::construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string title){
 
     this->window = std::make_unique<Window>(resolution.x, resolution.y, title);

@@ -110,7 +110,8 @@ void Application::nativeLoop() {
         loop();
         //fixedLoop();
     }
-    getWindow().destroy();
+
+    getIOManager().destroy();
 
 }
 
