@@ -185,6 +185,7 @@ void MyGame::drawStuff2(float dt) {
 
 void MyGame::init() {
 
+    //getGuiManager().init();
     // Scene registration
     //std::unique_ptr<MainMenuScene> mainMenu = std::make_unique<MainMenuScene>();
     //this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
@@ -197,7 +198,6 @@ void MyGame::init() {
 
 
 
-    getGuiManager().init();
     //renderSystem = std::make_unique<RenderSystem>();
     getAudioManager().init();
     getAudioManager().start();

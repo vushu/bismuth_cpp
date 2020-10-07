@@ -11,10 +11,10 @@ namespace bi {
             void endDraw();
             void showFPS();
 
-        private:
-            Window& window;
             void destroy();
             bool initialized = false;
+        private:
+            Window& window;
 
 
     };

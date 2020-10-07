@@ -20,6 +20,9 @@ IOManager::~IOManager() {
 }
 
 void IOManager::destroy() {
+    if (guimanager->initialized){
+        guimanager->destroy();
+    }
     window->destroy();
 }
 

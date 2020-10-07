@@ -7,8 +7,6 @@
 using namespace bi;
 
 GuiManager::~GuiManager() {
-    destroy();
-    bi::log("GuiManager destroyed");
 }
 
 void GuiManager::init() {
