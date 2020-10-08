@@ -7,69 +7,77 @@
 //#include <imgui_impl_glfw.h>
 #define GLFW_INCLUDE_NONE
 //#include <bismuth/textrenderer.hpp>
-#include <bismuth/logging.hpp>
 #include <GLFW/glfw3.h>
 #include <bismuth/application.hpp>
 #include <bismuth/guimanager.hpp>
-#include <memory>
+#include <bismuth/logging.hpp>
 #include <glm/glm.hpp>
+#include <memory>
 #ifdef __EMSCRIPTEN__
 #include <emscripten/emscripten.h>
 #endif
 
-
+//#define NANOVG_GL2_IMPLEMENTATION
 
 using namespace bi;
 
-Application::Application() {
-    construct({800, 600}, {}, "Bismuth");
+Application::Application()
+{
+    construct({ 800, 600 }, {}, "Bismuth");
 }
 
-Application::Application(std::string title) {
-    construct({0,0}, {}, title);
+Application::Application(std::string title)
+{
+    construct({ 0, 0 }, {}, title);
 }
 
-Application::Application(glm::vec4 tileInfo,std::string title) {
-    construct({0,0}, tileInfo, title);
+Application::Application(glm::vec4 tileInfo, std::string title)
+{
+    construct({ 0, 0 }, tileInfo, title);
 }
-Application::Application(int width, int height, std::string title) {
-    construct({width, height}, {}, title);
+Application::Application(int width, int height, std::string title)
+{
+    construct({ width, height }, {}, title);
 }
 
-Application::Application(glm::vec2 resolution, glm::vec4 tileInfo, std::string title) {
+Application::Application(glm::vec2 resolution, glm::vec4 tileInfo, std::string title)
+{
     construct(resolution, tileInfo, title);
 }
 
-void Application::construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string title) {
+void Application::construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string title)
+{
 
     getIOManager().construct(resolution, tileInfo, title);
     this->scenemanager = std::make_unique<SceneManager>();
     this->title = title;
 }
 
-Application::~Application() {
+Application::~Application()
+{
     log("Application: " + this->title + " is now destroyed");
 }
 
-void Application::run() {
+void Application::run()
+{
     log("Running Application: " + title);
     applicationInit();
     init();
 #ifdef __EMSCRIPTEN__
     beginTime = glfwGetTime();
     endTime = glfwGetTime();
-    dt = 1.0f/60.0f;
+    dt = 1.0f / 60.0f;
     //dt = -1.0f;
 #else
     nativeLoop();
 #endif
-
 }
 
 void Application::update(float dt) { }
 void Application::init() { }
 
-void Application::loop() {
+void Application::loop()
+{
 
     getWindow().pollEvents();
 
@@ -85,14 +93,15 @@ void Application::loop() {
     beginTime = endTime;
 }
 
-void Application::fixedLoop() {
+void Application::fixedLoop()
+{
     getWindow().pollEvents();
 
     dt = endTime - beginTime;
     beginTime = endTime;
     accumulated += dt;
 
-    while(accumulated > FRAMES_PER_SEC) {
+    while (accumulated > FRAMES_PER_SEC) {
         update(1.0f);
         this->scenemanager->update(dt);
         accumulated -= FRAMES_PER_SEC;
@@ -102,22 +111,22 @@ void Application::fixedLoop() {
     getWindow().swapBuffers();
 }
 
-void Application::nativeLoop() {
+void Application::nativeLoop()
+{
     beginTime = glfwGetTime();
     endTime = glfwGetTime();
-    dt = 1.0f/60.0f;
+    dt = 1.0f / 60.0f;
     while (!getWindow().windowShouldClose()) {
         loop();
         //fixedLoop();
     }
 
     getIOManager().destroy();
-
 }
 
-
-void Application::initOpenGL() {
-    if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
+void Application::initOpenGL()
+{
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         log("Renderer: Failed to initialize GLAD");
         throw std::runtime_error("Renderer: Failed to initialize GLAD");
     }
@@ -127,10 +136,10 @@ void Application::initOpenGL() {
 
     //stencil buffer
     glEnable(GL_STENCIL_TEST);
-
 }
 
-void Application::applicationInit() {
+void Application::applicationInit()
+{
     log("Application: init");
     getWindow().init();
     initOpenGL();
@@ -139,44 +148,52 @@ void Application::applicationInit() {
     //getGuiManager().init();
 }
 
-Renderer& Application::getRenderer() {
+Renderer& Application::getRenderer()
+{
     return *bi::ioManager().renderer;
 }
 
-ShapeRenderer& Application::getShapeRenderer() {
+ShapeRenderer& Application::getShapeRenderer()
+{
     return *bi::ioManager().shaperenderer;
 }
 
-Window& Application::getWindow() {
+Window& Application::getWindow()
+{
     return *bi::ioManager().window;
 }
 
-Camera& Application::getCamera() {
+Camera& Application::getCamera()
+{
     return *bi::ioManager().camera;
 }
 
-AudioManager& Application::getAudioManager() {
+AudioManager& Application::getAudioManager()
+{
     return *bi::ioManager().audioManager;
 }
 
-AssetManager& Application::getAssetManager() {
+AssetManager& Application::getAssetManager()
+{
     return *bi::ioManager().assetmanager;
 }
 
-GuiManager& Application::getGuiManager() {
+GuiManager& Application::getGuiManager()
+{
     return *bi::ioManager().guimanager;
 }
 
-Framebuffer& Application::getMainFramebuffer() {
+Framebuffer& Application::getMainFramebuffer()
+{
     return *bi::ioManager().mainFramebuffer;
 }
 
-SceneManager& Application::getSceneManager() {
+SceneManager& Application::getSceneManager()
+{
     return *this->scenemanager;
 }
 
-IOManager& Application::getIOManager(){
+IOManager& Application::getIOManager()
+{
     return bi::ioManager();
 }
-
-

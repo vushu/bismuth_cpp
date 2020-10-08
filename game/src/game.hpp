@@ -17,8 +17,8 @@ class MyGame : public bi::Application {
         //MyGame() : bi::Application(1920, 1080, "MyGAME") {}
         //column 30 tiles
         //row 17 tiles
-        //MyGame() : bi::Application({480, 270}, {30,17,16,16}, "MyGAME") {}
-        MyGame() : bi::Application({1600, 900}, {30,17,16,16}, "MyGAME") {}
+        MyGame() : bi::Application({480, 270}, {30,17,16,16}, "MyGAME") {}
+        //MyGame() : bi::Application({1600, 900}, {30,17,16,16}, "MyGAME") {}
         //MyGame() : bi::Application({1920, 1080}, {30,17,16,16}, "MyGAME") {}
         //MyGame() : bi::Application({30,17,16,16}, "MyGAME") {}
         //MyGame() : bi::Application({480, 270}, {}, "MyGAME") {}

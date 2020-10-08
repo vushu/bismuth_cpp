@@ -113,7 +113,7 @@ void FirstScene::update(float dt) {
 
     playersystem.update(dt, player, {0, 0}, smokeTexId);
 
-    getShapeRenderer().drawRect({100,100}, {100, 50}, {1,1,1,1});
+    //getShapeRenderer().drawRect({100,100}, {100, 50}, {1,1,1,1});
     if (showGrid) {
         getTileManager().drawGrid(tilemapPath, {0.4,0.74,1,0.5});
     }
