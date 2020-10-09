@@ -13,7 +13,7 @@ set(ENTT_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/entt")
 set(BOX2D_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/box2d")
 set(GLM_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/glm")
 set(TMX_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/tmxlite")
-#set(NANO_VG_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/nanovg/include")
+set(NANO_VG_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/nanovg/include")
 set(FREE_TYPE_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/freetype2/include")
 
 
@@ -72,7 +72,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
         ${BOX2D_INCLUDE_DIR}
         ${GLM_INCLUDE_DIR}
         ${TMX_INCLUDE_DIR}
-        #${NANO_VG_INCLUDE_DIR}
+        ${NANO_VG_INCLUDE_DIR}
         #${FREE_TYPE_INCLUDE_DIR}
         )
 
@@ -91,7 +91,7 @@ else()
         ${BOX2D_INCLUDE_DIR}
         ${TMX_INCLUDE_DIR}
         ${GLM_INCLUDE_DIR}
-        #${NANO_VG_INCLUDE_DIR}
+        ${NANO_VG_INCLUDE_DIR}
         )
     target_link_libraries(${PROJECT_NAME} bismuth)
 endif()
