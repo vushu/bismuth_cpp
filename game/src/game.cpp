@@ -16,6 +16,7 @@
 #include <box2d/box2d.h>
 #include <imgui/imgui.h>
 #include "glm/gtx/string_cast.hpp"
+#include "main_menu_scene.hpp"
 #include "shapebuilder.hpp"
 #include "playerball.hpp"
 #include "factories.hpp"
@@ -189,6 +190,9 @@ void MyGame::init() {
     // Scene registration
     //std::unique_ptr<MainMenuScene> mainMenu = std::make_unique<MainMenuScene>();
     //this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
+    //
+    std::unique_ptr<MainMenuSceneB> mainMenu = std::make_unique<MainMenuSceneB>();
+    this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
 
     std::unique_ptr<FirstScene> firstScene = std::make_unique<FirstScene>();
     this->getSceneManager().addScene("firstscene", std::move(firstScene));

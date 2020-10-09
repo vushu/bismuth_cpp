@@ -17,8 +17,6 @@
 #include <emscripten/emscripten.h>
 #endif
 
-//#define NANOVG_GL2_IMPLEMENTATION
-
 using namespace bi;
 
 Application::Application()
