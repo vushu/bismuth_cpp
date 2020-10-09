@@ -28,7 +28,8 @@ void SceneManager::update(float dt) {
 
         std::string nextScene = scenes.at(currentScene)->nextScene;
 
-        if (nextScene != "") {
+        if (!nextScene.empty() && scenes.count(nextScene) > 0) {
+            bi::log("nextScene:",nextScene);
             scenes.at(currentScene)->nextScene = "";
             scenes.at(currentScene)->started = false;
             scenes.at(currentScene)->close();

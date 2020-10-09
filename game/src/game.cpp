@@ -191,12 +191,17 @@ void MyGame::init() {
     //std::unique_ptr<MainMenuScene> mainMenu = std::make_unique<MainMenuScene>();
     //this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
     //
-    std::unique_ptr<MainMenuSceneB> mainMenu = std::make_unique<MainMenuSceneB>();
-    this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
+    //std::unique_ptr<MainMenuSceneB> mainMenu = std::make_unique<MainMenuSceneB>();
+    //this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
+
+    //std::unique_ptr<MainMenuSceneB> mainMenu = std::make_unique<MainMenuSceneB>();
+    //this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
 
     std::unique_ptr<FirstScene> firstScene = std::make_unique<FirstScene>();
     this->getSceneManager().addScene("firstscene", std::move(firstScene));
 
+    //std::unique_ptr<MainMenuSceneB> mainMenu = std::make_unique<MainMenuSceneB>();
+    //this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
     //std::unique_ptr<AssetEditor> asseteditor = std::make_unique<AssetEditor>();
     //this->getSceneManager().addScene("asseteditor", std::move(asseteditor));
 

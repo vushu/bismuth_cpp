@@ -337,6 +337,7 @@ float Renderer::getTextureIndex(int texId) {
 }
 
 void Renderer::setDefaultBlend() {
+    glEnable(GL_BLEND);
     glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 }
 void Renderer::setAdditiveBlend() {

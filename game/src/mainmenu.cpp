@@ -15,6 +15,7 @@ void MainMenuScene::start() {
 
 
 void MainMenuScene::init() {
+    getGuiManager().init();
 
     this->mainMenuMusic = std::make_shared<bi::Sound>("resources/assets/audio/mainmenu.wav");
     this->tower = std::make_shared<bi::Sound>("resources/assets/audio/tower.mp3");

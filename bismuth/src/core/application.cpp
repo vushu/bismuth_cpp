@@ -131,6 +131,7 @@ void Application::initOpenGL()
     // alpha blending
     glEnable(GL_BLEND);
     glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+    //glUniformBlockBinding(0,0,1);
 
     //stencil buffer
     glEnable(GL_STENCIL_TEST);
