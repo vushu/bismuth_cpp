@@ -10,16 +10,13 @@
 #include <tmxlite/Map.hpp>
 #include <tmxlite/ObjectGroup.hpp>
 #include <tmxlite/TileLayer.hpp>
-#define NANOVG_GLES3_IMPLEMENTATION
-#include <nanovg/nanovg_gl.h>
-#include <nanovg/nanovg_gl_utils.h>
 
 FirstScene::FirstScene() { }
 
 FirstScene::~FirstScene()
 {
 
-    nvgDeleteGLES3(vg);
+    //nvgDeleteGLES3(vg);
 }
 
 void FirstScene::start()
@@ -28,11 +25,12 @@ void FirstScene::start()
 }
 void FirstScene::init()
 {
-    vg = nvgCreateGLES3(NVG_ANTIALIAS | NVG_STENCIL_STROKES | NVG_DEBUG);
+    //vg = nvgCreateGLES3(NVG_ANTIALIAS | NVG_STENCIL_STROKES | NVG_DEBUG);
+    //vg = nvgCreateGLES3(NVG_ANTIALIAS | NVG_DEBUG);
 
-    if (vg == nullptr) {
-        throw std::runtime_error("Failed to create nanovg instance");
-    }
+    //if (vg == nullptr) {
+    //throw std::runtime_error("Failed to create nanovg instance");
+    //}
 
     bi::log("Successfully created nanovg instance");
 
@@ -94,13 +92,15 @@ void FirstScene::update(float dt)
 
     playersystem.update(dt, player, { 0, 0 }, smokeTexId);
 
+    //getShapeRenderer().beginBatch();
     //getShapeRenderer().drawRect({100,100}, {100, 50}, {1,1,1,1});
+    //getShapeRenderer().endBatch();
+    //getShapeRenderer().flush();
     //if (showGrid) {
     //}
     //this->anim->draw(dt, glm::vec2(10.0f,50.0f), 0);
     //getShapeRenderer().drawLine({0,100}, {100,300}, {1,1,0,1});
     ObjectSystem::update(objects, getRenderer());
-
     getRenderer().endFlushBegin();
 
     //getTileManager().drawGrid(tilemapPath, {0.4,0.74,1,0.5});
@@ -111,19 +111,29 @@ void FirstScene::update(float dt)
     //getRenderer().drawTexture(o.tile.getPosition(), o.tile.getTileSize(), {1,1,1,1}, o.tile.getTextureId(), 0, o.tile.getTexCoords());
     //}
 
+    /*
     float pxRatio = getWindow().maxWidth / getWindow().maxHeight;
     nvgBeginFrame(vg, getWindow().maxWidth, getWindow().maxHeight, pxRatio);
     //nvgSave(vg);
 
     nvgBeginPath(vg);
-    nvgCircle(vg, 100, 100, 40);
 
-    nvgRect(vg, 100, 100, 120, 30);
-    nvgFillColor(vg, nvgRGBA(255, 192, 0, 255));
-    nvgFill(vg);
+    //nvgRect(vg, 100, 100, 100, 50);
+    nvgMoveTo(vg, 100, 10);
+    //nvgLineTo(vg, 100, 30);
+    nvgLineTo(vg, 100, 90);
+
+    //nvgFillColor(vg, nvgRGBA(255,0,1,255));
+    //nvgFill(vg);
+
+    nvgStrokeWidth(vg, 4);
+    nvgStrokeColor(vg, nvgRGBA(255,1,1,255));
+    nvgStroke(vg);
+    //nvgClosePath(vg)
 
     //nvgRestore(vg);
     nvgEndFrame(vg);
+    */
 
     //getGuiManager().beginDraw();
     //getGuiManager().showFPS();
