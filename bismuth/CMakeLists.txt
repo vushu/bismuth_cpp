@@ -108,7 +108,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
     #target_link_libraries(${PROJECT_NAME} "-s USE_FREETYPE=1")
     #target_link_libraries(${PROJECT_NAME} "-s STB_IMAGE=1")
     #target_link_libraries(${PROJECT_NAME} "-lopenal")
-    target_link_libraries(${PROJECT_NAME} glad miniaudio box2d imgui tmxlite nanovg)
+    target_link_libraries(${PROJECT_NAME} glad miniaudio box2d imgui tmxlite)
 
 else()
     #sudo apt-get install libopenal-dev
@@ -117,7 +117,7 @@ else()
     #find_package(freetype REQUIRED)
     #find_package(glm REQUIRED)
     #target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad openal miniaudio)
-    target_link_libraries(${PROJECT_NAME} PRIVATE glfw miniaudio PUBLIC box2d imgui glad tmxlite nanovg)
+    target_link_libraries(${PROJECT_NAME} PRIVATE glfw miniaudio PUBLIC box2d imgui glad tmxlite)
 endif()
 
 add_subdirectory(tests)

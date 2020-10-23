@@ -17,10 +17,10 @@
 #include <emscripten/emscripten.h>
 #endif
 //nanovg
-#include <nanovg/nanovg.h>
-#define NANOVG_GLES3_IMPLEMENTATION
-#include <nanovg/nanovg_gl.h>
-#include <nanovg/nanovg_gl_utils.h>
+//#include <nanovg/nanovg.h>
+//#define NANOVG_GLES3_IMPLEMENTATION
+//#include <nanovg/nanovg_gl.h>
+//#include <nanovg/nanovg_gl_utils.h>
 using namespace bi;
 
 Application::Application()
