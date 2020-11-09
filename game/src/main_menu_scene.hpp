@@ -1,9 +1,5 @@
 #pragma once
 #include <bismuth/scene.hpp>
-#include <nanovg/nanovg.h>
-//#define NANOVG_GLES3_IMPLEMENTATION
-//#include <nanovg/nanovg_gl.h>
-//#include <nanovg/nanovg_gl_utils.h>
 
 
 
@@ -20,5 +16,4 @@ public:
     void close();
 
 private:
-    NVGcontext* vg = nullptr;
 };

@@ -1,4 +1,5 @@
 #pragma once
+#include "bismuth/font.hpp"
 #include "bismuth/sound.hpp"
 #include "playersystem.hpp"
 #include "tmxlite/Tileset.hpp"
@@ -8,7 +9,7 @@
 #include <bismuth/tile.hpp>
 #include <bismuth/tiledmap.hpp>
 #include <vector>
-#include <nanovg/nanovg.h>
+//#include <nanovg/nanovg.h>
 class FirstScene : public bi::Scene {
 public:
     // constructors, asssignment, destructor
@@ -20,7 +21,7 @@ public:
     void start();
 
 private:
-    NVGcontext* vg = nullptr;
+    //NVGcontext* vg = nullptr;
     bi::AnimatedSprite animatedSprite;
     std::unique_ptr<bi::Animation> anim;
     std::shared_ptr<bi::Sound> levelSound;
@@ -34,4 +35,5 @@ private:
     unsigned smokeTexId;
     unsigned drillTexId;
     bool showGrid = false;
+    std::unique_ptr<bi::Font> font;
 };

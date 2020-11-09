@@ -1,20 +1,13 @@
 #include "main_menu_scene.hpp"
 #include "bismuth/keylistener.hpp"
 #include "bismuth/logging.hpp"
-#include <nanovg/nanovg.h>
 #include <stdexcept>
-//#define NANOVG_GLES3_IMPLEMENTATION
-//#include <nanovg/nanovg_gl.h>
-//#include <nanovg/nanovg_gl_utils.h>
-
-//#define NK_IMPLEMENTATION
-//#include <nuklear/nuklear.h>
+#include <imgui/imgui.h>
 
 MainMenuSceneB::MainMenuSceneB() { }
 
 MainMenuSceneB::~MainMenuSceneB()
 {
-    bi::log("deleting nvg instance");
 }
 
 void MainMenuSceneB::update(float dt)
@@ -23,10 +16,9 @@ void MainMenuSceneB::update(float dt)
         nextScene = "firstscene";
     }
     getRenderer().clear();
-    float pxRatio = getWindow().maxWidth / getWindow().maxHeight;
 
-    //getShapeRenderer().drawLine({100,10}, {200,10}, {1,1,0,1});
-    //getShapeRenderer().endFlushBegin();
+    getShapeRenderer().drawLine({100,10}, {200,10}, {1,1,0,1});
+    getShapeRenderer().endFlushBegin();
 
     /*
     nvgBeginFrame(vg, getWindow().maxWidth, getWindow().maxHeight, pxRatio);

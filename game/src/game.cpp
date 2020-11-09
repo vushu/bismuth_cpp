@@ -194,8 +194,8 @@ void MyGame::init() {
     //std::unique_ptr<MainMenuSceneB> mainMenu = std::make_unique<MainMenuSceneB>();
     //this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
 
-    //std::unique_ptr<MainMenuSceneB> mainMenu = std::make_unique<MainMenuSceneB>();
-    //this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
+    std::unique_ptr<MainMenuSceneB> mainMenu = std::make_unique<MainMenuSceneB>();
+    this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
 
     std::unique_ptr<FirstScene> firstScene = std::make_unique<FirstScene>();
     this->getSceneManager().addScene("firstscene", std::move(firstScene));

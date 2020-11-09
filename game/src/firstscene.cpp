@@ -25,14 +25,9 @@ void FirstScene::start()
 }
 void FirstScene::init()
 {
-    //vg = nvgCreateGLES3(NVG_ANTIALIAS | NVG_STENCIL_STROKES | NVG_DEBUG);
-    //vg = nvgCreateGLES3(NVG_ANTIALIAS | NVG_DEBUG);
+    font = std::make_unique<bi::Font>();
+    font->loadFnt("resources/assets/fonts/manjaru.fnt");
 
-    //if (vg == nullptr) {
-    //throw std::runtime_error("Failed to create nanovg instance");
-    //}
-
-    bi::log("Successfully created nanovg instance");
 
     this->levelSound = std::make_shared<bi::Sound>("resources/assets/audio/Soliloquy.mp3");
     this->smokeTexId = getAssetManager().loadTexture(smokeImage);
@@ -101,10 +96,14 @@ void FirstScene::update(float dt)
     //this->anim->draw(dt, glm::vec2(10.0f,50.0f), 0);
     //getShapeRenderer().drawLine({0,100}, {100,300}, {1,1,0,1});
     ObjectSystem::update(objects, getRenderer());
+    getRenderer().drawText("hej med dig", { 0, 15 }, *this->font, {1,1,0,1}, 0.2f);
+
+
     getRenderer().endFlushBegin();
 
-    //getTileManager().drawGrid(tilemapPath, {0.4,0.74,1,0.5});
-    //getShapeRenderer().endFlushBegin();
+    getTileManager().drawGrid(tilemapPath, { 0.4, 0.74, 1, 0.5 });
+
+    getShapeRenderer().endFlushBegin();
 
     //for (bi::TiledObject o : objects) {
     //getShapeRenderer().drawRect(o.tile.getPosition(), o.tile.getTileSize(), {1,0,1,1}, 0);
@@ -134,6 +133,10 @@ void FirstScene::update(float dt)
     //nvgRestore(vg);
     nvgEndFrame(vg);
     */
+
+    //font = std::make_unique<Font>(getAssetManager());
+    //font->loadFnt("resources/assets/fonts/manjaru.fnt");
+    //textureId = getAssetManager().loadTexture("resources/assets/images/awesomeface.png");
 
     //getGuiManager().beginDraw();
     //getGuiManager().showFPS();
