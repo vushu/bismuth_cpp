@@ -12,6 +12,7 @@ GuiManager::~GuiManager() {
 void GuiManager::init() {
     if (initialized) { return; }
     const char* glslVersion = "#version 300 es";
+    //const char* glslVersion = "#version 130";
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();

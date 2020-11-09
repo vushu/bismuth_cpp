@@ -25,6 +25,7 @@ void FirstScene::start()
 }
 void FirstScene::init()
 {
+    getGuiManager().init();
     font = std::make_unique<bi::Font>();
     font->loadFnt("resources/assets/fonts/manjaru.fnt");
 
@@ -98,12 +99,16 @@ void FirstScene::update(float dt)
     ObjectSystem::update(objects, getRenderer());
     getRenderer().drawText("hej med dig", { 0, 15 }, *this->font, {1,1,0,1}, 0.2f);
 
+    getGuiManager().beginDraw();
+    getGuiManager().showFPS();
+    getGuiManager().endDraw();
+
 
     getRenderer().endFlushBegin();
 
-    getTileManager().drawGrid(tilemapPath, { 0.4, 0.74, 1, 0.5 });
+    //getTileManager().drawGrid(tilemapPath, { 0.4, 0.74, 1, 0.5 });
 
-    getShapeRenderer().endFlushBegin();
+    //getShapeRenderer().endFlushBegin();
 
     //for (bi::TiledObject o : objects) {
     //getShapeRenderer().drawRect(o.tile.getPosition(), o.tile.getTileSize(), {1,0,1,1}, 0);
