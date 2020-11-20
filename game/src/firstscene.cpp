@@ -29,7 +29,6 @@ void FirstScene::init()
     font = std::make_unique<bi::Font>();
     font->loadFnt("resources/assets/fonts/manjaru.fnt");
 
-
     this->levelSound = std::make_shared<bi::Sound>("resources/assets/audio/Soliloquy.mp3");
     this->smokeTexId = getAssetManager().loadTexture(smokeImage);
     this->drillTexId = getAssetManager().loadTexture(drillPath);
@@ -92,23 +91,21 @@ void FirstScene::update(float dt)
     //getShapeRenderer().drawRect({100,100}, {100, 50}, {1,1,1,1});
     //getShapeRenderer().endBatch();
     //getShapeRenderer().flush();
-    //if (showGrid) {
-    //}
     //this->anim->draw(dt, glm::vec2(10.0f,50.0f), 0);
     //getShapeRenderer().drawLine({0,100}, {100,300}, {1,1,0,1});
     ObjectSystem::update(objects, getRenderer());
-    getRenderer().drawText("hej med dig", { 0, 15 }, *this->font, {1,1,0,1}, 0.2f);
+    getRenderer().drawText("hej med dig", { 0, 15 }, *this->font, { 1, 1, 0, 1 }, 0.2f);
 
-    getGuiManager().beginDraw();
-    getGuiManager().showFPS();
-    getGuiManager().endDraw();
-
+    //getGuiManager().beginDraw();
+    //getGuiManager().showFPS();
+    //getGuiManager().endDraw();
 
     getRenderer().endFlushBegin();
 
-    //getTileManager().drawGrid(tilemapPath, { 0.4, 0.74, 1, 0.5 });
-
-    //getShapeRenderer().endFlushBegin();
+    if (showGrid) {
+        getTileManager().drawGrid(tilemapPath, { 0.4, 0.74, 1, 0.5 });
+        getShapeRenderer().endFlushBegin();
+    }
 
     //for (bi::TiledObject o : objects) {
     //getShapeRenderer().drawRect(o.tile.getPosition(), o.tile.getTileSize(), {1,0,1,1}, 0);
