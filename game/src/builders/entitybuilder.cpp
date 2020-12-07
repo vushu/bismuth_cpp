@@ -1,7 +1,7 @@
 #include "entitybuilder.hpp"
 #include <box2d/box2d.h>
 #include "box2d/b2_shape.h"
-#include "components.hpp"
+#include "../components/components.hpp"
 #include <entt/entt.hpp>
 #include <glm/glm.hpp>
 #include <bismuth/logging.hpp>

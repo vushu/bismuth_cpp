@@ -1,7 +1,7 @@
 #include "firstscene.hpp"
 #include "bismuth/keylistener.hpp"
-#include "objectsystem.hpp"
-#include "playersystem.hpp"
+#include "../systems/objectsystem.hpp"
+#include "../systems/playersystem.hpp"
 #include <bismuth/animation.hpp>
 #include <bismuth/logging.hpp>
 #include <cmath>

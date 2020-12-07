@@ -1,6 +1,6 @@
 #pragma once
 #include <entt/entt.hpp>
-#include "components.hpp"
+#include "../components/components.hpp"
 #include <bismuth/bismuth.hpp>
 
 namespace RectRenderSystem {

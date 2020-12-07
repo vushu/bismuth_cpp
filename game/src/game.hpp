@@ -1,14 +1,14 @@
 #pragma once
 #include <bismuth/bismuth.hpp>
-#include "shapebuilder.hpp"
+#include "./builders/shapebuilder.hpp"
 #include <array>
 #include <entt/entt.hpp>
 #include <box2d/box2d.h>
 #include <glm/glm.hpp>
 #include <memory>
 #include <entt/entt.hpp>
-#include "rendersystem.hpp"
-#include "playerball.hpp"
+#include "./systems/rendersystem.hpp"
+#include "./systems/playerball.hpp"
 
 class MyGame : public bi::Application {
     public:

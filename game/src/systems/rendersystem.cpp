@@ -1,13 +1,13 @@
 #include "rendersystem.hpp"
 #include <bismuth/logging.hpp>
 #include <bismuth/physicsmanager.hpp>
-#include "components.hpp"
+#include "../components/components.hpp"
 #include <glm/gtx/string_cast.hpp>
 #include <glm/ext/scalar_constants.hpp>
 #include <glm/glm.hpp>
 #include "glm/fwd.hpp"
 #include "playerball.hpp"
-#include "shapebuilder.hpp"
+#include "../builders/shapebuilder.hpp"
 #include <entt/entt.hpp>
 
 RenderSystem::RenderSystem() { }

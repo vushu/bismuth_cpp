@@ -104,7 +104,7 @@ void MainMenuScene::update(float dt) {
     //getRenderer().endFlushBegin();
     //getShapeRenderer().flush();
 
-    drawMenu();
+    //drawMenu();
 
 }
 

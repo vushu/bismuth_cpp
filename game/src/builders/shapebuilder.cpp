@@ -1,7 +1,7 @@
 #include "shapebuilder.hpp"
 #include "bismuth/physicsmanager.hpp"
 #include <entt/entt.hpp>
-#include "components.hpp"
+#include "../components/components.hpp"
 
 ShapeBuilder::ShapeBuilder() {}
 ShapeBuilder::~ShapeBuilder() {}

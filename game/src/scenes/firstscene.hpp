@@ -1,7 +1,7 @@
 #pragma once
 #include "bismuth/font.hpp"
 #include "bismuth/sound.hpp"
-#include "playersystem.hpp"
+#include "../systems/playersystem.hpp"
 #include "tmxlite/Tileset.hpp"
 #include <bismuth/animatedsprite.hpp>
 #include <bismuth/animation.hpp>

@@ -1,4 +1,4 @@
-#include "components.hpp"
+#include "../components/components.hpp"
 #include "factories.hpp"
 
 void Factories::createRect(entt::registry& registry, glm::vec2 position, glm::vec2 size) {

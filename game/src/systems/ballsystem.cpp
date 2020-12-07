@@ -1,5 +1,5 @@
 #include "ballsystem.hpp"
-#include "components.hpp"
+#include "../components/components.hpp"
 #include "playerball.hpp"
 #include <glm/glm.hpp>
 

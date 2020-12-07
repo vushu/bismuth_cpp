@@ -15,10 +15,13 @@ void MainMenuSceneB::update(float dt)
     if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_RIGHT)) {
         nextScene = "firstscene";
     }
-    getRenderer().clear();
+    //getRenderer().clear();
 
-    getShapeRenderer().drawLine({100,10}, {200,10}, {1,1,0,1});
-    getShapeRenderer().endFlushBegin();
+    //getGuiManager().beginDraw();
+    //getGuiManager().showFPS();
+    //getGuiManager().endDraw();
+    //getShapeRenderer().drawLine({100,10}, {200,10}, {1,1,0,1});
+    //getShapeRenderer().endFlushBegin();
 
     /*
     nvgBeginFrame(vg, getWindow().maxWidth, getWindow().maxHeight, pxRatio);

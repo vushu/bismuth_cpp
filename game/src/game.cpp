@@ -3,25 +3,25 @@
 #include "bismuth/keylistener.hpp"
 #include "bismuth/logging.hpp"
 #include "bismuth/mouselistener.hpp"
-#include "components.hpp"
+#include "./components/components.hpp"
 #include <bismuth/bismuth.hpp>
 #include <cstdio>
 #include <entt/entt.hpp>
 #include <memory>
 #include <string>
-#include "entitybuilder.hpp"
-#include "firstscene.hpp"
 #include "glm/ext/matrix_transform.hpp"
 #include "glm/ext/scalar_constants.hpp"
+#include "./builders/entitybuilder.hpp"
+#include "./scenes/firstscene.hpp"
 #include <box2d/box2d.h>
 #include <imgui/imgui.h>
 #include "glm/gtx/string_cast.hpp"
-#include "main_menu_scene.hpp"
-#include "shapebuilder.hpp"
-#include "playerball.hpp"
-#include "factories.hpp"
-#include "rectrendersystem.hpp"
-#include "mainmenu.hpp"
+#include "./scenes/main_menu_scene.hpp"
+#include "./builders/shapebuilder.hpp"
+#include "./systems/playerball.hpp"
+#include "./factories/factories.hpp"
+#include "./systems/rectrendersystem.hpp"
+#include "./scenes/mainmenu.hpp"
 #include <map>
 using namespace bi;
 
@@ -186,7 +186,7 @@ void MyGame::drawStuff2(float dt) {
 
 void MyGame::init() {
 
-    //getGuiManager().init();
+    getGuiManager().init();
     // Scene registration
     //std::unique_ptr<MainMenuScene> mainMenu = std::make_unique<MainMenuScene>();
     //this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
