@@ -1,5 +1,7 @@
 #pragma once
 #include <bismuth/scene.hpp>
+#include <bismuth/font.hpp>
+#include <memory>
 
 
 
@@ -16,4 +18,5 @@ public:
     void close();
 
 private:
+    std::unique_ptr<bi::Font> font;
 };

@@ -15,13 +15,14 @@ void MainMenuSceneB::update(float dt)
     if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_RIGHT)) {
         nextScene = "firstscene";
     }
-    //getRenderer().clear();
+    getRenderer().clear();
 
     //getGuiManager().beginDraw();
     //getGuiManager().showFPS();
     //getGuiManager().endDraw();
     //getShapeRenderer().drawLine({100,10}, {200,10}, {1,1,0,1});
-    //getShapeRenderer().endFlushBegin();
+    getRenderer().drawText("START GAME!", { 0, 15 }, *this->font, { 1, 1, 0, 1 }, 0.2f);
+    getRenderer().endFlushBegin();
 
     /*
     nvgBeginFrame(vg, getWindow().maxWidth, getWindow().maxHeight, pxRatio);
@@ -41,6 +42,9 @@ void MainMenuSceneB::update(float dt)
 
 void MainMenuSceneB::init()
 {
+
+    font = std::make_unique<bi::Font>();
+    font->loadFnt("resources/assets/fonts/manjaru.fnt");
     //vg = nvgCreateGLES3(NVG_ANTIALIAS | NVG_STENCIL_STROKES | NVG_DEBUG);
 
     //if (vg == nullptr) {

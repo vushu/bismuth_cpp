@@ -147,7 +147,7 @@ void Application::applicationInit()
     getWindow().init();
     initOpenGL();
     getRenderer().init();
-    getShapeRenderer().init();
+    //getShapeRenderer().init();
     //getGuiManager().init();
 }
 

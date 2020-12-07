@@ -27,7 +27,7 @@ void MainMenuScene::init() {
     getAudioManager().addSound(tower);
 
 
-    //textureId = getAssetManager().loadTexture("resources/assets/images/awesomeface.png");
+    textureId = getAssetManager().loadTexture("resources/assets/images/awesomeface.png");
 }
 
 void MainMenuScene::drawMenu() {
@@ -78,7 +78,6 @@ void MainMenuScene::setStyle() {
 void MainMenuScene::update(float dt) {
 
 
-    //getRenderer().clear(0.5,0.5,0.5,1);
     getRenderer().clear();
 
     if (bi::keyInput().isKeyPressed(GLFW_KEY_P)) {
@@ -104,7 +103,7 @@ void MainMenuScene::update(float dt) {
     //getRenderer().endFlushBegin();
     //getShapeRenderer().flush();
 
-    //drawMenu();
+    drawMenu();
 
 }
 

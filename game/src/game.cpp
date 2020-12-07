@@ -186,16 +186,16 @@ void MyGame::drawStuff2(float dt) {
 
 void MyGame::init() {
 
-    getGuiManager().init();
+    //getGuiManager().init();
     // Scene registration
     //std::unique_ptr<MainMenuScene> mainMenu = std::make_unique<MainMenuScene>();
     //this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
     //
-    //std::unique_ptr<MainMenuSceneB> mainMenu = std::make_unique<MainMenuSceneB>();
-    //this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
-
     std::unique_ptr<MainMenuSceneB> mainMenu = std::make_unique<MainMenuSceneB>();
     this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
+
+    //std::unique_ptr<MainMenuSceneB> mainMenu = std::make_unique<MainMenuSceneB>();
+    //this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
 
     std::unique_ptr<FirstScene> firstScene = std::make_unique<FirstScene>();
     this->getSceneManager().addScene("firstscene", std::move(firstScene));
