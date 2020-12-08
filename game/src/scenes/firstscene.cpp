@@ -96,9 +96,9 @@ void FirstScene::update(float dt)
     ObjectSystem::update(objects, getRenderer());
     getRenderer().drawText("hej med dig", { 0, 15 }, *this->font, { 1, 1, 0, 1 }, 0.2f);
 
-    //getGuiManager().beginDraw();
-    //getGuiManager().showFPS();
-    //getGuiManager().endDraw();
+    getGuiManager().beginDraw();
+    getGuiManager().showFPS();
+    getGuiManager().endDraw();
 
     getRenderer().endFlushBegin();
 
