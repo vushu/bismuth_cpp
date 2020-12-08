@@ -188,11 +188,11 @@ void MyGame::init() {
 
     //getGuiManager().init();
     // Scene registration
-    //std::unique_ptr<MainMenuScene> mainMenu = std::make_unique<MainMenuScene>();
-    //this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
-    //
-    std::unique_ptr<MainMenuSceneB> mainMenu = std::make_unique<MainMenuSceneB>();
+    std::unique_ptr<MainMenuScene> mainMenu = std::make_unique<MainMenuScene>();
     this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
+    //
+    //std::unique_ptr<MainMenuSceneB> mainMenu = std::make_unique<MainMenuSceneB>();
+    //this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
 
     //std::unique_ptr<MainMenuSceneB> mainMenu = std::make_unique<MainMenuSceneB>();
     //this->getSceneManager().addScene("mainmenu", std::move(mainMenu));
