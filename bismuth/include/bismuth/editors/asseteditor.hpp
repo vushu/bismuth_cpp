@@ -14,6 +14,7 @@ namespace bi {
 
         private:
 
+            void drawGrid();
             Texture* currentTexture = nullptr;
             float scale = 6.0f;
             float maxScale = 10.0f;

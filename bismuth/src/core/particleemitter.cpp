@@ -2,25 +2,30 @@
 #include <bismuth/particleemitter.hpp>
 #include <bismuth/renderer.hpp>
 using namespace bi;
-ParticleEmitter::~ParticleEmitter() {
+
+ParticleEmitter::~ParticleEmitter()
+{
     bi::log("ParticleEmitter destroyed");
 }
 
-void ParticleEmitter::init(float lifeTime) {
+void ParticleEmitter::init(float lifeTime)
+{
     this->life = lifeTime;
-    for (unsigned int i = 0; i < nr_particles; ++i){
-        Particle p (0.0f);
+    for (unsigned int i = 0; i < nr_particles; ++i) {
+        Particle p(0.0f);
         particles.push_back(std::move(p));
     }
 }
 
-void ParticleEmitter::emit(float dt, glm::vec2 position, glm::vec2 velocity, glm::vec4 color, int textureId, int tileNumber, glm::vec2 tilesize, glm::vec2 particleSize, bool useAddiveBlend) {
+void ParticleEmitter::emit(float dt, glm::vec2 position, glm::vec2 velocity, glm::vec2 offset, glm::vec4 color, int textureId, int tileNumber, glm::vec2 tilesize, glm::vec2 particleSize, bool useAddiveBlend)
+{
     accDt += dt;
     this->position = position;
     this->velocity = velocity;
+    this->offset = offset;
 
     if (useAddiveBlend)
-       ioManager().renderer->setAdditiveBlend();
+        ioManager().renderer->setAdditiveBlend();
 
     auto texCoord = bi::ioManager().assetmanager->getTexture(textureId).getTexCoords(tileNumber, tilesize);
 
@@ -30,7 +35,7 @@ void ParticleEmitter::emit(float dt, glm::vec2 position, glm::vec2 velocity, glm
         }
     }
 
-    if (useAddiveBlend){
+    if (useAddiveBlend) {
         ioManager().renderer->endFlushBegin();
         ioManager().renderer->setDefaultBlend();
     }
@@ -45,10 +50,11 @@ void ParticleEmitter::emit(float dt, glm::vec2 position, glm::vec2 velocity, glm
     }
 }
 
-unsigned int ParticleEmitter::firstUnusedParticle() {
+unsigned int ParticleEmitter::firstUnusedParticle()
+{
     // search from last used particle, this will usually return almost instantly
     for (unsigned int i = lastUsedParticle; i < nr_particles; ++i) {
-        if (particles[i].life <= 0.0f){
+        if (particles[i].life <= 0.0f) {
             lastUsedParticle = i;
             return i;
         }
@@ -65,42 +71,38 @@ unsigned int ParticleEmitter::firstUnusedParticle() {
     return 0;
 }
 
-void ParticleEmitter::particleLifeCheck(float dt) {
-    unsigned int nr_new_particles = 2;
+void ParticleEmitter::particleLifeCheck(float dt)
+{
+    unsigned int nr_new_particles = 1;
     // add new particles
-    for (unsigned int i = 0; i < nr_new_particles; ++i)
-    {
+    for (unsigned int i = 0; i < nr_new_particles; ++i) {
         int unusedParticle = firstUnusedParticle();
-        Particle& particle =  particles[unusedParticle];
+        Particle& particle = particles[unusedParticle];
         respawnParticle(particle);
     }
     // update all particles
-    for (unsigned int i = 0; i < nr_particles; ++i)
-    {
-        Particle &p = particles[i];
-        p.life -= dt; // reduce life
-        if (p.life > 0.0f)
-        {   // particle is alive, thus update
+    for (unsigned int i = 0; i < nr_particles; ++i) {
+        Particle& p = particles[i];
+        p.life -= dt;        // reduce life
+        if (p.life > 0.0f) { // particle is alive, thus update
             p.position -= p.velocity * dt;
             p.color.a -= dt * 2.5f;
         }
     }
 }
 
-void ParticleEmitter::respawnParticle(Particle& particle) {
-    //float random = ((rand() % 100) - 50) / 10.0f;
-    float random = ((rand() % 100) - 100) / 10.0f; // spread
-    float rColor = 0.5f + ((rand() % 100) / 10.0f);
-    particle.position = position + random;
-    //particle.color = glm::vec4(1, 1, 1, 1.0f);
+void ParticleEmitter::respawnParticle(Particle& particle)
+{
+    float randomX = ((rand() % 100) - offset.x) / particle.spreadValue; // spread
+    float randomY = ((rand() % 100) - offset.y) / particle.spreadValue; // spread
+    float rColor = 0.5f + ((rand() % 100) / 1.0f);
+    particle.position = { position.x + randomX, position.y + randomY };
     particle.color = glm::vec4(rColor, rColor, rColor, 1.0f);
     particle.life = life;
     particle.velocity = velocity;
 }
 
-void ParticleEmitter::setLife(float lifeTime) {
+void ParticleEmitter::setLife(float lifeTime)
+{
     this->life = lifeTime;
 }
-
-
-

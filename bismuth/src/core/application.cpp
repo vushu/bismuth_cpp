@@ -49,7 +49,6 @@ Application::Application(glm::vec2 resolution, glm::vec4 tileInfo, std::string t
 
 void Application::construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string title)
 {
-
     getIOManager().construct(resolution, tileInfo, title);
     this->scenemanager = std::make_unique<SceneManager>();
     this->title = title;
