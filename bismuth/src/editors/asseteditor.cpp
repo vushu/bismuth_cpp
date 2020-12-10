@@ -10,6 +10,10 @@ AssetEditor::~AssetEditor() { }
 void AssetEditor::update(float dt)
 {
     getRenderer().clear(0, 0, 0, 0);
+    getShapeRenderer().beginBatch();
+    drawGrid();
+    getShapeRenderer().endFlushBegin();
+
     getGuiManager().beginDraw();
 
     ImGui::SetNextWindowSize(ImVec2(400, getWindow().height - 10));
@@ -25,7 +29,8 @@ void AssetEditor::update(float dt)
 
     if (currentTexture) {
 
-        ImGui::SetNextWindowPos(ImVec2(10, 10));
+
+        ImGui::SetNextWindowPos(ImVec2(tileScreenDimension.w * scaleFactor + 5, 55));
         ImGui::SetNextWindowSize(ImVec2(currentTexture->width * scale + 50, currentTexture->height * scale + 50));
         ImGui::Begin(currentTexture->filepath.c_str(), &open, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_AlwaysAutoResize);
 
@@ -48,6 +53,7 @@ void AssetEditor::update(float dt)
         ImGui::End();
     }
 
+
     if (bi::mouseInput().scrollY == 1.0f) {
         bi::mouseInput().scrollY = 0.0f;
         scale++;
@@ -65,13 +71,15 @@ void AssetEditor::update(float dt)
     }
     getGuiManager().endDraw();
 
-    getShapeRenderer().beginBatch();
-    drawGrid();
-    getShapeRenderer().endFlushBegin();
+
+
 }
 
 void AssetEditor::init()
 {
+    scaleFactor = bi::ioManager().window->maxWidth / bi::ioManager().window->width;
+    scale = scaleFactor;
+    tileScreenDimension = bi::ioManager().tiledManager->tileScreenDimension;
     getGuiManager().init();
 }
 
@@ -84,11 +92,11 @@ void AssetEditor::drawGrid()
     float tileH = bi::ioManager().tiledManager->tileScreenDimension.w;
 
     for (int i = 0; i <= tileCountX; i++) {
-        bi::ioManager().shaperenderer->drawLine({ i * tileW, 0 }, { i * tileW, tileCountY * tileW }, {1,1,0, 0.5f});
+        bi::ioManager().shaperenderer->drawLine({ i * tileW, 0 }, { i * tileW, tileCountY * tileW }, {1,0.5f,0, 0.5f});
     }
 
     for (int i = 0; i <= tileCountY; i++) {
-        bi::ioManager().shaperenderer->drawLine({ 0, i * tileH }, { tileCountY * tileH, i * tileH }, {1,1,0, 0.5f});
+        bi::ioManager().shaperenderer->drawLine({ 0, i * tileH }, { tileCountX * tileH, i * tileH }, {1,0.5f,0, 0.5f});
     }
 }
 

@@ -18,6 +18,8 @@ namespace bi {
             Texture* currentTexture = nullptr;
             float scale = 6.0f;
             float maxScale = 10.0f;
+            float scaleFactor = 1.0f;
+            glm::vec4 tileScreenDimension;
             bool open = false;
 
     };
