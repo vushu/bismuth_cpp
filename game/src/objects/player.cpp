@@ -3,17 +3,39 @@
 #include <bismuth/iomanager.hpp>
 using namespace bi;
 
-Player::Player() {}
+Player::Player() { }
 
-Player::~Player() {}
+Player::~Player() { }
 
-void Player::init() {
-
+void Player::init()
+{
     this->drillTexId = bi::ioManager().assetmanager->loadTexture(drillPath);
     createAnimatedSprite();
 }
 
-void Player::createAnimatedSprite() {
+void Player::playAnimationRight(float dt, glm::vec2 position)
+{
+    animatedSprite.play("right", dt, position);
+}
+
+void Player::playAnimationLeft(float dt, glm::vec2 position)
+{
+    animatedSprite.play("left", dt, position);
+}
+
+void Player::playAnimationUp(float dt, glm::vec2 position)
+{
+    animatedSprite.play("up", dt, position);
+}
+
+void Player::playAnimationDown(float dt, glm::vec2 position)
+{
+    animatedSprite.play("down", dt, position);
+}
+
+
+void Player::createAnimatedSprite()
+{
 
     std::vector<int> tileNumbers;
 
@@ -22,7 +44,7 @@ void Player::createAnimatedSprite() {
     tileNumbers.push_back(2);
     tileNumbers.push_back(3);
 
-    animatedSprite.addAnimation("right", this->drillTexId, tileNumbers, {16.0f,16.0f}, {1,1,1,1}, 0.05f);
+    animatedSprite.addAnimation("right", this->drillTexId, tileNumbers, { 16.0f, 16.0f }, { 1, 1, 1, 1 }, 0.05f);
 
     tileNumbers.clear();
 
@@ -31,7 +53,7 @@ void Player::createAnimatedSprite() {
     tileNumbers.push_back(21);
     tileNumbers.push_back(22);
 
-    animatedSprite.addAnimation("left", this->drillTexId, tileNumbers, {16.0f,16.0f}, {1,1,1,1}, 0.05f);
+    animatedSprite.addAnimation("left", this->drillTexId, tileNumbers, { 16.0f, 16.0f }, { 1, 1, 1, 1 }, 0.05f);
 
     tileNumbers.clear();
 
@@ -40,7 +62,7 @@ void Player::createAnimatedSprite() {
     tileNumbers.push_back(8);
     tileNumbers.push_back(9);
 
-    animatedSprite.addAnimation("up", this->drillTexId, tileNumbers, {16.0f,16.0f}, {1,1,1,1}, 0.05f);
+    animatedSprite.addAnimation("up", this->drillTexId, tileNumbers, { 16.0f, 16.0f }, { 1, 1, 1, 1 }, 0.05f);
 
     tileNumbers.clear();
 
@@ -49,10 +71,5 @@ void Player::createAnimatedSprite() {
     tileNumbers.push_back(14);
     tileNumbers.push_back(15);
 
-    animatedSprite.addAnimation("down", this->drillTexId, tileNumbers, {16.0f,16.0f}, {1,1,1,1}, 0.05f);
-
+    animatedSprite.addAnimation("down", this->drillTexId, tileNumbers, { 16.0f, 16.0f }, { 1, 1, 1, 1 }, 0.05f);
 }
-
-
-
-
