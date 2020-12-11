@@ -45,7 +45,7 @@ void MainMenuScene::drawMenu() {
         }
 
         if (ImGui::Button("Fullscreen", ImVec2(buttonWidth, buttonHeight))) {
-            getWindow().fullscreen(getWindow().width, getWindow().height);
+            getWindow().fullscreen(getWindow().maxWidth, getWindow().maxHeight);
         }
         if (ImGui::Button("Exit", ImVec2(buttonWidth, buttonHeight))) {
             bi::log("exit clicked ");

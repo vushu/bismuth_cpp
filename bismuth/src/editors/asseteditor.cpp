@@ -2,14 +2,16 @@
 #include "bismuth/mouselistener.hpp"
 #include <bismuth/editors/asseteditor.hpp>
 #include <imgui/imgui.h>
+
 using namespace bi;
 
-AssetEditor::AssetEditor() { }
-AssetEditor::~AssetEditor() { }
+AssetEditor::AssetEditor() {}
 
-void AssetEditor::update(float dt)
-{
+AssetEditor::~AssetEditor() {}
+
+void AssetEditor::update(float dt) {
     getRenderer().clear(0, 0, 0, 0);
+
     getShapeRenderer().beginBatch();
     drawGrid();
     getShapeRenderer().endFlushBegin();
@@ -20,7 +22,7 @@ void AssetEditor::update(float dt)
     ImGui::SetNextWindowPos(ImVec2(getWindow().width - 405, 10));
     ImGui::Begin("Assets loaded");
 
-    for (const auto& tex : bi::ioManager().assetmanager->getTextures()) {
+    for (const auto &tex : bi::ioManager().assetmanager->getTextures()) {
         if (ImGui::Button((std::to_string(tex->textureId) + ":" + tex->filepath).c_str())) {
             currentTexture = tex;
         }
@@ -28,11 +30,10 @@ void AssetEditor::update(float dt)
     ImGui::End();
 
     if (currentTexture) {
-
-
-        ImGui::SetNextWindowPos(ImVec2(tileScreenDimension.w * scaleFactor + 5, 55));
-        ImGui::SetNextWindowSize(ImVec2(currentTexture->width * scale + 50, currentTexture->height * scale + 50));
-        ImGui::Begin(currentTexture->filepath.c_str(), &open, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_AlwaysAutoResize);
+        ImGui::SetNextWindowPos(ImVec2(30, 30));
+//        ImGui::SetNextWindowSize(ImVec2(currentTexture->width, currentTexture->height));
+        ImGui::Begin("Asset Specs", &open,
+                     ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_AlwaysAutoResize);
 
         if (ImGui::Button("Close")) {
             currentTexture = nullptr;
@@ -41,16 +42,24 @@ void AssetEditor::update(float dt)
         ImGui::SameLine();
 
         ImGui::SliderFloat("Scale", &scale, 1, maxScale);
-        if (currentTexture) {
+        ImGui::End();
 
-            std::string size = "Size: " + std::to_string(currentTexture->width) + "x" + std::to_string(currentTexture->height);
+        if (currentTexture) {
+            ImGui::SetNextWindowPos(ImVec2(30, 70));
+            ImGui::SetNextWindowSize(ImVec2(currentTexture->width * scale + 50, currentTexture->height * scale + 50));
+            ImGui::Begin(currentTexture->filepath.c_str(), &open,
+                         ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar |
+                         ImGuiWindowFlags_AlwaysAutoResize);
+
+            std::string size =
+                    "Size: " + std::to_string(currentTexture->width) + "x" + std::to_string(currentTexture->height);
             ImGui::Text("%s", size.c_str());
+            ImGui::Image((void *) (currentTexture->textureId),
+                         ImVec2(currentTexture->width * scale, currentTexture->height * scale));
+            ImGui::End();
         }
 
-        if (currentTexture != nullptr)
-            ImGui::Image((void*)(currentTexture->textureId), ImVec2(currentTexture->width * scale, currentTexture->height * scale));
 
-        ImGui::End();
     }
 
 
@@ -72,19 +81,16 @@ void AssetEditor::update(float dt)
     getGuiManager().endDraw();
 
 
-
 }
 
-void AssetEditor::init()
-{
+void AssetEditor::init() {
     scaleFactor = bi::ioManager().window->maxWidth / bi::ioManager().window->width;
     scale = scaleFactor;
     tileScreenDimension = bi::ioManager().tiledManager->tileScreenDimension;
     getGuiManager().init();
 }
 
-void AssetEditor::drawGrid()
-{
+void AssetEditor::drawGrid() {
     float tileCountX = bi::ioManager().tiledManager->tileScreenDimension.x;
     float tileW = bi::ioManager().tiledManager->tileScreenDimension.z;
 
@@ -92,18 +98,16 @@ void AssetEditor::drawGrid()
     float tileH = bi::ioManager().tiledManager->tileScreenDimension.w;
 
     for (int i = 0; i <= tileCountX; i++) {
-        bi::ioManager().shaperenderer->drawLine({ i * tileW, 0 }, { i * tileW, tileCountY * tileW }, {1,0.5f,0, 0.5f});
+        bi::ioManager().shaperenderer->drawLine({i * tileW, 0}, {i * tileW, tileCountY * tileW}, {0.4f, 0.5f, 0.6f, 0.3f});
     }
 
     for (int i = 0; i <= tileCountY; i++) {
-        bi::ioManager().shaperenderer->drawLine({ 0, i * tileH }, { tileCountX * tileH, i * tileH }, {1,0.5f,0, 0.5f});
+        bi::ioManager().shaperenderer->drawLine({0, i * tileH}, {tileCountX * tileH, i * tileH}, {0.4f, 0.5f, 0.6f, 0.3f});
     }
 }
 
-void AssetEditor::start()
-{
+void AssetEditor::start() {
 }
 
-void AssetEditor::close()
-{
+void AssetEditor::close() {
 }
