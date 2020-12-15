@@ -7,16 +7,19 @@
 #include "bismuth/tiledmap.hpp"
 #include "glm/gtc/constants.hpp"
 #include <queue>
+#include "../objects/drill.hpp"
+#include "../particles/dust_trail.hpp"
 class PlayerSystem {
 
     public:
         PlayerSystem();
         ~PlayerSystem();
-        void update(float dt, bi::TiledObject player, glm::vec2 mouse, int smokeTexId);
+        void update(float dt, bi::TiledObject player, glm::vec2 mouse);
     private:
-
         glm::vec2 zero {0,0};
         float accDt;
+        Drill drill;
+        std::string currentAnimation;
 
         glm::vec2 newPos{0,0};
         glm::vec2 direction{0,0};
@@ -32,6 +35,7 @@ class PlayerSystem {
         bool keyDown = false;
         float speed = 90;
         bool moving = false;
+        glm::vec2 particleOffset {0,0};
 
         glm::vec2 getCurrentTile(glm::vec2 dir);
         glm::vec2 setNextTile(glm::vec2 point);
@@ -45,18 +49,7 @@ class PlayerSystem {
         bool xAxisMoving();
         bool yAxisMoving();
         void showDirection();
-            //ParticleEmitter(glm::vec2 pos, glm::vec2 vel, unsigned int nparticles) :
-        bi::ParticleEmitter particleemitter { 200 };
-        bi::ParticleEmitter particleemitter2 { 100 };
-        //void initParticle();
-        //void particleLifeCheck(float dt);
-        //void drawParticles(float dt, bi::Renderer& renderer);
-        //unsigned int nr_particles = 120;
-        //std::vector<Particle> particles;
-        //unsigned int lastUsedParticle = 0;
-        //unsigned int firstUnusedParticle();
-
-        //void respawnParticle(Particle& particle, glm::vec2 offset);
+        DustTrail dustTrail;
 
 
 };

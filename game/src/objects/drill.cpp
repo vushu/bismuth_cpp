@@ -1,40 +1,43 @@
-#include "player.hpp"
+#include "drill.hpp"
 #include <bismuth/animatedsprite.hpp>
 #include <bismuth/iomanager.hpp>
-using namespace bi;
 
-Player::Player() { }
+Drill::Drill() { }
 
-Player::~Player() { }
+Drill::~Drill() { }
 
-void Player::init()
+void Drill::init()
 {
     this->drillTexId = bi::ioManager().assetmanager->loadTexture(drillPath);
     createAnimatedSprite();
 }
 
-void Player::playAnimationRight(float dt, glm::vec2 position)
+void Drill::playAnimationRight(float dt, glm::vec2 position)
 {
     animatedSprite.play("right", dt, position);
 }
 
-void Player::playAnimationLeft(float dt, glm::vec2 position)
+void Drill::playAnimationLeft(float dt, glm::vec2 position)
 {
     animatedSprite.play("left", dt, position);
 }
 
-void Player::playAnimationUp(float dt, glm::vec2 position)
+void Drill::playAnimationUp(float dt, glm::vec2 position)
 {
     animatedSprite.play("up", dt, position);
 }
 
-void Player::playAnimationDown(float dt, glm::vec2 position)
+void Drill::playAnimationDown(float dt, glm::vec2 position)
 {
     animatedSprite.play("down", dt, position);
 }
 
+void Drill::playAnimation(float dt, std::string animationName,  glm::vec2 position)
+{
+    animatedSprite.play(animationName, dt, position);
+}
 
-void Player::createAnimatedSprite()
+void Drill::createAnimatedSprite()
 {
 
     std::vector<int> tileNumbers;

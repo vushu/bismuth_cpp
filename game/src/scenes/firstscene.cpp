@@ -1,7 +1,7 @@
 #include "firstscene.hpp"
-#include "bismuth/keylistener.hpp"
 #include "../systems/objectsystem.hpp"
 #include "../systems/playersystem.hpp"
+#include "bismuth/keylistener.hpp"
 #include <bismuth/animation.hpp>
 #include <bismuth/logging.hpp>
 #include <cmath>
@@ -21,7 +21,7 @@ FirstScene::~FirstScene()
 
 void FirstScene::start()
 {
-    levelSound->playSound();
+    //levelSound->playSound();
 }
 void FirstScene::init()
 {
@@ -30,7 +30,7 @@ void FirstScene::init()
     font->loadFnt("resources/assets/fonts/manjaru.fnt");
 
     this->levelSound = std::make_shared<bi::Sound>("resources/assets/audio/Soliloquy.mp3");
-    this->smokeTexId = getAssetManager().loadTexture(smokeImage);
+    //this->smokeTexId = getAssetManager().loadTexture(smokeImage);
     this->drillTexId = getAssetManager().loadTexture(drillPath);
 
     levelSound->init();
@@ -50,6 +50,12 @@ void FirstScene::update(float dt)
     }
     //getRenderer().clear(0.06f,0.04f,0.01f,1);
     getRenderer().clear();
+
+    if (showGrid) {
+        getTileManager().drawGrid(tilemapPath, { 0.4, 0.74, 1, 0.5 });
+        getShapeRenderer().endFlushBegin();
+    }
+
     if (bi::keyInput().isKeyPressed(GLFW_KEY_F)) {
         getWindow().fullscreen(getWindow().width, getWindow().height);
     }
@@ -85,7 +91,7 @@ void FirstScene::update(float dt)
     //animatedSprite.play("up", dt, {70.0f, 40.0f});
     //animatedSprite.play("down", dt, {90.0f, 40.0f});
 
-    playersystem.update(dt, player, { 0, 0 }, smokeTexId);
+    playersystem.update(dt, player, { 0, 0 });
 
     //getShapeRenderer().beginBatch();
     //getShapeRenderer().drawRect({100,100}, {100, 50}, {1,1,1,1});
@@ -102,10 +108,10 @@ void FirstScene::update(float dt)
 
     getRenderer().endFlushBegin();
 
-    if (showGrid) {
-        getTileManager().drawGrid(tilemapPath, { 0.4, 0.74, 1, 0.5 });
-        getShapeRenderer().endFlushBegin();
-    }
+    //if (showGrid) {
+        //getTileManager().drawGrid(tilemapPath, { 0.4, 0.74, 1, 0.5 });
+        //getShapeRenderer().endFlushBegin();
+    //}
 
     //for (bi::TiledObject o : objects) {
     //getShapeRenderer().drawRect(o.tile.getPosition(), o.tile.getTileSize(), {1,0,1,1}, 0);

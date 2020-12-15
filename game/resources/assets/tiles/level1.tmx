@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="46">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="48">
  <tileset firstgid="1" name="tileset" tilewidth="16" tileheight="16" tilecount="36" columns="6">
   <image source="tileset.png" width="96" height="96"/>
  </tileset>
@@ -11,7 +11,12 @@
    eJxjYBhYwAjETDTGLFjsZQdiThpjrlF7R+0dtXfU3iFsLy8Q85GJ+YnEAljsFQZiERKwKBlYDIu9IwUAAAuJDcY=
   </data>
  </layer>
- <objectgroup id="6" name="Rocks" visible="0">
+ <layer id="10" name="rocks" width="30" height="17">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2DkACUc4ip0dQX97FVBo0fBKBgFowAAK3UAsw==
+  </data>
+ </layer>
+ <objectgroup id="6" name="Rocks">
   <object id="13" name="crystal" gid="36" x="176.5" y="114.5" width="16" height="16"/>
   <object id="21" gid="36" x="46" y="158" width="16" height="16"/>
   <object id="22" gid="36" x="312.5" y="109.5" width="16" height="16"/>
@@ -28,6 +33,7 @@
   <object id="40" name="rock" gid="35" x="11.5" y="97" width="16" height="16"/>
   <object id="41" name="rock" gid="35" x="257" y="113.5" width="16" height="16"/>
   <object id="42" name="rock" gid="35" x="137" y="205.5" width="16" height="16"/>
+  <object id="46" name="crystal" gid="36" x="128.142" y="80.1404" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="9" name="player">
   <object id="44" name="player" gid="33" x="48" y="112" width="16" height="16"/>
