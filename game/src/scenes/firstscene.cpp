@@ -101,12 +101,12 @@ void FirstScene::update(float dt)
     //getShapeRenderer().drawLine({0,100}, {100,300}, {1,1,0,1});
     ObjectSystem::update(objects, getRenderer());
     getRenderer().drawText("hej med dig", { 0, 15 }, *this->font, { 1, 1, 0, 1 }, 0.2f);
+    getRenderer().endFlushBegin();
 
     getGuiManager().beginDraw();
     getGuiManager().showFPS();
     getGuiManager().endDraw();
 
-    getRenderer().endFlushBegin();
 
     //if (showGrid) {
         //getTileManager().drawGrid(tilemapPath, { 0.4, 0.74, 1, 0.5 });

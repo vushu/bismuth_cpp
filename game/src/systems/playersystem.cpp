@@ -134,9 +134,13 @@ void PlayerSystem::update(float dt, bi::TiledObject player, glm::vec2 mouse)
     //player.tile.setPosition(newPos);
 
     drill.playAnimation(dt, currentAnimation, newPos);
-    //bi::ioManager().renderer->drawTile(player.tile, { 1, 1, 1, 1 });
     bi::ioManager().renderer->endFlushBegin();
+    //bi::ioManager().renderer->drawTile(player.tile, { 1, 1, 1, 1 });
+    bi::ioManager().renderer->setAdditiveBlend();
     dustTrail.update(dt, { newPos.x, newPos.y }, currentDir);
+    bi::ioManager().renderer->endFlushBegin();
+    bi::ioManager().renderer->setDefaultBlend();
+
 
     //if (currentDir == zero) {
         //particleemitter.setLife(0.0f);
