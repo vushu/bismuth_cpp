@@ -100,12 +100,13 @@ void FirstScene::update(float dt)
     //this->anim->draw(dt, glm::vec2(10.0f,50.0f), 0);
     //getShapeRenderer().drawLine({0,100}, {100,300}, {1,1,0,1});
     ObjectSystem::update(objects, getRenderer());
-    getRenderer().drawText("hej med dig", { 0, 15 }, *this->font, { 1, 1, 0, 1 }, 0.2f);
+
+    getRenderer().drawText("Crystals: ", { 0, 15 }, *this->font, { 1, 1, 0, 1 }, 0.2f);
     getRenderer().endFlushBegin();
 
-    getGuiManager().beginDraw();
-    getGuiManager().showFPS();
-    getGuiManager().endDraw();
+    //getGuiManager().beginDraw();
+    //getGuiManager().showFPS();
+    //getGuiManager().endDraw();
 
 
     //if (showGrid) {

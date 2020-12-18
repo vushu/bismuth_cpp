@@ -8,7 +8,7 @@ public:
     void update(float dt, glm::vec2 position, glm::vec2 direction);
 
 private:
-    bi::ParticleEmitter particleemitter { 200 };
+    bi::ParticleEmitter particleemitter { 80 };
     int textureId, tileNumber;
     glm::vec2 position;
     glm::vec4 color { 0.1f, 0.2f, 0.5f, 0.5f };
