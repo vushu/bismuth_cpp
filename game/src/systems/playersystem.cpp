@@ -139,7 +139,7 @@ void PlayerSystem::update(float dt, bi::TiledObject player, glm::vec2 mouse)
     bi::ioManager().renderer->setAdditiveBlend();
     dustTrail.update(dt, { newPos.x, newPos.y }, currentDir);
     bi::ioManager().renderer->endFlushBegin();
-    bi::ioManager().renderer->setDefaultBlend();
+    //bi::ioManager().renderer->setDefaultBlend();
 
 
     //if (currentDir == zero) {
