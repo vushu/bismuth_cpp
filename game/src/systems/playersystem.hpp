@@ -14,7 +14,7 @@ class PlayerSystem {
     public:
         PlayerSystem();
         ~PlayerSystem();
-        void update(float dt, bi::TiledObject player, glm::vec2 mouse);
+        void update(float dt, glm::vec2 mouse, bi::TiledMap& tileMap);
     private:
         glm::vec2 zero {0,0};
         float accDt;

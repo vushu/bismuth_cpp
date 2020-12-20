@@ -15,7 +15,7 @@ PlayerSystem::PlayerSystem()
 }
 PlayerSystem::~PlayerSystem() { }
 
-void PlayerSystem::update(float dt, bi::TiledObject player, glm::vec2 mouse)
+void PlayerSystem::update(float dt, glm::vec2 mouse, bi::TiledMap& tileMap)
 {
     accDt += dt;
     glm::vec2 currentTile = getCurrentTile(currentDir);
@@ -132,6 +132,8 @@ void PlayerSystem::update(float dt, bi::TiledObject player, glm::vec2 mouse)
         }
     }
     //player.tile.setPosition(newPos);
+    int id  = tileMap.getTiles(1).at(0).getId();
+    bi::log("TileId:", id );
 
     drill.playAnimation(dt, currentAnimation, newPos);
     bi::ioManager().renderer->endFlushBegin();

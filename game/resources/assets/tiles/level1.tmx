@@ -3,39 +3,17 @@
  <tileset firstgid="1" name="tileset" tilewidth="16" tileheight="16" tilecount="36" columns="6">
   <image source="tileset.png" width="96" height="96"/>
  </tileset>
- <layer id="1" name="Tile Layer 1" width="30" height="17" offsetx="0.424084" offsety="0.0564882">
-  <properties>
-   <property name="destroyable" value=""/>
-  </properties>
+ <layer id="1" name="background" width="30" height="17">
   <data encoding="base64" compression="zlib">
    eJxjYBhYwAjETDTGLFjsZQdiThpjrlF7R+0dtXfU3iFsLy8Q85GJ+YnEAljsFQZiERKwKBlYDIu9IwUAAAuJDcY=
   </data>
  </layer>
  <layer id="10" name="rocks" width="30" height="17">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2DkACUc4ip0dQX97FVBo0fBKBgFowAAK3UAsw==
+   eJxjYBi5QBkHppbZxMip4FBPrruItReXGK4wgalTYcAOKLUXlzwhv5Mqp4RDLbZ4oKa9hMKTVvaqoNHY4psW9qLLo9uDHr+40jk17MVnNi4zCNmLnA9w5QlCcuTYS0s8CkYOAACfyQ5k
   </data>
  </layer>
- <objectgroup id="6" name="Rocks">
-  <object id="13" name="crystal" gid="36" x="176.5" y="114.5" width="16" height="16"/>
-  <object id="21" gid="36" x="46" y="158" width="16" height="16"/>
-  <object id="22" gid="36" x="312.5" y="109.5" width="16" height="16"/>
-  <object id="23" gid="36" x="214" y="70" width="16" height="16"/>
-  <object id="25" gid="35" x="10" y="174" width="16" height="16"/>
-  <object id="26" gid="35" x="67.5" y="70.5" width="16" height="16"/>
-  <object id="27" gid="36" x="203" y="201" width="16" height="16"/>
-  <object id="28" name="crystal" gid="36" x="377.5" y="101" width="16" height="16"/>
-  <object id="35" name="rock" gid="35" x="372.5" y="155" width="16" height="16"/>
-  <object id="36" name="rock" gid="35" x="449" y="238" width="16" height="16"/>
-  <object id="37" name="rock" gid="35" x="448" y="31" width="16" height="16"/>
-  <object id="38" name="rock" gid="35" x="15.5" y="238.5" width="16" height="16"/>
-  <object id="39" name="rock" gid="35" x="0.5" y="16.5" width="16" height="16"/>
-  <object id="40" name="rock" gid="35" x="11.5" y="97" width="16" height="16"/>
-  <object id="41" name="rock" gid="35" x="257" y="113.5" width="16" height="16"/>
-  <object id="42" name="rock" gid="35" x="137" y="205.5" width="16" height="16"/>
-  <object id="46" name="crystal" gid="36" x="128.142" y="80.1404" width="16" height="16"/>
- </objectgroup>
- <objectgroup id="9" name="player">
+ <objectgroup id="9" name="player" visible="0">
   <object id="44" name="player" gid="33" x="48" y="112" width="16" height="16"/>
  </objectgroup>
 </map>
