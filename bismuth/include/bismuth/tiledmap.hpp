@@ -9,11 +9,87 @@
 #include <vector>
 
 namespace bi {
+
+class TiledCustomProperty {
+private:
+    std::string stringValue;
+    bool boolValue;
+    float floatValue;
+    int intValue;
+    glm::vec4 colorValue;
+    bool gotValue = false;
+
+public:
+    TiledCustomProperty() { }
+
+    bool exists()
+    {
+        return gotValue;
+    }
+
+    void setBoolValue(bool value)
+    {
+        gotValue = true;
+        this->boolValue = value;
+    }
+
+    bool getBoolValue()
+    {
+        return boolValue;
+    }
+
+    void setStringValue(std::string value)
+    {
+        gotValue = true;
+        this->stringValue = value;
+    }
+
+    std::string getStringValue()
+    {
+        return stringValue;
+    }
+
+    void setFloatValue(float value)
+    {
+        gotValue = true;
+        this->floatValue = value;
+    }
+
+    float getFloatValue()
+    {
+        return floatValue;
+    }
+
+    void setIntValue(int value)
+    {
+        gotValue = true;
+        this->intValue = value;
+    }
+
+    int getIntValue()
+    {
+        return intValue;
+    }
+
+    void setColorValue(glm::vec4 value)
+    {
+        gotValue = true;
+        this->colorValue = value;
+    }
+
+    glm::vec4 getColorValue()
+    {
+        return colorValue;
+    }
+};
+
 class TiledObject {
 
 private:
-    std::map<std::string, std::string> metadata;
-    void addMetaData(std::string key, std::string value)
+    std::map<std::string, TiledCustomProperty> metadata;
+
+    TiledCustomProperty empty;
+    void addCustomProperty(std::string key, TiledCustomProperty value)
     {
         this->metadata.emplace(key, value);
     }
@@ -26,30 +102,89 @@ public:
         , tile(tile)
     {
         for (auto& prop : object.getProperties()) {
-            addMetaData(prop.getName(), prop.getStringValue());
-            bi::log("added meta: " + prop.getName(), prop.getStringValue());
+            TiledCustomProperty customProperty;
+            switch (prop.getType()) {
+            case tmx::Property::Type::Boolean:
+                customProperty.setBoolValue(prop.getBoolValue());
+                this->addCustomProperty(prop.getName(), customProperty);
+                break;
+            case tmx::Property::Type::Float:
+                customProperty.setFloatValue(prop.getFloatValue());
+                this->addCustomProperty(prop.getName(), customProperty);
+                break;
+            case tmx::Property::Type::Int:
+                customProperty.setIntValue(prop.getIntValue());
+                this->addCustomProperty(prop.getName(), customProperty);
+                break;
+
+            case tmx::Property::Type::String:
+                customProperty.setStringValue(prop.getStringValue());
+                this->addCustomProperty(prop.getName(), customProperty);
+                break;
+
+            case tmx::Property::Type::Colour:
+                customProperty.setColorValue({ prop.getColourValue().r, prop.getColourValue().g, prop.getColourValue().b, prop.getColourValue().a });
+                this->addCustomProperty(prop.getName(), customProperty);
+                break;
+            case tmx::Property::Type::File:
+            case tmx::Property::Type::Undef:
+                bi::log("Bismuth doesn't currently support File and Object");
+            }
         }
     }
 
-    bool setMetaData(std::string key, std::string value)
+    bool setCustomProperty(std::string key, std::string value)
     {
         if (this->metadata.count(key) > 0) {
-            this->metadata.emplace(key, value);
-            bi::log("Setting metadata");
+            this->metadata.at(key).setStringValue(value);
             return true;
         }
         return false;
     }
 
-    std::string getMetaData(std::string key)
+    bool setCustomProperty(std::string key, bool value)
+    {
+        if (this->metadata.count(key) > 0) {
+            this->metadata.at(key).setBoolValue(value);
+            return true;
+        }
+        return false;
+    }
+
+    bool setCustomProperty(std::string key, float value)
+    {
+        if (this->metadata.count(key) > 0) {
+            this->metadata.at(key).setFloatValue(value);
+            return true;
+        }
+        return false;
+    }
+
+    bool setCustomProperty(std::string key, int value)
+    {
+        if (this->metadata.count(key) > 0) {
+            this->metadata.at(key).setIntValue(value);
+            return true;
+        }
+        return false;
+    }
+    bool setCustomProperty(std::string key, glm::vec4 value)
+    {
+        if (this->metadata.count(key) > 0) {
+            this->metadata.at(key).setColorValue(value);
+            return true;
+        }
+        return false;
+    }
+
+    TiledCustomProperty& getCustomProperty(std::string key)
     {
         if (metadata.count(key) > 0) {
-            bi::log("getting value metadata");
             return this->metadata.at(key);
         } else {
             bi::log("FaILED GETTING value metadata");
         }
-        return "";
+        return this->empty;
     }
 };
 class TiledMap {

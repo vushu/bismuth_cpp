@@ -133,45 +133,36 @@ void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject
             lastTile = currentTile;
         }
     }
-    //player.tile.setPosition(newPos);
-    //int id = tileMap.getTiles(1).at(currentTile.x * currentTile.y).getId();
-    //bi::log("TileId:", id);
-    //bi::log("TileId:", currentTile.x * currentTile.y);
-    //bi::log("TileId:", (currentTile.x + currentTile.y) / 16);
-    //
 
     for (auto& object : objects) {
         if (object.object.getName() == "Crystal") {
-
             //object.object.getPoints
             glm::vec2 tilepos = { (object.object.getPosition().x) / 16.0f, (object.object.getPosition().y - 16) / 16.0f };
-            bi::ioManager().shaperenderer->endFlushBegin();
             //since tiled is anchored bottom left corner we with tilesize
-            bi::ioManager().shaperenderer->drawRect({ object.object.getPosition().x, object.object.getPosition().y - 16 }, { 16, 16 }, { 1, 0, 0, 1 });
-
             if (currentTile == tilepos) {
 
-                bi::log("IS HARVESTED?: ", object.getMetaData("harvested"));
-                if (object.getMetaData("harvested") == "no") {
-                    this->crystals++;
-                    //for (auto& prop : object.object.getProperties()) {
-                    //if (prop.getName() == "harvested") {
-                    //bi::log("prop havested:", std::to_string(prop.getBoolValue()));
-                    //}
-                    //}
-                    //prop.getBoolValue()
-                    if (object.setMetaData("harvested", "yes")) {
-                        bi::log("OK to set metadata");
-                    } else {
-                        bi::log("Failed to set metadata");
+                if (object.getCustomProperty("harvested").exists()) {
+                    if (!object.getCustomProperty("harvested").getBoolValue()) {
+                        this->crystals++;
+                        this->speed -= 5;
+
+                        if (object.setCustomProperty("harvested", true)) {
+                            bi::log("Now harvested");
+                        }
                     }
                 }
+            }
 
+            if (object.getCustomProperty("harvested").exists()) {
+                if (!object.getCustomProperty("harvested").getBoolValue()) {
+                    bi::ioManager().shaperenderer->drawRect({ object.object.getPosition().x, object.object.getPosition().y - 16 }, { 16, 16 }, { 1.0f, 0.5f, 0, 0.5f });
+                    bi::ioManager().shaperenderer->endFlushBegin();
+                }
             }
         }
     }
 
-    bi::ioManager().renderer->drawText("Havested Crystals: " + std::to_string(this->crystals), { 0, 15 }, font, { 1, 1, 0, 1 }, 0.1f);
+    bi::ioManager().renderer->drawText("Havested Crystals: " + std::to_string(this->crystals), { 40, 15 }, font, { 0.8f, 0.7f, 0.4f, 0.95f }, 0.1f);
     bi::ioManager().renderer->endFlushBegin();
 
     drill.playAnimation(dt, currentAnimation, newPos);

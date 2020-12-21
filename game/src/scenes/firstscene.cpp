@@ -75,7 +75,10 @@ void FirstScene::update(float dt)
     bi::TiledMap& tiledMap = getTileManager().loadTileMap(tilemapPath);
     //bi::TiledObject& player = tiledMap.getObjects(0).at(0);
 
-    //getTileManager().draw(tilemapPath, 0);
+    ObjectSystem::update(objects, getRenderer());
+    playersystem.update(dt, { 0, 0 }, objects, *this->font);
+    getTileManager().draw(tilemapPath, 0);
+
     //getTileManager().draw(tilemapPath, 1);
 
     //float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);
@@ -83,10 +86,8 @@ void FirstScene::update(float dt)
 
     //float y = bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
     //
-    playersystem.update(dt, { 0, 0 }, objects, *this->font);
 
     //getShapeRenderer().drawLine({0,100}, {100,300}, {1,1,0,1});
-    ObjectSystem::update(objects, getRenderer());
 
     //getRenderer().drawText("Havested Crystals: ", { 0, 15 }, *this->font, { 1, 1, 0, 1 }, 0.1f);
     //getRenderer().endFlushBegin();
