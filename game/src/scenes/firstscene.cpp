@@ -74,10 +74,11 @@ void FirstScene::update(float dt)
 
     bi::TiledMap& tiledMap = getTileManager().loadTileMap(tilemapPath);
     //bi::TiledObject& player = tiledMap.getObjects(0).at(0);
-
+    //getTileManager().draw(tilemapPath, 0);
     ObjectSystem::update(objects, getRenderer());
+    getRenderer().endFlushBegin();
+
     playersystem.update(dt, { 0, 0 }, objects, *this->font);
-    getTileManager().draw(tilemapPath, 0);
 
     //getTileManager().draw(tilemapPath, 1);
 

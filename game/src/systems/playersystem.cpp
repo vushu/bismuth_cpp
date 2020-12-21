@@ -145,6 +145,7 @@ void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject
                     if (!object.getCustomProperty("harvested").getBoolValue()) {
                         this->crystals++;
                         this->speed -= 5;
+                        tail.push_back({currentTile});
 
                         if (object.setCustomProperty("harvested", true)) {
                             bi::log("Now harvested");
@@ -155,16 +156,18 @@ void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject
 
             if (object.getCustomProperty("harvested").exists()) {
                 if (!object.getCustomProperty("harvested").getBoolValue()) {
-                    bi::ioManager().shaperenderer->drawRect({ object.object.getPosition().x, object.object.getPosition().y - 16 }, { 16, 16 }, { 1.0f, 0.5f, 0, 0.5f });
+                    bi::ioManager().shaperenderer->drawRect({ object.object.getPosition().x, object.object.getPosition().y - 16 }, { 16, 16 }, { 1.0f, 0.0f, 0, 0.5f });
                     bi::ioManager().shaperenderer->endFlushBegin();
                 }
             }
         }
     }
 
-    bi::ioManager().renderer->drawText("Havested Crystals: " + std::to_string(this->crystals), { 40, 15 }, font, { 0.8f, 0.7f, 0.4f, 0.95f }, 0.1f);
+
+    bi::ioManager().renderer->drawText("Havested Crystals: " + std::to_string(this->crystals), { 40, 15 }, font, { 0.8f, 0.7f, 0.4f, 0.98f }, 0.1f);
     bi::ioManager().renderer->endFlushBegin();
 
+    drill.draw(dt);
     drill.playAnimation(dt, currentAnimation, newPos);
     bi::ioManager().renderer->endFlushBegin();
     //bi::ioManager().renderer->drawTile(player.tile, { 1, 1, 1, 1 });

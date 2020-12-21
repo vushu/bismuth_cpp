@@ -1,15 +1,45 @@
 #include "drill.hpp"
+#include "bismuth/logging.hpp"
 #include <bismuth/animatedsprite.hpp>
 #include <bismuth/iomanager.hpp>
 
+Drill::~Drill()
+{
+
+    Node* lastNode;
+    Node* current = drillNode;
+    while (current->next) {
+        lastNode = current;
+        current = current->next;
+        delete lastNode;
+    }
+    delete current;
+}
+
 Drill::Drill() { }
 
-Drill::~Drill() { }
+void Drill::draw(float dt)
+{
+    while (current->next) {
+        bi::ioManager().shaperenderer->drawRect(current->position, { 16, 16 }, { 0, 1, 0, 1 });
+        current = current->next;
+    }
+
+    this->current = drillNode;
+    bi::ioManager().shaperenderer->endFlushBegin();
+
+}
 
 void Drill::init()
 {
     this->drillTexId = bi::ioManager().assetmanager->loadTexture(drillPath);
     createAnimatedSprite();
+    this->drillNode = new Node();
+    this->drillNode->position = { 9 * 16, 2 * 16 };
+    this->drillNode->next = new Node();
+    this->drillNode->next->position = { 5 * 16, 4 * 16 };
+    this->current = drillNode;
+    bi::log("initializing drill");
 }
 
 void Drill::playAnimationRight(float dt, glm::vec2 position)
@@ -32,7 +62,7 @@ void Drill::playAnimationDown(float dt, glm::vec2 position)
     animatedSprite.play("down", dt, position);
 }
 
-void Drill::playAnimation(float dt, std::string animationName,  glm::vec2 position)
+void Drill::playAnimation(float dt, std::string animationName, glm::vec2 position)
 {
     animatedSprite.play(animationName, dt, position);
 }

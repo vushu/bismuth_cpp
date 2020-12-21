@@ -16,6 +16,7 @@ class PlayerSystem {
         ~PlayerSystem();
         void update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject>& objects, bi::Font& font);
     private:
+        std::vector<glm::vec2> tail;
         glm::vec2 zero {0,0};
         float accDt;
         Drill drill;
