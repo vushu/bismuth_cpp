@@ -14,12 +14,13 @@ class PlayerSystem {
     public:
         PlayerSystem();
         ~PlayerSystem();
-        void update(float dt, glm::vec2 mouse, bi::TiledMap& tileMap);
+        void update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject>& objects, bi::Font& font);
     private:
         glm::vec2 zero {0,0};
         float accDt;
         Drill drill;
         std::string currentAnimation;
+        int crystals = 0;
 
         glm::vec2 newPos{0,0};
         glm::vec2 direction{0,0};
@@ -33,9 +34,10 @@ class PlayerSystem {
         glm::vec2 up{0,-1};
         glm::vec2 down{0,1};
         bool keyDown = false;
-        float speed = 90;
+        float speed = 70;
         bool moving = false;
         glm::vec2 particleOffset {0,0};
+        std::unique_ptr<bi::Font> font;
 
         glm::vec2 getCurrentTile(glm::vec2 dir);
         glm::vec2 setNextTile(glm::vec2 point);

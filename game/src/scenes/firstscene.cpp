@@ -70,26 +70,26 @@ void FirstScene::update(float dt)
     //bi::log("Mouse y:",std::to_string(y));
     //}
 
-    //std::vector<bi::TiledObject>& objects = getTileManager().loadTileMap(tilemapPath).getObjects(0);
+    std::vector<bi::TiledObject>& objects = getTileManager().loadTileMap(tilemapPath).getObjects(1);
 
     bi::TiledMap& tiledMap = getTileManager().loadTileMap(tilemapPath);
     //bi::TiledObject& player = tiledMap.getObjects(0).at(0);
 
-    getTileManager().draw(tilemapPath, 0);
-    getTileManager().draw(tilemapPath, 1);
+    //getTileManager().draw(tilemapPath, 0);
+    //getTileManager().draw(tilemapPath, 1);
 
     //float x = bi::mouseInput().toOrthoX(getCamera(), getWindow().width);
     //bi::log("Mouse x:",std::to_string(x));
 
     //float y = bi::mouseInput().toOrthoY(getCamera(), getWindow().height);
     //
-    playersystem.update(dt, { 0, 0 }, tiledMap);
+    playersystem.update(dt, { 0, 0 }, objects, *this->font);
 
     //getShapeRenderer().drawLine({0,100}, {100,300}, {1,1,0,1});
-    //ObjectSystem::update(objects, getRenderer());
+    ObjectSystem::update(objects, getRenderer());
 
-    getRenderer().drawText("Havested Crystals: ", { 0, 15 }, *this->font, { 1, 1, 0, 1 }, 0.1f);
-    getRenderer().endFlushBegin();
+    //getRenderer().drawText("Havested Crystals: ", { 0, 15 }, *this->font, { 1, 1, 0, 1 }, 0.1f);
+    //getRenderer().endFlushBegin();
     if (showGrid) {
         getTileManager().drawGrid(tilemapPath, { 0.4, 0.74, 1, 0.5 });
         getShapeRenderer().endFlushBegin();

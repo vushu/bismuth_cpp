@@ -1,4 +1,5 @@
 #include "playersystem.hpp"
+#include "bismuth/font.hpp"
 #include "bismuth/iomanager.hpp"
 #include "bismuth/keylistener.hpp"
 #include "bismuth/logging.hpp"
@@ -8,6 +9,7 @@
 #include "glm/gtx/string_cast.hpp"
 #include <bismuth/particle.hpp>
 #include <glad/glad.h>
+#include <string>
 
 PlayerSystem::PlayerSystem()
 {
@@ -15,7 +17,7 @@ PlayerSystem::PlayerSystem()
 }
 PlayerSystem::~PlayerSystem() { }
 
-void PlayerSystem::update(float dt, glm::vec2 mouse, bi::TiledMap& tileMap)
+void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject>& objects, bi::Font& font)
 {
     accDt += dt;
     glm::vec2 currentTile = getCurrentTile(currentDir);
@@ -132,8 +134,45 @@ void PlayerSystem::update(float dt, glm::vec2 mouse, bi::TiledMap& tileMap)
         }
     }
     //player.tile.setPosition(newPos);
-    int id  = tileMap.getTiles(1).at(0).getId();
-    bi::log("TileId:", id );
+    //int id = tileMap.getTiles(1).at(currentTile.x * currentTile.y).getId();
+    //bi::log("TileId:", id);
+    //bi::log("TileId:", currentTile.x * currentTile.y);
+    //bi::log("TileId:", (currentTile.x + currentTile.y) / 16);
+    //
+
+    for (auto& object : objects) {
+        if (object.object.getName() == "Crystal") {
+
+            //object.object.getPoints
+            glm::vec2 tilepos = { (object.object.getPosition().x) / 16.0f, (object.object.getPosition().y - 16) / 16.0f };
+            bi::ioManager().shaperenderer->endFlushBegin();
+            //since tiled is anchored bottom left corner we with tilesize
+            bi::ioManager().shaperenderer->drawRect({ object.object.getPosition().x, object.object.getPosition().y - 16 }, { 16, 16 }, { 1, 0, 0, 1 });
+
+            if (currentTile == tilepos) {
+
+                bi::log("IS HARVESTED?: ", object.getMetaData("harvested"));
+                if (object.getMetaData("harvested") == "no") {
+                    this->crystals++;
+                    //for (auto& prop : object.object.getProperties()) {
+                    //if (prop.getName() == "harvested") {
+                    //bi::log("prop havested:", std::to_string(prop.getBoolValue()));
+                    //}
+                    //}
+                    //prop.getBoolValue()
+                    if (object.setMetaData("harvested", "yes")) {
+                        bi::log("OK to set metadata");
+                    } else {
+                        bi::log("Failed to set metadata");
+                    }
+                }
+
+            }
+        }
+    }
+
+    bi::ioManager().renderer->drawText("Havested Crystals: " + std::to_string(this->crystals), { 0, 15 }, font, { 1, 1, 0, 1 }, 0.1f);
+    bi::ioManager().renderer->endFlushBegin();
 
     drill.playAnimation(dt, currentAnimation, newPos);
     bi::ioManager().renderer->endFlushBegin();
@@ -143,11 +182,10 @@ void PlayerSystem::update(float dt, glm::vec2 mouse, bi::TiledMap& tileMap)
     bi::ioManager().renderer->endFlushBegin();
     //bi::ioManager().renderer->setDefaultBlend();
 
-
     //if (currentDir == zero) {
-        //particleemitter.setLife(0.0f);
+    //particleemitter.setLife(0.0f);
     //} else
-        //particleemitter.setLife(1.0f);
+    //particleemitter.setLife(1.0f);
 
     //particleemitter.emit(dt, { newPos.x, newPos.y }, currentDir, { 100.0f, 100.0f }, { 0.1f, 0.2f, 0.5f, 0.5f }, smokeTexId, 1, { 16.0f, 16.0f }, { 10, 10 }, true);
     //shaperenderer.drawRect(newPos, {player.tile.getTileSize().x, player.tile.getTileSize().y} , {1,0,0,1});
