@@ -1,6 +1,7 @@
 #include <bismuth/logging.hpp>
 #include <iostream>
-
+#include <glm/vec2.hpp>
+#include <glm/gtx/string_cast.hpp>
 bool bi::isLogging = true;
 
 void bi::log(std::string message) {
@@ -39,5 +40,11 @@ void bi::log(std::string from, std::string message) {
 
     if (bi::isLogging) {
         std::cout << from << " " << message << std::endl;
+    }
+}
+void bi::log(std::string from, glm::vec2 vec) {
+
+    if (bi::isLogging) {
+        std::cout << from << " " << glm::to_string(vec) << std::endl;
     }
 }

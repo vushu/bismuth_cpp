@@ -35,7 +35,7 @@ class PlayerSystem {
         glm::vec2 up{0,-1};
         glm::vec2 down{0,1};
         bool keyDown = false;
-        float speed = 70;
+        float speed = 150;
         bool moving = false;
         glm::vec2 particleOffset {0,0};
         std::unique_ptr<bi::Font> font;

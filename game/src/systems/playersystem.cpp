@@ -11,36 +11,30 @@
 #include <glad/glad.h>
 #include <string>
 
-PlayerSystem::PlayerSystem()
-{
+PlayerSystem::PlayerSystem() {
     drill.init();
 }
-PlayerSystem::~PlayerSystem() { }
 
-void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject>& objects, bi::Font& font)
-{
+PlayerSystem::~PlayerSystem() {}
+
+void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject> &objects, bi::Font &font) {
     accDt += dt;
     glm::vec2 currentTile = getCurrentTile(currentDir);
 
     if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_D) && !xAxisMoving()) {
         keyDown = true;
-        newDirection = glm::vec2 { 1, 0 };
+        newDirection = glm::vec2{1, 0};
         //bi::log("adding right");
         directionQueue.push(newDirection);
         //bi::keyInput().donePressing(GLFW_KEY_D);
-
-    }
-
-    else if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_A) && !xAxisMoving()) {
+    } else if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_A) && !xAxisMoving()) {
         keyDown = true;
-        newDirection = { -1, 0 };
+        newDirection = {-1, 0};
         directionQueue.push(newDirection);
         bi::keyInput().donePressing(GLFW_KEY_A);
-    }
-
-    else if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_S) && !yAxisMoving()) {
+    } else if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_S) && !yAxisMoving()) {
         keyDown = true;
-        newDirection = { 0, 1 };
+        newDirection = {0, 1};
         directionQueue.push(newDirection);
         if (currentDir == zero) {
             currentDir = newDirection;
@@ -49,44 +43,49 @@ void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject
             directionQueue.pop();
         }
         //bi::keyInput().donePressing(GLFW_KEY_S);
-    }
-
-    else if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_W) && !yAxisMoving()) {
+    } else if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_W) && !yAxisMoving()) {
         keyDown = true;
-        newDirection = { 0, -1 };
+        newDirection = {0, -1};
         directionQueue.push(newDirection);
         bi::keyInput().donePressing(GLFW_KEY_W);
         //bi::log("adding up");
     } else if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_SPACE)) {
         keyDown = true;
-        newDirection = { 0, 0 };
+        newDirection = {0, 0};
         directionQueue.push(newDirection);
     }
 
     if (newPos == zero) {
-        newPos = { 32, 32 };
-        currentDir = { 1, 0 };
+        newPos = {4 * 16, 2 * 16};
+        currentDir = {1, 0};
         lastTile = getCurrentTile(currentDir);
-        if (lastTile.x == 2.0f && lastTile.y == 2.0f) {
-            //bi::log("Last tile is {2.2}");
-        } else {
-            bi::log("Failed isnt as expected", glm::to_string(lastTile));
-        }
+        //drill.setLastTile();
     }
 
     newPos += currentDir * dt * speed;
-    //
     currentTile = getCurrentTile(currentDir);
 
-    if (currentDir == right) {
+
+    if (currentDir == zero) {
+        //bi::log("waiting");
+        //drill.setLastTile();
+    }
+
+    else if (currentDir == right) {
         currentAnimation = "right";
+        // if left side reached end of last tile
         if (newPos.x - 16 > (lastTile.x * 16.0f)) {
+
+            // snap to grid, to ensure correct behavior
             newPos.x = (currentTile.x) * 16.0f;
+            //bi::log("Drill snap to grid");
+
             if (!directionQueue.empty()) {
                 currentDir = directionQueue.front();
                 directionQueue.pop();
                 //showDirection();
             }
+            drill.setLastTile();
             lastTile = currentTile;
         }
 
@@ -101,6 +100,7 @@ void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject
                 directionQueue.pop();
                 //showDirection();
             }
+            drill.setLastTile();
             lastTile = currentTile;
         }
     }
@@ -111,9 +111,12 @@ void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject
             newPos.y = (currentTile.y) * 16.0f;
             if (!directionQueue.empty()) {
                 currentDir = directionQueue.front();
+
                 directionQueue.pop();
                 //showDirection();
             }
+
+            drill.setLastTile();
             lastTile = currentTile;
         }
     }
@@ -130,22 +133,27 @@ void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject
                 //showDirection();
             }
 
+            drill.setLastTile();
             lastTile = currentTile;
         }
     }
 
-    for (auto& object : objects) {
+    for (auto &object : objects) {
         if (object.object.getName() == "Crystal") {
             //object.object.getPoints
-            glm::vec2 tilepos = { (object.object.getPosition().x) / 16.0f, (object.object.getPosition().y - 16) / 16.0f };
+            glm::vec2 tilepos = {(object.object.getPosition().x) / 16.0f, (object.object.getPosition().y - 16) / 16.0f};
             //since tiled is anchored bottom left corner we with tilesize
             if (currentTile == tilepos) {
 
                 if (object.getCustomProperty("harvested").exists()) {
                     if (!object.getCustomProperty("harvested").getBoolValue()) {
                         this->crystals++;
-                        this->speed -= 5;
-                        tail.push_back({currentTile});
+                        //TODO: HERE
+                        //more than one cart will screw carts up
+                        this->drill.tailLength += 1;
+
+                        //Speed change will screw the carts up
+                        //this->speed += 10;
 
                         if (object.setCustomProperty("harvested", true)) {
                             bi::log("Now harvested");
@@ -156,60 +164,45 @@ void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject
 
             if (object.getCustomProperty("harvested").exists()) {
                 if (!object.getCustomProperty("harvested").getBoolValue()) {
-                    bi::ioManager().shaperenderer->drawRect({ object.object.getPosition().x, object.object.getPosition().y - 16 }, { 16, 16 }, { 1.0f, 0.0f, 0, 0.5f });
+                    bi::ioManager().shaperenderer->drawRect(
+                            {object.object.getPosition().x, object.object.getPosition().y - 16}, {16, 16},
+                            {1.0f, 0.0f, 0, 0.5f});
                     bi::ioManager().shaperenderer->endFlushBegin();
                 }
             }
         }
     }
-
-
-    bi::ioManager().renderer->drawText("Havested Crystals: " + std::to_string(this->crystals), { 40, 15 }, font, { 0.8f, 0.7f, 0.4f, 0.98f }, 0.1f);
+    bi::ioManager().renderer->drawText("Havested Crystals: " + std::to_string(this->crystals), {40, 15}, font,
+                                       {0.8f, 0.7f, 0.4f, 0.98f}, 0.1f);
     bi::ioManager().renderer->endFlushBegin();
 
-    drill.draw(dt);
+    drill.draw(dt, currentDir, speed);
     drill.playAnimation(dt, currentAnimation, newPos);
     bi::ioManager().renderer->endFlushBegin();
     //bi::ioManager().renderer->drawTile(player.tile, { 1, 1, 1, 1 });
     //bi::ioManager().renderer->setAdditiveBlend();
-    dustTrail.update(dt, { newPos.x, newPos.y }, currentDir);
-    bi::ioManager().renderer->endFlushBegin();
-    //bi::ioManager().renderer->setDefaultBlend();
-
-    //if (currentDir == zero) {
-    //particleemitter.setLife(0.0f);
-    //} else
-    //particleemitter.setLife(1.0f);
-
-    //particleemitter.emit(dt, { newPos.x, newPos.y }, currentDir, { 100.0f, 100.0f }, { 0.1f, 0.2f, 0.5f, 0.5f }, smokeTexId, 1, { 16.0f, 16.0f }, { 10, 10 }, true);
-    //shaperenderer.drawRect(newPos, {player.tile.getTileSize().x, player.tile.getTileSize().y} , {1,0,0,1});
-
-    //drawDirection(shaperenderer);
+    //dustTrail.update(dt, { newPos.x, newPos.y }, currentDir);
+    //bi::ioManager().renderer->endFlushBegin();
 }
 
-void PlayerSystem::drawLeft(bi::ShapeRenderer& shaperenderer)
-{
-    shaperenderer.drawLine({ newPos.x, newPos.y }, { newPos.x, newPos.y + 16 }, { 0, 1, 0, 1 });
+void PlayerSystem::drawLeft(bi::ShapeRenderer &shaperenderer) {
+    shaperenderer.drawLine({newPos.x, newPos.y}, {newPos.x, newPos.y + 16}, {0, 1, 0, 1});
 }
 
-void PlayerSystem::drawRight(bi::ShapeRenderer& shaperenderer)
-{
+void PlayerSystem::drawRight(bi::ShapeRenderer &shaperenderer) {
 
-    shaperenderer.drawLine({ newPos.x + 16, newPos.y }, { newPos.x + 16, newPos.y + 16 }, { 0, 1, 0, 1 });
+    shaperenderer.drawLine({newPos.x + 16, newPos.y}, {newPos.x + 16, newPos.y + 16}, {0, 1, 0, 1});
 }
 
-void PlayerSystem::drawUp(bi::ShapeRenderer& shaperenderer)
-{
-    shaperenderer.drawLine({ newPos.x, newPos.y }, { newPos.x + 16, newPos.y }, { 0, 1, 0, 1 });
+void PlayerSystem::drawUp(bi::ShapeRenderer &shaperenderer) {
+    shaperenderer.drawLine({newPos.x, newPos.y}, {newPos.x + 16, newPos.y}, {0, 1, 0, 1});
 }
 
-void PlayerSystem::drawDown(bi::ShapeRenderer& shaperenderer)
-{
-    shaperenderer.drawLine({ newPos.x, newPos.y + 16 }, { newPos.x + 16, newPos.y + 16 }, { 0, 1, 0, 1 });
+void PlayerSystem::drawDown(bi::ShapeRenderer &shaperenderer) {
+    shaperenderer.drawLine({newPos.x, newPos.y + 16}, {newPos.x + 16, newPos.y + 16}, {0, 1, 0, 1});
 }
 
-void PlayerSystem::drawDirection(bi::ShapeRenderer& shaperenderer)
-{
+void PlayerSystem::drawDirection(bi::ShapeRenderer &shaperenderer) {
 
     if (newDirection == left) {
         drawLeft(shaperenderer);
@@ -221,85 +214,76 @@ void PlayerSystem::drawDirection(bi::ShapeRenderer& shaperenderer)
         drawDown(shaperenderer);
     }
 }
-glm::vec2 PlayerSystem::setNextTile(glm::vec2 point)
-{
+
+glm::vec2 PlayerSystem::setNextTile(glm::vec2 point) {
     //lastTile = getCurrentTile(point);
     //nextTile.y = std::max(nextTile.y, 0.0f);
     //nextTile.x = std::max(nextTile.x, 0.0f);
-    int currentx = (int)(newPos.x + (16.0f / 2.0f)) / 16.0f;
-    int currenty = (int)(newPos.y + (16.0f / 2.0f)) / 16.0f;
-    lastTile = { currentx, currenty };
+    int currentx = (int) (newPos.x + (16.0f / 2.0f)) / 16.0f;
+    int currenty = (int) (newPos.y + (16.0f / 2.0f)) / 16.0f;
+    lastTile = {currentx, currenty};
 
     return lastTile;
 }
 
-glm::vec2 PlayerSystem::getCurrentTile(glm::vec2 dir)
-{
-    glm::vec2 tileSize { 16.0f, 16.0f };
+glm::vec2 PlayerSystem::getCurrentTile(glm::vec2 dir) {
+    glm::vec2 tileSize{16.0f, 16.0f};
 
     int currentx = 0;
     int currenty = 0;
     if (dir == up) {
-        currentx = (int)(newPos.x) / tileSize.x;
+        currentx = (int) (newPos.x) / tileSize.x;
         //currenty  = (int) (newPos.y + tileSize.y) / tileSize.y;
-        currenty = (int)(newPos.y) / tileSize.y;
+        currenty = (int) (newPos.y) / tileSize.y;
     }
 
     if (dir == down) {
-        currentx = (int)(newPos.x) / tileSize.x;
-        currenty = (int)(newPos.y + tileSize.y) / tileSize.y;
+        currentx = (int) (newPos.x) / tileSize.x;
+        currenty = (int) (newPos.y + tileSize.y) / tileSize.y;
     }
 
     if (dir == left) {
-        currentx = (int)(newPos.x) / tileSize.x;
-        currenty = (int)(newPos.y) / tileSize.y;
+        currentx = (int) (newPos.x) / tileSize.x;
+        currenty = (int) (newPos.y) / tileSize.y;
     }
 
     if (dir == right) {
-        currentx = (int)(newPos.x + tileSize.x) / tileSize.x;
-        currenty = (int)(newPos.y) / tileSize.y;
+        currentx = (int) (newPos.x + tileSize.x) / tileSize.x;
+        currenty = (int) (newPos.y) / tileSize.y;
     }
 
-    currentTile = { currentx, currenty };
+    currentTile = {currentx, currenty};
     //bi::log("currentTile" ,glm::to_string(currentTile));
     //currentTile = newPos) / tileSize * 16.0f;
 
-    currentx = (int)(newPos.x + (tileSize.x / 2.0f)) / tileSize.x;
-    currenty = (int)(newPos.y + (tileSize.y / 2.0f)) / tileSize.y;
+    currentx = (int) (newPos.x + (tileSize.x / 2.0f)) / tileSize.x;
+    currenty = (int) (newPos.y + (tileSize.y / 2.0f)) / tileSize.y;
 
-    currentTile = { currentx, currenty };
+    currentTile = {currentx, currenty};
 
     return currentTile;
 }
 
-bool PlayerSystem::xAxisMoving()
-{
+bool PlayerSystem::xAxisMoving() {
     return newDirection == left || newDirection == right;
     //return newDirection == left || newDirection == right || currentDir == left || currentDir == right;
 }
 
-bool PlayerSystem::yAxisMoving()
-{
+bool PlayerSystem::yAxisMoving() {
     return newDirection == up || newDirection == down;
     //return newDirection == up || newDirection == down || currentDir == down || currentDir == up;
 }
-void PlayerSystem::showDirection()
-{
+
+void PlayerSystem::showDirection() {
     if (currentDir == right) {
         bi::log("playing right");
-    }
-
-    else if (currentDir == left) {
+    } else if (currentDir == left) {
 
         bi::log("playing left");
-    }
-
-    else if (currentDir == up) {
+    } else if (currentDir == up) {
 
         bi::log("playing up");
-    }
-
-    else if (currentDir == down) {
+    } else if (currentDir == down) {
 
         bi::log("playing down");
     }

@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include "animatedsprite.hpp"
+
 namespace bi {
 
     extern bool isLogging;
@@ -10,4 +12,5 @@ namespace bi {
     void log(std::string from,int message);
     void log(std::string from,float message);
 
+    void log(std::string from, glm::vec2 vec);
 }

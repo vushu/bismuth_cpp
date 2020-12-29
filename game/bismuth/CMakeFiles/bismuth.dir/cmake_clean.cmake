@@ -1,0 +1,43 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/bismuth.dir/src/core/animatedsprite.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/animation.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/application.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/assetmanager.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/audiomanager.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/camera.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/font.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/framebuffer.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/glhelper.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/guimanager.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/iomanager.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/keylistener.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/logging.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/mouselistener.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/particleemitter.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/physicsmanager.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/renderer.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/scene.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/scenemanager.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/shader.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/shaperenderer.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/sound.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/sprite.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/spriterenderer.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/textrenderer.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/texture.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/tile.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/tiledmanager.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/tiledmap.cpp.o"
+  "CMakeFiles/bismuth.dir/src/core/window.cpp.o"
+  "CMakeFiles/bismuth.dir/src/editors/asseteditor.cpp.o"
+  "CMakeFiles/bismuth.dir/src/imgui/imgui_impl_glfw.cpp.o"
+  "CMakeFiles/bismuth.dir/src/imgui/imgui_impl_opengl3.cpp.o"
+  "libbismuth.pdb"
+  "libbismuth.so"
+  "libbismuth.so.1.0.0"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/bismuth.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
