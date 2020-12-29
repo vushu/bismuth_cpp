@@ -4,3 +4,4 @@ NetrwTreeListing
 .clangd/
 /cmake-build-debug/
 /.clangd/
+game/CMakeFiles/
