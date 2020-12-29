@@ -21,7 +21,7 @@ FirstScene::~FirstScene()
 
 void FirstScene::start()
 {
-    levelSound->playSound();
+    //levelSound->playSound();
 }
 void FirstScene::init()
 {
@@ -72,7 +72,7 @@ void FirstScene::update(float dt)
 
     std::vector<bi::TiledObject>& objects = getTileManager().loadTileMap(tilemapPath).getObjects(1);
 
-    bi::TiledMap& tiledMap = getTileManager().loadTileMap(tilemapPath);
+    //bi::TiledMap& tiledMap = getTileManager().loadTileMap(tilemapPath);
     //bi::TiledObject& player = tiledMap.getObjects(0).at(0);
     //getTileManager().draw(tilemapPath, 0);
     ObjectSystem::update(objects, getRenderer());
@@ -97,9 +97,9 @@ void FirstScene::update(float dt)
         getShapeRenderer().endFlushBegin();
     }
 
-    //getGuiManager().beginDraw();
-    //getGuiManager().showFPS();
-    //getGuiManager().endDraw();
+    getGuiManager().beginDraw();
+    getGuiManager().showFPS();
+    getGuiManager().endDraw();
 
     //for (bi::TiledObject o : objects) {
     //getShapeRenderer().drawRect(o.tile.getPosition(), o.tile.getTileSize(), {1,0,1,1}, 0);

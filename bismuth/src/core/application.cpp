@@ -13,6 +13,7 @@
 #include <bismuth/logging.hpp>
 #include <glm/glm.hpp>
 #include <memory>
+
 #ifdef __EMSCRIPTEN__
 #include <emscripten/emscripten.h>
 #endif
@@ -23,44 +24,38 @@
 //#include <nanovg/nanovg_gl_utils.h>
 using namespace bi;
 
-Application::Application()
-{
-    construct({ 800, 600 }, {}, "Bismuth");
+Application::Application() {
+    construct({800, 600}, {}, "Bismuth");
 }
 
-Application::Application(std::string title)
-{
-    construct({ 0, 0 }, {}, title);
+Application::Application(std::string title) {
+    construct({0, 0}, {}, title);
 }
 
-Application::Application(glm::vec4 tileInfo, std::string title)
-{
-    construct({ 0, 0 }, tileInfo, title);
-}
-Application::Application(int width, int height, std::string title)
-{
-    construct({ width, height }, {}, title);
+Application::Application(glm::vec4 tileInfo, std::string title) {
+    construct({0, 0}, tileInfo, title);
 }
 
-Application::Application(glm::vec2 resolution, glm::vec4 tileInfo, std::string title)
-{
-    construct(resolution, tileInfo, title);
+Application::Application(int width, int height, std::string title) {
+    construct({width, height}, {}, title);
 }
 
-void Application::construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string title)
-{
+Application::Application(glm::vec2 resolution, glm::vec4 tileInfo, std::string title, bool lockFPS) {
+    construct(resolution, tileInfo, title, lockFPS);
+}
+
+void Application::construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string title, bool lockFPS) {
     getIOManager().construct(resolution, tileInfo, title);
     this->scenemanager = std::make_unique<SceneManager>();
     this->title = title;
+    this->lockFPS = lockFPS;
 }
 
-Application::~Application()
-{
+Application::~Application() {
     log("Application: " + this->title + " is now destroyed");
 }
 
-void Application::run()
-{
+void Application::run() {
     log("Running Application: " + title);
     applicationInit();
     init();
@@ -74,11 +69,11 @@ void Application::run()
 #endif
 }
 
-void Application::update(float dt) { }
-void Application::init() { }
+void Application::update(float dt) {}
 
-void Application::loop()
-{
+void Application::init() {}
+
+void Application::loop() {
 
     getWindow().pollEvents();
 
@@ -94,40 +89,49 @@ void Application::loop()
     beginTime = endTime;
 }
 
-void Application::fixedLoop()
-{
+void Application::fixedLoop() {
     getWindow().pollEvents();
 
-    dt = endTime - beginTime;
-    beginTime = endTime;
+    getRenderer().resetStats();
+    beginTime = glfwGetTime();
+    dt = beginTime - endTime;
     accumulated += dt;
 
     while (accumulated > FRAMES_PER_SEC) {
-        update(1.0f);
-        this->scenemanager->update(dt);
+
+        update(FRAMES_PER_SEC);
+        this->scenemanager->update(FRAMES_PER_SEC);
         accumulated -= FRAMES_PER_SEC;
         accumulated = std::max(0.0f, accumulated);
     }
 
     getWindow().swapBuffers();
+    endTime = beginTime;
 }
 
-void Application::nativeLoop()
-{
+void Application::nativeLoop() {
     beginTime = glfwGetTime();
     endTime = glfwGetTime();
     dt = 1.0f / 60.0f;
-    while (!getWindow().windowShouldClose()) {
+    if (lockFPS) {
+        bi::log("Game is fixed to 60 fps");
+    }
+    else {
+        bi::log("Game is using variable time step");
+    }
+    while (!getWindow().windowShouldClose() && lockFPS) {
+        fixedLoop();
+    }
+
+    while (!getWindow().windowShouldClose() && !lockFPS) {
         loop();
-        //fixedLoop();
     }
 
     getIOManager().destroy();
 }
 
-void Application::initOpenGL()
-{
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+void Application::initOpenGL() {
+    if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
         log("Renderer: Failed to initialize GLAD");
         throw std::runtime_error("Renderer: Failed to initialize GLAD");
     }
@@ -140,8 +144,7 @@ void Application::initOpenGL()
     glEnable(GL_STENCIL_TEST);
 }
 
-void Application::applicationInit()
-{
+void Application::applicationInit() {
     log("Application: init");
     getWindow().init();
     initOpenGL();
@@ -150,52 +153,42 @@ void Application::applicationInit()
     //getGuiManager().init();
 }
 
-Renderer& Application::getRenderer()
-{
+Renderer &Application::getRenderer() {
     return *bi::ioManager().renderer;
 }
 
-ShapeRenderer& Application::getShapeRenderer()
-{
+ShapeRenderer &Application::getShapeRenderer() {
     return *bi::ioManager().shaperenderer;
 }
 
-Window& Application::getWindow()
-{
+Window &Application::getWindow() {
     return *bi::ioManager().window;
 }
 
-Camera& Application::getCamera()
-{
+Camera &Application::getCamera() {
     return *bi::ioManager().camera;
 }
 
-AudioManager& Application::getAudioManager()
-{
+AudioManager &Application::getAudioManager() {
     return *bi::ioManager().audioManager;
 }
 
-AssetManager& Application::getAssetManager()
-{
+AssetManager &Application::getAssetManager() {
     return *bi::ioManager().assetmanager;
 }
 
-GuiManager& Application::getGuiManager()
-{
+GuiManager &Application::getGuiManager() {
     return *bi::ioManager().guimanager;
 }
 
-Framebuffer& Application::getMainFramebuffer()
-{
+Framebuffer &Application::getMainFramebuffer() {
     return *bi::ioManager().mainFramebuffer;
 }
 
-SceneManager& Application::getSceneManager()
-{
+SceneManager &Application::getSceneManager() {
     return *this->scenemanager;
 }
 
-IOManager& Application::getIOManager()
-{
+IOManager &Application::getIOManager() {
     return bi::ioManager();
 }
