@@ -99,8 +99,8 @@ void Application::fixedLoop() {
 
     while (accumulated > FRAMES_PER_SEC) {
 
-        update(FRAMES_PER_SEC);
-        this->scenemanager->update(FRAMES_PER_SEC);
+        update(dt);
+        this->scenemanager->update(dt);
         accumulated -= FRAMES_PER_SEC;
         accumulated = std::max(0.0f, accumulated);
     }

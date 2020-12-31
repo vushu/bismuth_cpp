@@ -21,7 +21,7 @@ FirstScene::~FirstScene()
 
 void FirstScene::start()
 {
-    //levelSound->playSound();
+    levelSound->playSound();
 }
 void FirstScene::init()
 {
@@ -45,7 +45,7 @@ void FirstScene::init()
 void FirstScene::update(float dt)
 {
 
-    if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_LEFT)) {
+    if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_M)) {
         nextScene = "mainmenu";
     }
     //getRenderer().clear(0.06f,0.04f,0.01f,1);
@@ -74,7 +74,7 @@ void FirstScene::update(float dt)
 
     //bi::TiledMap& tiledMap = getTileManager().loadTileMap(tilemapPath);
     //bi::TiledObject& player = tiledMap.getObjects(0).at(0);
-    //getTileManager().draw(tilemapPath, 0);
+    getTileManager().draw(tilemapPath, 0);
     ObjectSystem::update(objects, getRenderer());
     getRenderer().endFlushBegin();
 
@@ -97,9 +97,11 @@ void FirstScene::update(float dt)
         getShapeRenderer().endFlushBegin();
     }
 
+    /*
     getGuiManager().beginDraw();
     getGuiManager().showFPS();
     getGuiManager().endDraw();
+    */
 
     //for (bi::TiledObject o : objects) {
     //getShapeRenderer().drawRect(o.tile.getPosition(), o.tile.getTileSize(), {1,0,1,1}, 0);

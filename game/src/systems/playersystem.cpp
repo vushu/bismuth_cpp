@@ -17,61 +17,23 @@ PlayerSystem::PlayerSystem() {
 
 PlayerSystem::~PlayerSystem() {}
 
-void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject> &objects, bi::Font &font) {
-    accDt += dt;
-    glm::vec2 currentTile = getCurrentTile(currentDir);
+void PlayerSystem::handleInput() {
 
-    if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_D) && !xAxisMoving()) {
-        keyDown = true;
-        newDirection = glm::vec2{1, 0};
-        //bi::log("adding right");
-        directionQueue.push(newDirection);
-        //bi::keyInput().donePressing(GLFW_KEY_D);
-    } else if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_A) && !xAxisMoving()) {
-        keyDown = true;
-        newDirection = {-1, 0};
-        directionQueue.push(newDirection);
-        bi::keyInput().donePressing(GLFW_KEY_A);
-    } else if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_S) && !yAxisMoving()) {
-        keyDown = true;
-        newDirection = {0, 1};
-        directionQueue.push(newDirection);
-        if (currentDir == zero) {
-            currentDir = newDirection;
-            lastTile = lastTile + newDirection;
-            drill.playAnimationLeft(dt, newPos);
-            directionQueue.pop();
-        }
-        //bi::keyInput().donePressing(GLFW_KEY_S);
-    } else if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_W) && !yAxisMoving()) {
-        keyDown = true;
-        newDirection = {0, -1};
-        directionQueue.push(newDirection);
-        bi::keyInput().donePressing(GLFW_KEY_W);
-        //bi::log("adding up");
-    } else if (bi::keyInput().isKeyPressedOnce(GLFW_KEY_SPACE)) {
-        keyDown = true;
-        newDirection = {0, 0};
-        directionQueue.push(newDirection);
-    }
+    inputHandleDirection({1, 0}, GLFW_KEY_RIGHT);
+    inputHandleDirection({1, 0}, GLFW_KEY_D);
+    inputHandleDirection({-1, 0}, GLFW_KEY_LEFT);
+    inputHandleDirection({-1, 0}, GLFW_KEY_A);
+    inputHandleDirection({0, -1}, GLFW_KEY_UP);
+    inputHandleDirection({0, -1}, GLFW_KEY_W);
+    inputHandleDirection({0, 1}, GLFW_KEY_DOWN);
+    inputHandleDirection({0, 1}, GLFW_KEY_S);
+}
 
-    if (newPos == zero) {
-        newPos = {4 * 16, 2 * 16};
-        currentDir = {1, 0};
-        lastTile = getCurrentTile(currentDir);
-        //drill.setLastTile();
-    }
-
-    newPos += currentDir * dt * speed;
-    currentTile = getCurrentTile(currentDir);
-
-
+void PlayerSystem::snapToGrid() {
     if (currentDir == zero) {
         //bi::log("waiting");
         //drill.setLastTile();
-    }
-
-    else if (currentDir == right) {
+    } else if (currentDir == right) {
         currentAnimation = "right";
         // if left side reached end of last tile
         if (newPos.x - 16 > (lastTile.x * 16.0f)) {
@@ -93,7 +55,6 @@ void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject
         // fix y axis
         currentAnimation = "left";
         if (newPos.x + 16 < (lastTile.x * 16.0f)) {
-
             newPos.x = (currentTile.x) * 16.0f;
             if (!directionQueue.empty()) {
                 currentDir = directionQueue.front();
@@ -103,9 +64,7 @@ void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject
             drill.setLastTile();
             lastTile = currentTile;
         }
-    }
-
-    else if (currentDir == up) {
+    } else if (currentDir == up) {
         currentAnimation = "up";
         if (newPos.y + 16 < (lastTile.y * 16.0f)) {
             newPos.y = (currentTile.y) * 16.0f;
@@ -113,15 +72,13 @@ void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject
                 currentDir = directionQueue.front();
 
                 directionQueue.pop();
-                //showDirection();
+                //                showDirection();
             }
 
             drill.setLastTile();
             lastTile = currentTile;
         }
-    }
-
-    else if (currentDir == down) {
+    } else if (currentDir == down) {
         currentAnimation = "down";
         if (newPos.y - 16 > (lastTile.y * 16.0f)) {
 
@@ -137,13 +94,96 @@ void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject
             lastTile = currentTile;
         }
     }
+}
+
+
+void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject> &objects, bi::Font &font) {
+    if (newSpeed != 0) {
+        speed += newSpeed;
+        newSpeed = 0;
+        bi::log("updating speed to:", speed);
+    }
+    if (speed > maxSpeed) {
+        speed = maxSpeed;
+        bi::log("Max speed reached set to ", speed);
+    }
+
+    handleInput();
+    accDt += dt;
+
+    glm::vec2 currentTile = getCurrentTile(currentDir);
+
+
+    if (newPos == zero) {
+        newPos = {0, 3 * 16};
+        currentDir = {1, 0};
+        //lastTile = getCurrentTile(currentDir);
+        //drill.setLastTile();
+    }
+    //    newPos += currentDir * dt * speed;
+    if ( speed> 7.0f) {
+        bi::log("something went wrong");
+    }
+    newPos += currentDir * speed;
+
+    currentTile = getCurrentTile(currentDir);
+    snapToGrid();
+    handleCollision(objects, font);
+    bi::ioManager().renderer->drawText("Havested Crystals: " + std::to_string(this->crystals), {40, 15}, font,
+                                       {0.8f, 0.7f, 0.4f, 0.98f}, 0.1f);
+    //    }
+
+    bi::ioManager().renderer->endFlushBegin();
+
+    //jif (!win)
+    drill.draw(dt, currentDir, speed, newPos);
+    //    if (accDt > 1.0f) {
+
+    //    bi::ioManager().shaperenderer->drawRect(newPos, {16,16}, {1,0,0,1});
+    //if (!win)
+    drill.playAnimationByDirection(dt, currentDir, newPos);
+    //drill.playAnimation(dt, currentAnimation, newPos);
+    //bi::ioManager().renderer->drawTile(player.tile, { 1, 1, 1, 1 });
+    accDt = 0.0f;
+
+    bi::ioManager().renderer->endFlushBegin();
+    //    }
+    //bi::ioManager().renderer->setAdditiveBlend();
+    //dustTrail.update(dt, { newPos.x, newPos.y }, currentDir);
+    //bi::ioManager().renderer->endFlushBegin();
+}
+
+void PlayerSystem::handleCollision(std::vector<bi::TiledObject> &objects, bi::Font &font) {
 
     for (auto &object : objects) {
-        if (object.object.getName() == "Crystal") {
+
+        glm::vec2 tilepos = {(object.object.getPosition().x) / 16.0f, (object.object.getPosition().y - 16) / 16.0f};
+        /*
+        if (object.object.getName() == "Rock") {
+            if (tilepos == currentTile) {
+                //bi::ioManager().renderer->drawText("GAME OVER: ", {40, 15}, font, {0.8f, 0.7f, 0.4f, 0.98f}, 1.0f);
+                newPos = {0, 0};
+                lastTile = {0, 0};
+                currentDir = {1, 0};
+                while (!directionQueue.empty()) {
+                    directionQueue.pop();
+                }
+            }
+        }
+         */
+        if (object.object.getName() == "Goal") {
+            if (tilepos == currentTile) {
+                bi::ioManager().renderer->drawText("YOU WIN EM!", {50, 20}, font, {0.8f, 0.7f, 0.4f, 0.98f}, 1.0f);
+                newPos = tilepos;
+            }
+
+        } else if (object.object.getName() == "Crystal") {
             //object.object.getPoints
-            glm::vec2 tilepos = {(object.object.getPosition().x) / 16.0f, (object.object.getPosition().y - 16) / 16.0f};
+            //glm::vec2 tilepos = {(object.object.getPosition().x) / 16.0f, (object.object.getPosition().y - 16) / 16.0f};
+            //            glm::vec2 cT = drill.getCurrentTile(drill.drillNode->position, drill.drillNode->direction);
+            //glm::vec2 cT = getCurrentTile(currentDir);
             //since tiled is anchored bottom left corner we with tilesize
-            if (currentTile == tilepos) {
+            if (tilepos == currentTile) {
 
                 if (object.getCustomProperty("harvested").exists()) {
                     if (!object.getCustomProperty("harvested").getBoolValue()) {
@@ -153,7 +193,7 @@ void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject
                         this->drill.tailLength += 1;
 
                         //Speed change will screw the carts up
-                        //this->speed += 10;
+                        this->newSpeed = .01f;
 
                         if (object.setCustomProperty("harvested", true)) {
                             bi::log("Now harvested");
@@ -161,28 +201,8 @@ void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject
                     }
                 }
             }
-
-            if (object.getCustomProperty("harvested").exists()) {
-                if (!object.getCustomProperty("harvested").getBoolValue()) {
-                    bi::ioManager().shaperenderer->drawRect(
-                            {object.object.getPosition().x, object.object.getPosition().y - 16}, {16, 16},
-                            {1.0f, 0.0f, 0, 0.5f});
-                    bi::ioManager().shaperenderer->endFlushBegin();
-                }
-            }
         }
     }
-    bi::ioManager().renderer->drawText("Havested Crystals: " + std::to_string(this->crystals), {40, 15}, font,
-                                       {0.8f, 0.7f, 0.4f, 0.98f}, 0.1f);
-    bi::ioManager().renderer->endFlushBegin();
-
-    drill.draw(dt, currentDir, speed);
-    drill.playAnimation(dt, currentAnimation, newPos);
-    bi::ioManager().renderer->endFlushBegin();
-    //bi::ioManager().renderer->drawTile(player.tile, { 1, 1, 1, 1 });
-    //bi::ioManager().renderer->setAdditiveBlend();
-    //dustTrail.update(dt, { newPos.x, newPos.y }, currentDir);
-    //bi::ioManager().renderer->endFlushBegin();
 }
 
 void PlayerSystem::drawLeft(bi::ShapeRenderer &shaperenderer) {
@@ -284,7 +304,26 @@ void PlayerSystem::showDirection() {
 
         bi::log("playing up");
     } else if (currentDir == down) {
-
         bi::log("playing down");
+    }
+}
+
+void PlayerSystem::inputHandleDirection(glm::vec2 direction, int key) {
+    if (direction == right && !xAxisMoving() && bi::keyInput().isKeyPressedOnce(key)) {
+        keyDown = true;
+        newDirection = direction;
+        directionQueue.push(direction);
+    } else if (direction == left && !xAxisMoving() && bi::keyInput().isKeyPressedOnce(key)) {
+        keyDown = true;
+        newDirection = direction;
+        directionQueue.push(direction);
+    } else if (direction == up && !yAxisMoving() && bi::keyInput().isKeyPressedOnce(key)) {
+        keyDown = true;
+        newDirection = direction;
+        directionQueue.push(direction);
+    } else if (direction == down && !yAxisMoving() && bi::keyInput().isKeyPressedOnce(key)) {
+        keyDown = true;
+        newDirection = direction;
+        directionQueue.push(direction);
     }
 }

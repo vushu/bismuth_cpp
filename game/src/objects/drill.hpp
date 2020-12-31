@@ -7,13 +7,13 @@ struct Node {
 public:
     int number;
     glm::vec2 position;
-    glm::vec2 direction = {1, 0};
-
+    glm::vec2 direction = {0, 0};
+    glm::vec2 lastPosition;
 
     struct Node *parent;
     struct Node *next;
     glm::vec2 lastTile;
-    glm::vec2 nextDirection = {1, 0};
+    glm::vec2 nextDirection = {0, 0};
     bool isHead;
 };
 
@@ -38,12 +38,13 @@ public:
 
     void playAnimation(float dt, std::string animationName, glm::vec2 position);
 
-    void draw(float dt, glm::vec2 direction, float speed);
+    void playAnimationByDirection(float dt, glm::vec2 direction, glm::vec2 position);
+    void draw(float dt, glm::vec2 direction, float speed, glm::vec2 pos);
 
     glm::vec2 lastTile{16, 16};
     float accDt = 0.0f;
-    Node *drillNode;
-    Node *appendPointer;
+    Node *drillNode= nullptr;
+    Node *appendPointer = nullptr;
 
     glm::vec2 getCurrentTile(glm::vec2 newPos, glm::vec2 dir);
 
@@ -51,11 +52,11 @@ public:
 
     void setLastTile();
 
-    void prepend(glm::vec2 tile, glm::vec2 direction);
+    void prepend(glm::vec2 direction);
 
     void append();
 
-    int tailLength = 24;
+    int tailLength = 0;
     int lastTailLength = tailLength;
 
     bool snapToGrid(Node* cart);
@@ -68,6 +69,7 @@ private:
     glm::vec2 left{-1, 0};
     glm::vec2 up{0, -1};
     glm::vec2 down{0, 1};
+    bool createdFirstCart = false;
 
     int drillTexId;
     int cartTexId;
@@ -76,4 +78,6 @@ private:
     bi::AnimatedSprite animatedSprite;
 
     void createAnimatedSprite();
+
+    void checkSkip(float speed, Node *current);
 };

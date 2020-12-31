@@ -34,6 +34,6 @@ private:
     std::string drillPath = "resources/assets/images/drill.png";
     unsigned smokeTexId;
     unsigned drillTexId;
-    bool showGrid = false;
+    bool showGrid = true;
     std::unique_ptr<bi::Font> font;
 };
