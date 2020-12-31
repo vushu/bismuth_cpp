@@ -74,7 +74,7 @@ private:
     int drillTexId;
     int cartTexId;
     std::string drillPath = "resources/assets/images/drill.png";
-    std::string cartPath = "resources/assets/images/cart.png";
+    std::string cartPath = "resources/assets/images/cart2.png";
     bi::AnimatedSprite animatedSprite;
 
     void createAnimatedSprite();

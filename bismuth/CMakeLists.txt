@@ -31,7 +31,7 @@ file(GLOB_RECURSE source_list
 file(GLOB_RECURSE header_list
     "${CMAKE_CURRENT_LIST_DIR}/include/*h")
 
-add_library(${PROJECT_NAME} SHARED ${header_list} ${source_list})
+add_library(${PROJECT_NAME} SHARED ${header_list} ${source_list} include/bismuth/math.hpp src/core/math.cpp)
 
 set_target_properties(${PROJECT_NAME}
     PROPERTIES
