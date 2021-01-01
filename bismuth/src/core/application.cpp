@@ -97,13 +97,16 @@ void Application::fixedLoop() {
     dt = beginTime - endTime;
     accumulated += dt;
 
-    while (accumulated > FRAMES_PER_SEC) {
+    this->scenemanager->processInput(dt);
 
-        update(dt);
-        this->scenemanager->update(dt);
+    while (accumulated >= FRAMES_PER_SEC) {
+        update(FRAMES_PER_SEC);
+        this->scenemanager->update(FRAMES_PER_SEC);
         accumulated -= FRAMES_PER_SEC;
         accumulated = std::max(0.0f, accumulated);
     }
+
+    this->scenemanager->render(dt);
 
     getWindow().swapBuffers();
     endTime = beginTime;

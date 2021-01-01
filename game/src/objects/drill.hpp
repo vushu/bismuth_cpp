@@ -39,7 +39,8 @@ public:
     void playAnimation(float dt, std::string animationName, glm::vec2 position);
 
     void playAnimationByDirection(float dt, glm::vec2 direction, glm::vec2 position);
-    void draw(float dt, glm::vec2 direction, float speed, glm::vec2 pos);
+    void update(float dt, glm::vec2 direction, float speed, glm::vec2 pos);
+    void draw();
 
     glm::vec2 lastTile{16, 16};
     float accDt = 0.0f;

@@ -63,3 +63,11 @@ void MainMenuSceneB::close()
     glEnable(GL_BLEND);
     bi::log("closing mainmenuB");
 }
+
+void MainMenuSceneB::render(float dt) {
+
+}
+
+void MainMenuSceneB::processInput(float dt) {
+
+}

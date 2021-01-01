@@ -18,6 +18,8 @@ public:
 
     ~PlayerSystem();
 
+    void draw(float dt);
+    void handleInput(float dt);
     void update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject> &objects, bi::Font &font);
 
 private:
@@ -27,6 +29,7 @@ private:
     Drill drill;
     std::string currentAnimation;
     int crystals = 0;
+    float DRAW_RATE = 1.0f/30.0f;
 
     glm::vec2 newPos{0, 0};
     glm::vec2 direction{0, 0};
@@ -75,10 +78,11 @@ private:
 
     DustTrail dustTrail;
 
-    void handleInput();
-
     void handleCollision(std::vector<bi::TiledObject> &objects, bi::Font &font);
 
     void snapToGrid();
+
+    void updateSpeed();
+
 };
 

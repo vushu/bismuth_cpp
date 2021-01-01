@@ -17,10 +17,13 @@ public:
     ~FirstScene();
     void init();
     void update(float dt);
+    void render(float dt);
+    void processInput(float dt);
     void close();
     void start();
 
 private:
+    float accDt = 0.0f;
     //NVGcontext* vg = nullptr;
     bi::AnimatedSprite animatedSprite;
     std::unique_ptr<bi::Animation> anim;

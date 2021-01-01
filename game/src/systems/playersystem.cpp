@@ -3,12 +3,7 @@
 #include "bismuth/iomanager.hpp"
 #include "bismuth/keylistener.hpp"
 #include "bismuth/logging.hpp"
-#include "bismuth/mouselistener.hpp"
-#include "glm/fwd.hpp"
-#include "glm/gtc/constants.hpp"
-#include "glm/gtx/string_cast.hpp"
 #include <bismuth/particle.hpp>
-#include <glad/glad.h>
 #include <string>
 
 PlayerSystem::PlayerSystem() {
@@ -17,7 +12,7 @@ PlayerSystem::PlayerSystem() {
 
 PlayerSystem::~PlayerSystem() {}
 
-void PlayerSystem::handleInput() {
+void PlayerSystem::handleInput(float dt) {
 
     inputHandleDirection({1, 0}, GLFW_KEY_RIGHT);
     inputHandleDirection({1, 0}, GLFW_KEY_D);
@@ -98,17 +93,8 @@ void PlayerSystem::snapToGrid() {
 
 
 void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject> &objects, bi::Font &font) {
-    if (newSpeed != 0) {
-        speed += newSpeed;
-        newSpeed = 0;
-        bi::log("updating speed to:", speed);
-    }
-    if (speed > maxSpeed) {
-        speed = maxSpeed;
-        bi::log("Max speed reached set to ", speed);
-    }
 
-    handleInput();
+    updateSpeed();
     accDt += dt;
 
     glm::vec2 currentTile = getCurrentTile(currentDir);
@@ -121,7 +107,7 @@ void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject
         //drill.setLastTile();
     }
     //    newPos += currentDir * dt * speed;
-    if ( speed> 7.0f) {
+    if (speed > 7.0f) {
         bi::log("something went wrong");
     }
     newPos += currentDir * speed;
@@ -131,26 +117,22 @@ void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject
     handleCollision(objects, font);
     bi::ioManager().renderer->drawText("Havested Crystals: " + std::to_string(this->crystals), {40, 15}, font,
                                        {0.8f, 0.7f, 0.4f, 0.98f}, 0.1f);
-    //    }
 
     bi::ioManager().renderer->endFlushBegin();
 
-    //jif (!win)
-    drill.draw(dt, currentDir, speed, newPos);
-    //    if (accDt > 1.0f) {
+    drill.update(dt, currentDir, speed, newPos);
+}
 
-    //    bi::ioManager().shaperenderer->drawRect(newPos, {16,16}, {1,0,0,1});
-    //if (!win)
-    drill.playAnimationByDirection(dt, currentDir, newPos);
-    //drill.playAnimation(dt, currentAnimation, newPos);
-    //bi::ioManager().renderer->drawTile(player.tile, { 1, 1, 1, 1 });
-    accDt = 0.0f;
-
-    bi::ioManager().renderer->endFlushBegin();
-    //    }
-    //bi::ioManager().renderer->setAdditiveBlend();
-    //dustTrail.update(dt, { newPos.x, newPos.y }, currentDir);
-    //bi::ioManager().renderer->endFlushBegin();
+void PlayerSystem::updateSpeed() {
+    if (newSpeed != 0) {
+        speed += newSpeed;
+        newSpeed = 0;
+        bi::log("updating speed to:", speed);
+    }
+    if (speed > maxSpeed) {
+        speed = maxSpeed;
+        bi::log("Max speed reached set to ", speed);
+    }
 }
 
 void PlayerSystem::handleCollision(std::vector<bi::TiledObject> &objects, bi::Font &font) {
@@ -253,7 +235,6 @@ glm::vec2 PlayerSystem::getCurrentTile(glm::vec2 dir) {
     int currenty = 0;
     if (dir == up) {
         currentx = (int) (newPos.x) / tileSize.x;
-        //currenty  = (int) (newPos.y + tileSize.y) / tileSize.y;
         currenty = (int) (newPos.y) / tileSize.y;
     }
 
@@ -326,4 +307,12 @@ void PlayerSystem::inputHandleDirection(glm::vec2 direction, int key) {
         newDirection = direction;
         directionQueue.push(direction);
     }
+}
+
+void PlayerSystem::draw(float dt) {
+    drill.draw();
+    drill.playAnimationByDirection(dt, currentDir, newPos);
+    //bi::ioManager().renderer->drawTile(player.tile, { 1, 1, 1, 1 });
+    accDt = 0.0f;
+    bi::ioManager().renderer->endFlushBegin();
 }

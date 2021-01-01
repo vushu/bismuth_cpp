@@ -37,8 +37,10 @@ void MainMenuScene::drawMenu() {
     ImGui::SetNextWindowSize(ImVec2(menuWidth, menuHeight));
     bool open = true;
 
-    ImGui::SetNextWindowPos(ImVec2(getWindow().width/2.0f - menuWidth/2, getWindow().height/2.0f - menuHeight/2));
-    if (ImGui::Begin(" ", &open, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_AlwaysAutoResize)){
+    ImGui::SetNextWindowPos(
+            ImVec2(getWindow().width / 2.0f - menuWidth / 2, getWindow().height / 2.0f - menuHeight / 2));
+    if (ImGui::Begin(" ", &open,
+                     ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_AlwaysAutoResize)) {
         if (ImGui::Button("Start", ImVec2(buttonWidth, buttonHeight))) {
             //this->mainMenuMusic->stopSound();
             this->nextScene = "firstscene";
@@ -62,6 +64,7 @@ void MainMenuScene::drawMenu() {
 }
 
 void MainMenuScene::setStyle() {
+
     ImGui::GetStyle().Colors[ImGuiCol_ButtonHovered] = ImVec4(0.24f, 0.23f, 0.29f, 1.00f);
     ImGui::GetStyle().Colors[ImGuiCol_Button] = ImVec4(.4f, .4f, .55f, .8f);
     ImGui::GetStyle().ItemInnerSpacing = ImVec2(0.f, 4.f);
@@ -77,34 +80,26 @@ void MainMenuScene::setStyle() {
 
 void MainMenuScene::update(float dt) {
 
+    //accTime += dt;
+}
 
-    getRenderer().clear();
-
+void MainMenuScene::processInput(float dt) {
     if (bi::keyInput().isKeyPressed(GLFW_KEY_P)) {
         bi::log("Start sound");
         mainMenuMusic->playSound();
-    }
-    else if (bi::keyInput().isKeyPressed(GLFW_KEY_T)) {
+    } else if (bi::keyInput().isKeyPressed(GLFW_KEY_T)) {
         bi::log("Start sound");
         tower->playSound();
-    }
-    else if (bi::keyInput().isKeyPressed(GLFW_KEY_W)) {
+    } else if (bi::keyInput().isKeyPressed(GLFW_KEY_W)) {
         getWindow().windowed(getWindow().width, getWindow().height);
     }
+}
+
+void MainMenuScene::render(float dt) {
+    getRenderer().clear();
     setStyle();
-    accTime += dt;
-
-
-    //getShapeRenderer().drawLine({0,0}, {100,0}, {1,1,1,1});
-    //getShapeRenderer().drawRect({100,100}, {100,100}, {1,0,1,1}, M_PI * accTime);
-    //getShapeRenderer().drawPolygon({550,100}, 50, 13, {1,1,0,1}, M_PI * accTime);
-
-    //getRenderer().drawTexture({100,400}, {100,100}, {1,1,1,1}, textureId, M_PI * accTime);
-    //getRenderer().endFlushBegin();
-    //getShapeRenderer().flush();
-
     drawMenu();
-
+    accTime += dt;
 }
 
 void MainMenuScene::close() {

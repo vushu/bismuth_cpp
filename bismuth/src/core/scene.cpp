@@ -23,6 +23,8 @@ void Scene::sceneStart() {
 void Scene::start() {}
 void Scene::close() {}
 void Scene::update(float dt) {}
+void Scene::render(float dt) {}
+void Scene::processInput(float dt) {}
 
 Renderer& Scene::getRenderer() {
     return *bi::ioManager().renderer;
@@ -55,4 +57,5 @@ AssetManager& Scene::getAssetManager() {
 TiledManager& Scene::getTileManager() {
     return *bi::ioManager().tiledManager;
 }
+
 

@@ -13,6 +13,8 @@ public:
     ~MainMenuSceneB();
 
     void update(float dt);
+    void render(float dt);
+    void processInput(float dt);
     void init();
     void start();
     void close();
