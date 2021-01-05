@@ -31,6 +31,87 @@ void PlayerSystem::snapToGrid() {
     } else if (currentDir == right) {
         currentAnimation = "right";
         // if left side reached end of last tile
+        if (newPos.x >= (currentTile.x * 16.0f) + 16.0f) {
+
+            // snap to grid, to ensure correct behavior
+            newPos.x = currentTile.x * 16.0f + 16.0f;
+            bi::log("Drill snap right to grid");
+
+            if (!directionQueue.empty()) {
+                currentDir = directionQueue.front();
+                directionQueue.pop();
+                //showDirection();
+            }
+            currentTile += currentDir;
+            //drill.setLastTile();
+        }
+
+    } else if (currentDir == left) {
+        currentAnimation = "left";
+        if (newPos.x < 0) {
+            newPos.x = 0;
+        }
+            // if left side reached end of last tile
+        else if (newPos.x + 16.0f <= (currentTile.x * 16.0f)) {
+
+            // snap to grid, to ensure correct behavior
+            newPos.x = currentTile.x * 16.0f - 16.0f;
+            bi::log("Drill snap left to grid");
+
+            if (!directionQueue.empty()) {
+                currentDir = directionQueue.front();
+                directionQueue.pop();
+                //showDirection();
+            }
+            currentTile += currentDir;
+            //drill.setLastTile();
+        }
+
+    } else if (currentDir == up) {
+        currentAnimation = "up";
+        if (newPos.y < 0) {
+            bi::log("hitting roof");
+            newPos.y = 0;
+        }
+            // if left side reached end of last tile
+        else if (newPos.y + 16.0f <= currentTile.y * 16.0f) {
+            // snap to grid, to ensure correct behavior
+            newPos.y = currentTile.y * 16.0f - 16.0f;
+            bi::log("Drill snap up to grid");
+
+            if (!directionQueue.empty()) {
+                currentDir = directionQueue.front();
+                directionQueue.pop();
+                //showDirection();
+            }
+            currentTile += currentDir;
+            //drill.setLastTile();
+        }
+    } else if (currentDir == down) {
+        currentAnimation = "down";
+        if (newPos.y >= currentTile.y * 16.0f + 16.0f) {
+            // snap to grid, to ensure correct behavior
+            newPos.y = currentTile.y * 16.0f + 16.0f;
+            bi::log("Drill snap down to grid");
+
+            if (!directionQueue.empty()) {
+                currentDir = directionQueue.front();
+                directionQueue.pop();
+                //showDirection();
+            }
+            currentTile += currentDir;
+            //drill.setLastTile();
+        }
+    }
+}
+
+void PlayerSystem::snapToGrid2() {
+    if (currentDir == zero) {
+        //bi::log("waiting");
+        //drill.setLastTile();
+    } else if (currentDir == right) {
+        currentAnimation = "right";
+        // if left side reached end of last tile
         if (newPos.x - 16 > (lastTile.x * 16.0f)) {
 
             // snap to grid, to ensure correct behavior
@@ -92,33 +173,68 @@ void PlayerSystem::snapToGrid() {
 }
 
 
-void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject> &objects, bi::Font &font) {
+bool PlayerSystem::snapToGrid(glm::vec2 position, glm::vec2 direction) {
 
+    glm::vec2 currentTileAtDirection = drill.getCurrentTile(position, direction);
+    glm::vec2 lastTilePos = lastTile * 16.0f;
+    glm::vec2 currentTileAtDirectionPos = currentTileAtDirection * 16.0f;
+    bool snapped = false;
+
+    if (direction == right) {
+        if (position.x - 16.0f > lastTilePos.x) {
+            position.x = currentTileAtDirectionPos.x;
+            snapped = true;
+        }
+    } else if (direction == left) {
+        if (position.x + 16.0f < lastTilePos.x) {
+            position.x = currentTileAtDirectionPos.x;
+            snapped = true;
+        }
+    } else if (direction == up) {
+
+        if (position.y + 16.0f < lastTilePos.y) {
+            position.y = currentTileAtDirectionPos.y;
+            snapped = true;
+        }
+    } else if (direction == down) {
+        if (position.y - 16.0f > lastTilePos.y) {
+            position.y = currentTileAtDirectionPos.y;
+            snapped = true;
+        }
+    }
+    return snapped;
+}
+
+void PlayerSystem::update(float dt, glm::vec2 mouse, std::vector<bi::TiledObject> &objects, bi::Font &font) {
     updateSpeed();
     accDt += dt;
-
-    glm::vec2 currentTile = getCurrentTile(currentDir);
-
+    //currentTile = drill.getCurrentTile(newPos, currentDir);
 
     if (newPos == zero) {
         newPos = {0, 3 * 16};
         currentDir = {1, 0};
-        //lastTile = getCurrentTile(currentDir);
-        //drill.setLastTile();
-    }
-    //    newPos += currentDir * dt * speed;
-    if (speed > 7.0f) {
-        bi::log("something went wrong");
+        currentTile = {0, 3};
+        lastTile = currentTile;
+        drill.setLastTile();
     }
     newPos += currentDir * speed;
+    currentTile = drill.getCurrentTile(newPos, currentDir);
 
-    currentTile = getCurrentTile(currentDir);
-    snapToGrid();
+    snapToGrid2();
+
+//    bi::log("speed:", speed);
+//    bi::log("position:", newPos);
+//    bi::log("direction:", currentDir);
+
     handleCollision(objects, font);
-    bi::ioManager().renderer->drawText("Havested Crystals: " + std::to_string(this->crystals), {40, 15}, font,
-                                       {0.8f, 0.7f, 0.4f, 0.98f}, 0.1f);
-
-    bi::ioManager().renderer->endFlushBegin();
+    if (drill.drillNode != nullptr) {
+      glm::vec2 drillTile = drill.getCurrentTile(drill.drillNode->position, drill.drillNode->direction);
+        //glm::vec2 drillTile = setNextTile(currentTile, currentDir);
+        if (currentTile == (drillTile + currentDir)) {
+        } else if (currentTile != (drillTile + drill.drillNode->direction)) {
+            bi::log("something went terribly wrong");
+        }
+    }
 
     drill.update(dt, currentDir, speed, newPos);
 }
@@ -136,9 +252,7 @@ void PlayerSystem::updateSpeed() {
 }
 
 void PlayerSystem::handleCollision(std::vector<bi::TiledObject> &objects, bi::Font &font) {
-
     for (auto &object : objects) {
-
         glm::vec2 tilepos = {(object.object.getPosition().x) / 16.0f, (object.object.getPosition().y - 16) / 16.0f};
         /*
         if (object.object.getName() == "Rock") {
@@ -149,13 +263,31 @@ void PlayerSystem::handleCollision(std::vector<bi::TiledObject> &objects, bi::Fo
                 currentDir = {1, 0};
                 while (!directionQueue.empty()) {
                     directionQueue.pop();
-                }
+                 else if (currentDir == right) {
+        currentAnimation = "right";
+        // if left side reached end of last tile
+        if (newPos.x > (std::max(currentTile.x * 16.0f, 16.0f))) {
+
+            // snap to grid, to ensure correct behavior
+            newPos.x = std::max(currentTile.x * 16.0f, 16.0f);
+            //bi::log("Drill snap to grid");
+
+            if (!directionQueue.empty()) {
+                currentDir = directionQueue.front();
+                directionQueue.pop();
+                //showDirection();
+            }
+            drill.setLastTile();
+            currentTile += currentDir;
+        }
+
+    }
             }
         }
          */
         if (object.object.getName() == "Goal") {
             if (tilepos == currentTile) {
-                bi::ioManager().renderer->drawText("YOU WIN EM!", {50, 20}, font, {0.8f, 0.7f, 0.4f, 0.98f}, 1.0f);
+//                bi::ioManager().renderer->drawText("YOU WIN EM!", {50, 20}, font, {0.8f, 0.7f, 0.4f, 0.98f}, 1.0f);
                 newPos = tilepos;
             }
 
@@ -172,10 +304,10 @@ void PlayerSystem::handleCollision(std::vector<bi::TiledObject> &objects, bi::Fo
                         this->crystals++;
                         //TODO: HERE
                         //more than one cart will screw carts up
-                        this->drill.tailLength += 1;
 
                         //Speed change will screw the carts up
-                        this->newSpeed = .01f;
+                        this->drill.tailLength += 1;
+                        //this->newSpeed += 0.1f;
 
                         if (object.setCustomProperty("harvested", true)) {
                             bi::log("Now harvested");
@@ -205,7 +337,6 @@ void PlayerSystem::drawDown(bi::ShapeRenderer &shaperenderer) {
 }
 
 void PlayerSystem::drawDirection(bi::ShapeRenderer &shaperenderer) {
-
     if (newDirection == left) {
         drawLeft(shaperenderer);
     } else if (newDirection == right) {
@@ -217,15 +348,17 @@ void PlayerSystem::drawDirection(bi::ShapeRenderer &shaperenderer) {
     }
 }
 
-glm::vec2 PlayerSystem::setNextTile(glm::vec2 point) {
-    //lastTile = getCurrentTile(point);
-    //nextTile.y = std::max(nextTile.y, 0.0f);
-    //nextTile.x = std::max(nextTile.x, 0.0f);
-    int currentx = (int) (newPos.x + (16.0f / 2.0f)) / 16.0f;
-    int currenty = (int) (newPos.y + (16.0f / 2.0f)) / 16.0f;
-    lastTile = {currentx, currenty};
-
-    return lastTile;
+glm::vec2 PlayerSystem::setNextTile(glm::vec2 currentTile, glm::vec2 direction) {
+    if (direction == right) {
+        currentTile.x = (int) (newPos.x / 16.0f);
+    } else if (direction == left) {
+        currentTile.x = (int) (newPos.x / 16.0f);
+    } else if (direction == up) {
+        currentTile.y = (int) (newPos.y / 16.0f);
+    } else if (direction == down) {
+        currentTile.y = (int) (newPos.y / 16.0f);
+    }
+    return currentTile;
 }
 
 glm::vec2 PlayerSystem::getCurrentTile(glm::vec2 dir) {
@@ -233,32 +366,9 @@ glm::vec2 PlayerSystem::getCurrentTile(glm::vec2 dir) {
 
     int currentx = 0;
     int currenty = 0;
-    if (dir == up) {
-        currentx = (int) (newPos.x) / tileSize.x;
-        currenty = (int) (newPos.y) / tileSize.y;
-    }
 
-    if (dir == down) {
-        currentx = (int) (newPos.x) / tileSize.x;
-        currenty = (int) (newPos.y + tileSize.y) / tileSize.y;
-    }
-
-    if (dir == left) {
-        currentx = (int) (newPos.x) / tileSize.x;
-        currenty = (int) (newPos.y) / tileSize.y;
-    }
-
-    if (dir == right) {
-        currentx = (int) (newPos.x + tileSize.x) / tileSize.x;
-        currenty = (int) (newPos.y) / tileSize.y;
-    }
-
-    currentTile = {currentx, currenty};
-    //bi::log("currentTile" ,glm::to_string(currentTile));
-    //currentTile = newPos) / tileSize * 16.0f;
-
-    currentx = (int) (newPos.x + (tileSize.x / 2.0f)) / tileSize.x;
-    currenty = (int) (newPos.y + (tileSize.y / 2.0f)) / tileSize.y;
+    currentx = static_cast<int> (newPos.x + (tileSize.x * .5f)) / tileSize.x;
+    currenty = static_cast<int> (newPos.y + (tileSize.y * .5f)) / tileSize.y;
 
     currentTile = {currentx, currenty};
 
@@ -267,12 +377,10 @@ glm::vec2 PlayerSystem::getCurrentTile(glm::vec2 dir) {
 
 bool PlayerSystem::xAxisMoving() {
     return newDirection == left || newDirection == right;
-    //return newDirection == left || newDirection == right || currentDir == left || currentDir == right;
 }
 
 bool PlayerSystem::yAxisMoving() {
     return newDirection == up || newDirection == down;
-    //return newDirection == up || newDirection == down || currentDir == down || currentDir == up;
 }
 
 void PlayerSystem::showDirection() {

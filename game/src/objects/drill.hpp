@@ -64,6 +64,7 @@ public:
 
     void changeDirection(Node* cart);
 
+    void appendNew();
 
 private:
     glm::vec2 right{1, 0};

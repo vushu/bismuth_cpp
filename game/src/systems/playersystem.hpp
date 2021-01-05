@@ -43,7 +43,7 @@ private:
     glm::vec2 up{0, -1};
     glm::vec2 down{0, 1};
     bool keyDown = false;
-    float speed = 1.0f;
+    float speed = 4.0f;
     float maxSpeed = 7.0f;
     float maxSpeedVariableStep = 479.94;
     float newSpeed = 0.0f;
@@ -51,10 +51,6 @@ private:
     bool win = false;
     glm::vec2 particleOffset{0, 0};
     std::unique_ptr<bi::Font> font;
-
-    glm::vec2 getCurrentTile(glm::vec2 dir);
-
-    glm::vec2 setNextTile(glm::vec2 point);
 
     glm::vec2 getNextTile();
 
@@ -84,5 +80,12 @@ private:
 
     void updateSpeed();
 
+    glm::vec2 getCurrentTile(glm::vec2 dir);
+
+    glm::vec2 setNextTile(glm::vec2 currentTile, glm::vec2 direction);
+
+    bool snapToGrid(glm::vec2 position, glm::vec2 direction);
+
+    void snapToGrid2();
 };
 

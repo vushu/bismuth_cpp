@@ -14,7 +14,7 @@ FirstScene::~FirstScene() {
 }
 
 void FirstScene::start() {
-    levelSound->playSound();
+    //levelSound->playSound();
 }
 
 void FirstScene::init() {
