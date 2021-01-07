@@ -43,7 +43,7 @@ private:
     glm::vec2 up{0, -1};
     glm::vec2 down{0, 1};
     bool keyDown = false;
-    float speed = 4.0f;
+    float speed = 1.0f;
     float maxSpeed = 7.0f;
     float maxSpeedVariableStep = 479.94;
     float newSpeed = 0.0f;
