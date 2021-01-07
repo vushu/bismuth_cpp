@@ -1,6 +1,6 @@
 #pragma once
 
-#include <bismuth/animatedsprite.hpp>
+#include "bismuth/animatedsprite.hpp"
 #include <queue>
 
 struct Node {
@@ -76,7 +76,7 @@ private:
     int drillTexId;
     int cartTexId;
     std::string drillPath = "resources/assets/images/drill.png";
-    std::string cartPath = "resources/assets/images/cart2.png";
+    std::string cartPath = "resources/assets/images/cart.png";
     bi::AnimatedSprite animatedSprite;
 
     void createAnimatedSprite();

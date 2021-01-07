@@ -1,7 +1,8 @@
 native/
 wasm/
-NetrwTreeListing
+NetrwTreeListing/
 .clangd/
-/cmake-build-debug/
-/.clangd/
+cmake-build-debug/
 game/CMakeFiles/
+.clangd/index/
+.idea/
