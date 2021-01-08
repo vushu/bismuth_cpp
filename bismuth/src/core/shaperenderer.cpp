@@ -144,12 +144,12 @@ void ShapeRenderer::drawGrid(glm::vec2 tileSize, glm::vec2 windowSize, glm::vec2
     int yCount = windowSize.y / tileSize.y;
 
     //vertical
-    for (int i = 1; i <= xCount; i++) {
+    for (int i = 0; i <= xCount; i++) {
         drawLine({ i * tileSize.x + offset.x, offset.y }, { i * tileSize.x + offset.x, yCount * tileSize.y + offset.y }, color);
     }
 
     //horizontal
-    for (int i = 1; i <= yCount; i++) {
+    for (int i = 0; i <= yCount; i++) {
         drawLine({ offset.x, i * tileSize.y + offset.y }, { xCount * tileSize.x + offset.x, i * tileSize.y + offset.y }, color);
     }
 
