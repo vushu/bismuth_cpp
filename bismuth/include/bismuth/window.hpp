@@ -18,6 +18,7 @@ namespace  bi {
             void swapBuffers();
             int maxWidth;
             int maxHeight;
+            void fullscreen();
             void fullscreen(int width, int height);
             void windowed(int width, int height);
             void destroy();

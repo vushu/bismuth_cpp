@@ -43,6 +43,10 @@ void Window::destroy() {
     glfwTerminate();
 }
 
+void Window::fullscreen() {
+    fullscreen(maxWidth, maxHeight);
+}
+
 void Window::fullscreen(int width, int height) {
     glfwSetWindowMonitor(this->window, glfwGetPrimaryMonitor(), 0,0, width, height, 0);
 }
