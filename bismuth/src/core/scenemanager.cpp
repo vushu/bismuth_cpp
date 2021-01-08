@@ -41,9 +41,11 @@ void SceneManager::update(float dt) {
 }
 
 void SceneManager::render(float dt) {
-    scenes.at(currentScene)->render(dt);
+    if (scenes.count(currentScene) > 0)
+        scenes.at(currentScene)->render(dt);
 }
 
 void SceneManager::processInput(float dt) {
-    scenes.at(currentScene)->processInput(dt);
+    if (scenes.count(currentScene) > 0)
+        scenes.at(currentScene)->processInput(dt);
 }
