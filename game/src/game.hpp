@@ -3,12 +3,15 @@
 class Game : public bi::Application{
     public:
         // constructors, asssignment, destructor
-        Game() : bi::Application({480, 270}, {30,17,16,16}, "mygame", true) {}
+        Game() : bi::Application("bismuth") {}
         ~Game();
     private:
 
     protected:
-        void update(float dt) override;
+
         void init() override;
+        void processInput(float dt) override;
+        void update(float dt) override;
+        void render(float dt) override;
 
 };

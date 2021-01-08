@@ -56,9 +56,11 @@ namespace bi {
 
     protected:
 
-        virtual void update(float dt);
-
         virtual void init();
+        virtual void processInput(float dt);
+        virtual void update(float dt);
+        virtual void render(float dt);
+
 
     private:
 

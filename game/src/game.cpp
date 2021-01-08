@@ -1,6 +1,12 @@
 #include "game.hpp"
 
-Game::~Game() {
+Game::~Game() {}
+
+void Game::init() {
+
+}
+
+void Game::processInput(float dt) {
 
 }
 
@@ -8,6 +14,6 @@ void Game::update(float dt) {
 
 }
 
-void Game::init() {
+void Game::render(float dt) {
 
 }

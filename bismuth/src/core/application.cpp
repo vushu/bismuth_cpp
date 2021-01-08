@@ -69,9 +69,13 @@ void Application::run() {
 #endif
 }
 
+void Application::init() {}
+
+void Application::processInput(float dt) {}
+
 void Application::update(float dt) {}
 
-void Application::init() {}
+void Application::render(float dt) {}
 
 void Application::loop() {
 
@@ -97,6 +101,7 @@ void Application::fixedLoop() {
     dt = beginTime - endTime;
     accumulated += dt;
 
+    processInput(dt);
     this->scenemanager->processInput(dt);
 
     while (accumulated >= FRAMES_PER_SEC) {
@@ -106,6 +111,7 @@ void Application::fixedLoop() {
         accumulated = std::max(0.0f, accumulated);
     }
 
+    render(dt);
     this->scenemanager->render(dt);
 
     getWindow().swapBuffers();
