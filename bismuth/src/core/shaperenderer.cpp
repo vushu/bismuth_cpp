@@ -138,21 +138,22 @@ void ShapeRenderer::drawPolygon(glm::vec2 centerPos, float radius, int segments,
     }
 }
 
-void ShapeRenderer::drawGrid(glm::vec2 tileSize, glm::vec4 color) {
+void ShapeRenderer::drawGrid(glm::vec2 tileSize, glm::vec2 windowSize, glm::vec2 offset, glm::vec4 color) {
 
-    int xCount = bi::ioManager().window->width / tileSize.x;
-    int yCount = bi::ioManager().window->height / tileSize.y;
+    int xCount = windowSize.x / tileSize.x;
+    int yCount = windowSize.y / tileSize.y;
 
-    for (int i = 0; i <= xCount; i++) {
-        drawLine({ i * tileSize.x, 0 }, { i * tileSize.x, yCount * tileSize.x }, color);
+    //vertical
+    for (int i = 1; i <= xCount; i++) {
+        drawLine({ i * tileSize.x + offset.x, offset.y }, { i * tileSize.x + offset.x, yCount * tileSize.y + offset.y }, color);
     }
 
-    for (int i = 0; i <= yCount; i++) {
-        drawLine({ 0, i * tileSize.y }, { xCount * tileSize.y, i * tileSize.y }, color);
+    //horizontal
+    for (int i = 1; i <= yCount; i++) {
+        drawLine({ offset.x, i * tileSize.y + offset.y }, { xCount * tileSize.x + offset.x, i * tileSize.y + offset.y }, color);
     }
 
 }
-
 
 void ShapeRenderer::flush() {
 

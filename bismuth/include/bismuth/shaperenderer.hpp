@@ -26,7 +26,7 @@ namespace bi {
             void drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color, float angle = 0.0f, bool centerShown = false);
             void drawRect(glm::vec2 position, glm::vec2 size, glm::vec4 color, float angle = 0.0f, bool centerShown = false);
             void drawPolygon(glm::vec2 centerPos, float radius, int segments, glm::vec4 color, float angle, bool centerShown = false);
-            void drawGrid(glm::vec2 tileSize, glm::vec4 color = glm::vec4{0.5f,0.5f,0,0.8f});
+            void drawGrid(glm::vec2 tileSize, glm::vec2 windowSize, glm::vec2 offset = glm::vec2{0.0f,0.0f}, glm::vec4 color = glm::vec4{0.5f,0.0f,0.5f,0.8f});
             void beginBatch();
             void endBatch();
             void flush();
