@@ -5,6 +5,7 @@
 #include <bismuth/logging.hpp>
 #include <glad/glad.h>
 #include <string>
+#include <bismuth/iomanager.hpp>
 
 using namespace bi;
 
@@ -135,6 +136,21 @@ void ShapeRenderer::drawPolygon(glm::vec2 centerPos, float radius, int segments,
         setVertex(centerPos, color);
 
     }
+}
+
+void ShapeRenderer::drawGrid(glm::vec2 tileSize, glm::vec4 color) {
+
+    int xCount = bi::ioManager().window->width / tileSize.x;
+    int yCount = bi::ioManager().window->height / tileSize.y;
+
+    for (int i = 0; i <= xCount; i++) {
+        drawLine({ i * tileSize.x, 0 }, { i * tileSize.x, yCount * tileSize.x }, color);
+    }
+
+    for (int i = 0; i <= yCount; i++) {
+        drawLine({ 0, i * tileSize.y }, { xCount * tileSize.y, i * tileSize.y }, color);
+    }
+
 }
 
 

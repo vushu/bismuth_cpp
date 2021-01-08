@@ -6,3 +6,5 @@ cmake-build-debug/
 game/CMakeFiles/
 .clangd/index/
 .idea/
+.cache/
+compile_commands.json
