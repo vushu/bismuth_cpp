@@ -12,7 +12,7 @@ Camera::~Camera() {
 
 void Camera::adjustProjection() {
     projectionMatrix = glm::mat4(1.0);
-    //projectionMatrix = glm::ortho(0.0f, 1024.0f, 768.0f, 0.0f, -1.0f, 100.0f);
+    //camera viewport
     projectionMatrix = glm::ortho(0.0f, width, height, 0.0f, -1.0f, 100.0f);
     inverseProjectionMatrix = glm::inverse(projectionMatrix);
     inverseViewMatrix = glm::inverse(viewMatrix);
