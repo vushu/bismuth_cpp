@@ -10,7 +10,7 @@ Camera::~Camera() {
     bi::log("Camera destroyed");
 }
 
-void Camera::adjustProjection() {
+void Camera::adjustProjection(float width, float height) {
     projectionMatrix = glm::mat4(1.0);
     //camera viewport
     projectionMatrix = glm::ortho(0.0f, width, height, 0.0f, -1.0f, 100.0f);

@@ -6,11 +6,11 @@ namespace bi {
         public:
             // constructors, asssignment, destructor
             Camera(int w, int h) : width(w), height(h) {
-                adjustProjection();
+                adjustProjection(width, height);
             }
             ~Camera ();
 
-            void adjustProjection();
+            void adjustProjection(float width, float height);
             glm::mat4 getViewMatrix();
             glm::mat4 projectionMatrix;
             glm::vec2 position{0,0};
