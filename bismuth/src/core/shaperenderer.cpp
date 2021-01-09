@@ -142,14 +142,28 @@ void ShapeRenderer::drawGrid(glm::vec2 tileSize, glm::vec2 tileCount, glm::vec2 
 
     //vertical
     for (int i = 0; i <= tileCount.x; i++) {
-        drawLine({ i * tileSize.x + offset.x, offset.y }, { i * tileSize.x + offset.x, tileCount.y * tileSize.y + offset.y }, color);
+        glm::vec2 pointFrom = { i * tileSize.x + offset.x, offset.y };
+        glm::vec2 pointTo = { i * tileSize.x + offset.x, tileCount.y * tileSize.y + offset.y };
+        if (i == 0) {
+            // to keep first line within view
+            pointFrom.x += 0.1f;
+            pointTo.x += 0.1f;
+        }
+        drawLine(pointFrom, pointTo, color);
     }
 
     //horizontal
     for (int i = 0; i <= tileCount.y; i++) {
-        drawLine({ offset.x, i * tileSize.y + offset.y }, { tileCount.x * tileSize.x + offset.x, i * tileSize.y + offset.y }, color);
-    }
+        glm::vec2 pointFrom = { offset.x, i * tileSize.y + offset.y};
+        glm::vec2 pointTo = { tileCount.x * tileSize.x + offset.x, i * tileSize.y + offset.y};
+        if (i == 0) {
+            // to keep first line within view
+            pointFrom.y += 0.1f;
+            pointTo.y += 0.1f;
+        }
 
+        drawLine(pointFrom, pointTo, color);
+    }
 }
 
 void ShapeRenderer::flush() {
