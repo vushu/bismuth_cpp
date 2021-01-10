@@ -10,7 +10,7 @@ Camera::~Camera() {
     bi::log("Camera destroyed");
 }
 
-void Camera::update() {
+void Camera::adjustProjection() {
     adjustProjection(this->width, this->height);
 }
 

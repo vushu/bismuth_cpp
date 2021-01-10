@@ -10,7 +10,7 @@ namespace bi {
             }
             ~Camera ();
 
-            void update();
+            void adjustProjection();
             void adjustProjection(float width, float height);
             void zoom(float scaleFactor);
             glm::mat4 getViewMatrix();
