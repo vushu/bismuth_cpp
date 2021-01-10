@@ -10,5 +10,5 @@ glm::vec4 color::fromRGB(glm::vec4 color) {
 }
 
 glm::vec4 color::fromRGB(float r, float g, float b, float a) {
-    return fromRGB(r,g,b,a);
+    return fromRGB({r,g,b,a});
 }
