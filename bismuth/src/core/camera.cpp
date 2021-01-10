@@ -10,10 +10,6 @@ Camera::~Camera() {
     bi::log("Camera destroyed");
 }
 
-void Camera::adjustProjection() {
-    adjustProjection(this->width, this->height);
-}
-
 void Camera::adjustProjection(float width, float height) {
     projectionMatrix = glm::mat4(1.0);
     //camera viewport
@@ -27,6 +23,7 @@ void Camera::adjustProjection(float width, float height) {
 void Camera::zoom(float scaleFactor) {
     this->width *= scaleFactor;
     this->height *= scaleFactor;
+    adjustProjection(this->width, this->height);
 }
 
 void Camera::setPosition(glm::vec2 pos) {
