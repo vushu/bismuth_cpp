@@ -10,7 +10,9 @@ namespace bi {
             }
             ~Camera ();
 
+            void update();
             void adjustProjection(float width, float height);
+            void zoom(float scaleFactor);
             glm::mat4 getViewMatrix();
             glm::mat4 projectionMatrix;
             glm::vec2 position{0,0};
@@ -20,6 +22,7 @@ namespace bi {
             void setPosition(glm::vec2 pos);
             glm::mat4 getInversePV();
             float width, height;
+            float cameraSpeed = 300.0f;
         private:
 
 

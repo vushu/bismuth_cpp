@@ -1,6 +1,5 @@
 #pragma once
-#include "bismuth/texture.hpp"
-#include "glm/fwd.hpp"
+#include "texture.hpp"
 #include <array>
 #include <glm/glm.hpp>
 #include <glad/glad.h>
