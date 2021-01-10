@@ -21,8 +21,8 @@ namespace bi {
             glm::mat4 getInversePV();
             float width, height;
             float cameraSpeed = 300.0f;
-        private:
             void adjustProjection(float width, float height);
+        private:
 
 
     };
