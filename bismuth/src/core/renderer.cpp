@@ -6,6 +6,7 @@
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
 #include <bismuth/logging.hpp>
+#include "bismuth/color.hpp"
 #include "bismuth/glhelper.hpp"
 #include "bismuth/primitives.hpp"
 #include "glm/fwd.hpp"
@@ -155,7 +156,7 @@ void Renderer::drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int t
     reevaluateBatchSpace();
     float textureIndex = getTextureIndex(texId);
 
-    setQuadVertices(s_renderData.currentLocationPtr, pos, size, color, textureIndex, angle, texcoords);
+    setQuadVertices(s_renderData.currentLocationPtr, pos, size, color::toRGB(color), textureIndex, angle, texcoords);
     incrementDrawCounters();
 }
 
@@ -189,7 +190,7 @@ std::array<glm::vec2, 4> Renderer::getCorners(glm::vec2 position, glm::vec2 size
 
 void Renderer::setQuadVertex(QuadVertex*& quadVertex, glm::vec2 position, glm::vec2 size, glm::vec2 texCoord, glm::vec4 color, float texId) {
     quadVertex->position = { position, 0.0f};
-    quadVertex->color = color;
+    quadVertex->color = color::toRGB(color);
     quadVertex->texcoords = texCoord;
     quadVertex->texId = texId;
     quadVertex->type = 0.0f;
@@ -279,16 +280,12 @@ Renderer::~Renderer(){
 }
 
 void Renderer::clear(glm::vec4 color) {
-    clear(color.x, color.y, color.z, color.w);
+    clear(color.r, color.g, color.b, color.a);
 }
 
 void Renderer::clear(float r, float g, float b, float a) {
-    if ((r > 1 && r <= 255) || (g > 1 && b <= 255) || (b > 1 && b <= 255)) {
-        glClearColor(r/255.0f, g/255.0f, b/255.0f, a);
-    }
-    else {
-        glClearColor(r,g,b,a);
-    }
+    glm::vec4 color = color::toRGB(r,g,b,a);
+    glClearColor(color.r, color.g, color.b, color.a);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }
 
@@ -305,7 +302,7 @@ void Renderer::reevaluateBatchSpace() {
 
 void Renderer::drawText(std::array<char, 256> text, glm::vec2 position, Font& f, glm::vec4 color, float scale) {
     std::string str(text.data());
-    drawText(str, position, f, color, scale);
+    drawText(str, position, f, color::toRGB(color), scale);
 }
 
 void Renderer::drawText(std::string text, glm::vec2 position, Font& f, glm::vec4 color, float scale) {
@@ -313,14 +310,14 @@ void Renderer::drawText(std::string text, glm::vec2 position, Font& f, glm::vec4
     reevaluateBatchSpace();
     float textureIndex = getTextureIndex(f.textureId);
 
-    f.updateBuffers(text, position, s_renderData.currentLocationPtr, color , scale, textureIndex);
+    f.updateBuffers(text, position, s_renderData.currentLocationPtr, color::toRGB(color) , scale, textureIndex);
     // each character is a quad
     s_renderData.indexCount += 6 * text.length();
     s_renderData.stats.quadCount += text.length();
 }
 
 void Renderer::drawTile(Tile& tile, glm::vec4 color) {
-    drawTexture(tile.getPosition(), tile.getTileSize(), color, tile.getTextureId(), 0, tile.getTexCoords());
+    drawTexture(tile.getPosition(), tile.getTileSize(), color::toRGB(color), tile.getTextureId(), 0, tile.getTexCoords());
 }
 
 float Renderer::getTextureIndex(int texId) {

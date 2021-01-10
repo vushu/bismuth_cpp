@@ -6,6 +6,7 @@
 #include <glad/glad.h>
 #include <string>
 #include <bismuth/iomanager.hpp>
+#include <bismuth/color.hpp>
 
 using namespace bi;
 
@@ -198,7 +199,7 @@ void ShapeRenderer::flush() {
 
 void ShapeRenderer::setVertex(glm::vec2 position, glm::vec4 color) {
     renderData.currentLocationPtr->position = { position, 0};
-    renderData.currentLocationPtr->color = color;
+    renderData.currentLocationPtr->color = color::toRGB(color);
     renderData.currentLocationPtr++;
     renderData.vertexCounter++;
 }
