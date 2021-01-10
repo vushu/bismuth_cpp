@@ -283,7 +283,12 @@ void Renderer::clear(glm::vec4 color) {
 }
 
 void Renderer::clear(float r, float g, float b, float a) {
-    glClearColor(r,g,b,a);
+    if ((r > 1 && r <= 255) || (g > 1 && b <= 255) || (b > 1 && b <= 255)) {
+        glClearColor(r/255.0f, g/255.0f, b/255.0f, a);
+    }
+    else {
+        glClearColor(r,g,b,a);
+    }
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }
 
