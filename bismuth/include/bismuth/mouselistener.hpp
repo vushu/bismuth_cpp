@@ -10,8 +10,8 @@ namespace bi {
             static void mousePosCallback(GLFWwindow* window, double xPos, double yPos);
             static void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
             static void mouseScrollCallback(GLFWwindow* window, double xOffset, double yOffset);
-            static float toOrthoX(Camera& camera, int width);
-            static float toOrthoY(Camera& camera, int height);
+            static float toOrthoX(int width);
+            static float toOrthoY(int height);
 
             static MouseListener& get() {
                 static MouseListener instance;
@@ -30,7 +30,7 @@ namespace bi {
             bool mouseButtonPressed[numberOfMouseButtons] = {false};
             ~MouseListener();
             double scrollX, scrollY;
-            double xPos, yPos, lastX, lastY;
+            double xPos, yPos;
             bool isDragging;
         private:
             MouseListener();
