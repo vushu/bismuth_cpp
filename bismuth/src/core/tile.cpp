@@ -49,3 +49,6 @@ unsigned int Tile::getId() {
 glm::vec2 Tile::getTileSize() {
     return this->tileSize;
 }
+glm::vec2 Tile::getTileCell() {
+    return this->tileCell;
+}
