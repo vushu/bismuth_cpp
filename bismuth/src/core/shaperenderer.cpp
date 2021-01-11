@@ -54,9 +54,9 @@ void ShapeRenderer::endBatch() {
 
 }
 
-void ShapeRenderer::endFlushBegin() {
+void ShapeRenderer::endFlushBegin(bool filled) {
     endBatch();
-    flush();
+    flush(filled);
     beginBatch();
 }
 void ShapeRenderer::drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color, float angle, bool centerShown) {
@@ -156,7 +156,7 @@ void ShapeRenderer::drawGrid(glm::vec2 tileSize, glm::vec2 tileCount, glm::vec2 
     }
 }
 
-void ShapeRenderer::flush() {
+void ShapeRenderer::flush(bool filled) {
 
     this->shader.use();
 
@@ -168,10 +168,13 @@ void ShapeRenderer::flush() {
     //enable color
     glEnableVertexAttribArray(1);
 
-    glLineWidth(1.2f);
-    glDrawArrays(GL_LINES, 0, renderData.vertexCounter);
-    //if Filled
-    //glDrawArrays(GL_POLYGON, 0, renderData.vertexCounter);
+    if (!filled){
+        glLineWidth(1.2f);
+        glDrawArrays(GL_LINES, 0, renderData.vertexCounter);
+    }
+    else{
+        glDrawArrays(GL_POLYGON, 0, renderData.vertexCounter);
+    }
 
     glDisableVertexAttribArray(0);
     //enable color

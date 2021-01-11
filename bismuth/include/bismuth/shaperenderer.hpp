@@ -29,8 +29,8 @@ namespace bi {
             void drawGrid(glm::vec2 tileSize, glm::vec2 tileCount, glm::vec2 offset = glm::vec2{0.0f,0.0f}, glm::vec4 color = glm::vec4{0.5f,0.4f,0.5f,0.8f});
             void beginBatch();
             void endBatch();
-            void flush();
-            void endFlushBegin();
+            void flush(bool filled = false);
+            void endFlushBegin(bool filled = false);
 
         private:
             Camera& camera;
