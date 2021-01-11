@@ -5,12 +5,11 @@ using namespace bi;
 Tile::~Tile() {}
 
 void Tile::setup() {
-    int cellX = id % (int) (imageSize.x / tileSize.x);
-    int cellY = (int) (id / (imageSize.x / tileSize.x));
-    tileCell = {cellX, cellY};
+    int posX  = id % (int) (imageSize.x / tileSize.x);
+    int posY = (int) (id / (imageSize.x / tileSize.x));
 
-    int posX = cellX * tileSize.x;
-    int posY = cellY * tileSize.y;
+    posX = posX * tileSize.x;
+    posY = posY * tileSize.y;
 
     this->texCoords = {
         glm::vec2{(float)(posX + tileSize.x) / imageSize.x, (float)(posY + tileSize.y) / imageSize.y}, //BR
@@ -49,5 +48,5 @@ glm::vec2 Tile::getTileSize() {
     return this->tileSize;
 }
 glm::vec2 Tile::getTileCell() {
-    return this->tileCell;
+    return {static_cast<int>(this->position.x/tileSize.x), static_cast<int>(this->position.y/tileSize.y)};
 }

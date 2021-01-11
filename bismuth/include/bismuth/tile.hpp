@@ -26,7 +26,5 @@ namespace bi {
             glm::vec2 imageSize;
             glm::vec2 position;
             glm::vec2 tileSize;
-            glm::vec2 tileCell;
-
     };
 }
