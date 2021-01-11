@@ -92,9 +92,10 @@ void TiledMap::loadMap() {
 
                     tileSetIdx = tilesetIndexOfTile(t.ID);
 
-                    const auto &imgSize = this->tilesets.at(tileSetIdx).getImageSize();
+                    const auto &foundTileSet = this->tilesets.at(tileSetIdx);
+                    const auto &imgSize = foundTileSet.getImageSize();
 
-                    bi::Tile tile(t.ID, textureIds.at(tileSetIdx), {imgSize.x, imgSize.y}, pos, {tileSize.x, tileSize.y});
+                    bi::Tile tile(t.ID - foundTileSet.getFirstGID(), textureIds.at(tileSetIdx), {imgSize.x, imgSize.y}, pos, {tileSize.x, tileSize.y});
 
                     tileList.push_back(tile);
                 }

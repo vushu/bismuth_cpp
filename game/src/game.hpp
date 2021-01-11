@@ -3,7 +3,7 @@
 class Game : public bi::Application{
     public:
         // constructors, asssignment, destructor
-        Game() : bi::Application("bismuth") {}
+        Game() : bi::Application(1920, 1080,"bismuth") {}
         ~Game();
     private:
 
