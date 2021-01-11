@@ -8,10 +8,12 @@ void Tile::setup() {
     //id is 1 index, but we want it 0 indexed which is why id-1
     int cellX = id % (int) (imageSize.x / tileSize.x);
     int cellY = (int) (id / (imageSize.x / tileSize.x));
-    tileCell = {cellX, cellY};
+    //tileCell = { cellX, cellY};
 
     int posX = cellX * tileSize.x;
     int posY = cellY * tileSize.y;
+
+    tileCell = {(float)posX / imageSize.x, (float) posY / imageSize.y}, //TL
 
     this->texCoords = {
         glm::vec2{(float)(posX + tileSize.x) / imageSize.x, (float)(posY + tileSize.y) / imageSize.y}, //BR
