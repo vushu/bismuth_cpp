@@ -29,8 +29,8 @@ namespace bi {
             ShapeRenderer& drawGrid(glm::vec2 tileSize, glm::vec2 tileCount, glm::vec2 offset = glm::vec2{0.0f,0.0f}, glm::vec4 color = glm::vec4{0.5f,0.4f,0.5f,0.8f});
             void beginBatch();
             void endBatch();
-            void flush(bool filled = false);
-            void endFlushBegin(bool filled = false);
+            void flush(bool filled = false, float lineWidth = 1.2f);
+            void endFlushBegin(bool filled = false, float lineWidth = 1.2f);
 
         private:
             Camera& camera;

@@ -54,7 +54,7 @@ void ShapeRenderer::endBatch() {
 
 }
 
-void ShapeRenderer::endFlushBegin(bool filled) {
+void ShapeRenderer::endFlushBegin(bool filled, float lineWidth) {
     endBatch();
     flush(filled);
     beginBatch();
@@ -160,7 +160,7 @@ ShapeRenderer& ShapeRenderer::drawGrid(glm::vec2 tileSize, glm::vec2 tileCount, 
     return *this;
 }
 
-void ShapeRenderer::flush(bool filled) {
+void ShapeRenderer::flush(bool filled, float lineWidth) {
 
     this->shader.use();
 
@@ -173,7 +173,7 @@ void ShapeRenderer::flush(bool filled) {
     glEnableVertexAttribArray(1);
 
     if (!filled){
-        glLineWidth(1.2f);
+        glLineWidth(lineWidth);
         glDrawArrays(GL_LINES, 0, renderData.vertexCounter);
     }
     else{
