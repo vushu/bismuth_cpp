@@ -13,7 +13,6 @@ class GuiElement{
             return *parent;
         }
 
-    protected:
         virtual void draw() = 0;
         virtual void handleMouseClick(int action, glm::vec2 position) = 0;
 
