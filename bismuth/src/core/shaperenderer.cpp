@@ -54,9 +54,14 @@ void ShapeRenderer::endBatch() {
 
 }
 
-void ShapeRenderer::endFlushBegin(bool filled, float lineWidth) {
+void ShapeRenderer::resetToDefault() {
+    this->lineWidth = 1.2f;
+    filled = false;
+}
+
+void ShapeRenderer::endFlushBegin() {
     endBatch();
-    flush(filled);
+    flush();
     beginBatch();
 }
 ShapeRenderer& ShapeRenderer::drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color, float angle, bool centerShown) {
@@ -160,7 +165,7 @@ ShapeRenderer& ShapeRenderer::drawGrid(glm::vec2 tileSize, glm::vec2 tileCount, 
     return *this;
 }
 
-void ShapeRenderer::flush(bool filled, float lineWidth) {
+void ShapeRenderer::flush() {
 
     this->shader.use();
 
@@ -190,6 +195,7 @@ void ShapeRenderer::flush(bool filled, float lineWidth) {
 
     renderData.currentLocationPtr = renderData.vertexBuffer;
     renderData.vertexCounter = 0;
+    resetToDefault();
 }
 
 

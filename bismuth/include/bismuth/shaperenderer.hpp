@@ -27,10 +27,12 @@ namespace bi {
             ShapeRenderer& drawRect(glm::vec2 position, glm::vec2 size, glm::vec4 color, float angle = 0.0f, bool centerShown = false);
             ShapeRenderer& drawPolygon(glm::vec2 centerPos, float radius, int segments, glm::vec4 color, float angle, bool centerShown = false);
             ShapeRenderer& drawGrid(glm::vec2 tileSize, glm::vec2 tileCount, glm::vec2 offset = glm::vec2{0.0f,0.0f}, glm::vec4 color = glm::vec4{0.5f,0.4f,0.5f,0.8f});
+            ShapeRenderer& setLineWidth(float lineWidth);
+            ShapeRenderer& fill();
             void beginBatch();
             void endBatch();
-            void flush(bool filled = false, float lineWidth = 1.2f);
-            void endFlushBegin(bool filled = false, float lineWidth = 1.2f);
+            void flush();
+            void endFlushBegin();
 
         private:
             Camera& camera;
@@ -41,6 +43,11 @@ namespace bi {
             void checkVertexLimit();
             glm::vec2 rotatePoint(const glm::vec2& pos, float angle);
             void drawPoint(glm::vec2 point, float angle = 0.0f);
+
+            //default values
+            float lineWidth = 1.2f;
+            bool filled = false;
+            void resetToDefault();
 
     };
 }
