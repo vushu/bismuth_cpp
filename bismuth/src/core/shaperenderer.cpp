@@ -57,6 +57,11 @@ ShapeRenderer& ShapeRenderer::setLineWidth(float lineWidth) {
     return *this;
 }
 
+ShapeRenderer& ShapeRenderer::fill() {
+    this->filled = true;
+    return *this;
+}
+
 void ShapeRenderer::resetToDefault() {
     this->lineWidth = 1.2f;
     filled = false;
