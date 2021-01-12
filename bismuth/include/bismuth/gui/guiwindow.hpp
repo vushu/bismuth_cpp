@@ -15,11 +15,11 @@ namespace bi{
             GuiWindow& setPosition(glm::vec2 position);
             GuiWindow& setSize(glm::vec2 size);
 
-        private:
             glm::vec2 position {0,0};
             glm::vec2 size {200,200};
             float outlineWidth = 4.0f;
             glm::vec4 outlineColor = color::SOFT_BLUE;
             glm::vec4 backgroundColor = color::WHITE;
+        private:
     };
 }
