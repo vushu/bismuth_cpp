@@ -7,7 +7,6 @@ namespace bi{
             GuiWindow();
             ~GuiWindow();
 
-        protected:
             void draw() override;
             void handleMouseClick(int action, glm::vec2 position) override;
 
