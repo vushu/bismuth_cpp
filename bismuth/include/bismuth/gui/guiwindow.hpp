@@ -5,7 +5,6 @@ namespace bi{
         public:
             // constructors, assignment, destructor
             GuiWindow();
-            ~GuiWindow();
 
             void draw() override;
             void handleMouseClick(int action, glm::vec2 position) override;
