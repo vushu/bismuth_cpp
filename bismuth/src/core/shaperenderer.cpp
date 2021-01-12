@@ -59,7 +59,7 @@ void ShapeRenderer::endFlushBegin(bool filled) {
     flush(filled);
     beginBatch();
 }
-void ShapeRenderer::drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color, float angle, bool centerShown) {
+ShapeRenderer& ShapeRenderer::drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color, float angle, bool centerShown) {
     checkVertexLimit();
 
 
@@ -86,6 +86,7 @@ void ShapeRenderer::drawLine(glm::vec2 posFrom, glm::vec2 posTo, glm::vec4 color
     if (centerShown) {
         drawPoint((posFrom + posTo) * 0.5f);
     }
+    return *this;
 }
 
 void ShapeRenderer::checkVertexLimit() {
@@ -95,11 +96,11 @@ void ShapeRenderer::checkVertexLimit() {
 }
 
 // segments >= 12 is a cicle
-void ShapeRenderer::drawPolygon(glm::vec2 centerPos, float radius, int segments, glm::vec4 color, float angle, bool centerShown) {
+ShapeRenderer& ShapeRenderer::drawPolygon(glm::vec2 centerPos, float radius, int segments, glm::vec4 color, float angle, bool centerShown) {
     checkVertexLimit();
     if (segments < 3) {
         log("Segments are too small");
-        return;
+        return *this;
     }
     float fullCicle = M_PI * 2.0f;
 
@@ -137,9 +138,10 @@ void ShapeRenderer::drawPolygon(glm::vec2 centerPos, float radius, int segments,
         setVertex(centerPos, color);
 
     }
+    return *this;
 }
 
-void ShapeRenderer::drawGrid(glm::vec2 tileSize, glm::vec2 tileCount, glm::vec2 offset, glm::vec4 color) {
+ShapeRenderer& ShapeRenderer::drawGrid(glm::vec2 tileSize, glm::vec2 tileCount, glm::vec2 offset, glm::vec4 color) {
 
     //vertical
     for (int i = 0; i <= tileCount.x; i++) {
@@ -154,6 +156,8 @@ void ShapeRenderer::drawGrid(glm::vec2 tileSize, glm::vec2 tileCount, glm::vec2 
         glm::vec2 pointTo = { tileCount.x * tileSize.x + offset.x, i * tileSize.y + offset.y};
         drawLine(pointFrom, pointTo, color);
     }
+
+    return *this;
 }
 
 void ShapeRenderer::flush(bool filled) {
@@ -206,7 +210,7 @@ glm::vec2 ShapeRenderer::rotatePoint(const glm::vec2& pos, float angle) {
     return newPos;
 }
 
-void ShapeRenderer::drawRect(glm::vec2 position, glm::vec2 size, glm::vec4 color, float angle, bool centerShown) {
+ShapeRenderer& ShapeRenderer::drawRect(glm::vec2 position, glm::vec2 size, glm::vec4 color, float angle, bool centerShown) {
 
 
     if (angle == 0) {
@@ -244,6 +248,7 @@ void ShapeRenderer::drawRect(glm::vec2 position, glm::vec2 size, glm::vec4 color
         glm::vec2 center = (position + size * 0.5f);
         drawPoint((center));
     }
+    return *this;
 }
 
 void ShapeRenderer::drawPoint(glm::vec2 point, float angle) {
