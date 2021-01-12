@@ -50,8 +50,11 @@ void ShapeRenderer::endBatch() {
     GLsizeiptr size = (uint8_t*) this->renderData.currentLocationPtr - (uint8_t*) this->renderData.vertexBuffer;
     glBindBuffer(GL_ARRAY_BUFFER, renderData.quadVB);
     glBufferSubData(GL_ARRAY_BUFFER, 0, size, renderData.vertexBuffer);
+}
 
-
+ShapeRenderer& ShapeRenderer::setLineWidth(float lineWidth) {
+    this->lineWidth = lineWidth;
+    return *this;
 }
 
 void ShapeRenderer::resetToDefault() {
