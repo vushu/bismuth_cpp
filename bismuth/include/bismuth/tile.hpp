@@ -17,6 +17,7 @@ namespace bi {
             unsigned int getId();
             glm::vec2 getTileSize();
             glm::vec2 getTileCell();
+            bool isEmpty();
 
         private:
             std::array<glm::vec2, 4> texCoords;

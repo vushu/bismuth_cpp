@@ -35,7 +35,7 @@ GuiWindow& GuiWindow::setOutlineColor(glm::vec4 color)  {
 
 void GuiWindow::draw() {
     ioManager().shaperenderer->fill();
-    ioManager().shaperenderer->drawRect(this->position, this->size, backgroundColor).endFlushBegin();
+    ioManager().shaperenderer->drawRect(this->position, this->size, backgroundColor);
     ioManager().shaperenderer->setLineWidth(this->outlineWidth);
     ioManager().shaperenderer->drawRect(this->position, this->size, outlineColor).endFlushBegin();
 }

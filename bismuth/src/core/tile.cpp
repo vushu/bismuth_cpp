@@ -1,5 +1,6 @@
 #include "bismuth/logging.hpp"
 #include <bismuth/tile.hpp>
+#include <limits>
 using namespace bi;
 
 Tile::~Tile() {}
@@ -47,6 +48,11 @@ unsigned int Tile::getId() {
 glm::vec2 Tile::getTileSize() {
     return this->tileSize;
 }
+
 glm::vec2 Tile::getTileCell() {
     return {static_cast<int>(this->position.x/tileSize.x), static_cast<int>(this->position.y/tileSize.y)};
+}
+
+bool Tile::isEmpty()  {
+    return id == std::numeric_limits<unsigned int>::max();
 }
