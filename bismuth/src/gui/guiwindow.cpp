@@ -41,9 +41,9 @@ GuiWindow& GuiWindow::activateCloseButton() {
 void GuiWindow::draw() {
     ioManager().shaperenderer->fill();
     ioManager().renderer->drawQuad(this->position, this->size, backgroundColor);
-    ioManager().renderer->drawQuad({ this->position.x + this->size.x - 16.0f, this->position.y + 16}, {16,16}, backgroundColor);
-    ioManager().shaperenderer->setLineWidth(this->outlineWidth);
-    ioManager().shaperenderer->drawRect(this->position, this->size, outlineColor).endFlushBegin();
+    ioManager().renderer->drawQuad({ this->position.x + this->size.x - 16.0f, this->position.y + 16}, {16,16}, color::SOFT_MAGENTA);
+    //ioManager().shaperenderer->setLineWidth(this->outlineWidth);
+    //ioManager().shaperenderer->drawRect(this->position, this->size, outlineColor).endFlushBegin();
 }
 
 void GuiWindow::handleMouseClick(int action, glm::vec2 position) {
