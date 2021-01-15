@@ -188,36 +188,35 @@ std::array<glm::vec2, 4> Renderer::getCorners(glm::vec2 position, glm::vec2 size
     return {botRight, topRight, topLeft, botLeft};
 }
 
-void Renderer::setQuadVertex(QuadVertex*& quadVertex, glm::vec2 position, glm::vec2 size, glm::vec2 texCoord, glm::vec4 color, float texId) {
+void Renderer::setQuadVertex(QuadVertex*& quadVertex, glm::vec2 position, glm::vec2 size, glm::vec2 texCoord, glm::vec4 color, float texId, float type) {
     quadVertex->position = { position, 0.0f};
     quadVertex->color = color::fromRGB(color);
     quadVertex->texcoords = texCoord;
     quadVertex->texId = texId;
-    quadVertex->type = 0.0f;
+    quadVertex->type = type;
     quadVertex++;
 }
 
-void Renderer::setQuadVertices(QuadVertex*& quadVertex, glm::vec2 position, glm::vec2 size, glm::vec4 color, float texId, float angle, std::array<glm::vec2, 4> texcoords) {
+void Renderer::setQuadVertices(QuadVertex*& quadVertex, glm::vec2 position, glm::vec2 size, glm::vec4 color, float texId, float angle, std::array<glm::vec2, 4> texcoords, float type) {
     std::array<glm::vec2,4> corners = getCorners(position, size, angle);
 
-    setQuadVertex(quadVertex, corners.at(0), size, texcoords.at(0), color, texId);
-    setQuadVertex(quadVertex, corners.at(1), size, texcoords.at(1), color, texId);
-    setQuadVertex(quadVertex, corners.at(2), size, texcoords.at(2), color, texId);
-    setQuadVertex(quadVertex, corners.at(3), size, texcoords.at(3), color, texId);
+    setQuadVertex(quadVertex, corners.at(0), size, texcoords.at(0), color, texId, type);
+    setQuadVertex(quadVertex, corners.at(1), size, texcoords.at(1), color, texId, type);
+    setQuadVertex(quadVertex, corners.at(2), size, texcoords.at(2), color, texId, type);
+    setQuadVertex(quadVertex, corners.at(3), size, texcoords.at(3), color, texId, type);
 }
 
 
 Renderer& Renderer::drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color, float angle) {
     reevaluateBatchSpace();
-    int texId = 0;
-    setQuadVertices(s_renderData.currentLocationPtr, pos, size, color, texId, angle);
+    setQuadVertices(s_renderData.currentLocationPtr, pos, size, color, 0.0f, angle);
     incrementDrawCounters();
     return *this;
 }
 
 Renderer& Renderer::drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color) {
     reevaluateBatchSpace();
-    setQuadVertices(s_renderData.currentLocationPtr, pos, size,  color, 0, 0.0f);
+    setQuadVertices(s_renderData.currentLocationPtr, pos, size,  color, 0.0f, 0.0f);
     incrementDrawCounters();
     return *this;
 }

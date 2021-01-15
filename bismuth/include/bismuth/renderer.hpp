@@ -90,8 +90,8 @@ namespace bi {
 
             Camera& camera;
 
-            void setQuadVertex(QuadVertex*& quadVertex,glm::vec2 position, glm::vec2 size, glm::vec2 texcoord, glm::vec4 color, float texId);
-            void setQuadVertices(QuadVertex*& quadVertex, glm::vec2 position, glm::vec2 size, glm::vec4 color, float texId, float angle, std::array<glm::vec2, 4> texCoords = defaultTexcoords);
+            void setQuadVertex(QuadVertex*& quadVertex,glm::vec2 position, glm::vec2 size, glm::vec2 texcoord, glm::vec4 color, float texId, float type = -1.0f);
+            void setQuadVertices(QuadVertex*& quadVertex, glm::vec2 position, glm::vec2 size, glm::vec4 color, float texId, float angle, std::array<glm::vec2, 4> texCoords = defaultTexcoords, float type = -1.0f);
             void incrementDrawCounters();
             void reevaluateBatchSpace();
             float getTextureIndex(int texId);
