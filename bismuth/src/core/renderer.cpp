@@ -207,17 +207,19 @@ void Renderer::setQuadVertices(QuadVertex*& quadVertex, glm::vec2 position, glm:
 }
 
 
-void Renderer::drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color, float angle) {
+Renderer& Renderer::drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color, float angle) {
     reevaluateBatchSpace();
     int texId = 0;
     setQuadVertices(s_renderData.currentLocationPtr, pos, size, color, texId, angle);
     incrementDrawCounters();
+    return *this;
 }
 
-void Renderer::drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color) {
+Renderer& Renderer::drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color) {
     reevaluateBatchSpace();
     setQuadVertices(s_renderData.currentLocationPtr, pos, size,  color, 0, 0.0f);
     incrementDrawCounters();
+    return *this;
 }
 
 void Renderer::flush() {
@@ -300,12 +302,13 @@ void Renderer::reevaluateBatchSpace() {
     }
 }
 
-void Renderer::drawText(std::array<char, 256> text, glm::vec2 position, Font& f, glm::vec4 color, float scale) {
+Renderer& Renderer::drawText(std::array<char, 256> text, glm::vec2 position, Font& f, glm::vec4 color, float scale) {
     std::string str(text.data());
     drawText(str, position, f, color, scale);
+    return *this;
 }
 
-void Renderer::drawText(std::string text, glm::vec2 position, Font& f, glm::vec4 color, float scale) {
+Renderer& Renderer::drawText(std::string text, glm::vec2 position, Font& f, glm::vec4 color, float scale) {
 
     reevaluateBatchSpace();
     float textureIndex = getTextureIndex(f.textureId);
@@ -314,10 +317,12 @@ void Renderer::drawText(std::string text, glm::vec2 position, Font& f, glm::vec4
     // each character is a quad
     s_renderData.indexCount += 6 * text.length();
     s_renderData.stats.quadCount += text.length();
+    return *this;
 }
 
-void Renderer::drawTile(Tile& tile, glm::vec4 color) {
+Renderer& Renderer::drawTile(Tile& tile, glm::vec4 color) {
     drawTexture(tile.getPosition(), tile.getTileSize(), color, tile.getTextureId(), 0, tile.getTexCoords());
+    return *this;
 }
 
 float Renderer::getTextureIndex(int texId) {

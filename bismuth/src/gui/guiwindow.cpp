@@ -33,9 +33,15 @@ GuiWindow& GuiWindow::setOutlineColor(glm::vec4 color)  {
     return *this;
 }
 
+GuiWindow& GuiWindow::activateCloseButton() {
+    this->isCloseButtonActivated = true;
+    return *this;
+}
+
 void GuiWindow::draw() {
     ioManager().shaperenderer->fill();
-    ioManager().shaperenderer->drawRect(this->position, this->size, backgroundColor).endFlushBegin();
+    ioManager().renderer->drawQuad(this->position, this->size, backgroundColor);
+    ioManager().renderer->drawQuad({ this->position.x + this->size.x - 16.0f, this->position.y + 16}, this->size, backgroundColor);
     ioManager().shaperenderer->setLineWidth(this->outlineWidth);
     ioManager().shaperenderer->drawRect(this->position, this->size, outlineColor).endFlushBegin();
 }
