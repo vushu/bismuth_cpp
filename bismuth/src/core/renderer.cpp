@@ -244,7 +244,6 @@ void Renderer::flush() {
 
     glDrawElements(GL_TRIANGLES, s_renderData.indexCount, GL_UNSIGNED_INT, 0);
 
-
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
     glDisableVertexAttribArray(2);
