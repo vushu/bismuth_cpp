@@ -41,7 +41,7 @@ void main () {
     //color = fColor;
     //color = texture(uTex, fTexCoords);
     //color = fColor * texture(uTextures[1], fTexCoords);
-    vec4 tempColor;
+    vec4 tempColor = vec4(1.0,1.0,1.0,1.0);
 
     if (fTexId == 0.0f) {
         color = fColor;
