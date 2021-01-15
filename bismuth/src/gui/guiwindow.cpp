@@ -39,10 +39,8 @@ GuiWindow& GuiWindow::activateCloseButton() {
 }
 
 void GuiWindow::draw() {
-    ioManager().shaperenderer->fill();
-    ioManager().shaperenderer->drawRect({ this->position.x + this->size.x - 16.0f, this->position.y + 2}, {16,16}, color::SOFT_MAGENTA);
-    ioManager().shaperenderer->drawRect(this->position, this->size, backgroundColor);
-    ioManager().renderer->endFlushBegin();
+    //ioManager().shaperenderer->drawRect({ this->position.x + this->size.x - 16.0f, this->position.y + 2}, {16,16}, color::SOFT_MAGENTA);
+    ioManager().renderer->drawQuad(this->position, this->size, backgroundColor);
     ioManager().shaperenderer->setLineWidth(this->outlineWidth);
     ioManager().shaperenderer->drawRect(this->position, this->size, outlineColor).endFlushBegin();
 }
