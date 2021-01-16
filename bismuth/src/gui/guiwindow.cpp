@@ -7,7 +7,6 @@ using namespace bi;
 GuiWindow::GuiWindow() {
     this->closeButton.setBackgroundColor(color::CORNFLOWER_BLUE);
     this->closeButton.setSize({16,16});
-    this->closeButton.position = this->positionTopRight(closeButton.position);
     this->children.push_back(&closeButton);
 }
 
@@ -18,6 +17,7 @@ GuiWindow& GuiWindow::setSize(glm::vec2 size) {
 
 GuiWindow& GuiWindow::setPosition(glm::vec2 position) {
     this->position = position;
+    this->closeButton.position = this->positionTopRight(closeButton.position);
     return *this;
 }
 
@@ -51,7 +51,7 @@ glm::vec2 GuiWindow::positionBottomRight(glm::vec2 size) {
 }
 
 glm::vec2 GuiWindow::positionTopRight(glm::vec2 size) {
-    return {this->position.x + this->size.x - size.x, this->position.y - size.y};
+    return {this->position.x + this->size.x - size.x, this->position.y + size.y};
 }
 void GuiWindow::draw() {
     //ioManager().shaperenderer->drawRect({ this->position.x + this->size.x - 16.0f, this->position.y + 2}, {16,16}, color::SOFT_MAGENTA);
