@@ -18,6 +18,10 @@ GuiWindow& GuiWindow::setSize(glm::vec2 size) {
 
 GuiWindow& GuiWindow::setPosition(glm::vec2 position) {
     this->position = position;
+    for (auto& child : children){
+        child->position = this->position;
+        child->draw();
+    }
     return *this;
 }
 
