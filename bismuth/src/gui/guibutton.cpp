@@ -23,3 +23,6 @@ GuiButton& GuiButton::setSize(glm::vec2 size) {
 void GuiButton::draw() {
     ioManager().renderer->drawQuad(this->position, this->size, backgroundColor);
 }
+
+void GuiButton::handleMouseClick(int action, glm::vec2 position) {
+}
