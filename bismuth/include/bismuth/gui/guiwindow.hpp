@@ -1,4 +1,6 @@
 #include "bismuth/color.hpp"
+#include "bismuth/gui/guibutton.hpp"
+#include "glm/fwd.hpp"
 #include <bismuth/gui/guielement.hpp>
 namespace bi{
     class GuiWindow : public GuiElement {
@@ -15,14 +17,15 @@ namespace bi{
             GuiWindow& setPosition(glm::vec2 position);
             GuiWindow& setSize(glm::vec2 size);
             GuiWindow& activateCloseButton();
+            GuiWindow& add(GuiElement* guielement);
 
-            glm::vec2 position {0,0};
-            glm::vec2 size {200,200};
             float outlineWidth = 4.0f;
             glm::vec4 outlineColor = color::SOFT_BLUE;
             glm::vec4 backgroundColor = color::WHITE;
             bool isCloseButtonActivated = false;
             bool isClosed = false;
+            GuiButton closeButton;
         private:
+            glm::vec2 floatRightBottom(glm::vec2 size);
     };
 }

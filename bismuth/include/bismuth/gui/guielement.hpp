@@ -16,8 +16,9 @@ class GuiElement{
         virtual void draw() = 0;
         virtual void handleMouseClick(int action, glm::vec2 position) = 0;
 
-    private:
+        glm::vec2 position, size;
         GuiElement* parent = nullptr;
+    protected:
         std::vector<GuiElement*> children;
 
 };
