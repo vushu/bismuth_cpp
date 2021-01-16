@@ -26,6 +26,7 @@ namespace bi{
             bool isClosed = false;
             GuiButton closeButton;
         private:
-            glm::vec2 floatRightBottom(glm::vec2 size);
+            glm::vec2 positionBottomRight(glm::vec2 size);
+            glm::vec2 positionTopRight(glm::vec2 size);
     };
 }
