@@ -19,7 +19,11 @@ GuiWindow& GuiWindow::setSize(glm::vec2 size) {
 GuiWindow& GuiWindow::setPosition(glm::vec2 position) {
     this->position = position;
     for (auto& child : children){
-        child->position = this->position;
+        glm::vec2 pos = (this->position + this->size) - (child->position + child->size);
+        float x = std::min(std::max(0.0f, pos.x), this->position.x + this->size.x);
+        float y = std::min(std::max(0.0f, pos.y), this->position.y + this->size.y);
+        child->position = {x, y};
+
         child->draw();
     }
     return *this;
