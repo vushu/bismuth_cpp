@@ -7,7 +7,6 @@ using namespace bi;
 GuiWindow::GuiWindow() {
     this->closeButton.setBackgroundColor(color::CORNFLOWER_BLUE);
     this->closeButton.setSize({16,16});
-    this->closeButton.position = this->positionTopRight(closeButton.size);
     this->children.push_back(&closeButton);
 }
 
