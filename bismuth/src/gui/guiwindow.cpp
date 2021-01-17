@@ -1,5 +1,6 @@
 #include "bismuth/color.hpp"
 #include "bismuth/iomanager.hpp"
+#include "bismuth/math.hpp"
 #include <bismuth/gui/guiwindow.hpp>
 using namespace bi;
 
@@ -18,10 +19,8 @@ GuiWindow& GuiWindow::setSize(glm::vec2 size) {
 GuiWindow& GuiWindow::setPosition(glm::vec2 position) {
     this->position = position;
     for (auto& child : children) {
-        glm::vec2 pos = (this->position + this->size) - (child->position + child->size);
-        float x = std::min(std::max(0.0f, pos.x), this->position.x + this->size.x);
-        float y = std::min(std::max(0.0f, pos.y), this->position.y + this->size.y);
-        child->position = {x, y};
+        //glm::vec2 pos = (this->position + this->size) - (child->position + child->size);
+        child->position = math::clamp({0,0}, this->size, child->position);
         child->draw();
     }
     return *this;

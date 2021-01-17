@@ -14,4 +14,8 @@ namespace bi {
     float math::clamp(float min, float max, float value) {
         return std::min(std::max(min, value), max);
     }
+
+    glm::vec2 math::clamp(glm::vec2 min, glm::vec2 max, glm::vec2 value) {
+        return {clamp(min.x, max.x, value.x), clamp(min.y, max.y, value.y)};
+    }
 }
