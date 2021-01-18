@@ -12,7 +12,8 @@ namespace bi {
             static void mouseScrollCallback(GLFWwindow* window, double xOffset, double yOffset);
             static float toOrthoX(int width);
             static float toOrthoY(int height);
-
+            static float toOrthoX();
+            static float toOrthoY();
             static MouseListener& get() {
                 static MouseListener instance;
                 return instance;

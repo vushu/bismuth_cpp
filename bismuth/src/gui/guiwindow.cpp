@@ -1,7 +1,9 @@
 #include "bismuth/color.hpp"
 #include "bismuth/iomanager.hpp"
 #include "bismuth/math.hpp"
+#include "bismuth/mouselistener.hpp"
 #include <bismuth/gui/guiwindow.hpp>
+#include <bismuth/collision/collision.hpp>
 using namespace bi;
 using namespace gui;
 
@@ -85,5 +87,9 @@ void GuiWindow::draw() {
 }
 
 void GuiWindow::handleMouseClick(int action, glm::vec2 position) {
-    log("handleMouseClick is not implemented yet");
+    if (action == GLFW_MOUSE_BUTTON_LEFT){
+        if (collision::isPositionWithinRect({ mouseInput().toOrthoX(), mouseInput().toOrthoY()}, this->position, this->size)) {
+            log("you hit this window!");
+        }
+    }
 }

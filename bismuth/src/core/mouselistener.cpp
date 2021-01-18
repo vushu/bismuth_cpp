@@ -42,6 +42,14 @@ float MouseListener::toOrthoX(int width) {
     return tmp.x;
 }
 
+float MouseListener::toOrthoX() {
+    return toOrthoX(ioManager().window->width);
+}
+
+float MouseListener::toOrthoY() {
+    return toOrthoY(ioManager().window->height);
+}
+
 float MouseListener::toOrthoY(int height) {
     float currentY = (MouseListener::get().yPos / (float) height) * 2.0f - 1.0f;
     glm::vec4 tmp (0,currentY,0,1);
