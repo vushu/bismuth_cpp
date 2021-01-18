@@ -23,7 +23,7 @@ GuiWindow& GuiWindow::setPosition(glm::vec2 position) {
     for (auto& child : children) {
         switch (child->placement) {
             case TOP_LEFT:
-                child->position = math::clamp(this->position, this->position + this->size, child->position);
+                child->position = math::clamp(this->position, {this->position.x + this->size.x - child->size.x, this->position.y - child->size.y}, child->position);
                 break;
             case TOP_RIGHT:
                 child->position = math::clamp({this->position.x + this->size.x - child->size.x, this->position.y }, this->position + this->size, child->position);
