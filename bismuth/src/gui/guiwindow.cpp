@@ -10,7 +10,7 @@ using namespace gui;
 
 GuiWindow::GuiWindow() {
     this->closeButton.setBackgroundColor(color::CORNFLOWER_BLUE);
-    this->closeButton.setSize({16,16});
+    this->closeButton.setSize({10,10});
     this->closeButton.placement = TOP_RIGHT;
     this->children.push_back(&closeButton);
 }
@@ -79,7 +79,6 @@ glm::vec2 GuiWindow::positionTopRight(glm::vec2 size) {
 void GuiWindow::draw() {
     if (isClosed)
         return;
-    //ioManager().shaperenderer->drawRect({ this->position.x + this->size.x - 16.0f, this->position.y + 2}, {16,16}, color::SOFT_MAGENTA);
     ioManager().renderer->drawQuad(this->position, this->size, backgroundColor);
     ioManager().shaperenderer->setLineWidth(this->outlineWidth);
     ioManager().shaperenderer->drawRect(this->position, this->size, outlineColor).endFlushBegin();
