@@ -13,7 +13,5 @@ namespace bi {
         const glm::vec4 SOFT_MAGENTA {fromRGB(223, 100, 237,1)};
         const glm::vec4 SOFT_YELLOW {fromRGB(237, 223, 100,1)};
         const glm::vec4 SOFT_ORANGE {fromRGB(237, 155, 100, 1)};
-
-
     }
 }
