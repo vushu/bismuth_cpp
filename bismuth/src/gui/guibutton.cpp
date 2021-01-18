@@ -1,6 +1,7 @@
 #include "bismuth/gui/guibutton.hpp"
 #include "bismuth/iomanager.hpp"
 using namespace bi;
+using namespace gui;
 
 GuiButton::GuiButton() {}
 GuiButton::~GuiButton() {}
