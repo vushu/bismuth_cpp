@@ -1,5 +1,6 @@
 #include "bismuth/gui/guibutton.hpp"
 #include "bismuth/iomanager.hpp"
+#include "bismuth/collision/collision.hpp"
 using namespace bi;
 using namespace gui;
 
@@ -26,4 +27,7 @@ void GuiButton::draw() {
 }
 
 void GuiButton::handleMouseClick(int action, glm::vec2 position) {
+    if (action == GLFW_MOUSE_BUTTON_LEFT && collision::isPositionWithinRect(position, this->position, this->size)){
+        this->isPressed = true;
+    }
 }

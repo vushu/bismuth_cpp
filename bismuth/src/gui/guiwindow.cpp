@@ -87,9 +87,16 @@ void GuiWindow::draw() {
 }
 
 void GuiWindow::handleMouseClick(int action, glm::vec2 position) {
+    if (isClosed) {
+        return;
+    }
+
     if (action == GLFW_MOUSE_BUTTON_LEFT){
         if (collision::isPositionWithinRect(position, this->position, this->size)) {
-            log("you hit this window!");
+            closeButton.handleMouseClick(action, position);
+            if (closeButton.isPressed) {
+                this->isClosed = true;
+            }
         }
     }
 }
