@@ -77,6 +77,8 @@ glm::vec2 GuiWindow::positionTopRight(glm::vec2 size) {
 }
 
 void GuiWindow::draw() {
+    if (isClosed)
+        return;
     //ioManager().shaperenderer->drawRect({ this->position.x + this->size.x - 16.0f, this->position.y + 2}, {16,16}, color::SOFT_MAGENTA);
     ioManager().renderer->drawQuad(this->position, this->size, backgroundColor);
     ioManager().shaperenderer->setLineWidth(this->outlineWidth);
