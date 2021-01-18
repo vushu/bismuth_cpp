@@ -22,8 +22,19 @@ GuiButton& GuiButton::setSize(glm::vec2 size) {
     return *this;
 }
 
+GuiButton& GuiButton::addLabel(GuiLabel* guiLabel) {
+    this->guiLabel = guiLabel;
+    return *this;
+}
+
 void GuiButton::draw() {
+
     ioManager().renderer->drawQuad(this->position, this->size, backgroundColor);
+    if (guiLabel){
+        guiLabel->draw();
+    }
+
+
 }
 
 void GuiButton::handleMouseClick(int action, glm::vec2 position) {

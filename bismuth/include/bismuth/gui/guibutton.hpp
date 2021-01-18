@@ -1,6 +1,7 @@
 #pragma once
 #include "bismuth/color.hpp"
 #include "bismuth/gui/guielement.hpp"
+#include "bismuth/gui/guilabel.hpp"
 namespace bi {
     namespace gui{
         class GuiButton : public GuiElement{
@@ -17,9 +18,10 @@ namespace bi {
                 GuiButton& setBackgroundColor(glm::vec4 color);
                 GuiButton& setPosition(glm::vec2 position);
                 GuiButton& setSize(glm::vec2 size);
-
+                GuiButton& addLabel(GuiLabel* guiLabel);
 
             private:
+                GuiLabel* guiLabel;
 
         };
     }

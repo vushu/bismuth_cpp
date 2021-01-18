@@ -11,7 +11,10 @@ using namespace gui;
 GuiWindow::GuiWindow() {
     this->closeButton.setBackgroundColor(color::CORNFLOWER_BLUE);
     this->closeButton.setSize({10,10});
+    this->font.loadFnt("resources/assets/fonts/majaru.fnt");
+    this->closeLabel.setText(&this->font, "HELLO");
     this->closeButton.placement = TOP_RIGHT;
+    this->closeButton.addLabel(&closeLabel);
     this->children.push_back(&closeButton);
 }
 
