@@ -12,10 +12,10 @@ GuiWindow::GuiWindow() {
     this->closeButton.setBackgroundColor(color::CORNFLOWER_BLUE);
     this->closeButton.setSize({10,10});
     this->font.loadFnt("resources/assets/fonts/manjaru.fnt");
-    this->closeLabel.setText(&this->font, "HELLO");
+    this->closeLabel.setText(&this->font, "x");
     this->closeButton.placement = TOP_RIGHT;
     this->closeButton.addLabel(&closeLabel);
-    this->children.push_back(&closeButton);
+    //this->children.push_back(&closeButton);
 }
 
 GuiWindow& GuiWindow::setSize(glm::vec2 size) {
@@ -25,6 +25,7 @@ GuiWindow& GuiWindow::setSize(glm::vec2 size) {
 
 GuiWindow& GuiWindow::setPosition(glm::vec2 position) {
     this->position = position;
+    this->closeButton.setPosition({this->position.x + this->size.x - closeButton.size.x, this->position.y });
     for (auto& child : children) {
         switch (child->placement) {
             case TOP_LEFT:
