@@ -25,7 +25,14 @@ namespace bi {
                 }
                 return false;
             }
-
+            static bool mouseButtonClicked(int button) {
+                if (button < numberOfMouseButtons) {
+                    bool res = get().mouseButtonPressed[button];
+                    get().mouseButtonPressed[button] = false;
+                    return res;
+                }
+                return false;
+            }
 
             static const int numberOfMouseButtons = 9;
             bool mouseButtonPressed[numberOfMouseButtons] = {false};
