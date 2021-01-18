@@ -26,13 +26,13 @@ GuiWindow& GuiWindow::setPosition(glm::vec2 position) {
                 child->position = math::clamp(this->position, this->position + this->size, child->position);
                 break;
             case TOP_RIGHT:
-                child->position = math::clamp({this->position.x + this->size.x, this->position.y }, this->position + this->size, child->position);
+                child->position = math::clamp({this->position.x + this->size.x - child->size.x, this->position.y }, this->position + this->size, child->position);
                 break;
             case BOTTOM_LEFT:
-                child->position = math::clamp({this->position.x, this->position.y }, this->position + this->size, child->position);
+                child->position = math::clamp({this->position.x, this->position.y + this->size.y - child->size.y }, this->position + this->size, child->position);
                 break;
             case BOTTOM_RIGHT:
-                child->position = math::clamp({this->position.x + this->size.x, this->position.y + this->size.y}, this->position + this->size, child->position);
+                child->position = math::clamp({this->position.x + this->size.x - child->size.x, this->position.y + this->size.y - child->size.y}, this->position + this->size, child->position);
                 break;
             default:
                 child->position = math::clamp(this->position, this->position + this->size, child->position);
