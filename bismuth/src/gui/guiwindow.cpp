@@ -88,7 +88,8 @@ void GuiWindow::draw() {
 
 void GuiWindow::handleMouseClick(int action, glm::vec2 position) {
     if (action == GLFW_MOUSE_BUTTON_LEFT){
-        if (collision::isPositionWithinRect({ mouseInput().toOrthoX(), mouseInput().toOrthoY()}, this->position, this->size)) {
+        glm::vec2 mousePos { mouseInput().toOrthoX(), mouseInput().toOrthoY()};
+        if (collision::isPositionWithinRect(mousePos, this->position, this->size)) {
             log("you hit this window!");
         }
     }
