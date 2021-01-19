@@ -34,10 +34,10 @@ GuiButton& GuiButton::addLabel(GuiLabel* guiLabel) {
 
 void GuiButton::draw() {
 
-    ioManager().renderer->drawQuad(this->position, this->size, backgroundColor);
     glm::vec2 outline = this->position;
     outline -= glm::vec2{1,1};
     ioManager().renderer->drawQuad(outline, this->size + glm::vec2{1,1}, color::BLACK);
+    ioManager().renderer->drawQuad(this->position, this->size, backgroundColor);
     if (guiLabel){
         guiLabel->draw();
     }
