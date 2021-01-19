@@ -83,13 +83,13 @@ glm::vec2 GuiWindow::positionTopRight(glm::vec2 size) {
 void GuiWindow::draw() {
     if (isClosed)
         return;
-    closeButton.draw();
     ioManager().renderer->drawQuad(this->position, this->size, backgroundColor);
     ioManager().shaperenderer->setLineWidth(this->outlineWidth);
     ioManager().shaperenderer->drawRect(this->position, this->size, outlineColor).endFlushBegin();
     for (auto& child : children){
         child->draw();
     }
+    closeButton.draw();
 }
 
 void GuiWindow::handleMouseClick(int action, glm::vec2 position) {
