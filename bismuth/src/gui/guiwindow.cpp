@@ -9,7 +9,7 @@ using namespace gui;
 
 
 GuiWindow::GuiWindow() {
-    this->closeButton.setBackgroundColor(color::SOFT_ORANGE);
+    this->closeButton.setBackgroundColor(color::SOFT_RED);
     this->closeButton.setSize({10,10});
     this->font.loadFnt("resources/assets/fonts/manjaru.fnt");
     this->closeLabel.setText(&this->font, "x");
