@@ -129,7 +129,7 @@ void GuiWindow::dragging() {
     }
 }
 
-void GuiWindow::dragEnd() {
+void GuiWindow::draggingEnd() {
 
     if (isDragging) {
         this->isDragging = false;

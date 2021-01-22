@@ -34,7 +34,6 @@ namespace bi{
                 bool isDragging = false;
             private:
                 glm::vec2 windowMouseDiff;
-                void dragEnd();
                 glm::vec2 positionBottomRight(glm::vec2 size);
                 glm::vec2 positionTopRight(glm::vec2 size);
         };
