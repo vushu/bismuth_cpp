@@ -1,6 +1,7 @@
 #pragma once
 #include <glm/glm.hpp>
 #include <vector>
+#include "bismuth/collision/collision.hpp"
 #include "bismuth/gui/guistyle.hpp"
 namespace bi {
     namespace gui {
@@ -18,6 +19,10 @@ namespace bi {
 
                 virtual void draw() = 0;
                 virtual void handleMouseClick(int action, glm::vec2 position) = 0;
+
+                bool isPositionWithinRect(glm::vec2 position){
+                    return bi::collision::isPositionWithinRect(position, this->position,  this->size);
+                }
 
                 glm::vec2 position, size;
                 unsigned int placement = TOP_LEFT;

@@ -19,6 +19,8 @@ namespace bi{
                 GuiWindow& setSize(glm::vec2 size);
                 GuiWindow& activateCloseButton();
                 GuiWindow& add(GuiElement* guielement);
+                void dragging();
+                void draggingEnd();
 
                 float outlineWidth = 4.0f;
                 glm::vec4 outlineColor = color::SOFT_BLUE;
@@ -28,7 +30,11 @@ namespace bi{
                 GuiButton closeButton;
                 GuiLabel closeLabel;
                 Font font;
+                bool isFocused = false;
+                bool isDragging = false;
             private:
+                glm::vec2 windowMouseDiff;
+                void dragEnd();
                 glm::vec2 positionBottomRight(glm::vec2 size);
                 glm::vec2 positionTopRight(glm::vec2 size);
         };
