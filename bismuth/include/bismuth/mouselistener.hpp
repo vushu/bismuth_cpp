@@ -34,6 +34,10 @@ namespace bi {
                 return false;
             }
 
+            static glm::vec2 getPosition() {
+                return {toOrthoX(), toOrthoY()};
+            }
+
             static const int numberOfMouseButtons = 9;
             bool mouseButtonPressed[numberOfMouseButtons] = {false};
             ~MouseListener();
