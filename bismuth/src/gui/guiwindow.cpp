@@ -13,6 +13,7 @@ GuiWindow::GuiWindow() {
     this->closeButton.setSize({10,10});
     this->font.loadFnt("resources/assets/fonts/manjaru.fnt");
     this->closeLabel.setText(&this->font, "x");
+    this->closeLabel.fontScale = 0.05f;
     this->closeLabel.color = color::WHITE;
     this->closeButton.placement = TOP_RIGHT;
     this->closeButton.addLabel(&closeLabel);
