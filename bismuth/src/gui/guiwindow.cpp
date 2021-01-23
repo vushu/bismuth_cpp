@@ -16,7 +16,7 @@ GuiWindow::GuiWindow() {
     this->closeLabel.fontScale = 0.15f;
     this->closeLabel.color = color::WHITE;
     this->closeButton.placement = TOP_RIGHT;
-    this->closeLabel.position.y -= 2;
+    this->closeLabel.position = {0,-3};
     this->closeButton.addLabel(&closeLabel);
 }
 
@@ -27,7 +27,6 @@ GuiWindow& GuiWindow::setSize(glm::vec2 size) {
 
 GuiWindow& GuiWindow::setPosition(glm::vec2 position) {
     this->position = position;
-    this->closeLabel.position = position;
     this->closeButton.setPosition({this->position.x + this->size.x - closeButton.size.x, this->position.y });
     for (auto& child : children) {
         switch (child->placement) {
