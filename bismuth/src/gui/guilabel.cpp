@@ -17,7 +17,7 @@ void GuiLabel::setText(Font* font, std::string text) {
 }
 
 void GuiLabel::draw() {
-    ioManager().renderer->drawText(this->text, this->position, *font, color::BLACK, fontScale);
+    ioManager().renderer->drawText(this->text, this->position, *font, this->color, fontScale);
 }
 
 void GuiLabel::handleMouseClick(int action, glm::vec2 position) {
