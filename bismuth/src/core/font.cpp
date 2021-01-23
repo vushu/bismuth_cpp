@@ -1,4 +1,3 @@
-
 #include "bismuth/iomanager.hpp"
 #include <bismuth/primitives.hpp>
 #include <glm/glm.hpp>
@@ -42,10 +41,11 @@ void Font::updateBuffers(std::string text, glm::vec2 position, QuadVertex*& quad
         glm::vec2 texcoordTL = {c.x / (float)fontInfo.scaleW, c.y / (float)fontInfo.scaleH };
         glm::vec2 texcoordBL = {c.x / (float)fontInfo.scaleW, (c.y + c.height) / (float)fontInfo.scaleH };
 
-        glm::vec3 posBR = {pos.x + c.width + c.xoffset, pos.y + c.height + c.yoofset, 0.0f};
-        glm::vec3 posTR = {pos.x + c.width + c.xoffset, pos.y + c.yoofset, 0.0f};
-        glm::vec3 posTL = {pos.x + c.xoffset, pos.y + c.yoofset, 0.0f};
-        glm::vec3 posBL = {pos.x + c.xoffset, pos.y + c.height + c.yoofset, 0.0f};
+
+        glm::vec3 posBR = {pos.x + (c.width + c.xoffset) * scale, pos.y + (c.height + c.yoofset) * scale, 0.0f};
+        glm::vec3 posTR = {pos.x + (c.width + c.xoffset) * scale, pos.y + c.yoofset * scale, 0.0f};
+        glm::vec3 posTL = {pos.x + c.xoffset * scale, pos.y + c.yoofset * scale, 0.0f};
+        glm::vec3 posBL = {pos.x + c.xoffset * scale, pos.y + (c.height + c.yoofset) * scale, 0.0f};
         /*
            log("-------------------------------");
            log(glm::to_string(texcoordBR));
@@ -55,34 +55,34 @@ void Font::updateBuffers(std::string text, glm::vec2 position, QuadVertex*& quad
            log("-------------------------------");
            */
         quadVertex->texId = renderTexId;
-        quadVertex->position = posBR * scale;
+        quadVertex->position = posBR;
         quadVertex->color = color;
         quadVertex->texcoords = texcoordBR;
         quadVertex->type = 1.0f;
         quadVertex++;
 
         quadVertex->texId = renderTexId;
-        quadVertex->position = posTR * scale;
+        quadVertex->position = posTR;
         quadVertex->color = color;
         quadVertex->texcoords = texcoordTR;
         quadVertex->type = 1.0f;
         quadVertex++;
 
         quadVertex->texId = renderTexId;
-        quadVertex->position = posTL * scale;
+        quadVertex->position = posTL;
         quadVertex->color = color;
         quadVertex->texcoords = texcoordTL;
         quadVertex->type = 1.0f;
         quadVertex++;
 
         quadVertex->texId = renderTexId;
-        quadVertex->position = posBL * scale;
+        quadVertex->position = posBL;
         quadVertex->color = color;
         quadVertex->texcoords = texcoordBL;
         quadVertex->type = 1.0f;
         quadVertex++;
 
-        pos.x += c.xadvance;
+        pos.x += c.xadvance * scale;
     }
 
 }
