@@ -16,8 +16,6 @@ GuiButton& GuiButton::setPosition(glm::vec2 position) {
     this->position = position;
     if (this->guiLabel){
         this->guiLabel->position = this->position;
-        this->guiLabel->position.y -= 4;
-        this->guiLabel->position.x += 1;
     }
     return *this;
 }

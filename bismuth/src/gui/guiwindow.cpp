@@ -26,6 +26,8 @@ GuiWindow& GuiWindow::setSize(glm::vec2 size) {
 
 GuiWindow& GuiWindow::setPosition(glm::vec2 position) {
     this->position = position;
+    this->closeLabel.position = position;
+    this->closeLabel.position.y -= 2;
     this->closeButton.setPosition({this->position.x + this->size.x - closeButton.size.x, this->position.y });
     for (auto& child : children) {
         switch (child->placement) {
