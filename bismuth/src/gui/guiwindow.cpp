@@ -16,7 +16,7 @@ GuiWindow::GuiWindow() {
     this->closeLabel.fontScale = 0.15f;
     this->closeLabel.color = color::WHITE;
     this->closeButton.placement = TOP_RIGHT;
-    this->closeLabel.position = {1,-3};
+    this->closeLabel.position = {0,-2};
     this->closeButton.addLabel(&closeLabel);
 }
 
