@@ -18,7 +18,7 @@ namespace bi{
                 GuiWindow& setPosition(glm::vec2 position);
                 GuiWindow& setSize(glm::vec2 size);
                 GuiWindow& activateCloseButton();
-                GuiWindow& add(GuiElement* guielement);
+                GuiWindow& add(std::unique_ptr<GuiElement> guielement);
                 void dragging();
                 void draggingEnd();
 

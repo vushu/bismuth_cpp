@@ -1,5 +1,6 @@
 #pragma once
 #include <glm/glm.hpp>
+#include <memory>
 #include <vector>
 #include "bismuth/collision/collision.hpp"
 #include "bismuth/gui/guistyle.hpp"
@@ -8,9 +9,9 @@ namespace bi {
         class GuiElement{
             public:
                 virtual ~GuiElement() {
-                    for(auto& element : children){
-                        delete element;
-                    }
+                    //for(auto& element : children){
+                        //delete element;
+                    //}
                 }
 
                 GuiElement& getParent() {
@@ -29,7 +30,7 @@ namespace bi {
                 GuiElement* parent = nullptr;
 
             protected:
-                std::vector<GuiElement*> children;
+                std::vector<std::unique_ptr<GuiElement>> children;
 
         };
     }
