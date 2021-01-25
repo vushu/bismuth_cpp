@@ -103,13 +103,11 @@ bool GuiWindow::handleMouseClick(int action, glm::vec2 position) {
         if (isPositionWithinRect(position)) {
 
             isFocused = true;
-            //this->onceClicked = false;
-            closeButton.handleMouseClick(action, position);
-            if (closeButton.isPressed) {
+            if(closeButton.handleMouseClick(action, position))
+            {
                 this->isClosed = true;
             }
         }
-
 
         else  {
 
