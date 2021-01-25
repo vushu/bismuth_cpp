@@ -9,9 +9,9 @@ namespace bi {
         class GuiElement{
             public:
                 virtual ~GuiElement() {
-                    //for(auto& element : children){
-                        //delete element;
-                    //}
+                    for(auto& element : children){
+                        delete element;
+                    }
                 }
 
                 GuiElement& getParent() {
@@ -30,7 +30,7 @@ namespace bi {
                 GuiElement* parent = nullptr;
 
             protected:
-                std::vector<std::unique_ptr<GuiElement>> children;
+                std::vector<GuiElement*> children;
 
         };
     }

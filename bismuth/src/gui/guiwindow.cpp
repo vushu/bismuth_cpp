@@ -69,8 +69,8 @@ GuiWindow& GuiWindow::activateCloseButton() {
     return *this;
 }
 
-GuiWindow& GuiWindow::add(std::unique_ptr<GuiElement> guielement) {
-    this->children.push_back(std::move(guielement));
+GuiWindow& GuiWindow::add(GuiElement* guielement) {
+    this->children.push_back(guielement);
     return *this;
 }
 
