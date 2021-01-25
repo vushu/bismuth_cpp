@@ -108,7 +108,12 @@ void GuiWindow::handleMouseClick(int action, glm::vec2 position) {
             if (closeButton.isPressed) {
                 this->isClosed = true;
             }
+
+            for (auto& child : children){
+                child->handleMouseClick(action, position);
+            }
         }
+
 
         else  {
 
