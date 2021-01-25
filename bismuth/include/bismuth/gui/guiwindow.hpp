@@ -11,7 +11,7 @@ namespace bi{
                 GuiWindow();
 
                 void draw() override;
-                void handleMouseClick(int action, glm::vec2 position) override;
+                bool handleMouseClick(int action, glm::vec2 position) override;
                 GuiWindow& setOutlineWidth(float outlineWidth);
                 GuiWindow& setBackgroundColor(glm::vec4 color);
                 GuiWindow& setOutlineColor(glm::vec4 color);

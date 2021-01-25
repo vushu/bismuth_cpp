@@ -43,8 +43,6 @@ void GuiButton::draw() {
 
 }
 
-void GuiButton::handleMouseClick(int action, glm::vec2 position) {
-    if (action == GLFW_MOUSE_BUTTON_LEFT && collision::isPositionWithinRect(position, this->position, this->size)){
-        this->isPressed = true;
-    }
+bool GuiButton::handleMouseClick(int action, glm::vec2 position) {
+    return action == GLFW_MOUSE_BUTTON_LEFT && collision::isPositionWithinRect(position, this->position, this->size);
 }

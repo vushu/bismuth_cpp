@@ -11,7 +11,7 @@ namespace bi {
                 ~GuiButton();
 
                 void draw() override;
-                void handleMouseClick(int action, glm::vec2 position) override;
+                bool handleMouseClick(int action, glm::vec2 position) override;
                 glm::vec4 outlineColor = color::SOFT_BLUE;
                 glm::vec4 backgroundColor = color::WHITE;
                 bool isPressed = false;

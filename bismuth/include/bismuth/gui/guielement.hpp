@@ -19,7 +19,7 @@ namespace bi {
                 }
 
                 virtual void draw() = 0;
-                virtual void handleMouseClick(int action, glm::vec2 position) = 0;
+                virtual bool handleMouseClick(int action, glm::vec2 position) = 0;
 
                 bool isPositionWithinRect(glm::vec2 position){
                     return bi::collision::isPositionWithinRect(position, this->position,  this->size);

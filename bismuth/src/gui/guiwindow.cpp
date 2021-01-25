@@ -94,9 +94,9 @@ void GuiWindow::draw() {
     closeButton.draw();
 }
 
-void GuiWindow::handleMouseClick(int action, glm::vec2 position) {
+bool GuiWindow::handleMouseClick(int action, glm::vec2 position) {
     if (isClosed) {
-        return;
+        return false;
     }
 
     if (action == GLFW_MOUSE_BUTTON_LEFT){
@@ -108,10 +108,6 @@ void GuiWindow::handleMouseClick(int action, glm::vec2 position) {
             if (closeButton.isPressed) {
                 this->isClosed = true;
             }
-
-            for (auto& child : children){
-                child->handleMouseClick(action, position);
-            }
         }
 
 
@@ -120,6 +116,7 @@ void GuiWindow::handleMouseClick(int action, glm::vec2 position) {
             isFocused = false;
         }
     }
+    return isFocused;
 }
 
 void GuiWindow::dragging() {
