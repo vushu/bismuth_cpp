@@ -26,8 +26,8 @@ void GuiButton::draw() {
 
     ioManager().renderer->drawQuad(this->position, this->size, backgroundColor);
 
-    if (guiLabel) {
-        guiLabel->draw();
+    for (auto& child : children) {
+        child->draw();
     }
 
 
