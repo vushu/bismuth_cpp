@@ -18,7 +18,7 @@ namespace bi {
                 GuiButton& setBackgroundColor(glm::vec4 color);
                 //GuiButton& setPosition(glm::vec2 position);
                 GuiButton& setSize(glm::vec2 size);
-                GuiButton& addLabel(GuiLabel* guiLabel);
+                GuiButton& addLabel(GuiElement* guiLabel);
 
             private:
                 GuiLabel* guiLabel;
