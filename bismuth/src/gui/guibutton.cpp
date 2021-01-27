@@ -18,8 +18,7 @@ GuiButton& GuiButton::setSize(glm::vec2 size) {
 }
 
 GuiButton& GuiButton::addLabel(GuiLabel* guiLabel) {
-    children.push_back(guiLabel);
-    //this->guiLabel = guiLabel;
+    this->guiLabel = guiLabel;
     return *this;
 }
 
@@ -27,8 +26,8 @@ void GuiButton::draw() {
 
     ioManager().renderer->drawQuad(this->position, this->size, backgroundColor);
 
-    for(auto& child : children) {
-        child->draw();
+    if (guiLabel) {
+        guiLabel->draw();
     }
 
 
