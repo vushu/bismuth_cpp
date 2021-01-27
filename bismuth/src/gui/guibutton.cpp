@@ -12,14 +12,6 @@ GuiButton& GuiButton::setBackgroundColor(glm::vec4 color) {
     return *this;
 }
 
-//GuiButton& GuiButton::setPosition(glm::vec2 position) {
-    //this->position = position;
-    //if (this->guiLabel){
-        //this->guiLabel->position = position + guiLabel->offset;
-    //}
-    //return *this;
-//}
-
 GuiButton& GuiButton::setSize(glm::vec2 size) {
     this->size = size;
     return *this;
