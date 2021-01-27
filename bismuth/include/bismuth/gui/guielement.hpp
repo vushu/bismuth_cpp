@@ -20,6 +20,7 @@ namespace bi {
 
                 virtual void draw() = 0;
                 virtual bool handleMouseClick(int action, glm::vec2 position) = 0;
+
                 void setPosition(glm::vec2 position) {
                     this->position = position;
                     for (auto& child : children) {

@@ -12,13 +12,13 @@ GuiButton& GuiButton::setBackgroundColor(glm::vec4 color) {
     return *this;
 }
 
-GuiButton& GuiButton::setPosition(glm::vec2 position) {
-    this->position = position;
-    if (this->guiLabel){
-        this->guiLabel->position = position + guiLabel->offset;
-    }
-    return *this;
-}
+//GuiButton& GuiButton::setPosition(glm::vec2 position) {
+    //this->position = position;
+    //if (this->guiLabel){
+        //this->guiLabel->position = position + guiLabel->offset;
+    //}
+    //return *this;
+//}
 
 GuiButton& GuiButton::setSize(glm::vec2 size) {
     this->size = size;
@@ -32,12 +32,9 @@ GuiButton& GuiButton::addLabel(GuiLabel* guiLabel) {
 
 void GuiButton::draw() {
 
-    //glm::vec2 outline = this->position;
-    //outline -= glm::vec2{1,1};
-    //ioManager().renderer->drawQuad(outline, this->size + glm::vec2{1,2}, color::BLACK);
     ioManager().renderer->drawQuad(this->position, this->size, backgroundColor);
-    if (guiLabel){
-        guiLabel->draw();
+    for(auto& child : children) {
+        child->draw();
     }
 
 
