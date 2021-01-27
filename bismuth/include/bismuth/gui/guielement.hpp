@@ -22,9 +22,9 @@ namespace bi {
                 virtual bool handleMouseClick(int action, glm::vec2 position) = 0;
 
                 void setPosition(glm::vec2 position) {
-                    this->position = position;
+                    this->position = position + offset;
                     for (auto& child : children) {
-                        child->position = this->position + child->offset;
+                        child->setPosition(this->position);
                     }
                 }
 
