@@ -28,6 +28,11 @@ namespace bi {
                     }
                 }
 
+                void setOffset(glm::vec2 offset) {
+                    this->offset = offset;
+                }
+
+
                 bool isPositionWithinRect(glm::vec2 position){
                     return bi::collision::isPositionWithinRect(position, this->position,  this->size);
                 }
