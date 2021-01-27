@@ -26,7 +26,8 @@ GuiButton& GuiButton::setSize(glm::vec2 size) {
 }
 
 GuiButton& GuiButton::addLabel(GuiLabel* guiLabel) {
-    this->guiLabel = guiLabel;
+    children.push_back(guiLabel);
+    //this->guiLabel = guiLabel;
     return *this;
 }
 
