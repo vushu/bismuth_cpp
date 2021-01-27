@@ -20,12 +20,18 @@ namespace bi {
 
                 virtual void draw() = 0;
                 virtual bool handleMouseClick(int action, glm::vec2 position) = 0;
+                void setPosition(glm::vec2 position) {
+                    this->position = position;
+                    for (auto& child : children) {
+                        child->position = this->position + child->offset;
+                    }
+                }
 
                 bool isPositionWithinRect(glm::vec2 position){
                     return bi::collision::isPositionWithinRect(position, this->position,  this->size);
                 }
 
-                glm::vec2 position, size;
+                glm::vec2 position, size, offset;
                 unsigned int placement = TOP_LEFT;
                 GuiElement* parent = nullptr;
 

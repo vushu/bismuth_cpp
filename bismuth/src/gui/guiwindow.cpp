@@ -29,6 +29,8 @@ GuiWindow& GuiWindow::setPosition(glm::vec2 position) {
     this->position = position;
     this->closeButton.setPosition({this->position.x + this->size.x - closeButton.size.x, this->position.y });
     for (auto& child : children) {
+        child->setPosition(position);
+        /*
         switch (child->placement) {
             case TOP_LEFT:
                 child->position = math::clamp(this->position, {this->position.x + this->size.x - child->size.x, this->position.y}, child->position);
@@ -45,6 +47,7 @@ GuiWindow& GuiWindow::setPosition(glm::vec2 position) {
             default:
                 child->position = math::clamp(this->position, this->position + this->size, child->position);
         }
+        */
     }
     return *this;
 }
@@ -108,7 +111,6 @@ bool GuiWindow::handleMouseClick(int action, glm::vec2 position) {
                 this->isClosed = true;
             }
         }
-
         else  {
 
             isFocused = false;
