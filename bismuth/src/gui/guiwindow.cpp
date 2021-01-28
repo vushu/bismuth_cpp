@@ -14,7 +14,7 @@ GuiWindow::GuiWindow() {
     this->font.loadFnt("resources/assets/fonts/neuropol.fnt");
     this->closeLabel.setText(&this->font, "X");
     this->closeLabel.fontScale = 0.15f;
-    this->closeLabel.color = color::WHITE;
+    this->closeLabel.setColor(color::WHITE);
     this->closeButton.placement = TOP_RIGHT;
     this->closeLabel.setOffset({0,-2});
     this->closeButton.addLabel(&closeLabel);
@@ -91,6 +91,7 @@ void GuiWindow::draw() {
     ioManager().renderer->drawQuad(this->position, this->size, backgroundColor);
     ioManager().shaperenderer->setLineWidth(this->outlineWidth);
     ioManager().shaperenderer->drawRect(this->position, this->size, outlineColor).endFlushBegin();
+
     for (auto& child : children){
         child->draw();
     }

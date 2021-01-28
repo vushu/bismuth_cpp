@@ -23,9 +23,11 @@ namespace bi {
 
                 void setPosition(glm::vec2 position) {
                     this->position = position + offset;
+
                     for (auto& child : children) {
                         child->setPosition(this->position);
                     }
+
                 }
 
                 void setOffset(glm::vec2 offset) {

@@ -20,6 +20,9 @@ void GuiLabel::draw() {
     ioManager().renderer->drawText(this->text, this->position, *font, this->color, fontScale);
 }
 
+void GuiLabel::setColor(glm::vec4 color)  {
+    this->color = color;
+}
 bool GuiLabel::handleMouseClick(int action, glm::vec2 position) {
     return isPositionWithinRect(position);
 }
