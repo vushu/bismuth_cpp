@@ -16,7 +16,6 @@ namespace bi {
                 bool handleMouseClick(int action, glm::vec2 position) override;
                 bool isClicked = false;
                 float fontScale = 0.2f;
-                glm::vec2 offset;
             private:
                 glm::vec4 color = color::BLACK;
                 Font* font;
