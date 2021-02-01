@@ -19,6 +19,7 @@ namespace bi{
                 GuiWindow& setSize(glm::vec2 size);
                 GuiWindow& activateCloseButton();
                 GuiWindow& add(GuiElement* guielement);
+                GuiWindow& activateCloseButton(bool activate);
                 void dragging();
                 void draggingEnd();
 
@@ -32,6 +33,7 @@ namespace bi{
                 Font font;
                 bool isFocused = false;
                 bool isDragging = false;
+                bool closeButtonActivated = false;
             private:
                 glm::vec2 windowMouseDiff;
                 glm::vec2 positionBottomRight(glm::vec2 size);

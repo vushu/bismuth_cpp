@@ -31,23 +31,23 @@ GuiWindow& GuiWindow::setPosition(glm::vec2 position) {
     for (auto& child : children) {
         child->setPosition(position);
         /*
-        switch (child->placement) {
-            case TOP_LEFT:
-                child->position = math::clamp(this->position, {this->position.x + this->size.x - child->size.x, this->position.y}, child->position);
-                break;
-            case TOP_RIGHT:
-                child->position = math::clamp({this->position.x + this->size.x - child->size.x, this->position.y }, this->position + this->size, child->position);
-                break;
-            case BOTTOM_LEFT:
-                child->position = math::clamp({this->position.x, this->position.y + this->size.y - child->size.y }, this->position + this->size, child->position);
-                break;
-            case BOTTOM_RIGHT:
-                child->position = math::clamp({this->position.x + this->size.x - child->size.x, this->position.y + this->size.y - child->size.y}, this->position + this->size, child->position);
-                break;
-            default:
-                child->position = math::clamp(this->position, this->position + this->size, child->position);
-        }
-        */
+           switch (child->placement) {
+           case TOP_LEFT:
+           child->position = math::clamp(this->position, {this->position.x + this->size.x - child->size.x, this->position.y}, child->position);
+           break;
+           case TOP_RIGHT:
+           child->position = math::clamp({this->position.x + this->size.x - child->size.x, this->position.y }, this->position + this->size, child->position);
+           break;
+           case BOTTOM_LEFT:
+           child->position = math::clamp({this->position.x, this->position.y + this->size.y - child->size.y }, this->position + this->size, child->position);
+           break;
+           case BOTTOM_RIGHT:
+           child->position = math::clamp({this->position.x + this->size.x - child->size.x, this->position.y + this->size.y - child->size.y}, this->position + this->size, child->position);
+           break;
+           default:
+           child->position = math::clamp(this->position, this->position + this->size, child->position);
+           }
+           */
     }
     return *this;
 }
@@ -77,6 +77,10 @@ GuiWindow& GuiWindow::add(GuiElement* guielement) {
     return *this;
 }
 
+GuiWindow& GuiWindow::activateCloseButton(bool activate)  {
+    this->closeButtonActivated = activate;
+    return *this;
+}
 glm::vec2 GuiWindow::positionBottomRight(glm::vec2 size) {
     return {this->position.x + this->size.x - size.x, this->position.y + this->size.y - size.y};
 }
@@ -95,7 +99,8 @@ void GuiWindow::draw() {
     for (auto& child : children){
         child->draw();
     }
-    closeButton.draw();
+    if (closeButtonActivated)
+        closeButton.draw();
 }
 
 bool GuiWindow::handleMouseClick(int action, glm::vec2 position) {
@@ -107,7 +112,7 @@ bool GuiWindow::handleMouseClick(int action, glm::vec2 position) {
         if (isPositionWithinRect(position)) {
 
             isFocused = true;
-            if(closeButton.handleMouseClick(action, position))
+            if(closeButtonActivated && closeButton.handleMouseClick(action, position))
             {
                 this->isClosed = true;
             }
