@@ -1,3 +1,4 @@
+#pragma once
 #include "bismuth/color.hpp"
 #include "bismuth/gui/guibutton.hpp"
 #include "glm/fwd.hpp"
