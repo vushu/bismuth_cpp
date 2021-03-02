@@ -1,6 +1,7 @@
 #include "bismuth/gui/guibutton.hpp"
 #include "bismuth/iomanager.hpp"
 #include "bismuth/collision/collision.hpp"
+#include "bismuth/mouselistener.hpp"
 using namespace bi;
 using namespace gui;
 
@@ -22,6 +23,12 @@ GuiButton& GuiButton::addLabel(GuiElement* guiLabel) {
     return *this;
 }
 
+
+GuiButton& GuiButton::setText(std::string text) {
+
+    return *this;
+}
+
 void GuiButton::draw() {
 
     ioManager().renderer->drawQuad(this->position, this->size, backgroundColor);
@@ -29,6 +36,26 @@ void GuiButton::draw() {
     for (auto& child : children) {
         child->draw();
     }
+}
+
+bool GuiButton::mouseClicked() {
+    if (bi::mouseInput().mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && !this->isPressed){
+        if (this->handleMouseClick(GLFW_MOUSE_BUTTON_LEFT, bi::mouseInput().getPosition())) {
+            this->isPressed = true;
+        }
+    }
+    return isPressed;
+}
+
+bool GuiButton::mouseReleased() {
+
+    if (!bi::mouseInput().mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && this->isPressed){
+
+        if (this->handleMouseClick(GLFW_MOUSE_BUTTON_LEFT, bi::mouseInput().getPosition())) {
+        }
+        this->isPressed = false;
+    }
+    return isPressed;
 
 
 }

@@ -19,6 +19,10 @@ namespace bi {
                 //GuiButton& setPosition(glm::vec2 position);
                 GuiButton& setSize(glm::vec2 size);
                 GuiButton& addLabel(GuiElement* guiLabel);
+                GuiButton& setText(std::string text);
+                bool isClicked = false;
+                bool mouseClicked();
+                bool mouseReleased();
 
             private:
                 GuiLabel* guiLabel;
