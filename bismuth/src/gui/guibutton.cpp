@@ -38,26 +38,27 @@ void GuiButton::draw() {
     }
 }
 
+
 bool GuiButton::mouseClicked() {
     if (bi::mouseInput().mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && !this->isPressed){
         if (this->handleMouseClick(GLFW_MOUSE_BUTTON_LEFT, bi::mouseInput().getPosition())) {
             this->isPressed = true;
+            return isPressed;
         }
     }
-    return isPressed;
+    return false;
 }
 
 bool GuiButton::mouseReleased() {
 
     if (!bi::mouseInput().mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && this->isPressed){
 
-        if (this->handleMouseClick(GLFW_MOUSE_BUTTON_LEFT, bi::mouseInput().getPosition())) {
-        }
         this->isPressed = false;
+        if (this->handleMouseClick(GLFW_MOUSE_BUTTON_LEFT, bi::mouseInput().getPosition())) {
+            return true;
+        }
     }
-    return isPressed;
-
-
+    return false;
 }
 
 bool GuiButton::handleMouseClick(int action, glm::vec2 position) {
