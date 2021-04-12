@@ -159,6 +159,7 @@ void Application::applicationInit() {
     initOpenGL();
     getRenderer().init();
     getShapeRenderer().init();
+    getAssetManager().initDefaults();
     //getGuiManager().init();
 }
 
