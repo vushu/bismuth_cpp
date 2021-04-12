@@ -24,6 +24,7 @@ namespace bi{
                 void dragging();
                 void draggingEnd();
 
+                Font font;
                 float outlineWidth = 4.0f;
                 glm::vec4 outlineColor = color::SOFT_BLUE;
                 glm::vec4 backgroundColor = color::WHITE;
