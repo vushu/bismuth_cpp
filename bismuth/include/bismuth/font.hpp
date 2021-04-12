@@ -1,6 +1,5 @@
 #pragma once
 #include <array>
-#include <bismuth/assetmanager.hpp>
 #include <bismuth/primitives.hpp>
 #include <glm/glm.hpp>
 #include <map>

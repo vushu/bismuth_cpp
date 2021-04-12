@@ -38,7 +38,7 @@ namespace bi {
             Camera& camera;
             Shader shader{"resources/assets/shaders/shape.glsl"};
             ShaperRenderData renderData;
-            unsigned int maxVertexCount = 2000;
+            int maxVertexCount = 2000;
             void setVertex(glm::vec2 position, glm::vec4);
             void checkVertexLimit();
             glm::vec2 rotatePoint(const glm::vec2& pos, float angle);

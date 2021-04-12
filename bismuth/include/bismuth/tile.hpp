@@ -22,7 +22,7 @@ namespace bi {
         private:
             std::array<glm::vec2, 4> texCoords;
             void setup();
-            int id;
+            unsigned int id;
             int texId;
             glm::vec2 imageSize;
             glm::vec2 position;

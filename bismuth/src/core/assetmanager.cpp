@@ -14,6 +14,11 @@ AssetManager::~AssetManager() {
     bi::log("AssetManager destroyed");
 }
 
+
+void AssetManager::initDefaults() {
+    this->defaultFont.loadFnt("resources/assets/fonts/monda.fnt");
+}
+
 int AssetManager::loadTexture(std::string filepath) {
     int texId = 0;
 
@@ -45,12 +50,19 @@ Texture& AssetManager::getTexture(std::string filepath) {
     return *textures.at(filepath);
 }
 
-//Font& AssetManager::getFont(std::string filepath){
+Font& AssetManager::getFont(std::string filepath) {
+    if (fonts.count(filepath) > 0) {
+        return *fonts.at(filepath);
+    }
+    std::unique_ptr<Font> font = std::make_unique<Font>();
+    font->loadFnt(filepath);
+    this->fonts.emplace(filepath, std::move(font));
+    return *this->fonts.at(filepath);
+}
 
-//}
 
-void AssetManager::getDefaultFont()  {
-    //return *this->fonts.begin()->second;
+Font& AssetManager::getDefaultFont()  {
+    return this->defaultFont;
 }
 
 bool AssetManager::textureExists(std::string filepath) {

@@ -14,7 +14,7 @@ namespace bi {
             int textureId;
             std::vector<int> tileNumbers;
             float timer = 0.0f;
-            int index = 0;
+            unsigned int index = 0;
             glm::vec2 size;
             glm::vec4 color;
             float frameTime;

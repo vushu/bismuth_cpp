@@ -94,7 +94,7 @@ namespace bi {
             void setQuadVertices(QuadVertex*& quadVertex, glm::vec2 position, glm::vec2 size, glm::vec4 color, float texId, float angle, std::array<glm::vec2, 4> texCoords = defaultTexcoords, float type = 0.0f);
             void incrementDrawCounters();
             void reevaluateBatchSpace();
-            float getTextureIndex(int texId);
+            float getTextureIndex(unsigned int texId);
             std::array<glm::vec2, 4> getCorners(glm::vec2 position, glm::vec2 size, float angle);
 
     };

@@ -77,7 +77,7 @@ void Renderer::init()  {
     uint32_t indices[maxIndexCount];
     uint32_t offset = 0;
 
-    for (int i = 0; i < maxIndexCount; i += 6) {
+    for (unsigned int i = 0; i < maxIndexCount; i += 6) {
 
         /*
            indices[i + 0] = 0 + offset;
@@ -227,7 +227,7 @@ void Renderer::flush() {
     shader.uploadUniformMat4("uMvp", camera.projectionMatrix * camera.getViewMatrix());
 
 
-    for (int i = 0; i < s_renderData.textureSlotsIndex; i++) {
+    for (unsigned int i = 0; i < s_renderData.textureSlotsIndex; i++) {
         glActiveTexture(GL_TEXTURE0 + i + 1);
         glBindTexture(GL_TEXTURE_2D, s_renderData.textureIds.at(i));
     }
@@ -252,7 +252,7 @@ void Renderer::flush() {
 
     glBindVertexArray(0);
 
-    for (int i = 0; i < s_renderData.textureSlotsIndex; i++) {
+    for (unsigned int i = 0; i < s_renderData.textureSlotsIndex; i++) {
         glBindTexture(GL_TEXTURE_2D, 0);
     }
 
@@ -323,10 +323,10 @@ Renderer& Renderer::drawTile(Tile& tile, glm::vec4 color) {
     return *this;
 }
 
-float Renderer::getTextureIndex(int texId) {
+float Renderer::getTextureIndex(unsigned int texId) {
 
     float textureIndex = 0.0f;
-    for (int i = 0; i < maxTextures; i++) {
+    for (unsigned int i = 0; i < maxTextures; i++) {
         if (s_renderData.textureIds[i] == texId) {
             textureIndex = (float) (i + 1);
             break;

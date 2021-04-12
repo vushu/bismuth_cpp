@@ -54,6 +54,7 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/miniaudio)
 #tmxlite
 set(TMXLITE_STATIC_LIB on)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/tmxlite)
+add_compile_options(-Wsign-compare -Wunused-but-set-variable)
 
 #message(STATUS "GLM included at ${GLM_INCLUDE_DIRS}")
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")

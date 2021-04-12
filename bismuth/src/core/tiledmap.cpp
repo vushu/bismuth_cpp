@@ -35,7 +35,7 @@ void TiledMap::loadMap() {
         tileCount = { map.getTileCount().x, map.getTileCount().y };
         const auto& ts = map.getTilesets();
 
-        for (int i = 0; i < ts.size(); i++) {
+        for (unsigned int i = 0; i < ts.size(); i++) {
             this->tilesets.emplace(i, ts[i]);
             this->textureIds.emplace(i, bi::ioManager().assetmanager->loadTexture(ts[i].getImagePath()));
         }
@@ -54,7 +54,7 @@ void TiledMap::loadMap() {
                 std::vector<bi::TiledObject> objectList;
                 const auto& objectLayer = layer->getLayerAs<tmx::ObjectGroup>();
 
-                for (int i = 0; i < objectLayer.getObjects().size(); i++) {
+                for (unsigned int i = 0; i < objectLayer.getObjects().size(); i++) {
                     const auto& o = objectLayer.getObjects()[i];
 
                     tilePosX = o.getPosition().x;
@@ -82,7 +82,7 @@ void TiledMap::loadMap() {
                 std::vector<bi::Tile> tileList;
                 const auto& tileLayer = layer->getLayerAs<tmx::TileLayer>();
 
-                for (int i = 0; i < tileLayer.getTiles().size(); i++) {
+                for (unsigned int i = 0; i < tileLayer.getTiles().size(); i++) {
                     const auto& t = tileLayer.getTiles()[i];
 
                     tilePosX = i % tileLayer.getSize().x;
@@ -109,7 +109,7 @@ void TiledMap::loadMap() {
 
 int TiledMap::tilesetIndexOfTile(unsigned int tileId) {
     int tilesetIndex = 0;
-    for(int i = 0; i < tilesets.size(); i++) {
+    for(unsigned int i = 0; i < tilesets.size(); i++) {
         if (tilesets.at(i).hasTile(tileId)) {
             tilesetIndex = i;
             break;
