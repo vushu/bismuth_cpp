@@ -12,8 +12,7 @@ using namespace gui;
 GuiWindow::GuiWindow() {
     this->closeButton.setBackgroundColor(color::SOFT_RED);
     this->closeButton.setSize({10,10});
-    this->font.loadFnt("resources/assets/fonts/neuropol.fnt");
-    this->closeLabel.setText(&this->font, "X");
+    this->closeLabel.setText(&ioManager().assetmanager->getDefaultFont(), "X");
     this->closeLabel.fontScale = 0.15f;
     this->closeLabel.setColor(color::WHITE);
     this->closeButton.placement = TOP_RIGHT;
