@@ -16,7 +16,7 @@ AssetManager::~AssetManager() {
 
 
 void AssetManager::initDefaults() {
-    this->defaultFont.loadFnt("resources/assets/fonts/monda.fnt");
+    this->defaultFont.loadFnt("resources/assets/fonts/neuropol.fnt");
 }
 
 int AssetManager::loadTexture(std::string filepath) {
