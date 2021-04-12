@@ -9,13 +9,13 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(BISMUTH_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/include")
-set(ENTT_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/entt")
-set(BOX2D_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/box2d")
+#set(ENTT_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/entt")
+#set(BOX2D_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/box2d")
 set(GLM_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/glm")
 set(TMX_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/tmxlite")
-set(NANO_VG_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/nanovg/include")
-set(NUKLEAR_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/nuklear/include")
-set(FREE_TYPE_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/freetype2/include")
+#set(NANO_VG_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/nanovg/include")
+#set(NUKLEAR_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/nuklear/include")
+#set(FREE_TYPE_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/bismuth/externals/freetype2/include")
 
 
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
@@ -68,13 +68,13 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
 
     target_include_directories(${PROJECT_NAME}
         PUBLIC
-        ${ENTT_INCLUDE_DIR}
+        #${ENTT_INCLUDE_DIR}
         ${BISMUTH_INCLUDE_DIR}
-        ${BOX2D_INCLUDE_DIR}
+        #${BOX2D_INCLUDE_DIR}
         ${GLM_INCLUDE_DIR}
         ${TMX_INCLUDE_DIR}
-        ${NANO_VG_INCLUDE_DIR}
-        ${NUKLEAR_INCLUDE_DIR}
+        #${NANO_VG_INCLUDE_DIR}
+        #${NUKLEAR_INCLUDE_DIR}
         #${FREE_TYPE_INCLUDE_DIR}
         )
 
@@ -88,13 +88,13 @@ else()
         PRIVATE src)
 
     target_include_directories(${PROJECT_NAME} PUBLIC
-        ${ENTT_INCLUDE_DIR}
+        #${ENTT_INCLUDE_DIR}
         ${BISMUTH_INCLUDE_DIR}
-        ${BOX2D_INCLUDE_DIR}
+        #${BOX2D_INCLUDE_DIR}
         ${TMX_INCLUDE_DIR}
         ${GLM_INCLUDE_DIR}
-        ${NANO_VG_INCLUDE_DIR}
-        ${NUKLEAR_INCLUDE_DIR}
+        #${NANO_VG_INCLUDE_DIR}
+        #${NUKLEAR_INCLUDE_DIR}
         )
     target_link_libraries(${PROJECT_NAME} bismuth)
 endif()

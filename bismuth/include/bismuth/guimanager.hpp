@@ -1,3 +1,4 @@
+/*
 #pragma once
 #include <bismuth/window.hpp>
 namespace bi {
@@ -19,3 +20,4 @@ namespace bi {
 
     };
 }
+*/

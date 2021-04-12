@@ -21,9 +21,9 @@ IOManager::~IOManager()
 
 void IOManager::destroy()
 {
-    if (guimanager->initialized) {
-        guimanager->destroy();
-    }
+    //if (guimanager->initialized) {
+        //guimanager->destroy();
+    //}
     window->destroy();
 }
 
@@ -41,7 +41,7 @@ void IOManager::construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string 
 
     this->assetmanager = std::make_unique<AssetManager>();
     this->audioManager = std::make_unique<AudioManager>();
-    this->guimanager = std::make_unique<GuiManager>(*this->window);
+    //this->guimanager = std::make_unique<GuiManager>(*this->window);
     this->mainFramebuffer = std::make_unique<Framebuffer>();
     this->renderer = std::make_unique<Renderer>(*this->camera);
     //shape renderer

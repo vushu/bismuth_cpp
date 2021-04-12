@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include <bismuth/font.hpp>
 
 using namespace bi;
 
@@ -42,6 +43,14 @@ Texture& AssetManager::getTexture(std::string filepath) {
         loadTexture(filepath);
     }
     return *textures.at(filepath);
+}
+
+//Font& AssetManager::getFont(std::string filepath){
+
+//}
+
+void AssetManager::getDefaultFont()  {
+    //return *this->fonts.begin()->second;
 }
 
 bool AssetManager::textureExists(std::string filepath) {

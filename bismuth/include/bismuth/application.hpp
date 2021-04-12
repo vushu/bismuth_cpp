@@ -46,7 +46,7 @@ namespace bi {
 
         AssetManager &getAssetManager();
 
-        GuiManager &getGuiManager();
+        //GuiManager &getGuiManager();
 
         Framebuffer &getMainFramebuffer();
 

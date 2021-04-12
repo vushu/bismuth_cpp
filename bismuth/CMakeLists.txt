@@ -7,18 +7,18 @@ set(PROJECT_VERSION "1.0.0")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-set(ENTT_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals/entt")
+#set(ENTT_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals/entt")
 set(STB_IMAGE_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals/stb")
 set(GLM_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/externals/glm")
 set(MINIAUDIO_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals/miniaudio/include")
 #set(CATCH2_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/externals/catch2")
 set(EMSCRIPTEN_INCLUDE_DIRS "/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include")
-set(BOX2D_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/box2d/include")
-set(IMGUI_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/imgui/include")
+#set(BOX2D_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/box2d/include")
+#set(IMGUI_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/imgui/include")
 #set(FREETYPE_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/freetype2/include")
 set(TMXLITE_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/tmxlite/include")
-set(NANO_VG_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/nanovg/include")
-set(NUKLEAR_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/nuklear/include")
+#set(NANO_VG_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/nanovg/include")
+#set(NUKLEAR_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/nuklear/include")
 #set(GLFW_INDLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/glfw/include")
 
 include(GNUInstallDirs)
@@ -44,13 +44,13 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/glad)
 #Miniaudio
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/miniaudio)
 #box2d
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/box2d)
+#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/box2d)
 #imgui
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/imgui)
+#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/imgui)
 #freetype2
 #add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/freetype2)
 #NANO_VG
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/nanovg)
+#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/nanovg)
 #tmxlite
 set(TMXLITE_STATIC_LIB on)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/tmxlite)
@@ -61,13 +61,13 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
         PUBLIC
         ${GLM_INCLUDE_DIRS}
         ${STB_IMAGE_INCLUDE_DIR}
-        ${ENTT_INCLUDE_DIR}
+        #${ENTT_INCLUDE_DIR}
         ${MINIAUDIO_INCLUDE_DIR}
-        ${BOX2D_INCLUDE_DIRS}
-        ${IMGUI_INCLUDE_DIRS}
+        #${BOX2D_INCLUDE_DIRS}
+        #${IMGUI_INCLUDE_DIRS}
         ${TMXLITE_INCLUDE_DIRS}
-        ${NANO_VG_INCLUDE_DIRS}
-        ${NUKLEAR_INCLUDE_DIRS}
+        #${NANO_VG_INCLUDE_DIRS}
+        #${NUKLEAR_INCLUDE_DIRS}
         #${GLFW_INCLUDE_DIRS}
         #${FREETYPE_INCLUDE_DIRS}
         #${CATCH2_INCLUDE_DIRS}
@@ -81,14 +81,14 @@ else()
         PUBLIC
         ${GLM_INCLUDE_DIRS}
         ${STB_IMAGE_INCLUDE_DIR}
-        ${ENTT_INCLUDE_DIR}
+        #${ENTT_INCLUDE_DIR}
         ${MINIAUDIO_INCLUDE_DIR}
-        ${BOX2D_INCLUDE_DIRS}
-        ${IMGUI_INCLUDE_DIRS}
+        #${BOX2D_INCLUDE_DIRS}
+        #${IMGUI_INCLUDE_DIRS}
         ${TMXLITE_INCLUDE_DIRS}
         ${GLFW_INCLUDE_DIRS}
-        ${NANO_VG_INCLUDE_DIRS}
-        ${NUKLEAR_INCLUDE_DIRS}
+        #${NANO_VG_INCLUDE_DIRS}
+        #${NUKLEAR_INCLUDE_DIRS}
         #${FREETYPE_INCLUDE_DIRS}
         #${CATCH2_INCLUDE_DIRS}
         #${EMSCRIPTEN_INCLUDE_DIRS}
@@ -108,7 +108,8 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
     #target_link_libraries(${PROJECT_NAME} "-s USE_FREETYPE=1")
     #target_link_libraries(${PROJECT_NAME} "-s STB_IMAGE=1")
     #target_link_libraries(${PROJECT_NAME} "-lopenal")
-    target_link_libraries(${PROJECT_NAME} glad miniaudio box2d imgui tmxlite)
+    #target_link_libraries(${PROJECT_NAME} glad miniaudio box2d imgui tmxlite)
+    target_link_libraries(${PROJECT_NAME} glad miniaudio tmxlite)
 
 else()
     #sudo apt-get install libopenal-dev
@@ -117,7 +118,8 @@ else()
     #find_package(freetype REQUIRED)
     #find_package(glm REQUIRED)
     #target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad openal miniaudio)
-    target_link_libraries(${PROJECT_NAME} PRIVATE glfw miniaudio PUBLIC box2d imgui glad tmxlite)
+    #target_link_libraries(${PROJECT_NAME} PRIVATE glfw miniaudio PUBLIC box2d imgui glad tmxlite)
+    target_link_libraries(${PROJECT_NAME} PRIVATE glfw miniaudio PUBLIC glad tmxlite)
 endif()
 
 add_subdirectory(tests)

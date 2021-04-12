@@ -1,7 +1,8 @@
+/*
 #include "bismuth/iomanager.hpp"
 #include "bismuth/mouselistener.hpp"
 #include <bismuth/editors/asseteditor.hpp>
-#include <imgui/imgui.h>
+//#include <imgui/imgui.h>
 
 using namespace bi;
 
@@ -111,3 +112,4 @@ void AssetEditor::start() {
 
 void AssetEditor::close() {
 }
+*/

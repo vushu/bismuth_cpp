@@ -186,9 +186,9 @@ AssetManager &Application::getAssetManager() {
     return *bi::ioManager().assetmanager;
 }
 
-GuiManager &Application::getGuiManager() {
-    return *bi::ioManager().guimanager;
-}
+//GuiManager &Application::getGuiManager() {
+    //return *bi::ioManager().guimanager;
+//}
 
 Framebuffer &Application::getMainFramebuffer() {
     return *bi::ioManager().mainFramebuffer;
