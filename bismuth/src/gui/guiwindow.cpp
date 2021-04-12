@@ -82,7 +82,7 @@ void GuiWindow::draw() {
     for (auto& child : children){
         child->draw();
     }
-    if (closeButtonActivated)
+    if (this->closeButtonActivated)
         closeButton.draw();
 }
 
