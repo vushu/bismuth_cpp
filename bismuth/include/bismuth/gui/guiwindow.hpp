@@ -31,7 +31,6 @@ namespace bi{
                 bool isClosed = false;
                 GuiButton closeButton;
                 GuiLabel closeLabel;
-                Font font;
                 bool isFocused = false;
                 bool isDragging = false;
                 bool closeButtonActivated = false;

@@ -1,3 +1,4 @@
+#include "bismuth/assetmanager.hpp"
 #include "bismuth/color.hpp"
 #include "bismuth/iomanager.hpp"
 #include "bismuth/math.hpp"
@@ -11,8 +12,7 @@ using namespace gui;
 GuiWindow::GuiWindow() {
     this->closeButton.setBackgroundColor(color::SOFT_RED);
     this->closeButton.setSize({10,10});
-    this->font.loadFnt("resources/assets/fonts/neuropol.fnt");
-    this->closeLabel.setText(&this->font, "X");
+    this->closeLabel.setText(&bi::AssetManager().getDefaultFont(), "X");
     this->closeLabel.fontScale = 0.15f;
     this->closeLabel.setColor(color::WHITE);
     this->closeButton.placement = TOP_RIGHT;
@@ -30,24 +30,6 @@ GuiWindow& GuiWindow::setPosition(glm::vec2 position) {
     this->closeButton.setPosition({this->position.x + this->size.x - closeButton.size.x, this->position.y });
     for (auto& child : children) {
         child->setPosition(position);
-        /*
-           switch (child->placement) {
-           case TOP_LEFT:
-           child->position = math::clamp(this->position, {this->position.x + this->size.x - child->size.x, this->position.y}, child->position);
-           break;
-           case TOP_RIGHT:
-           child->position = math::clamp({this->position.x + this->size.x - child->size.x, this->position.y }, this->position + this->size, child->position);
-           break;
-           case BOTTOM_LEFT:
-           child->position = math::clamp({this->position.x, this->position.y + this->size.y - child->size.y }, this->position + this->size, child->position);
-           break;
-           case BOTTOM_RIGHT:
-           child->position = math::clamp({this->position.x + this->size.x - child->size.x, this->position.y + this->size.y - child->size.y}, this->position + this->size, child->position);
-           break;
-           default:
-           child->position = math::clamp(this->position, this->position + this->size, child->position);
-           }
-           */
     }
     return *this;
 }
