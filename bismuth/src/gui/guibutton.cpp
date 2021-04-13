@@ -25,7 +25,6 @@ GuiButton& GuiButton::addLabel(GuiElement* guiLabel) {
 
 
 GuiButton& GuiButton::setText(std::string text) {
-
     return *this;
 }
 
