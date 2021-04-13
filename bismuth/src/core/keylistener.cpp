@@ -12,26 +12,16 @@ void bi::KeyListener::keyCallback(GLFWwindow* window, int key, int scancode, int
     }
 }
 
-bool bi::KeyListener::isKeyPressedOnce(int keyCode) {
-    bool pressed = isKeyPressed(keyCode);
-    donePressing(keyCode);
-    return pressed;
-}
 bool bi::KeyListener::isKeyReleased(int keyCode) {
-    if (!get().keyPressed[keyCode]) {
-        return false;
-    }
-    return get().keyPressed[keyCode];
+    bool keyReleased = lastKeyCode == keyCode;
+    lastKeyCode = -1;
+    return keyReleased;
 }
 
 bool bi::KeyListener::isKeyPressed(int keyCode) {
+    lastKeyCode = keyCode;
     return get().keyPressed[keyCode];
 }
-
-void bi::KeyListener::donePressing(int keyCode) {
-    get().keyPressed[keyCode] = false;
-}
-
 
 bi::KeyListener::KeyListener() {}
 

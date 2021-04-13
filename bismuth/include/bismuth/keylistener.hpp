@@ -17,16 +17,13 @@ namespace bi {
             bool keyPressed[350] = {false};
 
             bool isKeyPressed(int keyCode);
-            //used for single press event only, use after isKeyPressed if desired
-            void donePressing(int keyCode);
 
             bool isKeyReleased(int keyCode);
-
-            bool isKeyPressedOnce(int keyCode);
 
             ~KeyListener();
         private:
             KeyListener();
+            int lastKeyCode = -1;
 
 
     };
