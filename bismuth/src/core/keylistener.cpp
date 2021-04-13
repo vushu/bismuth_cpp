@@ -18,7 +18,10 @@ bool bi::KeyListener::isKeyPressedOnce(int keyCode) {
     return pressed;
 }
 bool bi::KeyListener::isKeyReleased(int keyCode) {
-    return !get().keyPressed[keyCode];
+    if (!get().keyPressed[keyCode]) {
+        return false;
+    }
+    return get().keyPressed[keyCode];
 }
 
 bool bi::KeyListener::isKeyPressed(int keyCode) {
