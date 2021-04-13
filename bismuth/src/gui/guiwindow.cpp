@@ -165,7 +165,13 @@ void GuiWindow::draggingEnd() {
 }
 
 void GuiWindow::handleDrag() {
-    dragging();
-    draggingEnd();
+
+    if (bi::mouseInput().isDragging) {
+        dragging();
+    }
+
+    else if (!bi::mouseInput().isDragging) {
+        draggingEnd();
+    }
 }
 
