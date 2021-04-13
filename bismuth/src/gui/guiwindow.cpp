@@ -137,6 +137,11 @@ void GuiWindow::show() {
 }
 
 void GuiWindow::dragging() {
+
+    if (!isFocused) {
+        mouseReleased();
+    }
+
     glm::vec2 mouse = {bi::mouseInput().toOrthoX(), bi::mouseInput().toOrthoY()};
 
     if (!isDragging && isFocused) {
@@ -158,3 +163,9 @@ void GuiWindow::draggingEnd() {
         this->isFocused = false;
     }
 }
+
+void GuiWindow::handleDrag() {
+    dragging();
+    draggingEnd();
+}
+

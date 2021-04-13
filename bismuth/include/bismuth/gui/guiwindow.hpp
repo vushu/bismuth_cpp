@@ -25,6 +25,7 @@ namespace bi{
                 bool mouseReleased();
                 void dragging();
                 void draggingEnd();
+                void handleDrag();
                 void close();
                 void show();
 
