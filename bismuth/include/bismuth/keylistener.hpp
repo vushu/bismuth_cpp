@@ -20,10 +20,10 @@ namespace bi {
 
             bool isKeyReleased(int keyCode);
 
+            int lastKeyCode = -1;
             ~KeyListener();
         private:
             KeyListener();
-            int lastKeyCode = -1;
 
 
     };
