@@ -22,6 +22,7 @@ namespace  bi {
             void fullscreen(int width, int height);
             void windowed(int width, int height);
             void destroy();
+            bool isFullscreen = false;
 
         private:
 

@@ -48,10 +48,12 @@ void Window::fullscreen() {
 }
 
 void Window::fullscreen(int width, int height) {
+    this->isFullscreen = true;
     glfwSetWindowMonitor(this->window, glfwGetPrimaryMonitor(), 0,0, width, height, 0);
 }
 
 void Window::windowed(int width, int height) {
+    this->isFullscreen = false;
     glfwSetWindowMonitor(this->window, nullptr, 0,0, width, height, 0);
 }
 void Window::configureOpenGL() {
