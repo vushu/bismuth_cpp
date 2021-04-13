@@ -21,6 +21,8 @@ namespace bi{
                 GuiWindow& activateCloseButton();
                 GuiWindow& add(GuiElement* guielement);
                 GuiWindow& activateCloseButton(bool activate);
+                bool mouseClicked();
+                bool mouseReleased();
                 void dragging();
                 void draggingEnd();
 

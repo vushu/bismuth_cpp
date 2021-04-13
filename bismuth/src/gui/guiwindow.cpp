@@ -107,6 +107,22 @@ bool GuiWindow::handleMouseClick(int action, glm::vec2 position) {
     return isFocused;
 }
 
+bool GuiWindow::mouseClicked() {
+    if (bi::mouseInput().mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && !isFocused) {
+        isFocused = true;
+        handleMouseClick(GLFW_MOUSE_BUTTON_LEFT, bi::mouseInput().getPosition());
+    }
+    return isFocused;
+}
+
+bool GuiWindow::mouseReleased() {
+    if (!bi::mouseInput().mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
+        isFocused = false;
+    }
+    return isFocused;
+}
+
+
 void GuiWindow::dragging() {
     glm::vec2 mouse = {bi::mouseInput().toOrthoX(), bi::mouseInput().toOrthoY()};
 
