@@ -25,6 +25,8 @@ namespace bi{
                 bool mouseReleased();
                 void dragging();
                 void draggingEnd();
+                void close();
+                void show();
 
                 Font font;
                 float outlineWidth = 4.0f;

@@ -123,6 +123,14 @@ bool GuiWindow::mouseReleased() {
 }
 
 
+void GuiWindow::close() {
+    this->isClosed = true;
+}
+
+void GuiWindow::show() {
+    this->isClosed = false;
+}
+
 void GuiWindow::dragging() {
     glm::vec2 mouse = {bi::mouseInput().toOrthoX(), bi::mouseInput().toOrthoY()};
 
