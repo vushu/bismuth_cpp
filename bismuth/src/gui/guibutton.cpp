@@ -50,7 +50,11 @@ bool GuiButton::mouseClicked() {
 
 bool GuiButton::mouseReleased() {
 
-    if (!bi::mouseInput().mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && this->isPressed){
+    if (!isPressed) {
+        mouseClicked();
+    }
+
+    else if (!bi::mouseInput().mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && this->isPressed){
 
         this->isPressed = false;
         if (this->handleMouseClick(GLFW_MOUSE_BUTTON_LEFT, bi::mouseInput().getPosition())) {

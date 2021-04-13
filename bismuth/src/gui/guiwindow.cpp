@@ -116,7 +116,12 @@ bool GuiWindow::mouseClicked() {
 }
 
 bool GuiWindow::mouseReleased() {
-    if (!bi::mouseInput().mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
+
+    if (!isFocused) {
+        mouseClicked();
+    }
+
+    else if (!bi::mouseInput().mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
         isFocused = false;
     }
     return isFocused;
