@@ -20,7 +20,6 @@ bool bi::KeyListener::isKeyReleased(int keyCode) {
 }
 
 bool bi::KeyListener::isKeyPressed(int keyCode) {
-    lastKeyCode = keyCode;
     return get().keyPressed[keyCode];
 }
 
