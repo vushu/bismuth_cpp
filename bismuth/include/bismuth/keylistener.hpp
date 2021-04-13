@@ -15,6 +15,7 @@ namespace bi {
             }
 
             bool keyPressed[350] = {false};
+            bool keyReleased[350] = {false};
 
             bool isKeyPressed(int keyCode);
 
