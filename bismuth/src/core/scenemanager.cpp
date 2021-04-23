@@ -9,7 +9,7 @@ SceneManager::SceneManager() {}
 SceneManager::~SceneManager() {
     bi::log("Destroying scenemanager");
     if (scenes.count(this->currentScene) > 0) {
-        bi::log("closing currentScene");
+        bi::log("Closing currentScene " + this->currentScene);
         this->scenes.at(this->currentScene)->close();
     }
 }
