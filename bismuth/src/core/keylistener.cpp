@@ -3,6 +3,7 @@
 #include <GLFW/glfw3.h>
 #include <algorithm>
 #include <array>
+#include <cstring>
 
 void bi::KeyListener::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
 
@@ -32,7 +33,7 @@ bi::KeyListener::KeyListener() {}
 bi::KeyListener::~KeyListener() {}
 
 void bi::KeyListener::reset() {
-    keyReleased.reset();
+    std::memset(&get().keyReleased, 0 , 350 * sizeof(bool));
 }
 
 bi::KeyListener& bi::keyInput() {

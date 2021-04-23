@@ -16,7 +16,7 @@ namespace bi {
             }
 
             bool keyPressed[350] = {false};
-            std::bitset<350> keyReleased = {false};
+            bool keyReleased[350] = {false};
 
             bool isKeyPressed(int keyCode);
             void reset();
