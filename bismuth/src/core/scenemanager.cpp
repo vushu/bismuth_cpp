@@ -8,6 +8,10 @@ SceneManager::SceneManager() {}
 
 SceneManager::~SceneManager() {
     bi::log("Destroying scenemanager");
+    if (scenes.count(this->currentScene) > 0) {
+        bi::log("closing currentScene");
+        this->scenes.at(this->currentScene)->close();
+    }
 }
 
 void SceneManager::addScene(std::string name, std::unique_ptr<Scene> scene) {

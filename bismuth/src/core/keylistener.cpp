@@ -33,7 +33,7 @@ bi::KeyListener::KeyListener() {}
 bi::KeyListener::~KeyListener() {}
 
 void bi::KeyListener::reset() {
-    std::memset(&get().keyReleased, 0 , 350 * sizeof(bool));
+    std::memset(&get().keyReleased, 0 , sizeof(get().keyReleased));
 }
 
 bi::KeyListener& bi::keyInput() {
