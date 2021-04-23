@@ -1,6 +1,7 @@
 #include "bismuth/keylistener.hpp"
 #include "bismuth/logging.hpp"
 #include <GLFW/glfw3.h>
+#include <algorithm>
 #include <array>
 
 void bi::KeyListener::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
@@ -29,6 +30,10 @@ bool bi::KeyListener::isKeyPressed(int keyCode) {
 bi::KeyListener::KeyListener() {}
 
 bi::KeyListener::~KeyListener() {}
+
+void bi::KeyListener::reset() {
+    keyReleased.reset();
+}
 
 bi::KeyListener& bi::keyInput() {
     return bi::KeyListener::get();

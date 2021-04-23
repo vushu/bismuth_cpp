@@ -23,6 +23,7 @@ namespace bi {
                 bool isClicked = false;
                 bool mouseClicked();
                 bool mouseReleased();
+                bool mouseOver();
 
             private:
                 GuiLabel* guiLabel;

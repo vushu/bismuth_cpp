@@ -2,6 +2,7 @@
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <memory>
+#include <bitset>
 namespace bi {
 
     class KeyListener{
@@ -15,9 +16,10 @@ namespace bi {
             }
 
             bool keyPressed[350] = {false};
-            bool keyReleased[350] = {false};
+            std::bitset<350> keyReleased;
 
             bool isKeyPressed(int keyCode);
+            void reset();
 
             bool isKeyReleased(int keyCode);
 

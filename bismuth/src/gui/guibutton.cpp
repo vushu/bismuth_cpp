@@ -67,3 +67,8 @@ bool GuiButton::mouseReleased() {
 bool GuiButton::handleMouseClick(int action, glm::vec2 position) {
     return action == GLFW_MOUSE_BUTTON_LEFT && collision::isPositionWithinRect(position, this->position, this->size);
 }
+
+bool GuiButton::mouseOver() {
+
+}
+
