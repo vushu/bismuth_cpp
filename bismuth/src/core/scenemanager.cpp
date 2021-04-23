@@ -1,3 +1,4 @@
+#include "bismuth/keylistener.hpp"
 #include "bismuth/logging.hpp"
 #include <bismuth/scenemanager.hpp>
 
@@ -35,6 +36,7 @@ void SceneManager::update(float dt) {
             scenes.at(currentScene)->nextScene = "";
             scenes.at(currentScene)->started = false;
             scenes.at(currentScene)->close();
+            bi::keyInput().reset();
             setScene(nextScene);
         }
     }
