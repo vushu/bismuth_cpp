@@ -38,7 +38,7 @@ run the following command
 //Do this command if it's first time
 bismuth-cli -lubr
 
-//pulls the latest bismuth_cpp from the github and saves it locally in ~/.bismuth
+//pulls the latest bismuth_cpp from github and saves it locally in ~/.bismuth
 bismuth-cli -l
 
 //updates your project with you current local version from ~/.bismuth
@@ -227,4 +227,4 @@ bismuth-cli -br
 ```
 
 ## Some words
-This is still a work in progress and a learning progress for me creating this library :)
+This is still a work in progress and a learning experience for me :)
