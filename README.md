@@ -1,5 +1,5 @@
-# Bismuth Game Framework  
-
+# Bismuth Game lib  
+A simple game library, with focus on simplicity.
 ## Installation  
 ```
 sudo apt install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev
@@ -129,6 +129,30 @@ void Scene1::render(float dt) {
 void Scene1::close() {}
 ```
 
+scene2.hpp
+```
+#pragma once
+#include "bismuth/scene.hpp"
+class Scene2 : public bi::Scene {
+    public:
+        Scene2();
+        ~Scene2();
+
+        void init() override;
+        void start() override;
+        void processInput(float dt) override;
+        void update(float dt) override;
+        void render(float dt) override;
+        void close() override;
+    private:
+        glm::vec2 circlePosition {100, 100};
+        glm::vec2 circleDirection {300, 300};
+        bool isFullScreen = false;
+        int maxHeight;
+        int maxWidth;
+};
+
+```
 scene2.cpp
 ```
 #include "scene2.hpp"
@@ -201,3 +225,6 @@ inside mygame folder, build and run using
 ```
 bismuth-cli -br
 ```
+
+## Some words
+This is still a work in progress and a learning progress for me creating this library :)
