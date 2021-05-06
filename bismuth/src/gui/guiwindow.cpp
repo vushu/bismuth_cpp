@@ -78,11 +78,12 @@ void GuiWindow::draw() {
     ioManager().shaperenderer->setLineWidth(this->outlineWidth);
     ioManager().shaperenderer->drawRect(this->position, this->size, outlineColor).endFlushBegin();
 
+    if (this->closeButtonActivated)
+        closeButton.draw();
+
     for (auto& child : children){
         child->draw();
     }
-    if (this->closeButtonActivated)
-        closeButton.draw();
 }
 
 bool GuiWindow::handleMouseClick(int action, glm::vec2 position) {
