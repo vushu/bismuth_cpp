@@ -3,7 +3,7 @@ A simple game library, with focus on simplicity.
 
 ## Installation  
 ```
-sudo apt install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev
+sudo apt install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev cmake
 ```
 
 ## Creating a project  
