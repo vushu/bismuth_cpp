@@ -1,5 +1,6 @@
 # Bismuth Game lib  
 A simple game library, with focus on simplicity.
+
 ## Installation  
 ```
 sudo apt install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev
@@ -226,5 +227,28 @@ inside mygame folder, build and run using
 bismuth-cli -br
 ```
 
+## Managers
+A scene contains a camera, renderer, shaperenderer,
+and managers to handle sound, assets, tiles
+all managers are singletons.
+```
+in your scene you can call
+getAssetManager()
+getAudioManager()
+getTileManager()
+
+//another way to get access to a manager is to do
+bi::ioManager().assetManager;
+```
+## Using Tiled
+```
+void Scene1::render(float dt) {
+	getRenderer().clear();
+	// 0 for first layer
+	getTileManager().draw("resources/assets/tiled/firstlevel.tmx", 0);
+	getRenderer().endFlushBegin();
+ }
+```
 ## Some words
 This is still a work in progress and a learning experience for me :)
+
