@@ -2,6 +2,7 @@
 #include "bismuth/iomanager.hpp"
 #include "bismuth/renderer.hpp"
 #include <exception>
+#include <stdexcept>
 //#include <imgui_impl_opengl3.h>
 //#include <imgui.h>
 //#include <imgui_impl_glfw.h>

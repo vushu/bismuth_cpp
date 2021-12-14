@@ -1,6 +1,7 @@
 #include <bismuth/logging.hpp>
 #include <bismuth/audiomanager.hpp>
 #include <algorithm>
+#include <stdexcept>
 #define MINIAUDIO_IMPLEMENTATION
 #include <miniaudio/miniaudio.h>
 using namespace bi;
