@@ -25,7 +25,7 @@ bismuth-cli -n <projectname>
 inside you project run example:
 
 ```
-bismuth -s MainMenuScene
+bismuth-cli -s MainMenuScene
 
 ```
 
