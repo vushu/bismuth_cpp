@@ -3,7 +3,6 @@
 #include "keylistener.hpp"
 #include "camera.hpp"
 #include "renderer.hpp"
-#include "guimanager.hpp"
 #include "font.hpp"
 #include "keylistener.hpp"
 #include "logging.hpp"
