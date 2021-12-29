@@ -10,7 +10,6 @@
 //#include <bismuth/textrenderer.hpp>
 #include <GLFW/glfw3.h>
 #include <bismuth/application.hpp>
-#include <bismuth/guimanager.hpp>
 #include <bismuth/logging.hpp>
 #include <glm/glm.hpp>
 #include <memory>
@@ -186,10 +185,6 @@ AudioManager &Application::getAudioManager() {
 
 AssetManager &Application::getAssetManager() {
     return *bi::ioManager().assetmanager;
-}
-
-GuiManager &Application::getGuiManager() {
-    return *bi::ioManager().guimanager;
 }
 
 Framebuffer &Application::getMainFramebuffer() {

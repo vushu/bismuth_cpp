@@ -4,7 +4,6 @@
 #include <bismuth/window.hpp>
 #include <bismuth/audiomanager.hpp>
 #include <bismuth/camera.hpp>
-#include <bismuth/guimanager.hpp>
 #include <bismuth/framebuffer.hpp>
 #include <bismuth/tiledmanager.hpp>
 #include <memory>
@@ -24,7 +23,6 @@ namespace bi {
             std::unique_ptr<Camera> camera;
             std::unique_ptr<AudioManager> audioManager;
             std::unique_ptr<AssetManager> assetmanager;
-            std::unique_ptr<GuiManager> guimanager;
             std::unique_ptr<Framebuffer> mainFramebuffer;
             std::unique_ptr<ShapeRenderer> shaperenderer;
             std::unique_ptr<TiledManager> tiledManager;

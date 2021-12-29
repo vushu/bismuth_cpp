@@ -14,7 +14,7 @@ set(MINIAUDIO_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals/miniaudio/inclu
 #set(CATCH2_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/externals/catch2")
 set(EMSCRIPTEN_INCLUDE_DIRS "/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include")
 #set(BOX2D_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/box2d/include")
-#set(IMGUI_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/imgui/include")
+set(IMGUI_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/imgui/include")
 #set(FREETYPE_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/freetype2/include")
 set(TMXLITE_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/tmxlite/include")
 #set(NANO_VG_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/nanovg/include")
@@ -65,7 +65,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
         #${ENTT_INCLUDE_DIR}
         ${MINIAUDIO_INCLUDE_DIR}
         #${BOX2D_INCLUDE_DIRS}
-        #${IMGUI_INCLUDE_DIRS}
+        ${IMGUI_INCLUDE_DIRS}
         ${TMXLITE_INCLUDE_DIRS}
         #${NANO_VG_INCLUDE_DIRS}
         #${NUKLEAR_INCLUDE_DIRS}
@@ -85,7 +85,7 @@ else()
         #${ENTT_INCLUDE_DIR}
         ${MINIAUDIO_INCLUDE_DIR}
         #${BOX2D_INCLUDE_DIRS}
-        #${IMGUI_INCLUDE_DIRS}
+        ${IMGUI_INCLUDE_DIRS}
         ${TMXLITE_INCLUDE_DIRS}
         ${GLFW_INCLUDE_DIRS}
         #${NANO_VG_INCLUDE_DIRS}
@@ -110,7 +110,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
     #target_link_libraries(${PROJECT_NAME} "-s STB_IMAGE=1")
     #target_link_libraries(${PROJECT_NAME} "-lopenal")
     #target_link_libraries(${PROJECT_NAME} glad miniaudio box2d imgui tmxlite)
-    target_link_libraries(${PROJECT_NAME} glad miniaudio tmxlite)
+    target_link_libraries(${PROJECT_NAME} glad miniaudio imgui tmxlite)
 
 else()
     #sudo apt-get install libopenal-dev
@@ -120,7 +120,7 @@ else()
     #find_package(glm REQUIRED)
     #target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad openal miniaudio)
     #target_link_libraries(${PROJECT_NAME} PRIVATE glfw miniaudio PUBLIC box2d imgui glad tmxlite)
-    target_link_libraries(${PROJECT_NAME} PRIVATE glfw miniaudio PUBLIC glad tmxlite)
+    target_link_libraries(${PROJECT_NAME} PRIVATE glfw miniaudio PUBLIC glad imgui tmxlite)
 endif()
 
 add_subdirectory(tests)

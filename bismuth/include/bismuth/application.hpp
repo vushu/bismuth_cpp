@@ -5,7 +5,6 @@
 #include <bismuth/window.hpp>
 #include <bismuth/audiomanager.hpp>
 #include <bismuth/assetmanager.hpp>
-#include <bismuth/guimanager.hpp>
 #include <bismuth/framebuffer.hpp>
 #include <bismuth/scenemanager.hpp>
 #include <bismuth/iomanager.hpp>
@@ -45,8 +44,6 @@ namespace bi {
         AudioManager &getAudioManager();
 
         AssetManager &getAssetManager();
-
-        GuiManager &getGuiManager();
 
         Framebuffer &getMainFramebuffer();
 

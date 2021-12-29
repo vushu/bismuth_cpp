@@ -41,8 +41,6 @@ namespace bi {
 
         AssetManager &getAssetManager();
 
-        GuiManager &getGuiManager();
-
         TiledManager &getTileManager();
 
     private:

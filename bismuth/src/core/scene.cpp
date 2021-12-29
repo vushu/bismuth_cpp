@@ -42,10 +42,6 @@ Camera& Scene::getCamera() {
     return *bi::ioManager().camera;
 }
 
-GuiManager& Scene::getGuiManager() {
-    return *bi::ioManager().guimanager;
-}
-
 AudioManager& Scene::getAudioManager() {
     return *bi::ioManager().audioManager;
 }
