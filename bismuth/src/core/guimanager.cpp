@@ -1,4 +1,3 @@
-/*
 #include "bismuth/iomanager.hpp"
 #include <bismuth/guimanager.hpp>
 #include <imgui/imgui.h>
@@ -62,4 +61,3 @@ void GuiManager::destroy() {
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
 }
-*/
