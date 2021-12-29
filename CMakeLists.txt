@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(mama)
+project(project_bismuth)
 
 enable_testing()
 set(CMAKE_CXX_STANDARD 17)
