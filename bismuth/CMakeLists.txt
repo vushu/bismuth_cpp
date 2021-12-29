@@ -44,9 +44,9 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/glad)
 #Miniaudio
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/miniaudio)
 #box2d
-#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/box2d)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/box2d)
 #imgui
-#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/imgui)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/imgui)
 #freetype2
 #add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/freetype2)
 #NANO_VG
