@@ -7,29 +7,25 @@ Tile::~Tile() {}
 
 void Tile::setup() {
 
-    int numberOfTiles = (int)(imageSize.x / tileSize.x) * (imageSize.y / tileSize.y);
+    int nRows = (int)(imageSize.x / tileSize.x);
+    int nCols = (int)(imageSize.y / tileSize.y);
 
-    int posX = 0;
-    int posY = 0;
-    // Reached max tile
-    if (numberOfTiles == id)
-    {
-        posX = (id - 1) % numberOfTiles;
-        posY = (int)((id - 1) / (imageSize.y / tileSize.y));
-    }
-    else
-    {
-        posX = id % numberOfTiles;
-        posY = (int)(id / (imageSize.y / tileSize.y));
-    }
+    int posX = id % nRows;
+    int posY = (int)(id / nCols);
+
     posX = posX * tileSize.x;
     posY = posY * tileSize.y;
 
+    glm::vec2 dimension {imageSize.x, imageSize.y};
+    glm::vec2 br{(float)(posX + tileSize.x), (float)(posY + tileSize.y)};
+    glm::vec2 tr{(float)(posX + tileSize.x), (float)(posY)};
+    glm::vec2 tl{(float)posX, (float)(posY)};
+    glm::vec2 bl{(float)posX, (float)(posY + tileSize.y)};
     this->texCoords = {
-        glm::vec2{(float)(posX + tileSize.x) / imageSize.x, (float)(posY + tileSize.y) / imageSize.y}, //BR
-        glm::vec2{(float)(posX + tileSize.x) / imageSize.x, (float)posY / imageSize.y},                //TR
-        glm::vec2{(float)posX / imageSize.x, (float)posY / imageSize.y},                               //TL
-        glm::vec2{(float)posX / imageSize.x, ((float)posY + tileSize.y) / imageSize.y}                 //BL
+        br / dimension, //BR
+        tr / dimension, //TR
+        tl / dimension, //TL
+        bl / dimension  //BL
     };
 }
 

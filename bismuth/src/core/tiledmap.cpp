@@ -23,9 +23,9 @@ std::vector<bi::TiledObject>& TiledMap::getObjects(unsigned int objectNumber) {
 
 
 //std::vector<bi::TiledObject>& TiledMap::getObjects(unsigned int objectNumber) {
-    //if (objects.count(objectNumber) > 0)
-        //return this->objects.at(objectNumber);
-    //throw std::runtime_error("Layer number " + std::to_string(objectNumber) + " doesn't exists!");
+//if (objects.count(objectNumber) > 0)
+//return this->objects.at(objectNumber);
+//throw std::runtime_error("Layer number " + std::to_string(objectNumber) + " doesn't exists!");
 //}
 
 void TiledMap::loadMap() {
@@ -61,12 +61,14 @@ void TiledMap::loadMap() {
                     tilePosY = o.getPosition().y;
 
                     tileSetIdxForObject = tilesetIndexOfTile(o.getTileID());
+                    const auto &foundTileSet = this->tilesets.at(tileSetIdxForObject);
+
                     //bi::log("TileIdX", tileSetIdxForObject);
 
                     const auto &imgSize = this->tilesets.at(tileSetIdxForObject).getImageSize();
 
                     // position.y - tileSize.y, since it looks like tiled uses bottom left as origin
-                    bi::Tile tile(o.getTileID(), textureIds.at(tileSetIdxForObject), {imgSize.x, imgSize.y}, { o.getPosition().x, o.getPosition().y - tileSize.y }, { tileSize.x, tileSize.y });
+                    bi::Tile tile(o.getTileID() - foundTileSet.getFirstGID(), textureIds.at(tileSetIdxForObject), {imgSize.x, imgSize.y}, { o.getPosition().x, o.getPosition().y - tileSize.y }, { tileSize.x, tileSize.y });
 
                     TiledObject obj{o, tile};
 
