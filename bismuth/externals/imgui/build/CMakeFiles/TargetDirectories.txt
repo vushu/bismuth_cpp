@@ -1,3 +1,0 @@
-/home/vushu/coding/cpp/somethingcpp/bismuth/externals/imgui/build/CMakeFiles/rebuild_cache.dir
-/home/vushu/coding/cpp/somethingcpp/bismuth/externals/imgui/build/CMakeFiles/edit_cache.dir
-/home/vushu/coding/cpp/somethingcpp/bismuth/externals/imgui/build/CMakeFiles/imgui.dir
