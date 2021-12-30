@@ -117,7 +117,7 @@ else()
     #find_package(glm REQUIRED)
     #target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad openal miniaudio)
     #target_link_libraries(${PROJECT_NAME} PRIVATE glfw miniaudio PUBLIC box2d imgui glad tmxlite)
-    target_link_libraries(${PROJECT_NAME} PRIVATE glfw miniaudio PUBLIC glad tmxlite)
+    target_link_libraries(${PROJECT_NAME} PRIVATE miniaudio PUBLIC ${CMAKE_DL_LIBS} glfw glad tmxlite)
 endif()
 
 add_subdirectory(tests)
