@@ -70,13 +70,14 @@ Sound& AudioManager::getSound(unsigned int soundId) {
 }
 
 ma_uint32 AudioManager::readMixPcmFrames(ma_decoder* pDecoder, float* pOutputF32, ma_uint32 frameCount, float volume = 1) {
+    ma_result result;
     float temp[4096];
     ma_uint32 tempCapInFrames = ma_countof(temp) / CHANNEL_COUNT;
     ma_uint32 totalFramesRead = 0;
 
     while (totalFramesRead < frameCount) {
-        ma_uint32 iSample;
-        ma_uint32 framesReadThisIteration;
+        ma_uint64 iSample;
+        ma_uint64 framesReadThisIteration;
         ma_uint32 totalFramesRemaining = frameCount - totalFramesRead;
         ma_uint32 framesToReadThisIteration = tempCapInFrames;
 
@@ -84,9 +85,9 @@ ma_uint32 AudioManager::readMixPcmFrames(ma_decoder* pDecoder, float* pOutputF32
             framesToReadThisIteration = totalFramesRemaining;
         }
 
-        framesReadThisIteration = (ma_uint32)ma_decoder_read_pcm_frames(pDecoder, temp, framesToReadThisIteration);
+        result = ma_decoder_read_pcm_frames(pDecoder, temp, framesToReadThisIteration, &framesReadThisIteration);
 
-        if (framesReadThisIteration == 0) {
+        if (result != MA_SUCCESS || framesReadThisIteration == 0) {
             break;
         }
 
@@ -94,9 +95,9 @@ ma_uint32 AudioManager::readMixPcmFrames(ma_decoder* pDecoder, float* pOutputF32
             pOutputF32[totalFramesRead*CHANNEL_COUNT + iSample] += temp[iSample] * volume;
         }
 
-        totalFramesRead += framesReadThisIteration;
+        totalFramesRead += (ma_uint32) framesReadThisIteration;
 
-        if (framesReadThisIteration < framesToReadThisIteration) {
+        if (framesReadThisIteration < (ma_uint32) framesToReadThisIteration) {
             break;  /* Reached EOF. */
         }
     }
@@ -131,17 +132,6 @@ void AudioManager::dataCallback(ma_device* pDevice, void* pOutput, const void* p
             }
         }
     }
-
-    (void)pInput;
-}
-
-void AudioManager::simpleCallback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount) {
-    ma_decoder* pDecoder = (ma_decoder*)pDevice->pUserData;
-    if (pDecoder == NULL) {
-        return;
-    }
-
-    ma_decoder_read_pcm_frames(pDecoder, pOutput, frameCount);
 
     (void)pInput;
 }

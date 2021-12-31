@@ -10,7 +10,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 #set(ENTT_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals/entt")
 set(STB_IMAGE_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals/stb")
 set(GLM_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/externals/glm")
-set(MINIAUDIO_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals/miniaudio/include")
+set(MINIAUDIO_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals/miniaudio")
 #set(CATCH2_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/externals/catch2")
 set(EMSCRIPTEN_INCLUDE_DIRS "/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include")
 #set(BOX2D_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/box2d/include")
@@ -40,8 +40,6 @@ set_target_properties(${PROJECT_NAME}
 #add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/glfw)
 #GLAD
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/glad)
-#Miniaudio
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/miniaudio)
 #box2d
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/box2d)
 #freetype2
@@ -107,7 +105,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
     #target_link_libraries(${PROJECT_NAME} "-s STB_IMAGE=1")
     #target_link_libraries(${PROJECT_NAME} "-lopenal")
     #target_link_libraries(${PROJECT_NAME} glad miniaudio box2d imgui tmxlite)
-    target_link_libraries(${PROJECT_NAME} glad miniaudio tmxlite)
+    target_link_libraries(${PROJECT_NAME} glad tmxlite)
 
 else()
     #sudo apt-get install libopenal-dev
@@ -117,7 +115,7 @@ else()
     #find_package(glm REQUIRED)
     #target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad openal miniaudio)
     #target_link_libraries(${PROJECT_NAME} PRIVATE glfw miniaudio PUBLIC box2d imgui glad tmxlite)
-    target_link_libraries(${PROJECT_NAME} PRIVATE miniaudio PUBLIC ${CMAKE_DL_LIBS} glfw glad tmxlite)
+    target_link_libraries(${PROJECT_NAME} PRIVATE PUBLIC ${CMAKE_DL_LIBS} glfw glad tmxlite)
 endif()
 
 add_subdirectory(tests)
