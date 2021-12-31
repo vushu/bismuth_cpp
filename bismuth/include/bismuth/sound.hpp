@@ -32,14 +32,11 @@ namespace bi {
             // default volume
             float volume = 1.0f;
             ma_decoder decoder;
+            std::string filepath;
 
         private:
             bool playing = false;
-            std::string filepath;
-            //static ma_uint64 playHead;
             ma_decoder_config decoderConfig;
-            //std::vector<unsigned int> buffers;
-            //ALCdevice* device;
 
     };
 }

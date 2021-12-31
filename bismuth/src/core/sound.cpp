@@ -2,7 +2,7 @@
 #include <bismuth/sound.hpp>
 //#include <AL/al.h>
 //#include <AL/alc.h>
-#include <miniaudio/miniaudio.h>
+#include "miniaudio/miniaudio.h"
 #include <stdexcept>
 using namespace bi;
 
@@ -15,13 +15,8 @@ Sound::Sound(std::string filepath) {
 
 Sound::~Sound() {
     ma_decoder_uninit(&decoder);
-    log("Sound destroyed");
+    log("Sound destroyed", filepath);
 }
-
-//void Sound::reset() {
-    //this->isPause = false;
-    //this->isDone = false;
-//}
 
 void Sound::playSound() {
     this->isPause = false;
@@ -60,15 +55,11 @@ void Sound::setVolume(float volume) {
 }
 
 void Sound::init() {
-
-    log("init SOUND: " + this->filepath);
     ma_result result = ma_decoder_init_file(filepath.c_str(), &decoderConfig, &decoder);
 
-
-    log("done here");
     if (result != MA_SUCCESS) {
         throw std::runtime_error("Failed to load file");
     }
-    bi::log("Sound initialized");
+    bi::log("Sound initialized: ", filepath);
 
 }

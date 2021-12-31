@@ -10,7 +10,7 @@ namespace bi  {
 
         public:
             // constructors, asssignment, destructor
-            AudioManager ();
+            AudioManager () {};
             ~AudioManager ();
             void init();
             unsigned int addSound(std::shared_ptr<Sound> sound);

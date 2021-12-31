@@ -7,11 +7,6 @@
 using namespace bi;
 
 
-
-AudioManager::AudioManager() {
-
-}
-
 AudioManager::~AudioManager() {
     ma_device_uninit(&device);
     log("AudioManager Destroyed");
@@ -42,9 +37,10 @@ void AudioManager::start() {
     if (deviceStopped)
     {
         if (ma_device_start(&device) != MA_SUCCESS) {
-            printf("Failed to start playback device.\n");
+            bi::log("Failed to start playback device");
             throw std::runtime_error("Failed to start audiodevice");
         }
+        bi::log("Sound Device started: OK");
         deviceStopped = false;
     }
 }
