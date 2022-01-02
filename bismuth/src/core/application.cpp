@@ -3,11 +3,7 @@
 #include "bismuth/renderer.hpp"
 #include <exception>
 #include <stdexcept>
-//#include <imgui_impl_opengl3.h>
-//#include <imgui.h>
-//#include <imgui_impl_glfw.h>
 #define GLFW_INCLUDE_NONE
-//#include <bismuth/textrenderer.hpp>
 #include <GLFW/glfw3.h>
 #include <bismuth/application.hpp>
 #include <bismuth/logging.hpp>
@@ -17,11 +13,6 @@
 #ifdef __EMSCRIPTEN__
 #include <emscripten/emscripten.h>
 #endif
-//nanovg
-//#include <nanovg/nanovg.h>
-//#define NANOVG_GLES3_IMPLEMENTATION
-//#include <nanovg/nanovg_gl.h>
-//#include <nanovg/nanovg_gl_utils.h>
 using namespace bi;
 
 Application::Application() {
@@ -147,7 +138,6 @@ void Application::initOpenGL() {
     // alpha blending
     glEnable(GL_BLEND);
     glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-    //glUniformBlockBinding(0,0,1);
 
     //stencil buffer
     glEnable(GL_STENCIL_TEST);
@@ -160,7 +150,6 @@ void Application::applicationInit() {
     getRenderer().init();
     getShapeRenderer().init();
     getAssetManager().initDefaults();
-    //getGuiManager().init();
 }
 
 Renderer &Application::getRenderer() {

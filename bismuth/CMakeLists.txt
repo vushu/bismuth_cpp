@@ -7,18 +7,11 @@ set(PROJECT_VERSION "1.0.0")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-#set(ENTT_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals/entt")
 set(STB_IMAGE_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals/stb")
 set(GLM_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/externals/glm")
 set(MINIAUDIO_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/externals/miniaudio")
-#set(CATCH2_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/externals/catch2")
 set(EMSCRIPTEN_INCLUDE_DIRS "/home/vushu/coding/repos/emsdk/upstream/emscripten/system/include")
-#set(BOX2D_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/box2d/include")
-#set(FREETYPE_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/freetype2/include")
 set(TMXLITE_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/tmxlite/include")
-#set(NANO_VG_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/nanovg/include")
-#set(NUKLEAR_INCLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/nuklear/include")
-#set(GLFW_INDLUDE_DIRS "{CMAKE_CURRENT_SOURCE_DIR}/externals/glfw/include")
 
 include(GNUInstallDirs)
 
@@ -36,16 +29,10 @@ set_target_properties(${PROJECT_NAME}
     PROPERTIES
     VERSION ${PROJECT_VERSION}
     SOVERSION ${PROJECT_VERSION})
-#GLFW
-#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/glfw)
 #GLAD
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/glad)
 #box2d
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/box2d)
-#freetype2
-#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/freetype2)
-#NANO_VG
-#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/nanovg)
 #tmxlite
 set(TMXLITE_STATIC_LIB on)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/externals/tmxlite)
@@ -77,16 +64,10 @@ else()
         PUBLIC
         ${GLM_INCLUDE_DIRS}
         ${STB_IMAGE_INCLUDE_DIR}
-        #${ENTT_INCLUDE_DIR}
         ${MINIAUDIO_INCLUDE_DIR}
-        #${BOX2D_INCLUDE_DIRS}
         ${IMGUI_INCLUDE_DIRS}
         ${TMXLITE_INCLUDE_DIRS}
         ${GLFW_INCLUDE_DIRS}
-        #${NANO_VG_INCLUDE_DIRS}
-        #${NUKLEAR_INCLUDE_DIRS}
-        #${FREETYPE_INCLUDE_DIRS}
-        #${CATCH2_INCLUDE_DIRS}
         #${EMSCRIPTEN_INCLUDE_DIRS}
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>
@@ -108,13 +89,7 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Emscripten")
     target_link_libraries(${PROJECT_NAME} glad tmxlite)
 
 else()
-    #sudo apt-get install libopenal-dev
-    #find_package(OpenAL REQUIRED)
     find_package(glfw3 3.3 REQUIRED)
-    #find_package(freetype REQUIRED)
-    #find_package(glm REQUIRED)
-    #target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad openal miniaudio)
-    #target_link_libraries(${PROJECT_NAME} PRIVATE glfw miniaudio PUBLIC box2d imgui glad tmxlite)
     target_link_libraries(${PROJECT_NAME} PRIVATE PUBLIC ${CMAKE_DL_LIBS} glfw glad tmxlite)
 endif()
 
