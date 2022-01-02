@@ -102,6 +102,14 @@ void Window::swapBuffers() {
     glfwSwapBuffers(window);
 }
 
+glm::vec2 Window::maxSize() {
+    return { maxWidth, maxHeight };
+}
+
+glm::vec2 Window::size() {
+    return { width, height };
+}
+
 void Window::close() {
     glfwSetWindowShouldClose(window, GLFW_TRUE);
 }
@@ -117,7 +125,6 @@ void Window::init() {
     configureOpenGL();
 
     window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
-
 
     if (window == NULL) {
         bi::log("Window: Failed to create GLFW window");

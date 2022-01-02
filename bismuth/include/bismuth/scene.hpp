@@ -43,6 +43,7 @@ namespace bi {
 
         TiledManager &getTileManager();
 
+        Cursor& getCursor();
     private:
     };
 }

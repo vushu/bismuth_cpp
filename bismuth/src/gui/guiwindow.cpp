@@ -10,27 +10,11 @@ using namespace gui;
 
 
 GuiWindow::GuiWindow() {
-    this->closeButton.setBackgroundColor(color::SOFT_RED);
-    this->closeButton.setSize({10,10});
-    this->closeLabel.setText(&ioManager().assetmanager->getDefaultFont(), "X");
-    this->closeLabel.fontScale = 0.15f;
-    this->closeLabel.setColor(color::WHITE);
-    this->closeButton.placement = TOP_RIGHT;
-    this->closeLabel.setOffset({0,-2});
-    this->closeButton.addLabel(&closeLabel);
+
 }
 
 GuiWindow& GuiWindow::setSize(glm::vec2 size) {
     this->size = size;
-    return *this;
-}
-
-GuiWindow& GuiWindow::setPosition(glm::vec2 position) {
-    this->position = position;
-    this->closeButton.setPosition({this->position.x + this->size.x - closeButton.size.x, this->position.y });
-    for (auto& child : children) {
-        child->setPosition(position);
-    }
     return *this;
 }
 
@@ -49,20 +33,6 @@ GuiWindow& GuiWindow::setOutlineColor(glm::vec4 color)  {
     return *this;
 }
 
-GuiWindow& GuiWindow::activateCloseButton() {
-    this->isCloseButtonActivated = true;
-    return *this;
-}
-
-GuiWindow& GuiWindow::add(GuiElement* guielement) {
-    this->children.push_back(guielement);
-    return *this;
-}
-
-GuiWindow& GuiWindow::activateCloseButton(bool activate)  {
-    this->closeButtonActivated = activate;
-    return *this;
-}
 glm::vec2 GuiWindow::positionBottomRight(glm::vec2 size) {
     return {this->position.x + this->size.x - size.x, this->position.y + this->size.y - size.y};
 }
@@ -72,14 +42,9 @@ glm::vec2 GuiWindow::positionTopRight(glm::vec2 size) {
 }
 
 void GuiWindow::draw() {
-    if (isClosed)
-        return;
     ioManager().renderer->drawQuad(this->position, this->size, backgroundColor);
     ioManager().shaperenderer->setLineWidth(this->outlineWidth);
     ioManager().shaperenderer->drawRect(this->position, this->size, outlineColor).endFlushBegin();
-
-    if (this->closeButtonActivated)
-        closeButton.draw();
 
     for (auto& child : children){
         child->draw();
@@ -92,18 +57,7 @@ bool GuiWindow::handleMouseClick(int action, glm::vec2 position) {
     }
 
     if (action == GLFW_MOUSE_BUTTON_LEFT){
-        if (isPositionWithinRect(position)) {
-
-            isFocused = true;
-            if(closeButtonActivated && closeButton.handleMouseClick(action, position))
-            {
-                this->isClosed = true;
-            }
-        }
-        else  {
-
-            isFocused = false;
-        }
+        isFocused = isPositionWithinRect(position);
     }
     return isFocused;
 }
@@ -165,7 +119,7 @@ void GuiWindow::draggingEnd() {
     }
 }
 
-void GuiWindow::handleDragging() {
+void GuiWindow::processDragging() {
 
     if (bi::mouseInput().isDragging) {
         dragging();

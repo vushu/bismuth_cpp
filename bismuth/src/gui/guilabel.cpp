@@ -6,23 +6,38 @@
 using namespace bi::gui;
 
 
-GuiLabel::GuiLabel(){}
-
-GuiLabel::~GuiLabel() {}
-
-
-void GuiLabel::setText(Font* font, std::string text) {
+void GuiLabel::setFont(Font *font) {
     this->font = font;
-    this->text = text;
 }
 
+void GuiLabel::setText(std::string text) {
+    if (!font) {
+        log("No font is set for label!");
+        return;
+    }
+    this->text = text;
+    size = font->getSizeOfText(this->text, fontScale);
+}
+
+void GuiLabel::setText(Font* font,std::string text) {
+    setFont(font);
+    this->text = text;
+    size = font->getSizeOfText(this->text, fontScale);
+}
+
+
 void GuiLabel::draw() {
+    if (!font) {
+        log("No font is set for label!");
+        return;
+    }
     ioManager().renderer->drawText(this->text, this->position, *font, this->color, fontScale);
 }
 
 void GuiLabel::setColor(glm::vec4 color)  {
     this->color = color;
 }
+
 bool GuiLabel::handleMouseClick(int action, glm::vec2 position) {
     return isPositionWithinRect(position);
 }

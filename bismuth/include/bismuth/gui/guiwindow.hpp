@@ -16,16 +16,10 @@ namespace bi{
                 GuiWindow& setOutlineWidth(float outlineWidth);
                 GuiWindow& setBackgroundColor(glm::vec4 color);
                 GuiWindow& setOutlineColor(glm::vec4 color);
-                GuiWindow& setPosition(glm::vec2 position);
                 GuiWindow& setSize(glm::vec2 size);
-                GuiWindow& activateCloseButton();
-                GuiWindow& add(GuiElement* guielement);
-                GuiWindow& activateCloseButton(bool activate);
                 bool mouseClicked();
                 bool mouseReleased();
-                void dragging();
-                void draggingEnd();
-                void handleDragging();
+                void processDragging();
                 void close();
                 void show();
 
@@ -41,6 +35,8 @@ namespace bi{
                 bool isDragging = false;
                 bool closeButtonActivated = false;
             private:
+                void dragging();
+                void draggingEnd();
                 glm::vec2 windowMouseDiff;
                 glm::vec2 positionBottomRight(glm::vec2 size);
                 glm::vec2 positionTopRight(glm::vec2 size);

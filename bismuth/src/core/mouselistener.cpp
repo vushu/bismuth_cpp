@@ -29,6 +29,14 @@ void MouseListener::mouseButtonCallback(GLFWwindow* window, int button, int acti
     }
 }
 
+void MouseListener::hideCursor() {
+    glfwSetInputMode(bi::ioManager().window->window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+}
+
+void MouseListener::showCursor() {
+    glfwSetInputMode(bi::ioManager().window->window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+}
+
 void MouseListener::mouseScrollCallback(GLFWwindow* window, double xOffset, double yOffset) {
     MouseListener::get().scrollX = xOffset;
     MouseListener::get().scrollY = yOffset;

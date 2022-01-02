@@ -20,7 +20,14 @@ void Cursor::setMouseOver(bool enable) {
         currentTextureId = mouseOverTextureId;
 }
 
+void Cursor::setTexture(std::string pointerFilePath, std::string mouseOverFilePath) {
+    this->pointerFilePath = pointerFilePath;
+    this->mouseOverFilePath = mouseOverFilePath;
+    init();
+}
+
 void Cursor::draw() {
-    bi::ioManager().renderer->drawTexture(mouseInput().getPosition() + offset, size, color, currentTextureId, 0);
+    if (bi::mouseInput().xPos != -1)
+        bi::ioManager().renderer->drawTexture(mouseInput().getPosition() + offset, size, color, currentTextureId, 0);
 }
 

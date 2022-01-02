@@ -8,7 +8,6 @@ Scene::Scene() { }
 Scene::~Scene() { }
 
 void Scene::sceneInit() {
-    //this->ioManager = iomanager;
 }
 
 void Scene::init() {}
@@ -52,6 +51,10 @@ AssetManager& Scene::getAssetManager() {
 
 TiledManager& Scene::getTileManager() {
     return *bi::ioManager().tiledManager;
+}
+
+Cursor& Scene::getCursor() {
+    return *bi::ioManager().cursor;
 }
 
 

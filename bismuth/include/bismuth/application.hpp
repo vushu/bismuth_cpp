@@ -7,6 +7,7 @@
 #include <bismuth/assetmanager.hpp>
 #include <bismuth/framebuffer.hpp>
 #include <bismuth/scenemanager.hpp>
+#include <bismuth/cursor.hpp>
 #include <bismuth/iomanager.hpp>
 
 #include <memory>
@@ -51,6 +52,7 @@ namespace bi {
 
         IOManager &getIOManager();
 
+        Cursor& getCursor();
     protected:
 
         virtual void init();

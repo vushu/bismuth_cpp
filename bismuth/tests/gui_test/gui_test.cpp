@@ -8,25 +8,26 @@
 #include <string>
 
 void GuiTest::init() {
+    bi::mouseInput().hideCursor();
+    bismuthSound = std::make_shared<bi::Sound>("resources/assets/audio/bismuth.wav");
+    bismuthSound->init();
+    getAudioManager().addSound(bismuthSound);
+
     SECTION("Render gui window") {
         window.setSize({300, 300});
-
         fpsLabel.setFont(&getAssetManager().getDefaultFont());
         fpsLabel.setColor(bi::color::WHITE);
         fpsLabel.setText("Countdown: " + std::to_string(counter));
         fpsLabel.setOffset({0, 12});
         fpsLabel.positionTopCenterTo({0,0}, getWindow().size());
 
-        startBtn.setSize({200,40});
+        startBtn.setSize({260,50});
         startBtn.setTextColor(bi::color::WHITE);
         startBtn.setFont(&getAssetManager().getDefaultFont());
-        //startBtn.positionCenterTo({0,0}, getWindow().size());
         window.add(&startBtn, bi::gui::CENTER);
         window.setBackgroundColor(bi::color::fromRGB(0, 5, 253, 0.5));
-        startBtn.setText("START");
+        startBtn.setText("Play Sound");
         window.positionCenterTo({0,0}, getWindow().size());
-        handId = getAssetManager().loadTexture(cursorHandPath);
-        pointerId = getAssetManager().loadTexture(cursorPointerPath);
     }
 
 }
@@ -52,6 +53,15 @@ void GuiTest::update(float dt) {
         startBtn.outlineColor = bi::color::SOFT_MAGENTA;
         startBtn.backgroundColor = bi::color::CORNFLOWER_BLUE;
         getCursor().setMouseOver(false);
+    }
+
+    if (startBtn.mouseClicked()) {
+
+    }
+    if(startBtn.mouseReleased()){
+        bi::log("Released");
+        bi::log("PLAYING SOUND!!!!");
+        bismuthSound->playSound();
     }
 
     if (accDt > 1) {
@@ -88,6 +98,7 @@ void GuiTest::render(float dt) {
     getShapeRenderer().drawRect(fpsLabel.position, fpsLabel.size, bi::color::CORNFLOWER_BLUE);
     getShapeRenderer().endFlushBegin();
     window.draw();
+
     getCursor().draw();
 
     getRenderer().endFlushBegin();

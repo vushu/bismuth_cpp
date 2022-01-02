@@ -12,14 +12,15 @@ namespace bi{
             void draw();
             void setMouseOver(bool enable);
             void setColor(glm::vec4 color);
-            glm::vec2 size {16,16};
-            glm::vec2 offset {0,0};
+            void setTexture(std::string pointerFilePath, std::string mouseOverFilePath);
+            glm::vec2 size {20, 20};
+            glm::vec2 offset {-4,-2};
         private:
             std::string pointerFilePath, mouseOverFilePath;
             int pointerTextureId;
             int currentTextureId;
             int mouseOverTextureId;
-            glm::vec4 color = color::SOFT_YELLOW;
+            glm::vec4 color = color::WHITE;
 
     };
 }

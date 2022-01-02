@@ -14,6 +14,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <algorithm>
 
 
 using namespace bi;
@@ -158,17 +159,17 @@ void Font::loadFnt(std::string filePath) {
     //log(std::to_string(p.first) + " : " + std::to_string(p.second.charId));
     //}
     /*
-    log("-----------------------");
-    log("face " + fontInfo.face);
-    log("file:" + fontInfo.file);
-    log("size:" + std::to_string(fontInfo.size));
-    log("bold:" + std::to_string(fontInfo.bold));
-    log("italic:" + std::to_string(fontInfo.italic));
-    log("base:" + std::to_string(fontInfo.base));
-    log("scaleW: " +std::to_string(fontInfo.scaleW));
-    log("scaleH: " + std::to_string(fontInfo.scaleH));
-    log("-----------------------");
-    */
+       log("-----------------------");
+       log("face " + fontInfo.face);
+       log("file:" + fontInfo.file);
+       log("size:" + std::to_string(fontInfo.size));
+       log("bold:" + std::to_string(fontInfo.bold));
+       log("italic:" + std::to_string(fontInfo.italic));
+       log("base:" + std::to_string(fontInfo.base));
+       log("scaleW: " +std::to_string(fontInfo.scaleW));
+       log("scaleH: " + std::to_string(fontInfo.scaleH));
+       log("-----------------------");
+       */
     textureId = bi::ioManager().assetmanager->loadTexture("resources/assets/fonts/" + fontInfo.file);
 }
 
@@ -197,6 +198,21 @@ std::string Font::getInQuotes(std::string text) {
     }
     return text;
 }
+
+glm::vec2 Font::getSizeOfText(std::string text, float scale) {
+    float width = 0, height = 0;
+    for (auto& ch : text) {
+        if (characters.count(ch) == 0) {
+            return { width, height };
+        }
+        Character& c = characters.at(ch);
+        width += c.xadvance * scale;
+        height = std::max((c.height + c.yoofset) * scale, height);
+    }
+    return { width, height };
+
+}
+
 
 std::vector<Character> Font::getCharacters(std::string text) {
     std::vector<Character> chars;

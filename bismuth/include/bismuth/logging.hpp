@@ -11,6 +11,6 @@ namespace bi {
     void log(int message);
     void log(std::string from,int message);
     void log(std::string from,float message);
-
+    void log(std::string from, bool value);
     void log(std::string from, glm::vec2 vec);
 }

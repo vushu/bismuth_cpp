@@ -1,6 +1,7 @@
 #pragma once
 #include "bismuth/gui/guibutton.hpp"
 #include "bismuth/gui/guiwindow.hpp"
+#include "bismuth/sound.hpp"
 #include "bismuth/texture.hpp"
 #include <bismuth/bismuth.hpp>
 class GuiTest : public bi::Application{
@@ -21,7 +22,6 @@ class GuiTest : public bi::Application{
         //bi::gui::GuiLabel startBtnLbl;
         float accDt = 0;
         int counter = 10;
-        std::string cursorPointerPath = "resources/assets/textures/cursor/pointer.png";
-        std::string cursorHandPath = "resources/assets/textures/cursor/hand.png";
-        int pointerId, handId;
+        std::shared_ptr<bi::Sound> bismuthSound;
+        int soundId;
 };

@@ -12,21 +12,23 @@ namespace bi {
 
                 void draw() override;
                 bool handleMouseClick(int action, glm::vec2 position) override;
-                glm::vec4 outlineColor = color::SOFT_BLUE;
-                glm::vec4 backgroundColor = color::WHITE;
+                glm::vec4 outlineColor = color::CORNFLOWER_BLUE;
+                glm::vec4 backgroundColor = color::fromRGB({44, 0, 138, 1});
                 bool isPressed = false;
                 GuiButton& setBackgroundColor(glm::vec4 color);
-                //GuiButton& setPosition(glm::vec2 position);
                 GuiButton& setSize(glm::vec2 size);
                 GuiButton& addLabel(GuiElement* guiLabel);
-                GuiButton& setText(std::string text);
+                GuiButton& setFont(Font* font);
+                GuiButton& setText(std::string);
+                GuiButton& setTextColor(glm::vec4 color);
                 bool isClicked = false;
                 bool mouseClicked();
                 bool mouseReleased();
-                bool mouseOver();
+                float outlineThickness = 2.0f;
 
             private:
-                GuiLabel* guiLabel;
+                GuiLabel guiLabel;
+                Font* font;
 
         };
     }

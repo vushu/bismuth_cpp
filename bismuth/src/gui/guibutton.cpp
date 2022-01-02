@@ -1,4 +1,5 @@
 #include "bismuth/gui/guibutton.hpp"
+#include "bismuth/gui/guilabel.hpp"
 #include "bismuth/iomanager.hpp"
 #include "bismuth/collision/collision.hpp"
 #include "bismuth/mouselistener.hpp"
@@ -18,19 +19,46 @@ GuiButton& GuiButton::setSize(glm::vec2 size) {
     return *this;
 }
 
-GuiButton& GuiButton::addLabel(GuiElement* guiLabel) {
-    this->children.push_back(guiLabel);
+GuiButton& GuiButton::setFont(Font* font) {
+    this->font = font;
+    guiLabel.setFont(font);
     return *this;
 }
 
+GuiButton& GuiButton::setTextColor(glm::vec4 color) {
+    guiLabel.setColor(color);
+    return *this;
+}
 
 GuiButton& GuiButton::setText(std::string text) {
+    if(!this->font){
+        log("Failed to set text setFont first!");
+        return *this;
+    }
+    guiLabel.setPosition(position);
+    guiLabel.setText(text);
+    if (size == glm::vec2 {0,0}) {
+        this->size = guiLabel.size;
+    }
+    guiLabel.positionCenterTo(position, size);
+    return *this;
+}
+
+GuiButton& GuiButton::addLabel(GuiElement* guiLabel) {
+    guiLabel->parent = this;
+    this->children.push_back(guiLabel);
     return *this;
 }
 
 void GuiButton::draw() {
 
-    ioManager().renderer->drawQuad(this->position, this->size, backgroundColor);
+    ioManager().renderer->drawQuad(this->position, this->size, outlineColor);
+    ioManager().renderer->drawQuad(this->position + outlineThickness, this->size - outlineThickness * 2, backgroundColor);
+
+    if (font) {
+        guiLabel.positionCenterTo(position, size);
+        guiLabel.draw();
+    }
 
     for (auto& child : children) {
         child->draw();
@@ -66,9 +94,5 @@ bool GuiButton::mouseReleased() {
 
 bool GuiButton::handleMouseClick(int action, glm::vec2 position) {
     return action == GLFW_MOUSE_BUTTON_LEFT && collision::isPositionWithinRect(position, this->position, this->size);
-}
-
-bool GuiButton::mouseOver() {
-
 }
 

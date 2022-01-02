@@ -6,6 +6,7 @@
 #include <bismuth/camera.hpp>
 #include <bismuth/framebuffer.hpp>
 #include <bismuth/tiledmanager.hpp>
+#include <bismuth/cursor.hpp>
 #include <memory>
 namespace bi {
 
@@ -26,6 +27,7 @@ namespace bi {
             std::unique_ptr<Framebuffer> mainFramebuffer;
             std::unique_ptr<ShapeRenderer> shaperenderer;
             std::unique_ptr<TiledManager> tiledManager;
+            std::unique_ptr<Cursor> cursor;
             void construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string);
             void destroy();
             static IOManager& get() {

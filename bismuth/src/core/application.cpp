@@ -103,6 +103,7 @@ void Application::fixedLoop() {
     }
 
     render(dt);
+
     this->scenemanager->render(dt);
 
     getWindow().swapBuffers();
@@ -150,6 +151,7 @@ void Application::applicationInit() {
     getRenderer().init();
     getShapeRenderer().init();
     getAssetManager().initDefaults();
+    getCursor().init();
 }
 
 Renderer &Application::getRenderer() {
@@ -182,6 +184,10 @@ Framebuffer &Application::getMainFramebuffer() {
 
 SceneManager &Application::getSceneManager() {
     return *this->scenemanager;
+}
+
+Cursor& Application::getCursor() {
+    return *bi::ioManager().cursor;
 }
 
 IOManager &Application::getIOManager() {

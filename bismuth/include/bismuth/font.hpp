@@ -41,6 +41,7 @@ namespace bi {
             //void updateBuffers(std::array<char,256> text, glm::vec2 position, QuadVertex*& quadVertex, int renderTexId);
             unsigned int textureId;
             std::vector<Character> getCharacters(std::string text);
+            glm::vec2 getSizeOfText(std::string text, float scale);
 
         private:
             FontInfo fontInfo;

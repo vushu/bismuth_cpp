@@ -229,7 +229,7 @@ ShapeRenderer& ShapeRenderer::drawRect(glm::vec2 position, glm::vec2 size, glm::
 
     if (angle == 0) {
         //Topline
-        drawLine(position, {position.x + size.x, position.y}, color);
+        drawLine({position.x, position.y}, {position.x + size.x, position.y}, color);
         //Left side
         drawLine(position, {position.x, position.y + size.y}, color);
         //Botline

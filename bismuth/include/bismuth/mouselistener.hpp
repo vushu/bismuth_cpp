@@ -1,4 +1,5 @@
 #pragma once
+#include "bismuth/window.hpp"
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <memory>
@@ -40,9 +41,11 @@ namespace bi {
 
             static const int numberOfMouseButtons = 9;
             bool mouseButtonPressed[numberOfMouseButtons] = {false};
+            void hideCursor();
+            void showCursor();
             ~MouseListener();
             double scrollX, scrollY;
-            double xPos, yPos;
+            double xPos = -1, yPos = -1;
             bool isDragging;
         private:
             MouseListener();

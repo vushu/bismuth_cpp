@@ -36,15 +36,24 @@ void bi::log(float message) {
         std::cout << std::to_string(message) << std::endl;
     }
 }
+
 void bi::log(std::string from, std::string message) {
 
     if (bi::isLogging) {
         std::cout << from << " " << message << std::endl;
     }
 }
+
 void bi::log(std::string from, glm::vec2 vec) {
 
     if (bi::isLogging) {
         std::cout << from << " " << glm::to_string(vec) << std::endl;
+    }
+}
+
+void bi::log(std::string from, bool value) {
+
+    if (bi::isLogging) {
+        std::cout << from << " " << (value ? "true" : "false") << std::endl;
     }
 }

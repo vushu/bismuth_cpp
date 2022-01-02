@@ -1,4 +1,5 @@
 #pragma once
+#include "glm/fwd.hpp"
 #include <GLFW/glfw3.h>
 #include <string>
 namespace  bi {
@@ -18,6 +19,8 @@ namespace  bi {
             void swapBuffers();
             int maxWidth;
             int maxHeight;
+            glm::vec2 maxSize();
+            glm::vec2 size();
             void fullscreen();
             void fullscreen(int width, int height);
             void windowed(int width, int height);
