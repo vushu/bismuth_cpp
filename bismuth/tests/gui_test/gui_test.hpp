@@ -4,6 +4,7 @@
 #include "bismuth/sound.hpp"
 #include "bismuth/texture.hpp"
 #include <bismuth/bismuth.hpp>
+#include <bismuth/utils/counter.hpp>
 class GuiTest : public bi::Application{
     public:
         // constructors, asssignment, destructor
@@ -21,7 +22,9 @@ class GuiTest : public bi::Application{
         bi::gui::GuiButton startBtn;
         //bi::gui::GuiLabel startBtnLbl;
         float accDt = 0;
-        int counter = 10;
+        //int counter = 10;
         std::shared_ptr<bi::Sound> bismuthSound;
+        std::shared_ptr<bi::Sound> plingSound;
+        bi::utils::Counter counter{10, 1.0f};
         int soundId;
 };

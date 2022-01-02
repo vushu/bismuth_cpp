@@ -9,15 +9,22 @@
 
 void GuiTest::init() {
     bi::mouseInput().hideCursor();
+    getAudioManager().init();
+    getAudioManager().start();
+
     bismuthSound = std::make_shared<bi::Sound>("resources/assets/audio/bismuth.wav");
     bismuthSound->init();
+    plingSound = std::make_shared<bi::Sound>("resources/assets/audio/pling.wav");
+    plingSound->init();
+
     getAudioManager().addSound(bismuthSound);
+    getAudioManager().addSound(plingSound);
 
     SECTION("Render gui window") {
         window.setSize({300, 300});
         fpsLabel.setFont(&getAssetManager().getDefaultFont());
         fpsLabel.setColor(bi::color::WHITE);
-        fpsLabel.setText("Countdown: " + std::to_string(counter));
+        fpsLabel.setText("Countdown: " + std::to_string(counter.getCount()));
         fpsLabel.setOffset({0, 12});
         fpsLabel.positionTopCenterTo({0,0}, getWindow().size());
 
@@ -33,7 +40,6 @@ void GuiTest::init() {
 }
 
 void GuiTest::update(float dt) {
-    accDt += dt;
 
     if (window.isPositionWithinRect(bi::mouseInput().getPosition())) {
         window.setOutlineColor(bi::color::SOFT_GREEN);
@@ -56,35 +62,31 @@ void GuiTest::update(float dt) {
     }
 
     if (startBtn.mouseClicked()) {
-
+        bismuthSound->playSound(true);
     }
-    if(startBtn.mouseReleased()){
-        bi::log("Released");
-        bi::log("PLAYING SOUND!!!!");
-        bismuthSound->playSound();
+    if (startBtn.mouseReleased()){
     }
 
-    if (accDt > 1) {
-        counter--;
-        fpsLabel.setText("Countdown: " + std::to_string(counter));
+    if (counter.countDown(dt)) {
+        fpsLabel.setText("Countdown: " + std::to_string(counter.getCount()));
         fpsLabel.positionTopCenterTo({0,0}, getWindow().size());
-        accDt = 0;
-    }
 
-    if (counter <= 0){
-        fpsLabel.setText("Shutting down!");
-        fpsLabel.positionTopCenterTo({0,0}, getWindow().size());
-    }
-
-    //fpsLabel.positionTopCenterTo({0,0}, getWindow().size());
-    if (counter <= -1){
-        //getWindow().close();
+        if (counter.getCount() <= 3){
+            plingSound->playSound(true);
+        }
+        if (counter.getCount() == 0){
+            fpsLabel.setText("Shutting down!");
+            fpsLabel.positionTopCenterTo({0,0}, getWindow().size());
+        }
+        if (counter.getCount() == -1){
+            getWindow().close();
+        }
     }
 
 }
 
 void GuiTest::processInput(float dt) {
-    window.processDragging();
+    //window.processDragging();
 
     if (bi::keyInput().isKeyPressed(GLFW_KEY_ESCAPE)){
         getWindow().close();

@@ -1,7 +1,5 @@
 #include <bismuth/logging.hpp>
 #include <bismuth/sound.hpp>
-//#include <AL/al.h>
-//#include <AL/alc.h>
 #include "miniaudio/miniaudio.h"
 #include <stdexcept>
 using namespace bi;
@@ -21,18 +19,23 @@ Sound::~Sound() {
 void Sound::playSound() {
     this->isPause = false;
 }
+void Sound::playSound(bool rewind) {
+    if (rewind) {
+        rewindSound();
+    }
+    this->isPause = false;
+}
 
 void Sound::pauseSound() {
     this->isPause = true;
 }
 
 void Sound::stopSound() {
-    this->rewindSound();
     this->isPause = true;
+    this->rewindSound();
 }
 
 void Sound::rewindSound() {
-    //this->isPause = false;
     this->isDone = false;
     this->rewind = true;
 }

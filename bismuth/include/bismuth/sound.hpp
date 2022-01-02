@@ -15,6 +15,7 @@ namespace bi {
             ~Sound();
             void init();
             void playSound();
+            void playSound(bool rewind);
             void stopSound();
             void pauseSound();
             void rewindSound();

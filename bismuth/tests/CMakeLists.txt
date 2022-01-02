@@ -7,7 +7,8 @@ file(GLOB_RECURSE TEST_SRC
 add_executable(bismuth_test ${TEST_SRC})
 
 target_include_directories(bismuth_test PRIVATE ${CATCH2_INCLUDE_DIR})
-target_link_libraries(bismuth_test bismuth ${CMAKE_DL_LIBS} m)
+
+target_link_libraries(bismuth_test bismuth)
 
 
 
