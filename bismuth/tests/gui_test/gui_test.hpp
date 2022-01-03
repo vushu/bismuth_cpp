@@ -23,8 +23,8 @@ class GuiTest : public bi::Application{
         //bi::gui::GuiLabel startBtnLbl;
         float accDt = 0;
         //int counter = 10;
-        std::shared_ptr<bi::Sound> bismuthSound;
-        std::shared_ptr<bi::Sound> plingSound;
+        std::string bismuthSoundFile;
+        std::string plingSoundFile;
         bi::utils::Counter counter{10, 1.0f};
         int soundId;
 };

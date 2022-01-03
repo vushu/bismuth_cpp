@@ -12,13 +12,8 @@ void GuiTest::init() {
     getAudioManager().init();
     getAudioManager().start();
 
-    bismuthSound = std::make_shared<bi::Sound>("resources/assets/audio/bismuth.wav");
-    bismuthSound->init();
-    plingSound = std::make_shared<bi::Sound>("resources/assets/audio/pling.wav");
-    plingSound->init();
-
-    getAudioManager().addSound(bismuthSound);
-    getAudioManager().addSound(plingSound);
+    bismuthSoundFile = getAudioManager().addSound("resources/assets/audio/bismuth.wav");
+    plingSoundFile = getAudioManager().addSound("resources/assets/audio/pling.wav");
 
     SECTION("Render gui window") {
         window.setSize({300, 300});
@@ -62,8 +57,9 @@ void GuiTest::update(float dt) {
     }
 
     if (startBtn.mouseClicked()) {
-        bismuthSound->playSound(true);
+        getAudioManager().getSound(bismuthSoundFile).playSound(true);
     }
+
     if (startBtn.mouseReleased()){
     }
 
@@ -72,7 +68,7 @@ void GuiTest::update(float dt) {
         fpsLabel.positionTopCenterTo({0,0}, getWindow().size());
 
         if (counter.getCount() <= 3){
-            plingSound->playSound(true);
+            getAudioManager().getSound(plingSoundFile).playSound(true);
         }
         if (counter.getCount() == 0){
             fpsLabel.setText("Shutting down!");
@@ -86,7 +82,6 @@ void GuiTest::update(float dt) {
 }
 
 void GuiTest::processInput(float dt) {
-    //window.processDragging();
 
     if (bi::keyInput().isKeyPressed(GLFW_KEY_ESCAPE)){
         getWindow().close();
@@ -99,6 +94,7 @@ void GuiTest::render(float dt) {
     fpsLabel.draw();
     getShapeRenderer().drawRect(fpsLabel.position, fpsLabel.size, bi::color::CORNFLOWER_BLUE);
     getShapeRenderer().endFlushBegin();
+
     window.draw();
 
     getCursor().draw();

@@ -2,6 +2,7 @@
 #include <bismuth/audiomanager.hpp>
 #include <algorithm>
 #include <stdexcept>
+#include <map>
 #define MINIAUDIO_IMPLEMENTATION
 #include <miniaudio/miniaudio.h>
 using namespace bi;
@@ -14,7 +15,7 @@ AudioManager::~AudioManager() {
 
 //Safe volumeLimit
 float AudioManager::volumeLimit = 1.5f;
-std::vector<std::shared_ptr<Sound>> AudioManager::sounds;
+std::map<std::string, std::unique_ptr<Sound>> AudioManager::sounds;
 
 void AudioManager::init() {
     deviceConfig = ma_device_config_init(ma_device_type_playback);
@@ -60,13 +61,16 @@ void AudioManager::setMaxVolume(float volume) {
     volumeLimit = volume;
 }
 
-unsigned int AudioManager::addSound(std::shared_ptr<Sound> sound) {
-    this->sounds.push_back(std::move(sound));
-    return sounds.size() - 1;
+std::string AudioManager::addSound(std::string soundFile) {
+    std::string file = soundFile;
+    std::unique_ptr<Sound> sound = std::make_unique<Sound>(soundFile);
+    sound->init();
+    this->sounds.emplace(sound->filepath, std::move(sound));
+    return file;
 }
 
-Sound& AudioManager::getSound(unsigned int soundId) {
-    return *this->sounds.at(soundId);
+Sound& AudioManager::getSound(std::string soundFile) {
+    return *this->sounds.at(soundFile);
 }
 
 ma_uint32 AudioManager::readMixPcmFrames(ma_decoder* pDecoder, float* pOutputF32, ma_uint32 frameCount, float volume = 1) {
@@ -110,7 +114,7 @@ void AudioManager::dataCallback(ma_device* pDevice, void* pOutput, const void* p
 
     MA_ASSERT (pDevice->playback.format == SAMPLE_FORMAT);
 
-    for (auto& sound : sounds) {
+    for (auto const& [key, sound] : sounds) {
 
         if (sound->rewind) {
             ma_decoder_seek_to_pcm_frame(&sound->decoder, 0);
