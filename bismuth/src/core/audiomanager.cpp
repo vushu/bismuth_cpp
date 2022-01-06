@@ -15,7 +15,7 @@ AudioManager::~AudioManager() {
 
 //Safe volumeLimit
 float AudioManager::volumeLimit = 1.5f;
-std::map<std::string, std::unique_ptr<Sound>> AudioManager::sounds;
+std::map<std::string, std::shared_ptr<Sound>> AudioManager::sounds;
 
 void AudioManager::init() {
     deviceConfig = ma_device_config_init(ma_device_type_playback);
@@ -63,7 +63,7 @@ void AudioManager::setMaxVolume(float volume) {
 
 std::string AudioManager::addSound(std::string soundFile) {
     std::string file = soundFile;
-    std::unique_ptr<Sound> sound = std::make_unique<Sound>(soundFile);
+    std::shared_ptr<Sound> sound = std::make_shared<Sound>(soundFile);
     sound->init();
     this->sounds.emplace(sound->filepath, std::move(sound));
     return file;
@@ -71,6 +71,10 @@ std::string AudioManager::addSound(std::string soundFile) {
 
 Sound& AudioManager::getSound(std::string soundFile) {
     return *this->sounds.at(soundFile);
+}
+
+void AudioManager::playSound(std::string soundFile, bool rewind) {
+    getSound(soundFile).playSound(rewind);
 }
 
 ma_uint32 AudioManager::readMixPcmFrames(ma_decoder* pDecoder, float* pOutputF32, ma_uint32 frameCount, float volume = 1) {

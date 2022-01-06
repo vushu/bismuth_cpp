@@ -14,8 +14,7 @@ namespace bi {
             Sound(std::string filepath);
             ~Sound();
             void init();
-            void playSound();
-            void playSound(bool rewind);
+            void playSound(bool rewind = true);
             void stopSound();
             void pauseSound();
             void rewindSound();

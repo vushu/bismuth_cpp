@@ -16,6 +16,7 @@ namespace bi  {
             void init();
             std::string addSound(std::string soundFile);
             Sound& getSound(std::string file);
+            void playSound(std::string file, bool rewind = true);
 
             void start();
             void stop();
@@ -29,6 +30,6 @@ namespace bi  {
             ma_device device;
             static void dataCallback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount);
             static ma_uint32 readMixPcmFrames(ma_decoder* pDecoder, float* pOutputF32, ma_uint32 frameCount, float volume);
-            static std::map<std::string, std::unique_ptr<Sound>> sounds;
+            static std::map<std::string, std::shared_ptr<Sound>> sounds;
     };
 }

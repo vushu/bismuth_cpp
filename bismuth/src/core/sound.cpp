@@ -16,9 +16,6 @@ Sound::~Sound() {
     log("Sound destroyed", filepath);
 }
 
-void Sound::playSound() {
-    this->isPause = false;
-}
 void Sound::playSound(bool rewind) {
     if (rewind) {
         rewindSound();

@@ -266,7 +266,8 @@ void Renderer::flush() {
 }
 
 void Renderer::resetStats() {
-    memset(&s_renderData.stats, 0, sizeof(RenderStats));
+    //memset(&s_renderData.stats, 0, sizeof(RenderStats));
+    s_renderData.stats = {};
 }
 
 bi::Renderer::RenderStats& Renderer::getRenderStats () {

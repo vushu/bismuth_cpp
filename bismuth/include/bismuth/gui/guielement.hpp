@@ -1,17 +1,21 @@
 #pragma once
+#include <functional>
 #include <glm/glm.hpp>
+#include <map>
+#include <math.h>
 #include <memory>
 #include <vector>
 #include "bismuth/collision/collision.hpp"
 #include "bismuth/gui/guistyle.hpp"
+#include "bismuth/logging.hpp"
+#include "bismuth/mouse.hpp"
+#include "bismuth/mouselistener.hpp"
 namespace bi {
     namespace gui {
         class GuiElement{
             public:
                 virtual ~GuiElement() {
-                    for(auto& element : children){
-                        delete element;
-                    }
+                    log("Destroying", currentName);
                 }
 
                 GuiElement& getParent() {
@@ -59,14 +63,14 @@ namespace bi {
                     }
                 }
 
-                void add(GuiElement* guielement) {
+                void add(std::shared_ptr<GuiElement> guielement) {
                     guielement->parent = this;
                     setPositionByPlacement(position, size);
                     this->children.push_back(guielement);
                 }
 
 
-                void add(GuiElement* guielement, unsigned int placement) {
+                void add(std::shared_ptr<GuiElement> guielement, unsigned int placement) {
                     guielement->parent = this;
                     guielement->placement = placement;
                     setPositionByPlacement(position, size);
@@ -118,12 +122,15 @@ namespace bi {
                     setPosition({parentPosition.x + sizeOfParent.x * 0.5f - size.x * 0.5f, parentPosition.y});
                 }
 
-                glm::vec2 position, size, offset;
+                void virtual processInput(){};
+
+                glm::vec2 position = {0,0}, size = {0,0}, offset = {0,0};
                 unsigned int placement = TOP_LEFT;
                 GuiElement* parent = nullptr;
 
             protected:
-                std::vector<GuiElement*> children;
+                std::vector<std::shared_ptr<GuiElement>> children;
+                std::string currentName = "GuiElement";
 
         };
     }

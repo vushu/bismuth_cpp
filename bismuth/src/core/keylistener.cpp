@@ -16,16 +16,16 @@ void bi::KeyListener::keyCallback(GLFWwindow* window, int key, int scancode, int
     }
 }
 
-bool bi::KeyListener::isKeyReleased(int keyCode) {
-    bool keyReleased = get().keyReleased[keyCode];
+bool bi::KeyListener::isKeyReleased(Key keyCode) {
+    bool keyReleased = get().keyReleased[static_cast<int>(keyCode)];
     if (keyReleased) {
-        get().keyReleased[keyCode] = false;
+        get().keyReleased[static_cast<int>(keyCode)] = false;
     }
     return keyReleased;
 }
 
-bool bi::KeyListener::isKeyPressed(int keyCode) {
-    return get().keyPressed[keyCode];
+bool bi::KeyListener::isKeyPressed(Key keyCode) {
+    return get().keyPressed[static_cast<int>(keyCode)];
 }
 
 bi::KeyListener::KeyListener() {}

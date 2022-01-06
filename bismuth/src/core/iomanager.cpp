@@ -12,6 +12,14 @@ void IOManager::destroy()
     window->destroy();
 }
 
+float IOManager::getDeltaTime() {
+    return this->deltaTime;
+}
+
+void IOManager::setDeltaTime(float dt) {
+    this->deltaTime = dt;
+}
+
 void IOManager::construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string title)
 {
 

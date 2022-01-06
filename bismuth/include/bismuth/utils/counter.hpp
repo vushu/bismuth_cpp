@@ -1,23 +1,26 @@
 #pragma once
+#include <functional>
 namespace bi {
     namespace utils {
         class Counter{
             public:
-                // constructors, assignment, destructor
+                typedef std::function<void(int)> CountdownCallback;
                 Counter(int initialCount, float interval) : initialCount(initialCount), interval(interval), counter(initialCount) {};
                 ~Counter() {};
-                bool countDown(float dt);
-                bool countUp(float dt);
+                void updateIncrement(float dt);
+                void updateDecrement(float dt);
                 int getCount();
                 void setCount(int count);
                 void resetCount();
+                void onCount(CountdownCallback callback);
 
 
             private:
-                bool counting(float dt, bool increment);
+                void counting(float dt, bool increment);
                 int initialCount;
                 float accumulatedTime = 0, interval;
                 int counter;
+                CountdownCallback countdownCallback;
 
 
         };

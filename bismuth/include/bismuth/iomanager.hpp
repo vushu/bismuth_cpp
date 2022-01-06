@@ -28,6 +28,8 @@ namespace bi {
             std::unique_ptr<ShapeRenderer> shaperenderer;
             std::unique_ptr<TiledManager> tiledManager;
             std::unique_ptr<Cursor> cursor;
+            float getDeltaTime();
+            void setDeltaTime(float dt);
             void construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string);
             void destroy();
             static IOManager& get() {
@@ -38,6 +40,7 @@ namespace bi {
             glm::vec2 resolution;
             std::string title;
             glm::vec4 tileInfo;
+            float deltaTime = 0;
 
     };
 

@@ -1,22 +1,25 @@
 #include <bismuth/utils/counter.hpp>
 using namespace bi::utils;
 
-bool Counter::countDown(float dt) {
-    return counting(dt, false);
+void Counter::updateDecrement(float dt) {
+    counting(dt, false);
 }
 
-bool Counter::countUp(float dt) {
-    return counting(dt, true);
+void Counter::updateIncrement(float dt) {
+    counting(dt, true);
 }
 
-bool Counter::counting(float dt, bool increment) {
+void Counter::counting(float dt, bool increment) {
     accumulatedTime += dt;
     if (accumulatedTime > interval){
         accumulatedTime = 0;
         counter += (increment ? 1 : -1);
-        return true;
+        countdownCallback(counter);
     }
-    return false;
+}
+
+void Counter::onCount(CountdownCallback callback) {
+    this->countdownCallback = callback;
 }
 
 int Counter::getCount() {

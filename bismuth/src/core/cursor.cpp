@@ -5,6 +5,10 @@
 #include <bismuth/cursor.hpp>
 using namespace bi;
 
+Cursor::~Cursor() {
+
+}
+
 void Cursor::init(){
     currentTextureId = pointerTextureId = bi::ioManager().assetmanager->loadTexture(pointerFilePath);
     mouseOverTextureId = bi::ioManager().assetmanager->loadTexture(mouseOverFilePath);

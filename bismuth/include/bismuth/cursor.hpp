@@ -7,7 +7,7 @@ namespace bi{
         public:
             // constructors, assignment, destructor
             Cursor(std::string pointerFilePath, std::string mouseOverFilePath) : pointerFilePath(pointerFilePath), mouseOverFilePath(mouseOverFilePath)  {};
-            ~Cursor() {};
+            ~Cursor();
             void init();
             void draw();
             void setMouseOver(bool enable);

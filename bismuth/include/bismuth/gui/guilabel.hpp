@@ -7,8 +7,9 @@ namespace bi {
 
         class GuiLabel : public GuiElement{
             public:
-                GuiLabel() {};
-                ~GuiLabel() {};
+                GuiLabel() {
+                    currentName = "GuiLabel";
+                };
 
                 void setText(std::string);
                 void setText(Font* font,std::string);

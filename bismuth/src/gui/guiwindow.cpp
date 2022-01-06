@@ -8,11 +8,6 @@
 using namespace bi;
 using namespace gui;
 
-
-GuiWindow::GuiWindow() {
-
-}
-
 GuiWindow& GuiWindow::setSize(glm::vec2 size) {
     this->size = size;
     return *this;
@@ -46,6 +41,12 @@ void GuiWindow::draw() {
     ioManager().shaperenderer->setLineWidth(this->outlineWidth);
     ioManager().shaperenderer->drawRect(this->position, this->size, outlineColor).endFlushBegin();
 
+    if (scene) {
+        glViewport(this->position.x, this->position.y, static_cast<GLsizei>(this->size.x), static_cast<int>(this->size.y));
+        //glViewport(bi::ioManager().window->maxWidth - bi::mouseInput().xPos, bi::ioManager().window->maxHeight - bi::mouseInput().yPos, static_cast<GLsizei>(this->size.x), static_cast<int>(this->size.y));
+        scene->render(ioManager().getDeltaTime());
+    }
+
     for (auto& child : children){
         child->draw();
     }
@@ -57,29 +58,29 @@ bool GuiWindow::handleMouseClick(int action, glm::vec2 position) {
     }
 
     if (action == GLFW_MOUSE_BUTTON_LEFT){
-        isFocused = isPositionWithinRect(position);
+        isMouseOver = isPositionWithinRect(position);
     }
-    return isFocused;
+    return isMouseOver;
 }
 
 bool GuiWindow::mouseClicked() {
-    if (bi::mouseInput().mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && !isFocused) {
-        isFocused = true;
+    if (bi::mouseInput().mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && !isMouseOver) {
+        isMouseOver = true;
         handleMouseClick(GLFW_MOUSE_BUTTON_LEFT, bi::mouseInput().getPosition());
     }
-    return isFocused;
+    return isMouseOver;
 }
 
 bool GuiWindow::mouseReleased() {
 
-    if (!isFocused) {
+    if (!isMouseOver) {
         mouseClicked();
     }
 
     else if (!bi::mouseInput().mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
-        isFocused = false;
+        isMouseOver = false;
     }
-    return isFocused;
+    return isMouseOver;
 }
 
 
@@ -91,22 +92,27 @@ void GuiWindow::show() {
     this->isClosed = false;
 }
 
+void GuiWindow::onMouseOver(GuiWindowCallback callback) {
+    this->mouseOverCallback = callback;
+}
+
+
 void GuiWindow::dragging() {
 
-    if (!isFocused) {
+    if (!isMouseOver) {
         mouseReleased();
     }
 
     glm::vec2 mouse = {bi::mouseInput().toOrthoX(), bi::mouseInput().toOrthoY()};
 
-    if (!isDragging && isFocused) {
+    if (!isDragging && isMouseOver) {
         windowMouseDiff = this->position - mouse;
         if (this->isPositionWithinRect(mouse)){
             isDragging = true;
         }
     }
 
-    if (isFocused) {
+    if (isMouseOver) {
         this->setPosition(mouse + windowMouseDiff);
     }
 }
@@ -115,7 +121,7 @@ void GuiWindow::draggingEnd() {
 
     if (isDragging) {
         this->isDragging = false;
-        this->isFocused = false;
+        this->isMouseOver = false;
     }
 }
 
@@ -130,3 +136,28 @@ void GuiWindow::processDragging() {
     }
 }
 
+void GuiWindow::processInput() {
+    handleMouseOver();
+    for (auto& child : children) {
+        child->processInput();
+    }
+}
+
+void GuiWindow::handleMouseOver() {
+    if (isPositionWithinRect(mouseInput().getPosition())){
+
+        if (mouseOverCallback && !isMouseOver) {
+            isMouseOver = true;
+            mouseOverCallback(*this);
+        }
+    }
+    else if (mouseOverCallback && isMouseOver){
+        isMouseOver = false;
+        mouseOverCallback(*this);
+    }
+
+}
+
+void GuiWindow::addScene(Scene* scene) {
+    this->scene = scene;
+}

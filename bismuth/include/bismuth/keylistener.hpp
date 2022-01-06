@@ -1,6 +1,7 @@
 #pragma once
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
+#include "bismuth/keyboard.hpp"
 #include <memory>
 #include <bitset>
 namespace bi {
@@ -18,10 +19,10 @@ namespace bi {
             bool keyPressed[350] = {false};
             bool keyReleased[350] = {false};
 
-            bool isKeyPressed(int keyCode);
+            bool isKeyPressed(Key keyCode);
             void reset();
 
-            bool isKeyReleased(int keyCode);
+            bool isKeyReleased(Key keyCode);
 
             int lastKeyCode = -1;
             ~KeyListener();

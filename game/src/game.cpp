@@ -4,11 +4,10 @@
 Game::~Game() {}
 
 void Game::init() {
-
 }
 
 void Game::processInput(float dt) {
-    if (bi::keyInput().isKeyPressed(GLFW_KEY_ESCAPE))  {
+    if (bi::keyInput().isKeyPressed(bi::Key::ESCAPE))  {
         this->getWindow().close();
     }
 }

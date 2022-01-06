@@ -92,10 +92,13 @@ void Application::fixedLoop() {
     dt = beginTime - endTime;
     accumulated += dt;
 
+    getIOManager().setDeltaTime(dt);
+
     processInput(dt);
     this->scenemanager->processInput(dt);
 
     while (accumulated >= FRAMES_PER_SEC) {
+        getIOManager().setDeltaTime(FRAMES_PER_SEC);
         update(FRAMES_PER_SEC);
         this->scenemanager->update(FRAMES_PER_SEC);
         accumulated -= FRAMES_PER_SEC;
@@ -145,7 +148,7 @@ void Application::initOpenGL() {
 }
 
 void Application::applicationInit() {
-    log("Application: init");
+    log("Application: init ====================================================");
     getWindow().init();
     initOpenGL();
     getRenderer().init();
