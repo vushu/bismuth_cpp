@@ -20,7 +20,7 @@ void GuiTest::setupGuiEvents() {
     bi::gui::GuiButtonCallback callback = [&](bi::gui::GuiButton& button) {
         if (button.isPressed){
             button.setSize({300, 50});
-            button.setText("NUOC MAM");
+            button.setText("YEAH!");
             button.positionBottomCenterTo(button.getParent().position, button.getParent().size);
             getAudioManager().playSound(explosionSoundFile);
         }
@@ -58,6 +58,46 @@ void GuiTest::setupGuiEvents() {
 
     });
 
+    bismuthCounter.onCount([&](int count){
+        switch (count) {
+            case 1:
+                bismuthLabel->setVisible(true);
+                bismuthLabel->setText("B");
+                getAudioManager().playSound(explosionSoundFile);
+                break;
+            case 2:
+                bismuthLabel->setText("BI");
+                getAudioManager().playSound(explosionSoundFile);
+                break;
+            case 3:
+                bismuthLabel->setText("BIS");
+                getAudioManager().playSound(explosionSoundFile);
+                break;
+            case 4:
+                bismuthLabel->setText("BISM");
+                getAudioManager().playSound(explosionSoundFile);
+                break;
+            case 5:
+                bismuthLabel->setText("BISMU");
+                getAudioManager().playSound(explosionSoundFile);
+                break;
+            case 6:
+                bismuthLabel->setText("BISMUT");
+                getAudioManager().playSound(explosionSoundFile);
+                break;
+            case 7:
+                bismuthLabel->setText("BISMUTH");
+                getAudioManager().playSound(explosionSoundFile);
+                break;
+            case 8:
+                getAudioManager().playSound(bismuthSoundFile);
+                break;
+
+
+
+        }
+    });
+
     window->onMouseOver([&](bi::gui::GuiWindow& window){
         if (window.isMouseOver) {
             window.setOutlineColor(bi::color::SOFT_GREEN);
@@ -69,6 +109,14 @@ void GuiTest::setupGuiEvents() {
 
 }
 void GuiTest::init() {
+
+    bismuthLabel = std::make_shared<bi::gui::GuiLabel>();
+    bismuthLabel->setFont(&getAssetManager().getDefaultFont());
+    bismuthLabel->fontScale = 1.5f;
+    bismuthLabel->setText("BISMUTH");
+    bismuthLabel->setOffset({0, -10});
+    bismuthLabel->setVisible(false);
+    bismuthLabel->positionBottomCenterTo({0,0}, getWindow().size());
 
     testSceneOne = std::make_unique<TestSceneOne>();
     guiTexture = std::make_shared<bi::gui::GuiTexture>("resources/assets/textures/bismuth/bismuth_text.png");
@@ -124,6 +172,7 @@ void GuiTest::init() {
 
 void GuiTest::update(float dt) {
     counter.updateDecrement(dt);
+    bismuthCounter.updateIncrement(dt);
 }
 
 void GuiTest::processInput(float dt) {
@@ -143,6 +192,8 @@ void GuiTest::render(float dt) {
     fpsLabel->draw();
 
     window->draw();
+
+    bismuthLabel->draw();
 
     getCursor().draw();
 

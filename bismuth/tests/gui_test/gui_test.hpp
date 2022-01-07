@@ -24,6 +24,7 @@ class GuiTest : public bi::Application{
         void render(float dt) override;
         void processInput(float dt) override;
         std::shared_ptr<bi::gui::GuiLabel> fpsLabel;
+        std::shared_ptr<bi::gui::GuiLabel> bismuthLabel;
         std::unique_ptr<bi::gui::GuiWindow> window;
         std::shared_ptr<bi::gui::GuiButton> startBtn;
         std::shared_ptr<bi::gui::GuiTexture> guiTexture;
@@ -31,5 +32,6 @@ class GuiTest : public bi::Application{
         std::string plingSoundFile;
         std::string explosionSoundFile;
         bi::utils::Counter counter{10, 1.0f};
+        bi::utils::Counter bismuthCounter{0, 0.8f};
         int soundId;
 };

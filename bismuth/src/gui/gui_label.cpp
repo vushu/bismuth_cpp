@@ -27,6 +27,8 @@ void GuiLabel::setText(Font* font,std::string text) {
 
 
 void GuiLabel::draw() {
+    if (!visible)
+        return;
     if (!font) {
         log("No font is set for label!");
         return;

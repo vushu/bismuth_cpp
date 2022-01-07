@@ -130,17 +130,22 @@ namespace bi {
                     setPosition({parentPosition.x + sizeOfParent.x * 0.5f - size.x * 0.5f, parentPosition.y});
                 }
 
+                void setVisible(bool visible) {
+                    this->visible = visible;
+                }
+
                 void virtual processInput(){};
 
                 glm::vec2 position = {0,0}, size = {0,0}, offset = {0,0};
                 unsigned int placement = TOP_LEFT;
                 GuiElement* parent = nullptr;
+                bool visible = true;
 
             protected:
                 std::vector<std::shared_ptr<GuiElement>> children;
                 std::string currentName = "GuiElement";
                 std::string backgroundTextureFile;
-                float scale;
+                float scale = 1;
 
         };
     }

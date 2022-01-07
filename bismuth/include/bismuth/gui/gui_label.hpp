@@ -19,7 +19,7 @@ namespace bi {
                 bool isClicked = false;
                 float fontScale = 0.5f;
             private:
-                glm::vec4 color = color::BLACK;
+                glm::vec4 color = color::SOFT_MAGENTA;
                 Font* font;
                 std::string text = "";
         };
