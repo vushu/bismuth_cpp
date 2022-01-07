@@ -13,6 +13,7 @@ namespace bi {
                     guiLabel = std::make_shared<GuiLabel>();
                 }
 
+                bool handleMouseClick(int action, glm::vec2 position);
                 void draw() override;
                 glm::vec4 outlineColor = color::CORNFLOWER_BLUE;
                 glm::vec4 backgroundColor = color::fromRGB({44, 0, 138, 1});

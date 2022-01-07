@@ -25,10 +25,6 @@ namespace bi {
 
                 virtual void draw() = 0;
 
-                bool handleMouseClick(glm::vec2 position){
-                    return isPositionWithinRect(position);
-                }
-
                 void setPosition(glm::vec2 position) {
                     this->position = position + offset;
 
@@ -85,6 +81,14 @@ namespace bi {
                     this->offset = offset;
                 }
 
+                void setSize(glm::vec2 size) {
+                    this->size = size;
+                }
+
+                void setScale(float scale) {
+                    this->scale = scale;
+                    this->size *= scale;
+                }
 
                 bool isPositionWithinRect(glm::vec2 position){
                     return bi::collision::isPositionWithinRect(position, this->position,  this->size);
@@ -139,6 +143,7 @@ namespace bi {
                 std::vector<std::shared_ptr<GuiElement>> children;
                 std::string currentName = "GuiElement";
                 std::string backgroundTextureFile;
+                float scale;
 
         };
     }

@@ -3,7 +3,9 @@
 using namespace bi::gui;
 
 void GuiTexture::init() {
-    this->textureId = ioManager().assetmanager->loadTexture(this->filepath);
+    Texture& texture = ioManager().assetmanager->getTexture(this->filepath);
+    this->textureId = texture.textureId;
+    this->size = { texture.width, texture.height };
 }
 
 void GuiTexture::setColor(glm::vec4 color) {

@@ -72,6 +72,9 @@ void GuiTest::init() {
     testSceneOne = std::make_unique<TestSceneOne>();
     guiTexture = std::make_shared<bi::gui::GuiTexture>("resources/assets/textures/bismuth/bismuth_text.png");
     guiTexture->init();
+    guiTexture->setScale(0.5f);
+    guiTexture->setOffset({10, -10});
+    guiTexture->positionBottomLeftTo({0,0}, this->getWindow().size());
     //testSceneTwo = std::make_unique<TestSceneTwo>();
     //getSceneManager().addScene("testSceneOne", std::move(testSceneOne));
     //getSceneManager().addScene("testSceneOne", std::move(testSceneTwo));
@@ -103,7 +106,7 @@ void GuiTest::init() {
     window->add(startBtn, bi::gui::CENTER);
 
     window->setBackgroundColor(bi::color::fromRGB(0, 5, 253, 0.4f));
-    window->addBackgroundTexture("resources/assets/textures/bismuth/bismuth_text.png");
+    //window->addBackgroundTexture("resources/assets/textures/bismuth/bismuth_text.png");
 
     startBtn->setText("Play Sound");
     window->positionCenterTo({0,0}, getWindow().size());
@@ -134,9 +137,10 @@ void GuiTest::render(float dt) {
     getRenderer().clear();
 
     guiTexture->draw();
-    //fpsLabel->draw();
 
-    //window->draw();
+    fpsLabel->draw();
+
+    window->draw();
 
     getCursor().draw();
 
