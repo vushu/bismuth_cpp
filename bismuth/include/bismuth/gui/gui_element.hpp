@@ -129,9 +129,6 @@ namespace bi {
                 void positionTopCenterTo(glm::vec2 parentPosition, glm::vec2 sizeOfParent){
                     setPosition({parentPosition.x + sizeOfParent.x * 0.5f - size.x * 0.5f, parentPosition.y});
                 }
-                void addBackgroundTexture(std::string file) {
-                    this->backgroundTextureFile = file;
-                }
 
                 void virtual processInput(){};
 

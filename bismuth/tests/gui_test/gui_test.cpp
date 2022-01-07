@@ -1,6 +1,7 @@
 #include "gui_test.hpp"
 #include "bismuth/color.hpp"
 #include "bismuth/gui/gui_label.hpp"
+#include "bismuth/gui/gui_style.hpp"
 #include "bismuth/gui/gui_window.hpp"
 #include "bismuth/keylistener.hpp"
 #include "bismuth/logging.hpp"
@@ -109,6 +110,7 @@ void GuiTest::init() {
     //window->addBackgroundTexture("resources/assets/textures/bismuth/bismuth_text.png");
 
     startBtn->setText("Play Sound");
+    window->add(guiTexture, bi::gui::BOTTOM_LEFT);
     window->positionCenterTo({0,0}, getWindow().size());
     //window->positionCenterTo({0,0}, getWindow().size());
 
