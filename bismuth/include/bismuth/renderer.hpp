@@ -53,17 +53,15 @@ namespace bi {
             void flush();
             void endFlushBegin();
 
-            void drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int texId, float angle, std::array<glm::vec2, 4> texCoords = defaultTexcoords);
-            //void drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int texId, float angle);
-            Renderer& drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color, float angle);
-            Renderer& drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color);
+            void drawTexture(glm::vec2 pos, glm::vec2 size, glm::vec4 color, int texId, float angle = 0, std::array<glm::vec2, 4> texCoords = defaultTexcoords);
+            Renderer& drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color, float angle = 0);
             Renderer& drawText(std::string text, glm::vec2 position, Font& f, glm::vec4 color, float scale);
             Renderer& drawText(std::array<char, 256> text, glm::vec2 position, Font& f, glm::vec4 color , float scale);
             Renderer& drawTile(Tile& tile, glm::vec4 color);
             //void draw(SpriteRenderer& sprite);
             void resetStats();
             void clear(glm::vec4 color);
-            void clear(float r = 0.0f, float g = 0.0f, float b = 0.0f, float a=0.0f);
+            void clear(float r = 0.0f, float g = 0.0f, float b = 0.0f, float a = 0.0f);
             void setDefaultBlend();
             void setAdditiveBlend();
             RenderStats& getRenderStats();

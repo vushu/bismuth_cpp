@@ -1,7 +1,7 @@
 #pragma once
 #include "bismuth/color.hpp"
-#include "bismuth/gui/guielement.hpp"
-#include "bismuth/gui/guilabel.hpp"
+#include "bismuth/gui/gui_element.hpp"
+#include "bismuth/gui/gui_label.hpp"
 #include "bismuth/mouse.hpp"
 #include "bismuth/gui/gui_callbacks.hpp"
 namespace bi {
@@ -14,7 +14,6 @@ namespace bi {
                 }
 
                 void draw() override;
-                bool handleMouseClick(int action, glm::vec2 position) override;
                 glm::vec4 outlineColor = color::CORNFLOWER_BLUE;
                 glm::vec4 backgroundColor = color::fromRGB({44, 0, 138, 1});
                 bool isPressed = false;

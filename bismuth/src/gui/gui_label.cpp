@@ -1,6 +1,6 @@
 #include "bismuth/color.hpp"
 #include "bismuth/iomanager.hpp"
-#include <bismuth/gui/guilabel.hpp>
+#include <bismuth/gui/gui_label.hpp>
 #include <bismuth/font.hpp>
 #include <string>
 using namespace bi::gui;
@@ -36,8 +36,4 @@ void GuiLabel::draw() {
 
 void GuiLabel::setColor(glm::vec4 color)  {
     this->color = color;
-}
-
-bool GuiLabel::handleMouseClick(int action, glm::vec2 position) {
-    return isPositionWithinRect(position);
 }

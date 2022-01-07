@@ -1,5 +1,5 @@
 #pragma once
-#include "bismuth/gui/guilabel.hpp"
+#include "bismuth/gui/gui_label.hpp"
 #include "bismuth/scene.hpp"
 class TestSceneOne : public bi::Scene {
     public:

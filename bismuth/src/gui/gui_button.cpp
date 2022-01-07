@@ -1,6 +1,6 @@
-#include "bismuth/gui/guibutton.hpp"
+#include "bismuth/gui/gui_button.hpp"
 #include "bismuth/gui/gui_callbacks.hpp"
-#include "bismuth/gui/guilabel.hpp"
+#include "bismuth/gui/gui_label.hpp"
 #include "bismuth/iomanager.hpp"
 #include "bismuth/collision/collision.hpp"
 #include "bismuth/mouselistener.hpp"

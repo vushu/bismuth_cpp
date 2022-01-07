@@ -214,13 +214,6 @@ Renderer& Renderer::drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color, flo
     return *this;
 }
 
-Renderer& Renderer::drawQuad(glm::vec2 pos, glm::vec2 size, glm::vec4 color) {
-    reevaluateBatchSpace();
-    setQuadVertices(s_renderData.currentLocationPtr, pos, size,  color, 0.0f, 0.0f);
-    incrementDrawCounters();
-    return *this;
-}
-
 void Renderer::flush() {
 
     shader.use();
@@ -346,6 +339,7 @@ void Renderer::setDefaultBlend() {
     glEnable(GL_BLEND);
     glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 }
+
 void Renderer::setAdditiveBlend() {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 }

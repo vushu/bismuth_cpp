@@ -1,6 +1,7 @@
 #pragma once
-#include "bismuth/gui/guibutton.hpp"
-#include "bismuth/gui/guiwindow.hpp"
+#include "bismuth/gui/gui_button.hpp"
+#include "bismuth/gui/gui_window.hpp"
+#include "bismuth/gui/gui_texture.hpp"
 #include "bismuth/sound.hpp"
 #include "bismuth/texture.hpp"
 #include "scenes/test_scene_one.hpp"
@@ -25,6 +26,7 @@ class GuiTest : public bi::Application{
         std::shared_ptr<bi::gui::GuiLabel> fpsLabel;
         std::unique_ptr<bi::gui::GuiWindow> window;
         std::shared_ptr<bi::gui::GuiButton> startBtn;
+        std::shared_ptr<bi::gui::GuiTexture> guiTexture;
         std::string bismuthSoundFile;
         std::string plingSoundFile;
         std::string explosionSoundFile;

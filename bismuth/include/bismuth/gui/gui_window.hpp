@@ -1,9 +1,9 @@
 #pragma once
 #include "bismuth/color.hpp"
-#include "bismuth/gui/guibutton.hpp"
+#include "bismuth/gui/gui_button.hpp"
 #include "bismuth/scene.hpp"
 #include "glm/fwd.hpp"
-#include <bismuth/gui/guielement.hpp>
+#include <bismuth/gui/gui_element.hpp>
 namespace bi{
     namespace gui {
         class GuiWindow : public GuiElement {
@@ -13,7 +13,6 @@ namespace bi{
                     currentName = "GuiWindow";
                 }
                 void draw() override;
-                bool handleMouseClick(int action, glm::vec2 position) override;
                 GuiWindow& setOutlineWidth(float outlineWidth);
                 GuiWindow& setBackgroundColor(glm::vec4 color);
                 GuiWindow& setOutlineColor(glm::vec4 color);

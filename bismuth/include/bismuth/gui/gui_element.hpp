@@ -6,10 +6,11 @@
 #include <memory>
 #include <vector>
 #include "bismuth/collision/collision.hpp"
-#include "bismuth/gui/guistyle.hpp"
+#include "bismuth/gui/gui_style.hpp"
 #include "bismuth/logging.hpp"
 #include "bismuth/mouse.hpp"
 #include "bismuth/mouselistener.hpp"
+#include "glm/fwd.hpp"
 namespace bi {
     namespace gui {
         class GuiElement{
@@ -23,7 +24,10 @@ namespace bi {
                 }
 
                 virtual void draw() = 0;
-                virtual bool handleMouseClick(int action, glm::vec2 position) = 0;
+
+                bool handleMouseClick(glm::vec2 position){
+                    return isPositionWithinRect(position);
+                }
 
                 void setPosition(glm::vec2 position) {
                     this->position = position + offset;
@@ -121,6 +125,9 @@ namespace bi {
                 void positionTopCenterTo(glm::vec2 parentPosition, glm::vec2 sizeOfParent){
                     setPosition({parentPosition.x + sizeOfParent.x * 0.5f - size.x * 0.5f, parentPosition.y});
                 }
+                void addBackgroundTexture(std::string file) {
+                    this->backgroundTextureFile = file;
+                }
 
                 void virtual processInput(){};
 
@@ -131,6 +138,7 @@ namespace bi {
             protected:
                 std::vector<std::shared_ptr<GuiElement>> children;
                 std::string currentName = "GuiElement";
+                std::string backgroundTextureFile;
 
         };
     }

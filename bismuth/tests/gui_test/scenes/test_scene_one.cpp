@@ -1,5 +1,5 @@
 #include "test_scene_one.hpp"
-#include "bismuth/gui/guilabel.hpp"
+#include "bismuth/gui/gui_label.hpp"
 
 TestSceneOne::TestSceneOne() {}
 

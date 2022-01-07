@@ -2,7 +2,7 @@
 #include <memory>
 #include <vector>
 #include <map>
-#include "guiwindow.hpp"
+#include "gui_window.hpp"
 namespace bi{
     namespace gui{
         class GuiWindowManager{

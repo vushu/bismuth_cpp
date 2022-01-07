@@ -3,7 +3,7 @@
 #include "bismuth/iomanager.hpp"
 #include "bismuth/math.hpp"
 #include "bismuth/mouselistener.hpp"
-#include <bismuth/gui/guiwindow.hpp>
+#include <bismuth/gui/gui_window.hpp>
 #include <bismuth/collision/collision.hpp>
 using namespace bi;
 using namespace gui;
@@ -41,11 +41,16 @@ void GuiWindow::draw() {
     ioManager().shaperenderer->setLineWidth(this->outlineWidth);
     ioManager().shaperenderer->drawRect(this->position, this->size, outlineColor).endFlushBegin();
 
-    if (scene) {
-        glViewport(this->position.x, this->position.y, static_cast<GLsizei>(this->size.x), static_cast<int>(this->size.y));
-        //glViewport(bi::ioManager().window->maxWidth - bi::mouseInput().xPos, bi::ioManager().window->maxHeight - bi::mouseInput().yPos, static_cast<GLsizei>(this->size.x), static_cast<int>(this->size.y));
-        scene->render(ioManager().getDeltaTime());
+    if (!backgroundTextureFile.empty()) {
+        Texture& texture = ioManager().assetmanager->getTexture(backgroundTextureFile);
+        ioManager().renderer->drawTexture(position, { texture.width, texture.height }, {1,1,1,1}, texture.textureId);
     }
+
+    //if (scene) {
+        //glViewport(this->position.x, this->position.y, static_cast<GLsizei>(this->size.x), static_cast<int>(this->size.y));
+        //glViewport(bi::ioManager().window->maxWidth - bi::mouseInput().xPos, bi::ioManager().window->maxHeight - bi::mouseInput().yPos, static_cast<GLsizei>(this->size.x), static_cast<int>(this->size.y));
+        //scene->render(ioManager().getDeltaTime());
+    //}
 
     for (auto& child : children){
         child->draw();

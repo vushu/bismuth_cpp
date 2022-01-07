@@ -1,6 +1,6 @@
 #pragma once
 #include "bismuth/font.hpp"
-#include "bismuth/gui/guielement.hpp"
+#include "bismuth/gui/gui_element.hpp"
 #include "bismuth/color.hpp"
 namespace bi {
     namespace gui{
@@ -16,7 +16,6 @@ namespace bi {
                 void setColor(glm::vec4 color);
                 void setFont(Font* font);
                 void draw() override;
-                bool handleMouseClick(int action, glm::vec2 position) override;
                 bool isClicked = false;
                 float fontScale = 0.5f;
             private:
