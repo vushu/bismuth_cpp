@@ -20,5 +20,6 @@ class GuiWindowScene : public bi::Scene {
         std::string bismuthSoundFile;
         std::string plingSoundFile;
         std::string explosionSoundFile;
+        std::string tickSoundFile;
         bi::utils::Counter counter{10, 1.0f};
 };

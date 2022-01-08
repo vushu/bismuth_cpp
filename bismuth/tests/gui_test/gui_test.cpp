@@ -1,11 +1,5 @@
 #include "gui_test.hpp"
-#include "bismuth/color.hpp"
-#include "bismuth/gui/gui_label.hpp"
-#include "bismuth/gui/gui_style.hpp"
-#include "bismuth/gui/gui_window.hpp"
-#include "bismuth/keylistener.hpp"
-#include "bismuth/logging.hpp"
-#include "bismuth/mouselistener.hpp"
+#include <bismuth/bismuth.hpp>
 #include <catch2/catch.hpp>
 #include "bismuth/keyboard.hpp"
 #include "scenes/gui_window_scene.hpp"
@@ -61,6 +55,7 @@ void GuiTest::setupGuiEvents() {
 
 }
 void GuiTest::init() {
+
     getSceneManager().addScene("GuiWindowScene", std::make_unique<GuiWindowScene>());
 
     bi::mouseInput().hideCursor();
@@ -69,7 +64,7 @@ void GuiTest::init() {
     getAudioManager().start();
     getAudioManager().getSound(explosionSoundFile).setVolume(0.5f);
 
-    bismuthLabel = std::make_shared<bi::gui::GuiLabel>(getAssetManager().getDefaultFont());
+    bismuthLabel = std::make_shared<bi::gui::GuiLabel>();
 
     bismuthLabel->fontScale = 1.5f;
     bismuthLabel->setText("BISMUTH");
