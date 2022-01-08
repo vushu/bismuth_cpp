@@ -5,34 +5,18 @@
 #include <string>
 using namespace bi::gui;
 
-
 void GuiLabel::setFont(Font *font) {
     this->font = font;
 }
 
 void GuiLabel::setText(std::string text) {
-    if (!font) {
-        log("No font is set for label!");
-        return;
-    }
     this->text = text;
     size = font->getSizeOfText(this->text, fontScale);
 }
-
-void GuiLabel::setText(Font* font,std::string text) {
-    setFont(font);
-    this->text = text;
-    size = font->getSizeOfText(this->text, fontScale);
-}
-
 
 void GuiLabel::draw() {
     if (!visible)
         return;
-    if (!font) {
-        log("No font is set for label!");
-        return;
-    }
     ioManager().renderer->drawText(this->text, this->position, *font, this->color, fontScale);
 }
 

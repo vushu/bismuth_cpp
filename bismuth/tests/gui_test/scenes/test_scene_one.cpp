@@ -6,8 +6,7 @@ TestSceneOne::TestSceneOne() {}
 TestSceneOne::~TestSceneOne() {}
 
 void TestSceneOne::init() {
-    titleLabel = std::make_unique<bi::gui::GuiLabel>();
-    titleLabel->setFont(&getAssetManager().getDefaultFont());
+    titleLabel = std::make_unique<bi::gui::GuiLabel>(getAssetManager().getDefaultFont());
     titleLabel->setText("TEST SCENE ONE!!!");
     titleLabel->setColor(bi::color::WHITE);
     titleLabel->positionCenterTo({0,0}, getWindow().size());

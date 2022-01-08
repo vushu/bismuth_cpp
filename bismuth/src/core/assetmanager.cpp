@@ -9,14 +9,15 @@
 
 using namespace bi;
 
-AssetManager::AssetManager () {}
+AssetManager::AssetManager () {
+    this->defaultFont = std::make_unique<Font>();
+}
 AssetManager::~AssetManager() {
     bi::log("AssetManager destroyed");
 }
 
-
 void AssetManager::initDefaults() {
-    this->defaultFont.loadFnt("resources/assets/fonts/manjaru.fnt");
+    this->defaultFont->loadFnt("resources/assets/fonts/manjaru.fnt");
 }
 
 int AssetManager::loadTexture(std::string filepath) {
@@ -50,18 +51,18 @@ Texture& AssetManager::getTexture(std::string filepath) {
     return *textures.at(filepath);
 }
 
-Font& AssetManager::getFont(std::string filepath) {
+Font* AssetManager::getFont(std::string filepath) {
     if (fonts.count(filepath) > 0) {
-        return *fonts.at(filepath);
+        return fonts.at(filepath).get();
     }
     std::unique_ptr<Font> font = std::make_unique<Font>();
     font->loadFnt(filepath);
     this->fonts.emplace(filepath, std::move(font));
-    return *this->fonts.at(filepath);
+    return this->fonts.at(filepath).get();
 }
 
-Font& AssetManager::getDefaultFont()  {
-    return this->defaultFont;
+Font* AssetManager::getDefaultFont()  {
+    return this->defaultFont.get();
 }
 
 bool AssetManager::textureExists(std::string filepath) {

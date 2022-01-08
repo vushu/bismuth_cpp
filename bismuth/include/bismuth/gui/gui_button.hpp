@@ -2,6 +2,7 @@
 #include "bismuth/color.hpp"
 #include "bismuth/gui/gui_element.hpp"
 #include "bismuth/gui/gui_label.hpp"
+#include "bismuth/iomanager.hpp"
 #include "bismuth/mouse.hpp"
 #include "bismuth/gui/gui_callbacks.hpp"
 namespace bi {
@@ -10,7 +11,7 @@ namespace bi {
             public:
                 GuiButton() {
                     currentName = "GuiButton";
-                    guiLabel = std::make_shared<GuiLabel>();
+                    this->guiLabel = std::make_shared<GuiLabel>(bi::ioManager().assetmanager->getDefaultFont());
                 }
 
                 bool handleMouseClick(int action, glm::vec2 position);

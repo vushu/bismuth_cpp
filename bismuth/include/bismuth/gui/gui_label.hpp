@@ -7,12 +7,12 @@ namespace bi {
 
         class GuiLabel : public GuiElement{
             public:
-                GuiLabel() {
+                GuiLabel(Font* font) {
+                    this->font = font;
                     currentName = "GuiLabel";
                 };
 
-                void setText(std::string);
-                void setText(Font* font,std::string);
+                void setText(std::string text);
                 void setColor(glm::vec4 color);
                 void setFont(Font* font);
                 void draw() override;

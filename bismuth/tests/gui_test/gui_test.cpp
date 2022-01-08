@@ -64,13 +64,12 @@ void GuiTest::init() {
     getSceneManager().addScene("GuiWindowScene", std::make_unique<GuiWindowScene>());
 
     bi::mouseInput().hideCursor();
+
     getAudioManager().init();
     getAudioManager().start();
 
-    bismuthLabel = std::make_shared<bi::gui::GuiLabel>();
-    bismuthLabel->setFont(&getAssetManager().getDefaultFont());
+    bismuthLabel = std::make_shared<bi::gui::GuiLabel>(getAssetManager().getDefaultFont());
 
-    bismuthLabel->setFont(&getAssetManager().getDefaultFont());
     bismuthLabel->fontScale = 1.5f;
     bismuthLabel->setText("BISMUTH");
     bismuthLabel->setOffset({0, -10});

@@ -7,21 +7,21 @@ GuiWindowScene::~GuiWindowScene() {}
 void GuiWindowScene::setupGuiEvents() {
 
     counter.onCount([&](int count){
-            fpsLabel->setText("Countdown: " + std::to_string(count));
+        fpsLabel->setText("Countdown: " + std::to_string(count));
+        fpsLabel->positionTopCenterTo({0,0}, getWindow().size());
+
+        if (count <= 3 && count >= 1){
+            getAudioManager().getSound(plingSoundFile).playSound(true);
+        }
+
+        if (count == 0){
+            fpsLabel->setText("Shutting down!");
             fpsLabel->positionTopCenterTo({0,0}, getWindow().size());
-
-            if (count <= 3 && count >= 1){
-                getAudioManager().getSound(plingSoundFile).playSound(true);
-            }
-
-            if (count == 0){
-                fpsLabel->setText("Shutting down!");
-                fpsLabel->positionTopCenterTo({0,0}, getWindow().size());
-                getAudioManager().getSound(explosionSoundFile).playSound(true);
-            }
-            if (count == -1){
-                getWindow().close();
-            }});
+            getAudioManager().getSound(explosionSoundFile).playSound(true);
+        }
+        if (count == -1){
+            getWindow().close();
+        }});
 
 }
 
@@ -33,8 +33,7 @@ void GuiWindowScene::init() {
 
     //window = std::make_unique<bi::gui::GuiWindow>();
     //startBtn = std::make_shared<bi::gui::GuiButton>();
-    fpsLabel = std::make_shared<bi::gui::GuiLabel>();
-    fpsLabel->setFont(&getAssetManager().getDefaultFont());
+    fpsLabel = std::make_shared<bi::gui::GuiLabel>(getAssetManager().getDefaultFont());
 
     //startBtn->setSize({260,50});
     //startBtn->setTextColor(bi::color::WHITE);
@@ -68,7 +67,6 @@ void GuiWindowScene::update(float dt) {
 }
 
 void GuiWindowScene::render(float dt) {
-    //getRenderer().clear();
 
     fpsLabel->draw();
 
@@ -80,7 +78,6 @@ void GuiWindowScene::render(float dt) {
 
     //getShapeRenderer().endFlushBegin();
 
-    //getRenderer().endFlushBegin();
 
 }
 

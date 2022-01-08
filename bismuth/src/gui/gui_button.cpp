@@ -125,9 +125,7 @@ void GuiButton::handleMouseOver() {
         outlineColor = lastOutlineColor;
         bi::ioManager().cursor->setMouseOver(false);
     }
-
 }
-
 
 void GuiButton::handleMouseLeftReleased() {
     if(mouseReleased()){
@@ -142,10 +140,6 @@ void GuiButton::handleMouseLeftClick() {
     if (mouseReleased() && leftClickCallback) {
         this->leftClickCallback(*this);
     }
-    //if(mouseInput().mouseButtonClicked(GLFW_MOUSE_BUTTON_LEFT) && isPositionWithinRect(mouseInput().getPosition()) && leftClickCallback && !isPressed){
-        //isPressed = true;
-        //this->leftClickCallback(*this);
-    //}
 }
 
 void GuiButton::processInput() {

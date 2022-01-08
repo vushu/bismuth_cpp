@@ -32,7 +32,6 @@ namespace bi{
                 bool isClosed = false;
                 bool isMouseOver = false;
                 GuiButton closeButton;
-                GuiLabel closeLabel;
                 bool isDragging = false;
                 bool closeButtonActivated = false;
                 void processInput() override;
