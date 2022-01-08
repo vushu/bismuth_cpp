@@ -65,12 +65,15 @@ std::string AudioManager::addSound(std::string soundFile) {
     std::string file = soundFile;
     std::shared_ptr<Sound> sound = std::make_shared<Sound>(soundFile);
     sound->init();
+    bi::log("Adding sound", soundFile);
     this->sounds.emplace(sound->filepath, std::move(sound));
     return file;
 }
 
 Sound& AudioManager::getSound(std::string soundFile) {
-    return *this->sounds.at(soundFile);
+    if (this->sounds.count(soundFile) > 0)
+        return *this->sounds.at(soundFile);
+    return *this->sounds.at(addSound(soundFile));
 }
 
 void AudioManager::playSound(std::string soundFile, bool rewind) {

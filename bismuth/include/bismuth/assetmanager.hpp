@@ -1,6 +1,6 @@
 #pragma once
-#include "bismuth/font.hpp"
-#include "bismuth/texture.hpp"
+#include "font.hpp"
+#include "texture.hpp"
 #include <string>
 #include <map>
 #include <memory>
@@ -9,7 +9,6 @@
 namespace bi  {
     class AssetManager {
         public:
-            // constructors, asssignment, destructor
             AssetManager ();
             ~AssetManager ();
 

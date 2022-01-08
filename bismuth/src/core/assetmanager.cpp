@@ -60,7 +60,6 @@ Font& AssetManager::getFont(std::string filepath) {
     return *this->fonts.at(filepath);
 }
 
-
 Font& AssetManager::getDefaultFont()  {
     return this->defaultFont;
 }

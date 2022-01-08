@@ -23,7 +23,6 @@ Font::Font() { }
 Font::~Font() {}
 
 void Font::updateBuffers(std::string text, glm::vec2 position, QuadVertex*& quadVertex, glm::vec4 color, float scale , float renderTexId) {
-    //float scale = 1.5f;
 
     glm::vec2 pos = position;
     for (auto& ch : text) {
@@ -131,10 +130,8 @@ void Font::loadFnt(std::string filePath) {
 
     std::vector<std::string> info3 = split(lines.at(2), "=");
     fontInfo.file = getInQuotes(info3[2]);
-    std::cout << fontInfo.file << std::endl;
     std::vector<std::string> info4 = split(lines.at(3), "=");
     int charLines = getDigit(info4[1]);
-    //log("charlines " + std::to_string(charLines));
 
 
     for (int i = 4; i <= charLines; i++) {
@@ -153,23 +150,6 @@ void Font::loadFnt(std::string filePath) {
         this->characters.insert({ch.charId, ch});
     }
 
-    //log("-----------------------");
-
-    //for (auto& p : characters) {
-    //log(std::to_string(p.first) + " : " + std::to_string(p.second.charId));
-    //}
-    /*
-       log("-----------------------");
-       log("face " + fontInfo.face);
-       log("file:" + fontInfo.file);
-       log("size:" + std::to_string(fontInfo.size));
-       log("bold:" + std::to_string(fontInfo.bold));
-       log("italic:" + std::to_string(fontInfo.italic));
-       log("base:" + std::to_string(fontInfo.base));
-       log("scaleW: " +std::to_string(fontInfo.scaleW));
-       log("scaleH: " + std::to_string(fontInfo.scaleH));
-       log("-----------------------");
-       */
     textureId = bi::ioManager().assetmanager->loadTexture("resources/assets/fonts/" + fontInfo.file);
 }
 
@@ -212,7 +192,6 @@ glm::vec2 Font::getSizeOfText(std::string text, float scale) {
     return { width, height };
 
 }
-
 
 std::vector<Character> Font::getCharacters(std::string text) {
     std::vector<Character> chars;

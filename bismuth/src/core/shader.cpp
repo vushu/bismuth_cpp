@@ -13,8 +13,8 @@ Shader::Shader(std::string filepath) {
     this->filepath = filepath;
     std::ifstream ifs(filepath);
     if (ifs) {
-        std::string content( (std::istreambuf_iterator<char>(ifs) ),
-                (std::istreambuf_iterator<char>()    ) );
+        std::string content((std::istreambuf_iterator<char>(ifs)),
+                (std::istreambuf_iterator<char>()));
         parseShader(content);
     }
 }
@@ -35,31 +35,6 @@ void Shader::parseShader(std::string source) {
     eol = source.find("\n", index);
     std::string secondPattern = trim(source.substr(index, eol - index));
 
-
-    // test
-    //const char* vertexShaderSource = "#version 300 es\n"
-    //"precision mediump float;\n"
-    //"in vec4 mama;\n"
-    //"void main()\n"
-    //"{\n"
-    //"   gl_Position = vec4(1.0f,1.0f,1.0f,1.0f);\n"
-    //"}\0";
-    //const char* fragmentShaderSource = "#version 300 es\n"
-    //"precision mediump float;\n"
-    //"out vec4 FragColor;\n"
-    //"void main()\n"
-    //"{\n"
-    //"   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-    //"}\n\0";
-
-    //std::string vsource = vertexShaderSource;
-    //std::string fsource = fragmentShaderSource;
-    //setSource("vertex", vsource);
-    //setSource("fragment", fsource);
-    //log("split1: " + splitted[1].erase(0,1));
-    //log("split2: " + splitted[2].erase(0,1));
-    //log("test: " + vsource);
-    // removing \n hence erase(0,1)
     setSource(firstPattern, splitted[1].erase(0,1));
     setSource(secondPattern, splitted[2].erase(0,1));
 }

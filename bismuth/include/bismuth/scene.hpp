@@ -1,7 +1,7 @@
 #pragma once
 
-#include <bismuth/renderer.hpp>
-#include <bismuth/iomanager.hpp>
+#include "renderer.hpp"
+#include "iomanager.hpp"
 
 namespace bi {
     class Scene {

@@ -1,17 +1,10 @@
+#pragma once
 #include "application.hpp"
-#include "mouselistener.hpp"
-#include "keylistener.hpp"
-#include "camera.hpp"
-#include "renderer.hpp"
-#include "font.hpp"
-#include "keylistener.hpp"
-#include "logging.hpp"
-#include "renderer.hpp"
-#include "sprite.hpp"
-#include "spriterenderer.hpp"
-#include "texture.hpp"
-#include "assetmanager.hpp"
-#include "shaperenderer.hpp"
-#include "iomanager.hpp"
+#include "utils/counter.hpp"
+
+#include "gui/gui_window.hpp"
+#include "gui/gui_label.hpp"
+#include "gui/gui_style.hpp"
+#include "gui/gui_texture.hpp"
 
 

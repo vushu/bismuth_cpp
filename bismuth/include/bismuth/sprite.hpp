@@ -1,6 +1,6 @@
 #pragma once
 #include <glm/glm.hpp>
-#include <bismuth/texture.hpp>
+#include "texture.hpp"
 #include <vector>
 #include <memory>
 namespace bi {

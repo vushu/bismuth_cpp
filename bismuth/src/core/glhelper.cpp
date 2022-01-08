@@ -1,11 +1,6 @@
 
-//#ifndef __EMSCRIPTEN__
-//#define STB_IMAGE_IMPLEMENTATION
-//#include <stb_image.h>
-//#else
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb/stb_image.h>
-//#endif
 #include <bismuth/logging.hpp>
 #include <bismuth/glhelper.hpp>
 #include <glad/glad.h>

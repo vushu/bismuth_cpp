@@ -73,6 +73,7 @@ void Application::loop() {
     getWindow().pollEvents();
 
     getRenderer().resetStats();
+
     update(dt);
 
     this->scenemanager->update(dt);

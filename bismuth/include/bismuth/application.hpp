@@ -1,14 +1,6 @@
 #pragma once
-
-#include <bismuth/camera.hpp>
-#include <bismuth/renderer.hpp>
-#include <bismuth/window.hpp>
-#include <bismuth/audiomanager.hpp>
-#include <bismuth/assetmanager.hpp>
-#include <bismuth/framebuffer.hpp>
-#include <bismuth/scenemanager.hpp>
-#include <bismuth/cursor.hpp>
-#include <bismuth/iomanager.hpp>
+#include "scenemanager.hpp"
+#include "iomanager.hpp"
 
 #include <memory>
 

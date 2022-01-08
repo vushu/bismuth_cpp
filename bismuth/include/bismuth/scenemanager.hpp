@@ -3,8 +3,8 @@
 #include <string>
 #include <memory>
 #include <map>
-#include <bismuth/scene.hpp>
-#include <bismuth/iomanager.hpp>
+#include "scene.hpp"
+#include "iomanager.hpp"
 
 namespace bi {
 
@@ -15,7 +15,7 @@ namespace bi {
 
         ~SceneManager();
 
-        void addScene(std::string name, std::unique_ptr<Scene> scene);
+        void addScene(std::string name, std::unique_ptr<Scene> scene, bool isStart = false);
 
         void setScene(std::string name);
 
@@ -29,6 +29,5 @@ namespace bi {
     private:
         std::string currentScene = "";
         std::map<std::string, std::unique_ptr<Scene>> scenes;
-        //std::shared_ptr<IOManager> ioManager;
     };
 }

@@ -5,7 +5,6 @@
 namespace bi {
     class Texture {
         public:
-            // constructors, asssignment, destructor
             Texture (std::string filepath);
             Texture (int w, int h) : width(w), height(h) {
 

@@ -14,11 +14,15 @@ SceneManager::~SceneManager() {
     }
 }
 
-void SceneManager::addScene(std::string name, std::unique_ptr<Scene> scene) {
+void SceneManager::addScene(std::string name, std::unique_ptr<Scene> scene, bool isStart) {
+    if (name.empty()) {
+        bi::log("No scene name defined, scene isn't added");
+        return;
+    }
     scene->sceneInit();
     scene->init();
     scenes.emplace(name, std::move(scene));
-    if (currentScene == "")
+    if (currentScene == "" && isStart)
         setScene(name);
 }
 

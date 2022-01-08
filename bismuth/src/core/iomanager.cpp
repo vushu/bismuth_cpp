@@ -22,7 +22,6 @@ void IOManager::setDeltaTime(float dt) {
 
 void IOManager::construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string title)
 {
-
     this->window = std::make_unique<Window>(resolution.x, resolution.y, title);
     this->tiledManager = std::make_unique<TiledManager>();
 

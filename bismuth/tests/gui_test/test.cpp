@@ -5,6 +5,6 @@
 GuiTest game;
 
 TEST_CASE("Showing in GUIWindow") {
-    bi::isLogging = false;
+    //bi::isLogging = false;
     game.run();
 }

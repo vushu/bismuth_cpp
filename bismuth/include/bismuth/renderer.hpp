@@ -9,7 +9,7 @@
 #include <bismuth/camera.hpp>
 #include <bismuth/tile.hpp>
 
-#include <bismuth/font.hpp>
+#include "font.hpp"
 #include <set>
 #include <tuple>
 #include <vector>

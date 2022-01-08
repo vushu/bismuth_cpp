@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <glm/glm.hpp>
-#include <bismuth/color.hpp>
+#include "color.hpp"
 namespace bi{
     class Cursor{
         public:

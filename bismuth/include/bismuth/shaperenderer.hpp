@@ -2,8 +2,8 @@
 #include "glm/fwd.hpp"
 #include "primitives.hpp"
 #include <glad/glad.h>
-#include <bismuth/shader.hpp>
-#include <bismuth/camera.hpp>
+#include "shader.hpp"
+#include "camera.hpp"
 namespace bi {
     class ShapeRenderer{
 

@@ -1,20 +1,16 @@
 #pragma once
-#include <bismuth/renderer.hpp>
-#include <bismuth/shaperenderer.hpp>
-#include <bismuth/window.hpp>
-#include <bismuth/audiomanager.hpp>
-#include <bismuth/camera.hpp>
-#include <bismuth/framebuffer.hpp>
-#include <bismuth/tiledmanager.hpp>
-#include <bismuth/cursor.hpp>
+#include "renderer.hpp"
+#include "shaperenderer.hpp"
+#include "window.hpp"
+#include "audiomanager.hpp"
+#include "framebuffer.hpp"
+#include "tiledmanager.hpp"
+#include "cursor.hpp"
 #include <memory>
 namespace bi {
 
     class IOManager {
         public:
-            // constructors, asssignment, destructor
-            //IOManager(int width, int height, std::string title);
-            //IOManager(glm::vec2 resolution, glm::vec4 tileInfo, std::string title);
             IOManager();
             ~IOManager();
             void init();

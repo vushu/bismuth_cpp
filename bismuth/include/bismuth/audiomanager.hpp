@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 #include <miniaudio/miniaudio.h>
-#include <bismuth/sound.hpp>
+#include "sound.hpp"
 #include <map>
 #define SAMPLE_FORMAT   ma_format_f32
 #define CHANNEL_COUNT   2

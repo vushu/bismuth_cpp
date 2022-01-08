@@ -20,7 +20,6 @@ void TestSceneOne::processInput(float dt) {}
 void TestSceneOne::update(float dt) {}
 
 void TestSceneOne::render(float dt) {
-    bi::log("RENDERING", "TESTSCENEONE!!!");
     titleLabel->draw();
 }
 
