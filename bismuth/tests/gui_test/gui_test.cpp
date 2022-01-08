@@ -67,6 +67,7 @@ void GuiTest::init() {
 
     getAudioManager().init();
     getAudioManager().start();
+    getAudioManager().getSound(explosionSoundFile).setVolume(0.5f);
 
     bismuthLabel = std::make_shared<bi::gui::GuiLabel>(getAssetManager().getDefaultFont());
 

@@ -11,7 +11,8 @@ namespace bi {
             public:
                 GuiButton() {
                     currentName = "GuiButton";
-                    this->guiLabel = std::make_shared<GuiLabel>(bi::ioManager().assetmanager->getDefaultFont());
+                    this->font = bi::ioManager().assetmanager->getDefaultFont();
+                    this->guiLabel = std::make_shared<GuiLabel>(font);
                 }
 
                 bool handleMouseClick(int action, glm::vec2 position);
@@ -28,9 +29,9 @@ namespace bi {
                 bool isClicked = false;
                 bool mouseClicked();
                 bool mouseReleased();
-                void onLeftClick(GuiButtonCallback callback);
+                void onLeftMousePressed(GuiButtonCallback callback);
+                void onLeftMouseReleased(GuiButtonCallback callback);
                 void onMouseOver(GuiButtonCallback callback);
-                void onLeftClickReleased(GuiButtonCallback callback);
 
                 float outlineThickness = 2.0f;
                 void processInput() override;
@@ -38,10 +39,9 @@ namespace bi {
             private:
                 bool isMouseOver = false;
                 void handleMouseOver();
-                void handleMouseLeftClick();
-                void handleMouseLeftReleased();
-                GuiButtonCallback leftClickCallback;
-                GuiButtonCallback leftClickReleasedCallback;
+                void handleMouseLeftPressed();
+                GuiButtonCallback leftMousePressedCallback;
+                GuiButtonCallback leftMouseReleasedCallback;
                 GuiButtonCallback mouseOverCallback;
                 std::shared_ptr<GuiLabel> guiLabel;
                 Font* font;

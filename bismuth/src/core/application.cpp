@@ -106,8 +106,8 @@ void Application::fixedLoop() {
         accumulated = std::max(0.0f, accumulated);
     }
 
-    this->scenemanager->render(dt);
     render(dt);
+    this->scenemanager->render(dt);
 
     getWindow().swapBuffers();
     endTime = beginTime;

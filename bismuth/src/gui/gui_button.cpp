@@ -92,16 +92,16 @@ bool GuiButton::mouseReleased() {
     return false;
 }
 
-void GuiButton::onLeftClickReleased(GuiButtonCallback callback)  {
-    this->leftClickReleasedCallback = callback;
+void GuiButton::onLeftMouseReleased(GuiButtonCallback callback)  {
+    this->leftMouseReleasedCallback = callback;
 }
 
 bool GuiButton::handleMouseClick(int action, glm::vec2 position) {
     return action == GLFW_MOUSE_BUTTON_LEFT && collision::isPositionWithinRect(position, this->position, this->size);
 }
 
-void GuiButton::onLeftClick(GuiButtonCallback callback){
-    this->leftClickCallback = callback;
+void GuiButton::onLeftMousePressed(GuiButtonCallback callback){
+    this->leftMousePressedCallback = callback;
 }
 
 void GuiButton::onMouseOver(GuiButtonCallback callback){
@@ -127,24 +127,17 @@ void GuiButton::handleMouseOver() {
     }
 }
 
-void GuiButton::handleMouseLeftReleased() {
-    if(mouseReleased()){
+void GuiButton::handleMouseLeftPressed() {
+    if (mouseClicked() && leftMousePressedCallback) {
+        this->leftMousePressedCallback(*this);
+    }
 
-    }
-}
-
-void GuiButton::handleMouseLeftClick() {
-    if (mouseClicked() && leftClickCallback){
-        this->leftClickCallback(*this);
-    }
-    if (mouseReleased() && leftClickCallback) {
-        this->leftClickCallback(*this);
-    }
+    if(mouseReleased() && leftMouseReleasedCallback)
+        this->leftMouseReleasedCallback(*this);
 }
 
 void GuiButton::processInput() {
     handleMouseOver();
-    handleMouseLeftClick();
-    handleMouseLeftReleased();
+    handleMouseLeftPressed();
 }
 

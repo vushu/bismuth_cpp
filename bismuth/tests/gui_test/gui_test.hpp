@@ -17,5 +17,5 @@ class GuiTest : public bi::Application{
         std::unique_ptr<GuiWindowScene> guiWindowScene;
         std::string bismuthSoundFile = "resources/assets/audio/bismuth.wav";
         std::string explosionSoundFile = "resources/assets/audio/explosion.wav";
-        bi::utils::Counter bismuthCounter{0, 0.8f};
+        bi::utils::Counter bismuthCounter{0, 0.3f};
 };
