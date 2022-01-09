@@ -1,4 +1,5 @@
 #pragma once
+#include "glm/fwd.hpp"
 #include <bismuth/renderer.hpp>
 #include <vector>
 namespace bi {
@@ -6,7 +7,8 @@ namespace bi {
         public:
             Animation(std::string name,int texId, std::vector<int> tileNumbers, glm::vec2 size, glm::vec4 color, float frameTime);
             ~Animation();
-            void draw(float dt, glm::vec2 pos, float angle);
+            void draw(glm::vec2 pos, glm::vec2 size, float angle);
+            void draw(glm::vec2 pos, float angle);
             std::string name;
 
         private:

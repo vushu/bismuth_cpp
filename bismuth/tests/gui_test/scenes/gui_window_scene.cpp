@@ -9,6 +9,7 @@ GuiWindowScene::~GuiWindowScene() {}
 void GuiWindowScene::setupAnimations() {
     int texId = getAssetManager().loadTexture("resources/assets/textures/bismuth/bunny.png");
     this->guiAnimatedSprite = std::make_shared<bi::gui::GuiAnimatedSprite>();
+    guiAnimatedSprite->setSize({60,60});
     guiAnimatedSprite->setOffset({0, 50});
     guiAnimatedSprite->positionCenterTo({0,0}, getWindow().size());
     std::vector<int> anims;
@@ -88,6 +89,7 @@ void GuiWindowScene::init() {
 
     setupGuiEvents();
     setupAnimations();
+    window->add(guiAnimatedSprite, bi::gui::CENTER);
 }
 
 void GuiWindowScene::start() {}
@@ -98,6 +100,7 @@ void GuiWindowScene::processInput(float dt) {
 
 void GuiWindowScene::update(float dt) {
     counter.updateDecrement(dt);
+    window->processDragging();
 }
 
 void GuiWindowScene::render(float dt) {
@@ -105,9 +108,8 @@ void GuiWindowScene::render(float dt) {
     getRenderer().clear();
 
     fpsLabel->draw();
-    window->draw();
 
-    guiAnimatedSprite->draw();
+    window->draw();
 
     getCursor().draw();
     getRenderer().endFlushBegin();

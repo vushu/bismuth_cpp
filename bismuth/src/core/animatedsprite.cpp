@@ -16,9 +16,9 @@ void AnimatedSprite::addAnimation(Animation animation) {
     animations.emplace(animation.name, std::move(animation));
 }
 
-void AnimatedSprite::play(std::string name, glm::vec2 position, float angle) {
+void AnimatedSprite::play(std::string name, glm::vec2 position, glm::vec2 size, float angle) {
     if (animations.count(name) > 0) {
-        animations.at(name).draw(bi::ioManager().getDeltaTime(), position, angle);
+        animations.at(name).draw(position, size, angle);
     }
     else {
         bi::log("Animation \"" + name + "\" Not found");

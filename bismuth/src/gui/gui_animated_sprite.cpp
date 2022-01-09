@@ -21,9 +21,8 @@ void GuiAnimatedSprite::addAnimation(std::string name, int texId, std::vector<in
 }
 
 void GuiAnimatedSprite::draw() {
-    if (!currentAnimation.empty())
-    {
-        animatedSprite->play(currentAnimation, this->position);
+    if (!currentAnimation.empty()) {
+        animatedSprite->play(currentAnimation, this->position, this->size);
     }
 }
 
