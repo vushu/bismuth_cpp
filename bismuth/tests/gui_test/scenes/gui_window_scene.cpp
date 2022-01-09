@@ -1,28 +1,44 @@
 #include "gui_window_scene.hpp"
 #include "bismuth/gui/gui_button.hpp"
+//#include "bismuth/gui/gui_animated_sprite.hpp"
 
 GuiWindowScene::GuiWindowScene() {}
 
 GuiWindowScene::~GuiWindowScene() {}
 
+void GuiWindowScene::setupAnimations() {
+    int texId = getAssetManager().loadTexture("resources/assets/textures/bismuth/bunny.png");
+    this->guiAnimatedSprite = std::make_shared<bi::gui::GuiAnimatedSprite>();
+    guiAnimatedSprite->setOffset({0, 50});
+    guiAnimatedSprite->positionCenterTo({0,0}, getWindow().size());
+    std::vector<int> anims;
+    anims.push_back(0);
+    anims.push_back(1);
+    anims.push_back(2);
+
+    guiAnimatedSprite->addAnimation("running", texId, anims, {32.0f, 32.0f}, {1,1,1,1}, 0.1f);
+    guiAnimatedSprite->setAnimation("running");
+}
+
 void GuiWindowScene::setupGuiEvents() {
 
-    counter.onCount([&](int count){
-            fpsLabel->setText("Countdown: " + std::to_string(count));
-            fpsLabel->positionTopCenterTo({0,0}, getWindow().size());
+    counter.onCount([&](int count) {
+        fpsLabel->setText("Countdown: " + std::to_string(count));
+        fpsLabel->positionTopCenterTo({0,0}, getWindow().size());
 
-            if (count <= 3 && count >= 1){
+        if (count <= 3 && count >= 1){
             getAudioManager().getSound(tickSoundFile).playSound(true);
-            }
+        }
 
-            if (count == 0){
+        if (count == 0){
             fpsLabel->setText("Shutting down!");
             fpsLabel->positionTopCenterTo({0,0}, getWindow().size());
             getAudioManager().getSound(explosionSoundFile).playSound(true);
-            }
-            if (count == -1){
+        }
+        if (count == -1){
             getWindow().close();
-            }});
+        }});
+
     startBtn->onMouseOver([&](bi::gui::GuiButton& button){
             startBtn->outlineColor = bi::color::SOFT_GREEN;
             startBtn->backgroundColor = bi::color::fromRGB(100, 100, 0, 0.5f);
@@ -32,20 +48,23 @@ void GuiWindowScene::setupGuiEvents() {
             getAudioManager().getSound("resources/assets/audio/explosion.wav").playSound();
             });
     startBtn->onLeftMouseReleased([&](bi::gui::GuiButton&){
-            //getAudioManager().playSound("resources/assets/audio/pling.wav");
+                getAudioManager().playSound("resources/assets/audio/pling.wav");
             });
     window->onMouseOver([&](bi::gui::GuiWindow& win){
             if (win.isMouseOver)
                 win.setBackgroundColor({1,0.5f, 0.4f,0.6f});
-            else
-            win.setBackgroundColor({0,0,0,1});
+            else {
+                win.setBackgroundColor({0,0,0,1});
+            }
             });
 
 }
 
 void GuiWindowScene::init() {
 
-    tickSoundFile = getAudioManager().getSound("resources/assets/audio/tick.mp3").filepath;
+    auto& sound = getAudioManager().getSound("resources/assets/audio/tick.mp3");
+    sound.setVolume(0.5f);
+    tickSoundFile = "resources/assets/audio/tick.mp3";
     plingSoundFile = getAudioManager().getSound("resources/assets/audio/pling.wav").filepath;
     explosionSoundFile = getAudioManager().getSound("resources/assets/audio/explosion.wav").filepath;
 
@@ -68,6 +87,7 @@ void GuiWindowScene::init() {
     window->positionCenterTo({0,0}, getWindow().size());
 
     setupGuiEvents();
+    setupAnimations();
 }
 
 void GuiWindowScene::start() {}
@@ -86,6 +106,8 @@ void GuiWindowScene::render(float dt) {
 
     fpsLabel->draw();
     window->draw();
+
+    guiAnimatedSprite->draw();
 
     getCursor().draw();
     getRenderer().endFlushBegin();

@@ -41,12 +41,6 @@ void GuiWindow::draw() {
     ioManager().shaperenderer->setLineWidth(this->outlineWidth);
     ioManager().shaperenderer->drawRect(this->position, this->size, outlineColor).endFlushBegin();
 
-    //if (scene) {
-        //glViewport(this->position.x, this->position.y, static_cast<GLsizei>(this->size.x), static_cast<int>(this->size.y));
-        //glViewport(bi::ioManager().window->maxWidth - bi::mouseInput().xPos, bi::ioManager().window->maxHeight - bi::mouseInput().yPos, static_cast<GLsizei>(this->size.x), static_cast<int>(this->size.y));
-        //scene->render(ioManager().getDeltaTime());
-    //}
-
     for (auto& child : children){
         child->draw();
     }

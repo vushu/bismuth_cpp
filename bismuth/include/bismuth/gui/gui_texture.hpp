@@ -8,7 +8,8 @@ namespace bi{
                 void init();
                 void draw() override;
                 void setColor(glm::vec4 color);
-            private:
+
+            protected:
                 glm::vec4 color = {1, 1, 1, 1};
                 std::string filepath;
                 int textureId;

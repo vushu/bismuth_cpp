@@ -4,10 +4,9 @@
 #include <bismuth/renderer.hpp>
 using namespace bi;
 
-
-Animation::Animation(std::string name,int texId, std::vector<int> tileNr, glm::vec2 size, glm::vec4 color, float frameTime){
+Animation::Animation(std::string name,int texId, std::vector<int> tileNumbers, glm::vec2 size, glm::vec4 color, float frameTime){
     this->textureId = texId;
-    this->tileNumbers = tileNr;
+    this->tileNumbers = tileNumbers;
     this->color = color;
     this->frameTime = frameTime;
     this->size = size;
