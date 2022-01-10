@@ -7,8 +7,8 @@ namespace bi {
                 typedef std::function<void(int)> CountdownCallback;
                 Counter(int initialCount, float interval) : initialCount(initialCount), interval(interval), counter(initialCount) {};
                 ~Counter() {};
-                void updateIncrement(float dt);
-                void updateDecrement(float dt);
+                void updateIncrement();
+                void updateDecrement();
                 int getCount();
                 void setCount(int count);
                 void resetCount();
@@ -19,7 +19,7 @@ namespace bi {
 
             private:
                 bool startCount = false;
-                void counting(float dt, bool increment);
+                void counting(bool increment);
                 int initialCount;
                 float accumulatedTime = 0, interval;
                 int counter;
