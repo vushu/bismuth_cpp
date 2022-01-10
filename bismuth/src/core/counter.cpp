@@ -1,4 +1,5 @@
 #include "bismuth/iomanager.hpp"
+#include "bismuth/logging.hpp"
 #include <bismuth/utils/counter.hpp>
 using namespace bi::utils;
 

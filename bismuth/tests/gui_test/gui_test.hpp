@@ -14,7 +14,7 @@ class GuiTest : public bi::Application{
         void render(float dt) override;
         void processInput(float dt) override;
         std::shared_ptr<bi::gui::GuiLabel> bismuthLabel;
-        std::unique_ptr<GuiWindowScene> guiWindowScene;
+        std::unique_ptr<scenes::GuiWindowScene> guiWindowScene;
         std::string bismuthSoundFile = "resources/assets/audio/bismuth.wav";
         std::string explosionSoundFile = "resources/assets/audio/explosion.wav";
         bi::utils::Counter bismuthCounter{0, 0.1f};

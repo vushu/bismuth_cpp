@@ -56,7 +56,7 @@ void GuiTest::setupGuiEvents() {
 }
 void GuiTest::init() {
 
-    getSceneManager().addScene("GuiWindowScene", std::make_unique<GuiWindowScene>());
+    getSceneManager().addScene("GuiWindowScene", std::make_unique<scenes::GuiWindowScene>());
 
     bi::mouseInput().hideCursor();
 
@@ -73,11 +73,12 @@ void GuiTest::init() {
     bismuthLabel->positionCenterTo({0,0}, getWindow().size());
 
     setupGuiEvents();
+    bismuthCounter.start();
 
 }
 
 void GuiTest::update(float dt) {
-    bismuthCounter.updateIncrement(dt);
+    bismuthCounter.updateIncrement();
 }
 
 void GuiTest::processInput(float dt) {

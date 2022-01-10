@@ -1,6 +1,7 @@
 #include "gui_window_scene.hpp"
 #include "bismuth/gui/gui_button.hpp"
 //#include "bismuth/gui/gui_animated_sprite.hpp"
+using namespace scenes;
 
 GuiWindowScene::GuiWindowScene() {}
 
@@ -92,14 +93,16 @@ void GuiWindowScene::init() {
     window->add(guiAnimatedSprite, bi::gui::CENTER);
 }
 
-void GuiWindowScene::start() {}
+void GuiWindowScene::start() {
+    counter.start();
+}
 
 void GuiWindowScene::processInput(float dt) {
     window->processInput();
 }
 
 void GuiWindowScene::update(float dt) {
-    counter.updateDecrement(dt);
+    counter.updateDecrement();
     window->processDragging();
 }
 
