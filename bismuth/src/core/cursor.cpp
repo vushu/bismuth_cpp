@@ -10,8 +10,8 @@ Cursor::~Cursor() {
 }
 
 void Cursor::init(){
-    currentTextureId = pointerTextureId = bi::ioManager().assetmanager->loadTexture(pointerFilePath);
-    mouseOverTextureId = bi::ioManager().assetmanager->loadTexture(mouseOverFilePath);
+    this->cursorTextureId = bi::ioManager().assetmanager->loadTexture(cursorFilePath);
+    this->currentTextCoord = pointerCursorTexcoords;
 }
 
 void Cursor::setColor(glm::vec4 color){
@@ -19,19 +19,20 @@ void Cursor::setColor(glm::vec4 color){
 }
 
 void Cursor::setMouseOver(bool enable) {
-    currentTextureId = pointerTextureId;
-    if (enable)
-        currentTextureId = mouseOverTextureId;
+    isMouseOver = enable;
+    if (isMouseOver) {
+        currentTextCoord = mouseOverCursorTexcoords;
+    }
+    else
+        currentTextCoord = pointerCursorTexcoords;
 }
 
-void Cursor::setTexture(std::string pointerFilePath, std::string mouseOverFilePath) {
-    this->pointerFilePath = pointerFilePath;
-    this->mouseOverFilePath = mouseOverFilePath;
+void Cursor::setTexture(std::string cursorFilePath) {
     init();
 }
 
 void Cursor::draw() {
     if (bi::mouseInput().xPos != -1)
-        bi::ioManager().renderer->drawTexture(mouseInput().getPosition() + offset, size, color, currentTextureId, 0);
+        bi::ioManager().renderer->drawTexture(mouseInput().getPosition() + offset, size, color, cursorTextureId, 0, currentTextCoord);
 }
 

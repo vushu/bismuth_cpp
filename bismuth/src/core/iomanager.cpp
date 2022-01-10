@@ -33,7 +33,7 @@ void IOManager::construct(glm::vec2 resolution, glm::vec4 tileInfo, std::string 
 
     this->assetmanager = std::make_unique<AssetManager>();
 
-    this->cursor = std::make_unique<Cursor>("resources/assets/textures/cursor/pointer.png", "resources/assets/textures/cursor/hand.png");
+    this->cursor = std::make_unique<Cursor>("resources/assets/textures/cursor/cursor.png");
 
     this->audioManager = std::make_unique<AudioManager>();
     this->mainFramebuffer = std::make_unique<Framebuffer>();
