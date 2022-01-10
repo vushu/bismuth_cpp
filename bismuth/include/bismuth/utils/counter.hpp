@@ -13,9 +13,12 @@ namespace bi {
                 void setCount(int count);
                 void resetCount();
                 void onCount(CountdownCallback callback);
+                void start();
+                void stop();
 
 
             private:
+                bool startCount = false;
                 void counting(float dt, bool increment);
                 int initialCount;
                 float accumulatedTime = 0, interval;
