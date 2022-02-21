@@ -93,13 +93,12 @@ void Application::fixedLoop() {
     dt = beginTime - endTime;
     accumulated += dt;
 
-    getIOManager().setDeltaTime(dt);
+    getIOManager().setDeltaTime(FRAMES_PER_SEC);
 
     processInput(dt);
     this->scenemanager->processInput(dt);
 
     while (accumulated >= FRAMES_PER_SEC) {
-        getIOManager().setDeltaTime(FRAMES_PER_SEC);
         update(FRAMES_PER_SEC);
         this->scenemanager->update(FRAMES_PER_SEC);
         accumulated -= FRAMES_PER_SEC;

@@ -32,6 +32,7 @@ namespace bi {
                 static IOManager instance;
                 return instance;
             }
+
         private:
             glm::vec2 resolution;
             std::string title;
